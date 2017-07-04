@@ -1,7 +1,7 @@
 Package: biddmodellingcourse
 Type: Package
 Title: Practicals and Code for the BIDD Modelling Short Course
-Version: 0.2.0
+Version: 0.1.9000
 Authors@R: c(person("Sam Abbott", role = c("aut", "cre"),
                      email = "contact@samabbott.co.uk"),
              person("Josephine Walker", role = "aut"),
@@ -15,7 +15,7 @@ Suggests: knitr,
     testthat
 Remotes:
 VignetteBuilder: knitr
-URL: http://www.samabbott.co.uk/biddmodellingcourse, 
+URL: https://bristolmathmodellers.github.io/biddmodellingcourse, 
      https://github.com/bristolmathmodellers/biddmodellingcourse
 BugReports: https://github.com/bristolmathmodellers/biddmodellingcourse/issues
 RoxygenNote: 6.0.1
