@@ -1,58 +1,68 @@
 ---
-title: "Practical 1"
-author: "Sam Abbott, Josephine Walker, Ellen Brooks-Pollock"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+title: "Practical 1: Modelling Tuberculosis in the United Kingdom"
+author: "Sam Abbott, Katy Turner"
+output: rmarkdown::html_document
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+bibliography: resources/library.bib  
 ---
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+## Exercise
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+Develop a flow diagram for a model of Tuberculosis transmission in the United Kingdom. The model should aim to answer one or more of the following study questions. 
 
-## Vignette Info
+1. What impact would a new point of care test for TB have? 
+1. An improved Tuberculosis vaccine has been developed, who should recieve it and when?
+1. A new Tuberculosis treatment is available which reduces treatment time from 6 months to 3 months. Forecast the long term impact of this on incidence rates
+1. Tuberculosis screening for all new migrants has been introduced, is this strategy likely to suceed.
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+In your groups read through the Tuberculosis facts below, choose a study question, and discuss the model structure that would be appropriate to investigate it. Remember that your model should aim to be as parsimonious as possible and therefore should not try to capture the full complexity of Tuberculosis transmission in the UK. To get you started here is a flow diagram for a basic model of Tuberculosis transmission (based on [@Brooks-Pollock2010]):
 
-## Styles
+![Figure 1: A model of Tuberculosis transmission, including simple demographic processes](./resources/SEIR_flow_diag.png)
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
+## Tuberculosis facts
 
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
+### Natural History of Tuberculosis
 
-## Figures
+- Mode of transmission
+- Latent/Active disease
+- Pulmonary/non-Pulomonary TB
+- Smear positive/Smear negative
+- Age specific mortality rates
 
-The figure sizes have been customised so that you can easily put two images side-by-side. 
+### Known risk factors
 
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
-```
+- HIV
+- Diabetes
+- Smoking
+- Low socioeconomic status
+- High density living
 
-You can enable figure captions by `fig_caption: yes` in YAML:
+### Treatments, vaccines and tests
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
+#### Treatments
 
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
+- DOTs
+- Drugs available (timelime)
+- Drug resistant TB
 
-## More Examples
+#### Vaccines
 
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
+- BCG vaccine
+- Vaccines in development
+### Tuberculosis globally
 
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
-```
+- Global incidence
+- Global mortality
+- Co-epidemic with HIV
 
-Also a quote using `>`:
+### Tuberculosis in the UK
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+- Incidence in the UK
+- Incidence rates
+- UK born/non-UK born
+- Urban areas/non-Urban areas
+
+## References
