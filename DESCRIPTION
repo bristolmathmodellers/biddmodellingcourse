@@ -9,12 +9,16 @@ Authors@R: c(person("Sam Abbott", role = c("aut", "cre"),
 Description: This package contains the practicals for the BIDD modelling short course at the University of Bristol. It also contains functions and data which can be used to practise infectious disease dynamic modelling.  
 Depends: R (>= 2.10)
 License: GPL-3 | file LICENSE
-Imports: ,
-    tibble
+Imports:
+    tibble,
+    prettypublisher,
+    tbinenglanddataclean
 Suggests: knitr,
     rmarkdown,
     testthat
-Remotes: 
+Remotes:
+    seabbs/prettypublisher,
+    seabbs/tbinenglanddataclean
 VignetteBuilder: knitr
 URL: https://bristolmathmodellers.github.io/biddmodellingcourse, 
      https://github.com/bristolmathmodellers/biddmodellingcourse

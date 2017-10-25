@@ -9,6 +9,10 @@ vignette: >
 bibliography: resources/library.bib  
 ---
 
+```{r packages, include = FALSE}
+library(tbinenglanddataclean)
+library(prettypublisher)
+```
 ## Exercise
 
 Develop a flow diagram for a model of Tuberculosis transmission in the United Kingdom. The model should aim to answer one or more of the following study questions. 
@@ -64,5 +68,13 @@ In your groups read through the Tuberculosis facts below, choose a study questio
 - Incidence rates
 - UK born/non-UK born
 - Urban areas/non-Urban areas
+
+```{r plot-incidence, echo = FALSE, message = FALSE}
+plot_historic_tb_ew()
+```
+
+```{r plot-prop-pul, echo = FALSE, message = FALSE}
+plot_historic_prop_pul_tb()
+```
 
 ## References
