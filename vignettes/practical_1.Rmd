@@ -1,11 +1,13 @@
 ---
 title: "Practical 1: Modelling Tuberculosis in the United Kingdom"
 author: "Sam Abbott, Katy Turner"
-output: rmarkdown::html_document
+output: 
+      word_document:
+      html_document:
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
 bibliography: resources/library.bib  
 ---
 
@@ -69,12 +71,21 @@ In your groups read through the Tuberculosis facts below, choose a study questio
 - UK born/non-UK born
 - Urban areas/non-Urban areas
 
-```{r plot-incidence, echo = FALSE, message = FALSE}
+```{r plot-incidence, echo = FALSE, message = FALSE, dpi = 500}
 plot_historic_tb_ew()
 ```
 
-```{r plot-prop-pul, echo = FALSE, message = FALSE}
-plot_historic_prop_pul_tb()
+```{r plot-prop-pul, echo = FALSE, message = FALSE, dpi = 500}
+pretty_table(tb_interventions_timeline,
+             col_names = c("Year",
+                           "Intervention",
+                           "Type",
+                           "Line",
+                           "Detail"),
+             split.tables = 150,
+             justify = "lllll"
+             
+             )
 ```
 
 ## References
