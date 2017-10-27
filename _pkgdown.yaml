@@ -1,0 +1,26 @@
+title: BIDD Modelling Course
+url: https://bristolmathmodellers.github.io/biddmodellingcourse/
+template:
+  params:
+    bootswatch: flatly
+
+navbar:
+  type: inverse
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Practicals"
+      menu: 
+      -  text: Practical 1 - Modelling Tuberculosis in England and Wales
+         href: articles/practical_1.html
+    - text: "Fact Sheets"
+      menu:
+      -  text: Tuberculosis
+         href: articles/tb_fact_sheet.html     
+  right:
+    - icon: fa-file-code-o 
+      text: "Functions"
+      href: reference/index.html
+    - icon: fa-github fa-lg
+      text: "Github"
+      href: https://github.com/bristolmathmodellers/biddmodellingcourse/

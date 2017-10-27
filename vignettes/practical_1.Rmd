@@ -1,5 +1,5 @@
 ---
-title: "Practical 1: Modelling Tuberculosis in the United Kingdom"
+title: "Practical 1: Modelling Tuberculosis in England and Wales"
 author: "Sam Abbott, Katy Turner"
 output: 
       html_document:

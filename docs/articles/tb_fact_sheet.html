@@ -5,8 +5,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fact sheet: Tuberculosis • biddmodellingcourse</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<title>Tuberculosis • BIDD Modelling Course</title>
+<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class="container template-vignette">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -29,35 +29,46 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../index.html">Home</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Practicals
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/practical_1.html">Practical 1: Modelling Tuberculosis in the United Kingdom</a>
+      <a href="../articles/practical_1.html">Practical 1 - Modelling Tuberculosis in England and Wales</a>
     </li>
-    <li>
-      <a href="../articles/tb_fact_sheet.html">Fact sheet: Tuberculosis</a>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Fact Sheets
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../articles/tb_fact_sheet.html">Tuberculosis</a>
     </li>
   </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/bristolmathmodellers/biddmodellingcourse">
+  <a href="../reference/index.html">
+    <span class="fa fa-file-code-o"></span>
+     
+    Functions
+  </a>
+</li>
+<li>
+  <a href="https://github.com/bristolmathmodellers/biddmodellingcourse/">
     <span class="fa fa-github fa-lg"></span>
      
+    Github
   </a>
 </li>
       </ul>
@@ -72,7 +83,7 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>Fact sheet: Tuberculosis</h1>
+      <h1>Tuberculosis</h1>
                         <h4 class="author">Sam Abbott</h4>
             
           </div>
@@ -212,18 +223,20 @@
 <a href="#global-tuberculosis" class="anchor"></a>Global Tuberculosis</h1>
 <p>Tuberculosis is a global disease with an estimated 10.4 million new cases in 2015, of which 4.3 million were missed health systems <span class="citation">[16]</span>. TB remains one of the top 10 causes death worldwide, leading to 1.8 million deaths in 2015 alone. Six countries, India, Indonesia, China, Nigeria, Pakistan, and South Africa account for 60% of new cases, with India, Indonesia, and Nigeria accounting for nearly half of the gap between incident and notified cases. Whilst the absolute number of deaths due to TB has fallen since 2000, the average global rate of decline in TB incidence rates was only 1.4% between 2000-2015. There is an ongoing global co-epidemic of HIV and TB, with people living with HIV accounting for 1.2 million TB cases in 2015. 22% of deaths from TB were in those living with HIV. Multidrug-resistant TB (MDR-TB), which is defined as being resistant to at least isoniazid and rifampin, made up 4.6% of all new TB cases in 2015 (480,000). It can be acquired both through treatment failure and through transmission. Treatment requires the use of second line antibiotics, which often have more severe side effects and is more likely to fail, with only 52% successfully treated globally compared to 83% for drug susceptible TB <span class="citation">[16]</span>.</p>
 </div>
-<div id="tuberculosis-in-the-uk" class="section level1">
+<div id="tuberculosis-in-the-england-and-wales" class="section level1">
 <h1 class="hasAnchor">
-<a href="#tuberculosis-in-the-uk" class="anchor"></a>Tuberculosis in the UK</h1>
-<ul>
-<li>Incidence in the UK</li>
-<li>Incidence rates</li>
-<li>UK born/non-UK born</li>
-<li>Urban areas/non-Urban areas</li>
-</ul>
+<a href="#tuberculosis-in-the-england-and-wales" class="anchor"></a>Tuberculosis in the England and Wales</h1>
+<p>Tuberculosis incidence in England and Wales has decreased dramatically from a century ago (Figure 1), however in the past several decades incidence rates have stablised and have in fact increased since their lowest point in the 1990’s. In 2000 there were 6044 notified TB cases in England, increasing to a maximum of 8280 notified TB cases in 2011, since when notifications have declined year on year <span class="citation">[17]</span>. Figure 1 includes the interventions discussed above (Table 1) and indicates that the introduction of several antibiotics and BCG vaccination in the 1950’s led to an extended decrease in incidence.</p>
 <div class="figure">
 <img src="tb_fact_sheet_files/figure-html/plot-incidence-1.png" alt="Figure 1: TB notifications in England and Wales from 2013 to 2016, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention, more information on each intervention is available in the corresponding table" width="5000"><p class="caption">
 Figure 1: TB notifications in England and Wales from 2013 to 2016, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention, more information on each intervention is available in the corresponding table
+</p>
+</div>
+<p>TB incidence in the UK is highly hetergenous with over 70% of cases occuring in the non-UK born population and the vast majority of cases occuring in urban areas <span class="citation">[17]</span>.</p>
+<p>Figure 2 shows that since the 1980’s the proportion of extra-pulmonary TB compared to pulmonary TB has increased from 26.2% (1944/7410) in 1982 to 45.8% (2634/5748) in 2016. This may be attributed to the age distribution of TB cases changing, as different age groups are more likely to progress to pulmonary vs extra-pulmonary TB. It may also be related to the increase of non-UK born cases, with these cases being more likely to be due to reactivation.</p>
+<div class="figure">
+<img src="tb_fact_sheet_files/figure-html/plot-prop-pul-1.png" alt="Figure 2: From 1913 until 1981 the figure shows the proportion respiratory vs. non-respiratory cases and from 1982 it shows the proportion of pulmonary vs. non-pulmonary TB." width="5000"><p class="caption">
+Figure 2: From 1913 until 1981 the figure shows the proportion respiratory vs. non-respiratory cases and from 1982 it shows the proportion of pulmonary vs. non-pulmonary TB.
 </p>
 </div>
 </div>
@@ -279,6 +292,9 @@ Figure 1: TB notifications in England and Wales from 2013 to 2016, stratified in
 <div id="ref-WHOTB2016">
 <p>16 World Health Organization. Global Tuberculosis Report. 2016. </p>
 </div>
+<div id="ref-PHE2016a">
+<p>17 PHE. Tuberculosis in England 2016 Report (presenting data to end of 2015). <em>Public Heal Engl</em> 2016;<strong>Version 1.</strong>:173.</p>
+</div>
 </div>
 </div>
 </div>
@@ -293,7 +309,7 @@ Figure 1: TB notifications in England and Wales from 2013 to 2016, stratified in
       <li><a href="#known-risk-factors">Known risk factors</a></li>
       <li><a href="#treatments-and-vaccines">Treatments and vaccines</a></li>
       <li><a href="#global-tuberculosis">Global Tuberculosis</a></li>
-      <li><a href="#tuberculosis-in-the-uk">Tuberculosis in the UK</a></li>
+      <li><a href="#tuberculosis-in-the-england-and-wales">Tuberculosis in the England and Wales</a></li>
       <li><a href="#references">References</a></li>
       </ul>
 </div>

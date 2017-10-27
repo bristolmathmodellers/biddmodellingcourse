@@ -3,7 +3,7 @@
 Bristol Infectious Disease Dynamics Modelling Course
 ====================================================
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/biddmodellingcourse)](https://cran.r-project.org/package=biddmodellingcourse)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/biddmodellingcourse)](https://cran.r-project.org/package=biddmodellingcourse) [![Build Status](https://travis-ci.org/bristolmathmodellers/biddmodellingcourse.svg?branch=master)](https://travis-ci.org/bristolmathmodellers/biddmodellingcourse)
 
 This package contains the practicals for the [BIDD](http://www.bristol.ac.uk/social-community-medicine/research/groups/bidd/) modelling short course at the University of Bristol. It also contains functions and data which can be used to practise infectious disease dynamic modelling.
 

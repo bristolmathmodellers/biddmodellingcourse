@@ -1,5 +1,5 @@
 ---
-title: "Fact sheet: Tuberculosis"
+title: "Tuberculosis"
 author: "Sam Abbott"
 output: 
       html_document:
@@ -13,6 +13,7 @@ csl: resources/bmj.csl
 ---
 
 ```{r packages, include = FALSE}
+library(tidyverse)
 library(tbinenglanddataclean)
 library(prettypublisher)
 ```
@@ -40,7 +41,7 @@ Treatment for TB usually consists of a 6 month course of multiple antibiotics (s
 1. Monitoring and evaluation system and impact measurement
 
 
-```{r plot-prop-pul, echo = FALSE, message = FALSE, dpi = 500}
+```{r fig-interventions, echo = FALSE, message = FALSE, dpi = 500}
 pretty_table(tb_interventions_timeline,
              col_names = c("Year",
                            "Intervention",
@@ -60,15 +61,36 @@ pretty_table(tb_interventions_timeline,
 Tuberculosis is a global disease with an estimated 10.4 million new cases in 2015, of which 4.3 million were missed health systems [@WHOTB2016]. TB remains one of the top 10 causes death worldwide, leading to 1.8 million deaths in 2015 alone. Six countries, India, Indonesia, China, Nigeria, Pakistan, and South Africa account for 60% of new cases, with India, Indonesia, and Nigeria accounting for nearly half of the gap between incident and notified cases. Whilst the absolute number of deaths due to TB has fallen since 2000, the average global rate of decline in TB incidence rates was only 1.4% between 2000-2015. There is an ongoing global co-epidemic of HIV and TB, with people living with HIV accounting for 1.2 million TB cases in 2015. 22% of deaths from TB were in those living with HIV. Multidrug-resistant TB (MDR-TB), which is defined as being resistant to at least isoniazid and rifampin, made up 4.6% of all new TB cases in 2015 (480,000). It can be acquired both through treatment failure and through transmission. Treatment requires the use of second line antibiotics, which often have more severe side effects and is more likely to fail, with only 52% successfully treated globally compared to 83% for drug susceptible TB [@WHOTB2016]. 
 
 
-# Tuberculosis in the UK
+# Tuberculosis in the England and Wales
 
-- Incidence in the UK
-- Incidence rates
-- UK born/non-UK born
-- Urban areas/non-Urban areas
+Tuberculosis incidence in England and Wales has decreased dramatically from a century ago (`r pretty_figref("incidence_tb")`), however in the past several decades incidence rates have stablised and have in fact increased since their lowest point in the 1990's. In 2000 there were 6044 notified TB cases in England, increasing to a maximum of 8280 notified TB cases in 2011, since when notifications have declined year on year [@PHE2016a]. `r pretty_figref("incidence_tb")` includes the interventions discussed above (`r pretty_tabref("intevention_table")`) and indicates that the introduction of several antibiotics and BCG vaccination in the 1950's led to an extended decrease in incidence.
 
 ```{r plot-incidence, echo = FALSE, message = FALSE, dpi = 500, fig.height = 10, fig.width = 10, fig.cap = pretty_figref("incidence_tb", caption = "TB notifications in England and Wales from 2013 to 2016, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention, more information on each intervention is available in the corresponding table")}
-plot_historic_tb_ew()
+tbinenglanddataclean::plot_historic_tb_ew()
+```
+
+```{r prop-pul, echo = FALSE, message = FALSE}
+prop_extra_pul <- tb_not_ew %>% 
+  group_by(year) %>% 
+  mutate(prop = prettypublisher::pretty_percentage(extra_pulmonary, 
+                                  extra_pulmonary + pulmonary, 
+                                  digits = 1))
+
+prop_extra_pil_1982 <- prop_extra_pul %>% 
+  filter(year == 1982) %>% 
+  pull(prop)
+
+prop_extra_pil_2016 <- prop_extra_pul %>% 
+  filter(year == 2016) %>% 
+  pull(prop)
+```
+
+TB incidence in the UK is highly hetergenous with over 70% of cases occuring in the non-UK born population and the vast majority of cases occuring in urban areas [@PHE2016a].
+
+`r pretty_figref("prop_pul")` shows that since the 1980's the proportion of extra-pulmonary TB compared to pulmonary TB has increased from `r prop_extra_pil_1982` in 1982 to `r prop_extra_pil_2016` in 2016. This may be attributed to the age distribution of TB cases changing, as different age groups are more likely to progress to pulmonary vs extra-pulmonary TB. It may also be related to the increase of non-UK born cases, with these cases being more likely to be due to reactivation.
+
+```{r plot-prop-pul, echo = FALSE, message = FALSE, warning = FALSE, dpi = 500, fig.height = 10, fig.width = 10, fig.cap = pretty_figref("prop_pul", caption = "From 1913 until 1981 the figure shows the proportion respiratory vs. non-respiratory cases and from 1982 it shows the proportion of pulmonary vs. non-pulmonary TB.")}
+tbinenglanddataclean::plot_historic_prop_pul_tb()
 ```
 
 # References
