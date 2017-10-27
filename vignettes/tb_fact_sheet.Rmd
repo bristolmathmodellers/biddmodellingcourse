@@ -1,0 +1,74 @@
+---
+title: "Fact sheet: Tuberculosis"
+author: "Sam Abbott"
+output: 
+      html_document:
+      word_document:
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+bibliography: resources/library.bib  
+csl: resources/bmj.csl
+---
+
+```{r packages, include = FALSE}
+library(tbinenglanddataclean)
+library(prettypublisher)
+```
+
+# Natural history of TB
+
+Tuberculosis is primarily a respiratory disease (pulmonary TB) caused by the bacterium Mycobacterium tuberculosis, although it can also affect other parts of the body (extra-pulmonary TB). After an infection with TB, 5-10% of individuals develop primary disease within 1-2 years of exposure. The majority of individuals then enter a latent stage in which they passively carry TB mycobacterium. Reactivation of bacilli can then occur many years later due to a loss of immune control [@Gideon2011a]. Both active and latent TB cases represent a range of diverse individual states. Typically, with pulmonary cases being responsible for the vast majority of transmission [@Sepkowitz1996]. Whilst latent cases may have completely cleared the bacterium or be asymptomatically carrying reproducing active TB bacterium [@Gideon2011a]. The most common symptoms are a chronic cough with blood-containing sputum, fever, night sweats and weight loss. Infectiousness, mortality and likelihood of developing various types of TB vary with age.
+
+# Known risk factors
+
+Tuberculosis has been associated with a large number of risk factors, with HIV being the most powerful. HIV increases the rate of activation by 20 fold and TB is the most common cause of AIDS related death @Rottenberg2012. In addition to HIV, TB has historically been associated with low socioeconomic status and high density living [@Bhatti1995; @Narasimhan2013]. It has also been found that both smoking and diabetes lead to an increased risk of TB @Narasimhan2013, amongst multiple other risk factors such as homelessness, incarceration and drug use [@Story2007].
+
+# Treatments and vaccines
+
+Bacillus Calmette–Guérin (BCG) is one of the mostly widely-used vaccines worldwide, with approximately 100m doses given annually[@The2004]. It was first given to humans in 1921 and remains the only licensed vaccine for tuberculosis[@Medicine2013]. BCG acts by directly preventing the development of active, symptomatic disease. The effectiveness of the vaccine is effected by the age at which it is given, the latitude of the individual, and the period of time that has lapsed since vaccination. It has consistently been shown to be highly protective in children [@Rodrigues1993, @Colditz1994]. Efficacy in adults ranges from 0% to 78% [@Mangtani2014a]. Multiple randomized control studies have been conducted on BCG efficacy. Meta-analysis of these studies indicates that increased protection is associated with distance from the equator [@Mangtani2014]. Meta-analysis has also been used to estimate the waning time of BCG protection. There is good evidence that protection can last up to 10 years and limited evidence of protection beyond 15 years [@Abubakar2013]. 
+
+Due to the variable estimates of BCG efficacy, vaccination has been controversial since its development. Different strategies have been utilized worldwide, including universal vaccination of those at most risk of on-wards transmission and high-risk group vaccination targeting either neonates or children [@Zwerling2011a]. In 2005, the UK shifted from a strategy of universal vaccination at age 13 years to targeted vaccination in neonates deemed at high risk [@PublicHealthEngland2011a].
+
+Treatment for TB usually consists of a 6 month course of multiple antibiotics (see `r pretty_tabref("intevention_table")`), usually consisting of isoniazid, rifampicin,  pyrazinamide and ethambutol (known as first line drugs). If the disease is resistant to treatment with the first line drugs then second line drugs such as, aminoglycosides, fluoroquinolones, and cycloserine are employed. The side effects for these drugs are generally far more severe and the treatment regime is longer (12-24 months). The World Health Organisation now recommends the use of the Directly Observed Treatment short-course (DOTS), which focuses on 5 action points [@WHOTB2016]. These are:
+
+1. Political commitment with increased and sustained financing
+1. Case detection through quality-assured bacteriology
+1. Standardized treatment with supervision and patient support
+1. An effective drug supply and management system
+1. Monitoring and evaluation system and impact measurement
+
+
+```{r plot-prop-pul, echo = FALSE, message = FALSE, dpi = 500}
+pretty_table(tb_interventions_timeline,
+             col_names = c("Year",
+                           "Intervention",
+                           "Type",
+                           "Line",
+                           "Detail"),
+             label = "intevention_table",
+             caption = "A timeline of interventions against tuberculosis. Antibiotics used to treat tuberculosis are commonly given together, with those with the fewest side effects given first, second line antibiotics are then used if the initial treatment fails or tests show the strain is multiply drug resistant.",
+             split.tables = 150,
+             justify = "lllll"
+             
+             )
+```
+
+# Global Tuberculosis
+
+Tuberculosis is a global disease with an estimated 10.4 million new cases in 2015, of which 4.3 million were missed health systems [@WHOTB2016]. TB remains one of the top 10 causes death worldwide, leading to 1.8 million deaths in 2015 alone. Six countries, India, Indonesia, China, Nigeria, Pakistan, and South Africa account for 60% of new cases, with India, Indonesia, and Nigeria accounting for nearly half of the gap between incident and notified cases. Whilst the absolute number of deaths due to TB has fallen since 2000, the average global rate of decline in TB incidence rates was only 1.4% between 2000-2015. There is an ongoing global co-epidemic of HIV and TB, with people living with HIV accounting for 1.2 million TB cases in 2015. 22% of deaths from TB were in those living with HIV. Multidrug-resistant TB (MDR-TB), which is defined as being resistant to at least isoniazid and rifampin, made up 4.6% of all new TB cases in 2015 (480,000). It can be acquired both through treatment failure and through transmission. Treatment requires the use of second line antibiotics, which often have more severe side effects and is more likely to fail, with only 52% successfully treated globally compared to 83% for drug susceptible TB [@WHOTB2016]. 
+
+
+# Tuberculosis in the UK
+
+- Incidence in the UK
+- Incidence rates
+- UK born/non-UK born
+- Urban areas/non-Urban areas
+
+```{r plot-incidence, echo = FALSE, message = FALSE, dpi = 500, fig.height = 10, fig.width = 10, fig.cap = pretty_figref("incidence_tb", caption = "TB notifications in England and Wales from 2013 to 2016, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention, more information on each intervention is available in the corresponding table")}
+plot_historic_tb_ew()
+```
+
+# References
