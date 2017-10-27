@@ -5,6 +5,6 @@ MAINTAINER "Sam Abbott" contact@samabbott.co.uk
 
 ADD . /home/seabbs/biddmodellingcourse
 
-RUN Rscript -e 'devtools::install_dev_deps("/home/seabbs")'
+RUN Rscript -e 'devtools::install_dev_deps("/home/seabbs/biddmodellingcourse")'
 
 RUN Rscript -e 'devtools::install_github("hadley/pkgdown")'
