@@ -2,8 +2,8 @@
 title: "Practical 1: Modelling Tuberculosis in England and Wales"
 author: "Sam Abbott, Katy Turner"
 output: 
-      html_document:
       word_document:
+      html_document:
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
   %\VignetteEncoding{UTF-8}
@@ -13,8 +13,11 @@ csl: resources/bmj.csl
 ---
 
 ```{r packages, include = FALSE}
+library(tidyverse)
+library(tbinenglanddataclean)
 library(prettypublisher)
 ```
+
 
 # Exercise
 
@@ -41,6 +44,10 @@ In your groups read through the Tuberculosis summary below, choose a study quest
 - Multiple antibiotics are used to treat active TB, mostly developed between the 1950s-1980s. Many of these have severe side effects and must be taken daily for at least 6 months.
 - Multidrug-resistant TB is an increasing problem globally and requires the use of second line antibiotics with more severe side effects. Several strains have developed resistance to second line antibiotics (extensively drug-resistant TB (XDR TB)).
 - England and Wales are low incidence countries, with the majority of cases occurring in the non-UK born.
-- Incidence rates in the UK born have been stable for the last two decades with little evidence of decline.
+- Incidence rates in the UK born have been stable for the last two decades with little evidence of decline. See `r pretty_figref("incidence_tb")`, or [http://www.seabbs.co.uk\\shiny\\TB_England_Wales](http://www.seabbs.co.uk/shiny/TB_England_Wales) for an interactive dashboard.
+
+```{r plot-incidence, echo = FALSE, message = FALSE, dpi= 300, fig.height = 10, fig.width = 10, fig.cap = pretty_figref("incidence_tb", caption = "TB notifications in England and Wales from 2013 to 2016, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention.")}
+tbinenglanddataclean::plot_historic_tb_ew()
+```
 
 # References
