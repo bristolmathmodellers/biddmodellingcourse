@@ -7,3 +7,4 @@
 ^\.travis\.yml$
 ^docs$
 Dockerfile
+^_pkgdown.yaml$
