@@ -6,5 +6,6 @@
 ^README-.*\.png$
 ^\.travis\.yml$
 ^docs$
-Dockerfile
+Dockerfile$
+^vignettes/resources/$
 ^_pkgdown.yaml$

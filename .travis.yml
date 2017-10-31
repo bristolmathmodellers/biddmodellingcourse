@@ -10,6 +10,3 @@ before_install:
 
 after_success:
   - Rscript -e 'library(covr); codecov()'
-
-r_build_args: --no-build-vignettes --no-manual
-r_check_args: --no-build-vignettes --no-manual
