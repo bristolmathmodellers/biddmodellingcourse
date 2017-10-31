@@ -21,28 +21,28 @@ library(prettypublisher)
 
 # Exercise
 
-Develop a flow diagram for a model of Tuberculosis transmission in the United Kingdom. The model should aim to answer one or more of the following study questions. 
+Develop a flow diagram for a model of Tuberculosis (TB) transmission in the United Kingdom (UK). The model should aim to answer one or more of the following study questions. 
 
 1. What impact would a new point of care test for TB have? 
-1. An improved Tuberculosis vaccine has been developed, who should receive it and when?
-1. A new Tuberculosis treatment is available which reduces treatment time from 6 months to 3 months. Forecast the long term impact of this on incidence rates
-1. Tuberculosis screening for all new migrants has been introduced, evaluate this intervention.
+1. An improved Tuberculosis vaccine has been developed. Who should receive it and when?
+1. A new Tuberculosis treatment is available that reduces treatment time from 6 months to 3 months. What is the long-term impact of this on incidence rates?
+1. Tuberculosis screening for all new migrants has been introduced/ What is the impact of this intervention?
 
-In your groups read through the Tuberculosis summary below, choose a study question, and discuss the model structure that would be appropriate to investigate it. Remember that your model should aim to be as parsimonious as possible and therefore should not try to capture the full complexity of Tuberculosis transmission in the UK. For more information about TB see the accompanying fact sheet. To get you started here is a flow diagram for a basic model of Tuberculosis transmission [@Brooks-Pollock2010]:
+In your groups read through the TB summary below, choose a study question, and discuss the model structure that would be appropriate to investigate it. Remember that your model should aim to be as parsimonious as possible and therefore should not try to capture the full complexity of TB transmission in the UK. For more information about TB see the accompanying fact sheet. To get you started here is a flow diagram for a basic model of TB transmission [@Brooks-Pollock2010]:
 
-![`r pretty_figref("model_diag", "An SEIR model of Tuberculosis transmission, including simple demographic processes")`](./resources/SEIR_flow_diag.png)
+![`r pretty_figref("model_diag", "An SEIR model of TB transmission, including simple demographic processes")`](./resources/SEIR_flow_diag.png)
 
 # Tuberculosis summary
 
-- Both a respiratory (pulmonary) and non-respiratory (extra-pulmonary) disease, with respiratory cases accounting for vast majority of transmission.
+- Both a respiratory (pulmonary) and non-respiratory (extra-pulmonary) disease, with respiratory cases accounting for the vast majority of transmission.
 - After infection individuals enter a latent stage, where they initially have a high risk of developing active disease. After 1-2 years the risk of activation greatly diminishes.
 - Infectiousness, mortality and likelihood of developing various types of TB vary with age.
 - Co-infection with HIV leads to increased progression to active TB disease and AIDS.
-- Incidence is globally heterogeneous with a small number of countries accounting for the vast majority of cases.
+- Global incidence is heterogeneous with a small number of countries accounting for the vast majority of cases.
 - Diabetes, smoking, homelessness, recent incarceration and low socioeconomic status are all key risk factors.
-- The BCG vaccine has been in use for over 50 years, but due to variable effectiveness (0-80%), a limited period of protection (10-15 years) and not acting to prevent initial infection has not led to the elimination or control of TB.
+- The BCG vaccine has been in use for over 50 years, but  has not led to the elimination or control of TB due to variable effectiveness (0-80%), a limited period of protection (10-15 years) and not acting to prevent initial infection.
 - Multiple antibiotics are used to treat active TB, mostly developed between the 1950s-1980s. Many of these have severe side effects and must be taken daily for at least 6 months.
-- Multidrug-resistant TB is an increasing problem globally and requires the use of second line antibiotics with more severe side effects. Several strains have developed resistance to second line antibiotics (extensively drug-resistant TB (XDR TB)).
+- Multidrug-resistant TB is an increasing problem globally and requires the use of second line antibiotics with more severe side effects. Several strains have developed resistance to second line antibiotics (known as extensively drug-resistant TB (XDR TB)).
 - England and Wales are low incidence countries, with the majority of cases occurring in the non-UK born.
 - Incidence rates in the UK born have been stable for the last two decades with little evidence of decline. See `r pretty_figref("incidence_tb")`, or [http://www.seabbs.co.uk\\shiny\\TB_England_Wales](http://www.seabbs.co.uk/shiny/TB_England_Wales) for an interactive dashboard.
 
