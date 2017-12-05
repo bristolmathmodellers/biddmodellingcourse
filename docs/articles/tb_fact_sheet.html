@@ -39,7 +39,25 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/practical_1.html">Practical 1 - Modelling Tuberculosis in England and Wales</a>
+      <a href="../articles/practical_1.html">Practical 1 - Designing a Model</a>
+    </li>
+    <li>
+      <a href="../articles/practical_2.html">Practical 2 - Compartmental Models to Equations</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Solutions
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../articles/practical_1.html">Solutions 1 - Designing a Model</a>
+    </li>
+    <li>
+      <a href="../articles/practical_2.html">Solutions 2 - Compartmental Models to Equations</a>
     </li>
   </ul>
 </li>
@@ -65,7 +83,7 @@
   </a>
 </li>
 <li>
-  <a href="https://github.com/bristolmathmodellers/biddmodellingcourse">
+  <a href="https://github.com/bristolmathmodellers/biddmodellingcourse/">
     <span class="fa fa-github fa-lg"></span>
      
     Github
@@ -101,12 +119,16 @@
 <a href="#known-risk-factors" class="anchor"></a>Known risk factors</h1>
 <p>TB has been associated with a large number of risk factors, with HIV being the most powerful. HIV increases the rate of activation by 20 fold and TB is the most common cause of AIDS-related death <span class="citation">[3]</span>. In addition to HIV, TB has historically been associated with low socioeconomic status and high density living <span class="citation">[4,5]</span>. It has also been found that both smoking and diabetes lead to an increased risk of TB <span class="citation">[5]</span>, amongst multiple other risk factors such as homelessness, incarceration and drug use <span class="citation">[6]</span>.</p>
 </div>
-<div id="treatments-and-vaccines" class="section level1">
+<div id="vaccines" class="section level1">
 <h1 class="hasAnchor">
-<a href="#treatments-and-vaccines" class="anchor"></a>Treatments and vaccines</h1>
+<a href="#vaccines" class="anchor"></a>Vaccines</h1>
 <p>Bacillus Calmette–Guérin (BCG) is one of the mostly widely-used vaccines worldwide, with approximately 100m doses given annually<span class="citation">[7]</span>. It was first given to humans in 1921 and remains the only licensed vaccine for TB <span class="citation">[8]</span>. BCG acts by directly preventing the development of active, symptomatic disease. The effectiveness of the vaccine is effected by the age at which it is given, the latitude of the individual, and the period of time that has lapsed since vaccination. It has consistently been shown to be highly protective in children <span class="citation">[9]</span>. Efficacy in adults ranges from 0% to 78% <span class="citation">[11]</span>. Multiple randomized control studies have been conducted on BCG efficacy. Meta-analysis of these studies indicates that increased protection is associated with distance from the equator <span class="citation">[12]</span>. Meta-analysis has also been used to estimate the waning time of BCG protection. There is good evidence that protection can last up to 10 years and limited evidence of protection beyond 15 years <span class="citation">[13]</span>.</p>
 <p>Due to the variable estimates of BCG efficacy, vaccination has been controversial since its development. Different strategies have been utilized worldwide, including universal vaccination of those at most risk of onwards transmission and high-risk group vaccination targeting either neonates or children <span class="citation">[14]</span>. In 2005, the UK shifted from a strategy of universal vaccination at age 13 years to targeted vaccination in neonates deemed at high risk <span class="citation">[15]</span>.</p>
 <p>Since 2015, BCG vaccination has been included in the Cover Of Vaccination Evaluated Rapidly (COVER) programme, allowing coverage to be estimated in areas of England with universal vaccination (implemented due to high incidence rates). Coverage for areas in England implementing targeted vaccination remains unknown. In London current coverage estimates are made by Local Authority and range from 5.3% to 92.1% <span class="citation">[16]</span>. These estimates may not be reliable as COVER has only recently begun to include returns for BCG, meaning that the data quality maybe poor.</p>
+</div>
+<div id="treatments" class="section level1">
+<h1 class="hasAnchor">
+<a href="#treatments" class="anchor"></a>Treatments</h1>
 <p>Treatment for TB usually consists of a 6 month course of multiple antibiotics (see Table 1), usually consisting of isoniazid, rifampicin, pyrazinamide and ethambutol (known as first line drugs). If the disease is resistant to treatment with the first line drugs then second line drugs such as aminoglycosides, fluoroquinolones, and cycloserine are employed. The side effects for these drugs are generally far more severe and the treatment regime is longer (12-24 months). The World Health Organisation now recommends the use of the Directly Observed Treatment short-course (DOTS), which focuses on 5 action points <span class="citation">[17]</span>. These are:</p>
 <ol style="list-style-type: decimal">
 <li>Political commitment with increased and sustained financing</li>
@@ -219,30 +241,45 @@
 </tbody>
 </table>
 </div>
-<div id="global-tuberculosis" class="section level1">
+<div id="global-tb" class="section level1">
 <h1 class="hasAnchor">
-<a href="#global-tuberculosis" class="anchor"></a>Global Tuberculosis</h1>
+<a href="#global-tb" class="anchor"></a>Global TB</h1>
 <p>TB is a global disease with an estimated 10.4 million new cases in 2015, of which 4.3 million were missed by health systems <span class="citation">[17]</span>. TB remains one of the top 10 causes death worldwide, leading to 1.8 million deaths in 2015 alone. Six countries: India, Indonesia, China, Nigeria, Pakistan, and South Africa account for 60% of new cases. India, Indonesia, and Nigeria comprise nearly half of the gap between incident and notified cases. Whilst the absolute number of deaths due to TB has fallen since 2000, the average global rate of decline in TB incidence rates was only 1.4% between 2000-2015. There is an ongoing global co-epidemic of HIV and TB, with people living with HIV accounting for 1.2 million TB cases in 2015. 22% of deaths from TB were in those living with HIV. Multidrug-resistant TB (MDR-TB), which is defined as being resistant to at least isoniazid and rifampin, made up 4.6% of all new TB cases in 2015 (480,000). It can be acquired both through treatment failure and through transmission. Treatment requires the use of second line antibiotics, which often have more severe side effects and is more likely to fail, with only 52% successfully treated globally compared to 83% for drug susceptible TB <span class="citation">[17]</span>.</p>
 </div>
-<div id="tuberculosis-in-the-england-and-wales" class="section level1">
+<div id="tb-in-the-england-and-wales" class="section level1">
 <h1 class="hasAnchor">
-<a href="#tuberculosis-in-the-england-and-wales" class="anchor"></a>Tuberculosis in the England and Wales</h1>
+<a href="#tb-in-the-england-and-wales" class="anchor"></a>TB in the England and Wales</h1>
+<div id="tb-notifications" class="section level2">
+<h2 class="hasAnchor">
+<a href="#tb-notifications" class="anchor"></a>TB Notifications</h2>
 <p>TB incidence in England and Wales has decreased dramatically from a century ago (Figure 1, or see <a href="http://www.seabbs.co.uk/shiny/TB_England_Wales">http://www.seabbs.co.uk\shiny\TB_England_Wales</a> for an interactive dashboard). However, in the past several decades, incidence rates have stabilised and have in fact increased since their lowest point in the 1990’s. In 2000 there were 6044 notified TB cases in England, increasing to a maximum of 8280 notified TB cases in 2011. Since then, notifications have declined year on year <span class="citation">[18]</span>. Figure 1 includes the interventions discussed above (Table 1) and indicates that the introduction of several antibiotics and BCG vaccination in the 1950’s led to an extended decrease in incidence.</p>
-<pre><code>## Warning: Removed 284 rows containing missing values (geom_path).</code></pre>
 <div class="figure">
 <img src="tb_fact_sheet_files/figure-html/plot-incidence-1.png" alt="Figure 1: TB notifications in England and Wales from 2013 to 2016, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention, more information on each intervention is available in the corresponding table" width="3000"><p class="caption">
 Figure 1: TB notifications in England and Wales from 2013 to 2016, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention, more information on each intervention is available in the corresponding table
 </p>
 </div>
+</div>
+<div id="heterogeneity-of-tb" class="section level2">
+<h2 class="hasAnchor">
+<a href="#heterogeneity-of-tb" class="anchor"></a>Heterogeneity of TB</h2>
 <p>TB incidence in the England is highly heterogeneous with over 70% of cases occurring in the non-UK born population. Incidence rates in the non-UK born (49.4 per 100,000, in 2016) are 15 times higher than in the UK born population (3.2 (95% CI 3.0-3.3) per 100,000, in 2016) <span class="citation">[16]</span>. The age distribution of cases in the UK born and non-UK born populations differ, with the UK born population having a relatively uniform distribution. Meanwhile, the non-UK born have higher incidence rates in those aged 80 years and older (69.3 per 100,000 in 2016), those aged 75 to 79 years (62.9 per 100,000 in 2016) and those aged 25-29 years old (61.6 per 100,000 in 2016) <span class="citation">[16]</span>. In the non-UK born, the majority of cases occur amongst those who have lived in the UK for at least 6 years (63%) - this has increased year on year since 2010 (49%) <span class="citation">[16]</span>. However, in 2016, 23.3% (420/1,800) of non-UK born cases had traveled outside the UK, with the majority returning to their country of origin. Incidence rates in the UK born are between 3 and 14 times higher in non-White ethnic groups compared to the White ethnic groups <span class="citation">[16]</span>.</p>
 <p>The majority of cases occur in urban areas with London alone accounting for 39%, with an incidence rate of 25.1 (per 100,000; 95% CI 24.1-26.2; in 2016) <span class="citation">[16]</span>. England has few cases of multidrug resistant TB, with only 68 cases in 2016. Similarly the number of co-infections with HIV is low with only 3.8% of cases in 2015 having HIV - the majority of these cases were born in countries with high HIV prevalence. 11.1% of TB cases in 2016 had at least one social risk factor (compared to 11.7% in 2015) <span class="citation">[16]</span>. In general cases with social risk factors are more likely to have drug resistant TB, worse TB outcomes and to be lost to follow up <span class="citation">[16]</span>. Amongst cases who were of working age in 2016, with a known occupation, 35.2% (1,491/4,240) were not in education or employment, 10.2% (432) were either studying or working in education, and 7.1% (304) were healthcare workers <span class="citation">[16]</span>.</p>
+</div>
+<div id="tb-transmission" class="section level2">
+<h2 class="hasAnchor">
+<a href="#tb-transmission" class="anchor"></a>TB Transmission</h2>
 <p>As TB incidence rates alone cannot be used to assess current TB transmission, due to reactivation of those latently infected, the incidence rate in UK born children (0-14 years old) is used as a proxy for transmission. Incidence rates in UK born children have fallen 47% from 3.4 per 100,000 in 2008 to 1.8 per 100,000 in 2016 <span class="citation">[16]</span>. This indicates that TB transmissions has fallen in the last decade. However, BCG vaccination was introduced for those neonates at high risk of TB in 2005 which maybe partly responsible for the observed reduction in incidence rates.</p>
 <p>Strain typing or whole genome sequencing is used to establish case clustering, this can be used to rule out transmission between cases but does not necessarily confirm transmission. Approximately 60% of cases cluster with at least one other case, and whilst this varies year on year, the fluctuations appear to be small (approximately 1-2%) <span class="citation">[16]</span>. Therefore interpreting any trend in TB transmission from the current strain typing data is difficult. Between 2010 and 2016, the median cluster size was 3 cases (range 2-244), with 74.4% (2,141/2,878) of clusters consisting of less than 5 cases and only 8.8% of clusters having more than 10 cases <span class="citation">[16]</span>. UK born cases were more likely to cluster than non-UK born cases (71.1%, 4,200/5,910 vs. 56.1%, 10,166/18,121) <span class="citation">[16]</span>.</p>
+</div>
+<div id="pulmonary-vs--extra-pulmonary-tb" class="section level2">
+<h2 class="hasAnchor">
+<a href="#pulmonary-vs--extra-pulmonary-tb" class="anchor"></a>Pulmonary Vs. Extra-Pulmonary TB</h2>
 <p>Figure 2 shows that since the 1980’s the proportion of extra-pulmonary TB compared to pulmonary TB has increased from 26.2% (1944/7410) in 1982 to 45.8% (2634/5748) in 2016. This may be attributed to the age distribution of TB cases changing, as different age groups are more likely to progress to pulmonary vs extra-pulmonary TB. It may also be related to the increase of non-UK born cases, as a higher proportion of non-UK born cases have extra-pulmonary disease only (51.4%, 2,103/4,089, in 2016), compared to UK born cases (31.9%, 467/1,465, in 2016) <span class="citation">[16]</span>. For more details on TB in England see the Public Health England 2017 TB report, from which the summary data discussed above was extracted <span class="citation">[16]</span>.</p>
 <div class="figure">
 <img src="tb_fact_sheet_files/figure-html/plot-prop-pul-1.png" alt="Figure 2: From 1913 until 1981 the figure shows the proportion respiratory vs. non-respiratory cases and from 1982 it shows the proportion of pulmonary vs. non-pulmonary TB." width="3000"><p class="caption">
 Figure 2: From 1913 until 1981 the figure shows the proportion respiratory vs. non-respiratory cases and from 1982 it shows the proportion of pulmonary vs. non-pulmonary TB.
 </p>
+</div>
 </div>
 </div>
 <div id="references" class="section level1 unnumbered">
@@ -315,9 +352,17 @@ Figure 2: From 1913 until 1981 the figure shows the proportion respiratory vs. 
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#natural-history-of-tuberculosis">Natural history of Tuberculosis</a></li>
       <li><a href="#known-risk-factors">Known risk factors</a></li>
-      <li><a href="#treatments-and-vaccines">Treatments and vaccines</a></li>
-      <li><a href="#global-tuberculosis">Global Tuberculosis</a></li>
-      <li><a href="#tuberculosis-in-the-england-and-wales">Tuberculosis in the England and Wales</a></li>
+      <li><a href="#vaccines">Vaccines</a></li>
+      <li><a href="#treatments">Treatments</a></li>
+      <li><a href="#global-tb">Global TB</a></li>
+      <li>
+<a href="#tb-in-the-england-and-wales">TB in the England and Wales</a><ul class="nav nav-pills nav-stacked">
+<li><a href="#tb-notifications">TB Notifications</a></li>
+      <li><a href="#heterogeneity-of-tb">Heterogeneity of TB</a></li>
+      <li><a href="#tb-transmission">TB Transmission</a></li>
+      <li><a href="#pulmonary-vs--extra-pulmonary-tb">Pulmonary Vs. Extra-Pulmonary TB</a></li>
+      </ul>
+</li>
       <li><a href="#references">References</a></li>
       </ul>
 </div>

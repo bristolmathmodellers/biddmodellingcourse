@@ -39,7 +39,25 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/practical_1.html">Practical 1 - Modelling Tuberculosis in England and Wales</a>
+      <a href="articles/practical_1.html">Practical 1 - Designing a Model</a>
+    </li>
+    <li>
+      <a href="articles/practical_2.html">Practical 2 - Compartmental Models to Equations</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Solutions
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/practical_1.html">Solutions 1 - Designing a Model</a>
+    </li>
+    <li>
+      <a href="articles/practical_2.html">Solutions 2 - Compartmental Models to Equations</a>
     </li>
   </ul>
 </li>
@@ -65,7 +83,7 @@
   </a>
 </li>
 <li>
-  <a href="https://github.com/bristolmathmodellers/biddmodellingcourse">
+  <a href="https://github.com/bristolmathmodellers/biddmodellingcourse/">
     <span class="fa fa-github fa-lg"></span>
      
     Github
@@ -103,12 +121,12 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <h3 class="hasAnchor">
 <a href="#docker" class="anchor"></a>Docker</h3>
 <p>This packge was developed in a docker container based on the <a href="https://hub.docker.com/r/rocker/tidyverse/">tidyverse</a> docker image. To run the docker image run:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run -d -p 8787:8787 --name biddmodellingcourse -e USER=seabbs -e PASSWORD=seabbs seabbs/biddmodellingcourse</code></pre></div>
-<p>The rstudio client can be found on port <code>:8787</code> at your local machines ip. The default username:password is seabbs:seabbs, set the user with <code>-e USER=username</code>, and the password with <code>- e PASSWORD=newpasswordhere</code>. The default is to save the analysis files into the user directory.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run -d -p 8787:8787 --name biddmodellingcourse -e USER=biddmodellingcourse -e PASSWORD=biddmodellingcourse seabbs/biddmodellingcourse</code></pre></div>
+<p>The rstudio client can be found on port <code>:8787</code> at your local machines ip. The default username:password is biddmodellingcourse:biddmodellingcourse, set the user with <code>-e USER=username</code>, and the password with <code>- e PASSWORD=newpasswordhere</code>. The default is to save the analysis files into the user directory.</p>
 <p>To run a plain R terminal use:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run --rm -it --user seabbs biddmodellingcourse /usr/bin/R</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run --rm -it --user biddmodellingcourse biddmodellingcourse /usr/bin/R</code></pre></div>
 <p>To run a plain bash session:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run --rm -it --user seabbs biddmodellingcourse /bin/bash</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run --rm -it --user biddmodellingcourse biddmodellingcourse /bin/bash</code></pre></div>
 <p>To connect as root:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> exec -ti -u root biddmodellingcourse bash</code></pre></div>
 </div>

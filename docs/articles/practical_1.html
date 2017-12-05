@@ -39,7 +39,25 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/practical_1.html">Practical 1 - Modelling Tuberculosis in England and Wales</a>
+      <a href="../articles/practical_1.html">Practical 1 - Designing a Model</a>
+    </li>
+    <li>
+      <a href="../articles/practical_2.html">Practical 2 - Compartmental Models to Equations</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Solutions
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../articles/practical_1.html">Solutions 1 - Designing a Model</a>
+    </li>
+    <li>
+      <a href="../articles/practical_2.html">Solutions 2 - Compartmental Models to Equations</a>
     </li>
   </ul>
 </li>
@@ -65,7 +83,7 @@
   </a>
 </li>
 <li>
-  <a href="https://github.com/bristolmathmodellers/biddmodellingcourse">
+  <a href="https://github.com/bristolmathmodellers/biddmodellingcourse/">
     <span class="fa fa-github fa-lg"></span>
      
     Github
@@ -91,17 +109,39 @@
     
     
 <div class="contents">
-<div id="exercise" class="section level1">
+<div id="learning-objectives" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercise" class="anchor"></a>Exercise</h1>
-<p>Develop a flow diagram for a model of Tuberculosis (TB) transmission in the United Kingdom (UK). The model should aim to answer one or more of the following study questions.</p>
+<a href="#learning-objectives" class="anchor"></a>Learning Objectives</h1>
 <ol style="list-style-type: decimal">
-<li>What impact would a new point of care test for TB have?</li>
-<li>An improved Tuberculosis vaccine has been developed. Who should receive it and when?</li>
-<li>A new Tuberculosis treatment is available that reduces treatment time from 6 months to 3 months. What is the long-term impact of this on incidence rates?</li>
-<li>Tuberculosis screening for all new migrants has been introduced/ What is the impact of this intervention?</li>
+<li>Understand how to develop a simple model flow diagram in response to a study question.</li>
+<li>Models should be parsimonious, with as few parameters as possible to capture the dynamics of interest.</li>
+<li>Model structure may be subjective, there can be many approaches to answering a given question.</li>
 </ol>
-<p>In your groups read through the TB summary below, choose a study question, and discuss the model structure that would be appropriate to investigate it. Remember that your model should aim to be as parsimonious as possible and therefore should not try to capture the full complexity of TB transmission in the UK. For more information about TB see the accompanying fact sheet. To get you started here is a flow diagram for a basic model of TB transmission <span class="citation">[1]</span>:</p>
+</div>
+<div id="timeline-for-session" class="section level1">
+<h1 class="hasAnchor">
+<a href="#timeline-for-session" class="anchor"></a>Timeline for Session</h1>
+<ol style="list-style-type: decimal">
+<li>Get into groups of 4-6 (2 minutes)</li>
+<li>Read through and choose a study question (5 minutes)</li>
+<li>Summarise key TB facts for your study question (10 minutes)</li>
+<li>Discuss model structure (15 minutes)</li>
+<li>Finalise model structure (5 minutes)</li>
+<li>Return for whole group discussion (2 minutes)</li>
+<li>Discuss possible for each study question (20 minutes)</li>
+</ol>
+</div>
+<div id="instructions" class="section level1">
+<h1 class="hasAnchor">
+<a href="#instructions" class="anchor"></a>Instructions</h1>
+<p>Develop a flow diagram for a model of Tuberculosis (TB) transmission in the United Kingdom (UK). The model should aim to answer one or more of the following study questions.</p>
+<p>Consider the impact of:</p>
+<ol style="list-style-type: decimal">
+<li>A new point of care test for TB. This test can detect resistance to all first line TB treatments with 100% sensitivitiy (true positive rate) and 50% specificity (true negative rate).</li>
+<li>A prolonged shortage of BCG vaccine.</li>
+<li>Tuberculosis screening for all new migrants.</li>
+</ol>
+<p>In your groups read through the TB summary below, choose a study question, and discuss the model structure that would be appropriate to investigate it. Remember that your model should aim to be as parsimonious as possible and therefore should not try to capture the full complexity of TB transmission in the UK. For more information about TB see the accompanying fact sheet. For some ideas about what previous models have included see the hints section below. To get you started here is a flow diagram for a basic model of TB transmission <span class="citation">[1]</span>:</p>
 <div class="figure">
 <img src="resources/SEIR_flow_diag.png" alt="Figure 1: An SEIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 1: An SEIR model of TB transmission, including simple demographic processes</p>
 </div>
@@ -129,6 +169,22 @@ Figure 2: TB notifications in England and Wales from 2013 to 2016, stratified in
 </p>
 </div>
 </div>
+<div id="hints" class="section level1">
+<h1 class="hasAnchor">
+<a href="#hints" class="anchor"></a>Hints</h1>
+<p>There are several components that are often included in models of TB, these are:</p>
+<ol style="list-style-type: decimal">
+<li>Age structure.</li>
+<li>Multiple latent stages prior to active disease, with each having a different rate activation.</li>
+<li>Reinfection for those previously latently infected or who have recovered from active disease.</li>
+<li>Reactivation for individuals who have recovered from active disease.</li>
+<li>Mortality due to TB.</li>
+<li>Case importation from high burden areas.</li>
+<li>Drug resistance which can either develop from failed treatment or infection with a drug resistant strain of TB.</li>
+<li>High and low risk population groups.</li>
+</ol>
+<p>Consider which of these are required to answer your study question.</p>
+</div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h1>
@@ -146,8 +202,11 @@ Figure 2: TB notifications in England and Wales from 2013 to 2016, stratified in
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#exercise">Exercise</a></li>
+<li><a href="#learning-objectives">Learning Objectives</a></li>
+      <li><a href="#timeline-for-session">Timeline for Session</a></li>
+      <li><a href="#instructions">Instructions</a></li>
       <li><a href="#tuberculosis-summary">Tuberculosis summary</a></li>
+      <li><a href="#hints">Hints</a></li>
       <li><a href="#references">References</a></li>
       </ul>
 </div>

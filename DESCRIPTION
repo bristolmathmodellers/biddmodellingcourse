@@ -15,10 +15,12 @@ Suggests: knitr,
     testthat,
     tidyverse,
     prettypublisher,
-    tbinenglanddataclean
+    tbinenglanddataclean,
+    idmodelr
 Remotes:
     seabbs/prettypublisher,
-    seabbs/tbinenglanddataclean
+    seabbs/tbinenglanddataclean,
+    seabbs/idmodelr
 VignetteBuilder: knitr
 URL: https://bristolmathmodellers.github.io/biddmodellingcourse, 
      https://github.com/bristolmathmodellers/biddmodellingcourse

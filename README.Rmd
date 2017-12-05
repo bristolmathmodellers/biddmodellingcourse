@@ -33,21 +33,21 @@ devtools::install_github("bristolmathmodellers/biddmodellingcourse")
 This packge was developed in a docker container based on the [tidyverse](https://hub.docker.com/r/rocker/tidyverse/) docker image. To run the docker image run:
 
 ```{bash, eval = FALSE}
-docker run -d -p 8787:8787 --name biddmodellingcourse -e USER=seabbs -e PASSWORD=seabbs seabbs/biddmodellingcourse
+docker run -d -p 8787:8787 --name biddmodellingcourse -e USER=biddmodellingcourse -e PASSWORD=biddmodellingcourse seabbs/biddmodellingcourse
 ```
 
-The rstudio client can be found on port `:8787` at your local machines ip. The default username:password is seabbs:seabbs, set the user with `-e USER=username`, and the password with ` - e PASSWORD=newpasswordhere`. The default is to save the analysis files into the user directory.
+The rstudio client can be found on port `:8787` at your local machines ip. The default username:password is biddmodellingcourse:biddmodellingcourse, set the user with `-e USER=username`, and the password with ` - e PASSWORD=newpasswordhere`. The default is to save the analysis files into the user directory.
 
 To run a plain R terminal use:
 
 ```{bash, eval = FALSE}
-docker run --rm -it --user seabbs biddmodellingcourse /usr/bin/R
+docker run --rm -it --user biddmodellingcourse biddmodellingcourse /usr/bin/R
 ```
 
 To run a plain bash session:
 
 ```{bash, eval = FALSE}
-docker run --rm -it --user seabbs biddmodellingcourse /bin/bash
+docker run --rm -it --user biddmodellingcourse biddmodellingcourse /bin/bash
 ```
 
 To connect as root:

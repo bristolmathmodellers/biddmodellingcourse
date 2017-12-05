@@ -11,8 +11,16 @@ navbar:
       href: index.html
     - text: "Practicals"
       menu: 
-      -  text: Practical 1 - Modelling Tuberculosis in England and Wales
+      -  text: Practical 1 - Designing a Model
          href: articles/practical_1.html
+      -  text: Practical 2 - Compartmental Models to Equations
+         href: articles/practical_2.html
+    - text: "Solutions"
+      menu: 
+      -  text: Solutions 1 - Designing a Model
+         href: articles/practical_1.html
+      -  text: Solutions 2 - Compartmental Models to Equations
+         href: articles/practical_2.html
     - text: "Fact Sheets"
       menu:
       -  text: Tuberculosis
@@ -23,4 +31,4 @@ navbar:
       href: reference/index.html
     - icon: fa-github fa-lg
       text: "Github"
-      href: https://github.com/bristolmathmodellers/biddmodellingcourse
+      href: https://github.com/bristolmathmodellers/biddmodellingcourse/
