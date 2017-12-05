@@ -12,23 +12,18 @@ bibliography: resources/library.bib
 csl: resources/bmj.csl
 ---
 
-```{r packages, include = FALSE}
-library(tidyverse)
-library(prettypublisher)
-```
-
 # Learning Objectives
 
 1. How to translate a simple model flow diagram into equations
 1. Understand how changing parameter values can change model dynamics
 1. Using a simple model scaffold to develop a more complex model
 
-# Timeline for Session
+# Outline for Session
 
 1. Set up (5 minutes)
 1. Explore the dynamics of a simple SEIR model (10 minutes)
 1. Add high and low risk latency to a SEIR model (10 minutes)
-1. Explore model dynamics (10 minutes)
+1. Explore SHLIR model dynamics and compare to the SEIR model (10 minutes)
 1. Extension: Translate your Model Flow Diagram to Equations (20 minutes)
 1. Extension: Explore the parameter space of multiple models (20 minutes)(If having trouble with the previous excercises then skip to this point for an R free exercise)
 1. Session wrap up (10 minutes)
@@ -37,15 +32,18 @@ library(prettypublisher)
 
 ## A Simple SEIR Model of Tuberculosis (TB)
 
+As a first excericse we are going to run the simple SEIR model, as seen in the design a model practical, in R. As a first step you will need to load the following packages.
 
-```{r, load-packages}
+```{r load-packages, message = FALSE}
 library(biddmodellingcourse)
 library(tidyverse)
 library(knitr)
+library(prettypublisher)
 ```
+
 ### Populations and Initialisation
 
-We first set up the initial populations for the Susceptible ($S_0$), Latent ($E_0$),  Infected ($I$), and Recovered ($R$) compartments. We have initialised the model as early stage epidemic with a single case of TB.
+We first set up the initial populations for the Susceptible ($S_0$), Latent ($E_0$),  Infected ($I$), and Recovered ($R$) compartments. We have initialised the model as an early stage epidemic with a single case of TB.
 
 ```{r seir-initialisation}
 inits = c(
@@ -105,7 +103,7 @@ SEIR_demo_ode <- function(t, x, params) {
 
 To simulate the model we specify the starting year (`begin_time`) and final year (`end_time`) and define a sequence over all intervening years. The model is then solved using `deSolve::lsoda` which is used within a simple wrapper function (see `?solve_ode` for details). The resulting table summarises the simulation results for the first 5 years.
 
-```{r seir-simulate}
+```{r seir-simulate, message = FALSE}
 begin_time <- 0
 end_time <- 200
 times <- seq(begin_time, end_time, 1)
@@ -118,57 +116,140 @@ SEIR_sim <- biddmodellingcourse::solve_ode(model = SEIR_demo_ode,
                                            as.data.frame = TRUE)
 SEIR_sim %>% 
   head %>% 
-  kable
+  pretty_table(caption = "First 5 years of model simulation",
+               label = "tab-1")
 ```
- Summarise the epidemic peak (`epi_peak`) and epidemic duration (`epi_dur`).
+ 
+We then summarise the epidemic peak (`epi_peak`) and epidemic duration (`epi_dur`), along with population sizes at the end of the time period simulated.
  
 ```{r seir-summary-stats}
-summarise_model <- function(sim) {
-  epi_peak <- sim %>% 
-    filter(I == max(I)) %>% 
-    pull(time)
-  
-  epi_dur <- sim %>% 
-    filter(I == 0) %>% 
-    arrange(I) %>% 
-    pull(time)
-  
-  if (length(epi_dur) == 0) {
-    epi_dur <- Inf
-  }
-  
-  sum_stat <- tibble(epi_peak = epi_peak, epi_dur = epi_dur)
-
-  return(sum_stat)
-}
-
-summarise_model(SEIR_sim) %>% 
-  kable
+biddmodellingcourse::summarise_model(SEIR_sim) %>% 
+  pretty_table(caption = "SEIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic")
 ```
 
-```{r seir-plot}
-order <- colnames(SEIR_sim)[-1]
+Finally we plot the population in each model compartment over time.
 
-SEIR_sim %>% 
-  gather(key = "Compartment", value = "Population", -time) %>% 
-  mutate(Compartment = factor(Compartment, levels = order)) %>% 
-  ggplot(aes(x = time, y = Population, col = Compartment)) +
-  geom_line() +
-  theme_minimal() +
-  labs(x = "Year") +
-  scale_color_viridis_d(end = 0.9) +
-  theme(legend.position = "bottom") + 
-  facet_wrap(~Compartment)
+```{r seir-plot, fig.cap = pretty_figref("SEIR", "Plot of population over time in each SEIR model compartment")}
+## For an interactive graph change interactive to TRUE
+biddmodellingcourse::plot_model(SEIR_sim, interactive = FALSE)
 ```
 
 ### Explore
 
-- What impact does varying parameters have?
+Model dynamics are parameter dependent. Even in a simplistic model like the one outlined above parameter values can greatly alter the dynamics. Answer the following questions by varying the parameters above and rerunning the model. 
+
+1. What is the impact of adding demographic processes (births and deaths)?
+
+1. What happens when the transmission rate (beta) is reduced below 1?
+
+1. What happens as the rate of recovery is increased?
 
 ## Add High and Low Risk Compartments
 
-- outline simple model function with text indicating where solution should go
-- code to plot model etc
+We are now going to make the model slightly more realistic, and therefore better able to capture the observed dynamics of TB. We are going to do this by adding a second latent population. Go back to [practical 1](https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html) if you need a refresher for the motivation behind this.
+
+### Populations and Initialisation 
+
+As in the previous model the first step is to define the model populations. There are now two new compartments, high risk latents (H), and low risk latents (L). These replace the orginal latent population (E) used in the previous model.
+
+```{r shlir-initialisation}
+SHILR_inits = c(
+  S = 999,
+  H = 0,
+  L = 0,
+  I = 1,
+  R = 0
+)
+```
+
+### Parameters
+
+We add two additional parameters for the rate of progression from high to low risk latents (nu) and the rate of progression from low risk latent to active disease.
+
+```{r shlir-parameters}
+SHILR_parameters <- c(
+  beta = 3, # Rate of transmission
+  gamma_H = 2, # Rate of progression to active symptoms from high risk latent
+  nu = 1/2, #Rate of progression from high to low risk latent
+  gamme_L = 1/100, # Rate of progression to active symptoms for low risk latent
+  tau = 1/2, # Rate of recovery
+  mu = 1/81 # Rate of natural mortality
+)
+```
+
+### Equations
+
+The code below is a starting point, fill in the missing model terms using the following model flow diagram and the code for the previous SEIR model as reference points. 
+
+```{r shlir-equations}
+SHLIR_demo_ode <- function(t, x, params) {
+
+  ## Specify model compartments
+  S <- x[1]
+  H <- x[2]
+  L <- x[3]
+  I <- x[4]
+  R <- x[5]
+
+  with(as.list(params),{
+
+    ## Specify total population
+    N = S + H + L + I + R
+
+    ## Derivative Expressions
+    dS = - beta * S * I / N - mu * S + mu * N
+    ## These are the new equations - fill in the remaining terms
+    dH = beta * (S + L) * I / N 
+    dL =  - beta * L * I / N
+    ## Hint terms are missing from this equation as well
+    dI =  - tau * I - mu * I
+    dR = tau * I - mu * R
+
+    ## output
+    derivatives <- c(dS, dH, dL, dI, dR)
+
+    list(derivatives)
+  })
+}
+```
+
+### Simulate and Summarise
+
+Simulation is the same as for the previous model. Does the simulation of your improved model make sense? Evaluate the summary tables and plot of model populations over time.
+
+```{r shlir-simulate, eval = FALSE}
+begin_time <- 0
+end_time <- 200
+SHILR_times <- seq(begin_time, end_time, 1)
+
+## see ?solve_ode for details
+SEIR_sim <- biddmodellingcourse::solve_ode(model = SHLIR_demo_ode, 
+                                           inits = SHLIR_inits, 
+                                           params = SHLIR_parameters,
+                                           times = SHILR_times, 
+                                           as.data.frame = TRUE)
+SHLIR_sim %>% 
+  head %>% 
+  pretty_table(caption = "First 5 years of SHLIR model simulation",
+               label = "tab-1")
+```
+ 
+
+```{r shlir-summary-stats, eval = FALSE}
+biddmodellingcourse::summarise_model(SEIR_sim) %>% 
+  pretty_table(caption = "SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic")
+```
+
+```{r shlir-plot, fig.cap = pretty_figref(label = "SHLIR", caption = "Plot of the population in each SHLIR model compartment over time"), eval = FALSE}
+## For an interactive graph change interactive to TRUE
+biddmodellingcourse::plot_model(SEIR_sim, interactive = FALSE)
+```
+
+## Explore
+
+1. How do the model dynamics for this model differ for different parameter values?
+
+1. What has the impact of adding the second latent population been?
 
 ## Extension: Translate your Model Flow Diagram to Equations
 

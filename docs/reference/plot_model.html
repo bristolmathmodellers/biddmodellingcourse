@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • BIDD Modelling Course</title>
+<title>Plot Compartment Populations over Time for a Model Simulation — plot_model • BIDD Modelling Course</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -122,64 +122,67 @@
       </header>
 
       <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.1.9000</small>
-      </h1>
+    <h1>Plot Compartment Populations over Time for a Model Simulation</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    
+    <p>Make seperate plots for each model compartment. Assumes model output is structured
+as that produced from <code><a href='solve_ode.html'>solve_ode</a></code>.</p>
+    
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <pre class="usage"><span class='fu'>plot_model</span>(<span class='no'>sim</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>sim</th>
+      <td><p>A tibble of model output as formated by <code><a href='solve_ode.html'>solve_ode</a></code></p></td>
+    </tr>
+    <tr>
+      <th>interactive</th>
+      <td><p>Logical, defaults to <code>FALSE</code>. If <code>TRUE</code> produces an interative plot.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="plot_model.html">plot_model</a></code> </p>
-          </td>
-          <td><p>Plot Compartment Populations over Time for a Model Simulation</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="SI_ode.html">SI_ode</a></code> </p>
-          </td>
-          <td><p>A Simple Susceptible-Infected Infectious Disease Model</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="solve_ode.html">solve_ode</a></code> </p>
-          </td>
-          <td><p>A Simple Wrapper for lsoda</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="summarise_model.html">summarise_model</a></code> </p>
-          </td>
-          <td><p>Summarise a Model Simulation</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    <p>A Plot of each model compartments population over time.</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='co'>## Intialise</span>
+<span class='no'>N</span> <span class='kw'>=</span> <span class='fl'>100000</span>
+<span class='no'>I_0</span> <span class='kw'>=</span> <span class='fl'>1</span>
+<span class='no'>S_0</span> <span class='kw'>=</span> <span class='no'>N</span> - <span class='no'>I_0</span>
+<span class='no'>R_0</span> <span class='kw'>=</span> <span class='fl'>1.1</span>
+<span class='no'>beta</span> <span class='kw'>=</span> <span class='no'>R_0</span>
+
+<span class='co'>##Time for model to run over</span>
+<span class='no'>tbegin</span> <span class='kw'>=</span> <span class='fl'>0</span>
+<span class='no'>tend</span> <span class='kw'>=</span> <span class='fl'>50</span>
+<span class='no'>times</span> <span class='kw'>&lt;-</span> <span class='fu'>seq</span>(<span class='no'>tbegin</span>, <span class='no'>tend</span>, <span class='fl'>1</span>)
+
+<span class='co'>##Vectorise input</span>
+<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='fu'>c</span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>))
+<span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='fu'>c</span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>))
+
+<span class='no'>sim</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='solve_ode.html'>solve_ode</a></span>(<span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>SI_ode</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>, <span class='no'>times</span>, <span class='kw'>as.data.frame</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE): object 'purrr' not found</span></div><div class='input'>
+<span class='fu'>plot_model</span>(<span class='no'>sim</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in is.data.frame(x): object 'sim' not found</span></div></pre>
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 

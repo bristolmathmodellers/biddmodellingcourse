@@ -66,7 +66,7 @@ To get you started here is a flow diagram for a basic model of TB transmission [
 - England and Wales are low incidence countries, with the majority of cases occurring in the non-UK born.
 - Incidence rates in the UK born have been stable for the last two decades with little evidence of decline. See `r pretty_figref("incidence_tb")`, or [http://www.seabbs.co.uk\\shiny\\TB_England_Wales](http://www.seabbs.co.uk/shiny/TB_England_Wales) for an interactive dashboard.
 
-```{r plot-incidence, echo = FALSE, message = FALSE, dpi= 300, fig.height = 10, fig.width = 10, fig.cap = pretty_figref("incidence_tb", caption = "TB notifications in England and Wales from 2013 to 2016, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention.")}
+```{r plot-incidence, echo = FALSE, message = FALSE, warning = FALSE, dpi= 300, fig.height = 10, fig.width = 10, fig.cap = pretty_figref("incidence_tb", caption = "TB notifications in England and Wales from 2013 to 2016, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention.")}
 tbinenglanddataclean::plot_historic_tb_ew()
 ```
 
@@ -76,7 +76,7 @@ There are several components that are often included in models of TB, these are:
 
 1. Age structure.
 1. Demographic processes such as natural mortality and birth.
-1. Multiple latent stages prior to active disease, with each having a different rate activation.
+1. Multiple latent stages prior to active disease, with each having a different activation rate.
 1. Reinfection for those previously latently infected or who have recovered from active disease.
 1. Reactivation for individuals who have recovered from active disease.
 1. Mortality due to TB.

@@ -109,106 +109,11 @@
     
     
 <div class="contents">
-<div id="learning-objectives" class="section level1">
-<h1 class="hasAnchor">
-<a href="#learning-objectives" class="anchor"></a>Learning Objectives</h1>
-<ol style="list-style-type: decimal">
-<li>Understand how to develop a simple model flow diagram in response to a study question.</li>
-<li>Models should be parsimonious, with as few parameters as possible to capture the dynamics of interest.</li>
-<li>Model structure may be subjective, there can be many approaches to answering a given question.</li>
-</ol>
-</div>
-<div id="outline-for-session" class="section level1">
-<h1 class="hasAnchor">
-<a href="#outline-for-session" class="anchor"></a>Outline for Session</h1>
-<ol style="list-style-type: decimal">
-<li>Get into groups of 4-6 (2 minutes)</li>
-<li>Read through and choose a study question (5 minutes)</li>
-<li>Summarise key TB facts for your study question (10 minutes)</li>
-<li>Discuss model structure (15 minutes)</li>
-<li>Finalise model structure (5 minutes)</li>
-<li>Return for whole group discussion (2 minutes)</li>
-<li>Discuss possible for each study question (20 minutes)</li>
-</ol>
-</div>
-<div id="instructions" class="section level1">
-<h1 class="hasAnchor">
-<a href="#instructions" class="anchor"></a>Instructions</h1>
-<p>Develop a flow diagram for a model of Tuberculosis (TB) transmission in the United Kingdom (UK). The model should aim to answer one or more of the following study questions.</p>
-<p>Consider the impact of:</p>
-<ol style="list-style-type: decimal">
-<li>A new point of care test for TB. This test can detect resistance to all first line TB treatments with 100% sensitivitiy (true positive rate) and 50% specificity (true negative rate).</li>
-<li>A prolonged shortage of BCG vaccine.</li>
-<li>Tuberculosis screening for all new migrants.</li>
-</ol>
-<p>In your groups read through the TB summary below, choose a study question, and discuss the model structure that would be appropriate to investigate it.</p>
-<p>Remember that your model should aim to be as parsimonious as possible and therefore should not try to capture the full complexity of TB transmission in the UK. For more information about TB see the accompanying fact sheet. For some ideas about what previous models have included see the hints section below.</p>
-<p>To get you started here is a flow diagram for a basic model of TB transmission <span class="citation">[1]</span>:</p>
-<div class="figure">
-<img src="resources/SEIR_flow_diag.png" alt="Figure 1: An SEIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 1: An SEIR model of TB transmission, including simple demographic processes</p>
-</div>
-</div>
-<div id="tb-summary" class="section level1">
-<h1 class="hasAnchor">
-<a href="#tb-summary" class="anchor"></a>TB summary</h1>
-<ul>
-<li>Both a respiratory (pulmonary) and non-respiratory (extra-pulmonary) disease, with respiratory cases accounting for the vast majority of transmission.</li>
-<li>After infection individuals enter a latent stage, where they initially have a high risk of developing active disease. After 1-2 years the risk of activation greatly diminishes.</li>
-<li>Infectiousness, mortality and likelihood of developing various types of TB vary with age.</li>
-<li>Co-infection with HIV leads to increased progression to active TB disease and AIDS.</li>
-<li>Global incidence is heterogeneous with a small number of countries accounting for the vast majority of cases.</li>
-<li>Diabetes, smoking, homelessness, recent incarceration and low socioeconomic status are all key risk factors.</li>
-<li>The BCG vaccine has been in use for over 50 years, but has not led to the elimination or control of TB due to variable effectiveness (0-80%), a limited period of protection (10-15 years) and not acting to prevent initial infection.</li>
-<li>Multiple antibiotics are used to treat active TB, mostly developed between the 1950s-1980s. Many of these have severe side effects and must be taken daily for at least 6 months.</li>
-<li>Multidrug-resistant TB is an increasing problem globally and requires the use of second line antibiotics with more severe side effects. Several strains have developed resistance to second line antibiotics (known as extensively drug-resistant TB (XDR TB)).</li>
-<li>England and Wales are low incidence countries, with the majority of cases occurring in the non-UK born.</li>
-<li>Incidence rates in the UK born have been stable for the last two decades with little evidence of decline. See Figure 2, or <a href="http://www.seabbs.co.uk/shiny/TB_England_Wales">http://www.seabbs.co.uk\shiny\TB_England_Wales</a> for an interactive dashboard.</li>
-</ul>
-<pre><code>## Warning: Removed 284 rows containing missing values (geom_path).</code></pre>
-<p><img src="solutions_1_files/figure-html/plot-incidence-1.png" title="Figure 2: TB notifications in England and Wales from 2013 to 2016, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention." alt="Figure 2: TB notifications in England and Wales from 2013 to 2016, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention." width="3000"></p>
-</div>
-<div id="hints" class="section level1">
-<h1 class="hasAnchor">
-<a href="#hints" class="anchor"></a>Hints</h1>
-<p>There are several components that are often included in models of TB, these are:</p>
-<ol style="list-style-type: decimal">
-<li>Age structure.</li>
-<li>Demographic processes such as natural mortality and birth.</li>
-<li>Multiple latent stages prior to active disease, with each having a different rate activation.</li>
-<li>Reinfection for those previously latently infected or who have recovered from active disease.</li>
-<li>Reactivation for individuals who have recovered from active disease.</li>
-<li>Mortality due to TB.</li>
-<li>Case importation from high burden areas.</li>
-<li>Drug resistance which can either develop from failed treatment or infection with a drug resistant strain of TB.</li>
-<li>High and low risk population groups.</li>
-</ol>
-<p>Consider which of these are required to answer your study question.</p>
-</div>
-<div id="references" class="section level1 unnumbered">
-<h1 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h1>
-<div id="refs" class="references">
-<div id="ref-Brooks-Pollock2010">
-<p>1 Brooks-Pollock E, Cohen T, Murray M. The impact of realistic age structure in simple models of tuberculosis transmission. <em>PLoS One</em> 2010;<strong>5</strong>:3–8. doi:<a href="https://doi.org/10.1371/journal.pone.0008479">10.1371/journal.pone.0008479</a></p>
-</div>
-</div>
-</div>
+
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#learning-objectives">Learning Objectives</a></li>
-      <li><a href="#outline-for-session">Outline for Session</a></li>
-      <li><a href="#instructions">Instructions</a></li>
-      <li><a href="#tb-summary">TB summary</a></li>
-      <li><a href="#hints">Hints</a></li>
-      <li><a href="#references">References</a></li>
-      </ul>
-</div>
       </div>
 
 </div>
