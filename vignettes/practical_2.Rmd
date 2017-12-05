@@ -35,40 +35,130 @@ library(prettypublisher)
 
 # Excercises
 
-## A Simple SEIR Model of TB
+## A Simple SEIR Model of Tuberculosis (TB)
 
+
+```{r, load-packages}
+library(biddmodellingcourse)
+library(tidyverse)
+library(knitr)
+```
 ### Populations and Initialisation
 
+We first set up the initial populations for the Susceptible ($S_0$), Latent ($E_0$),  Infected ($I$), and Recovered ($R$) compartments. We have initialised the model as early stage epidemic with a single case of TB.
+
 ```{r seir-initialisation}
-
-
+inits = c(
+  S = 999,
+  E = 0,
+  I = 1,
+  R = 0
+)
 ```
 
 ### Parameters
 
-```{r seir-parameters}
+We then specify the model parameters (with the units being years), varying these paremeters will impact the model dynamics.
 
+```{r seir-parameters}
+parameters <- c(
+  beta = 3, # Rate of transmission
+  gamma = 2, # Rate of progression to active symptoms 
+  tau = 1/2, # Rate of recovery
+  mu = 1/81 # Rate of natural mortality
+)
 ```
 
 ### Equations
 
-```{r seir-equations}
+Finally we specify the model equations for each population compartment. This is model incorperates simple demographic processes with a constant natural death rate from all compartments which is equal to the birth rate into the susceptible compartment.
 
+```{r seir-equations}
+SEIR_demo_ode <- function(t, x, params) {
+
+  ## Specify model compartments
+  S <- x[1]
+  E <- x[2]
+  I <- x[3]
+  R <- x[4]
+
+  with(as.list(params),{
+
+    ## Specify total population
+    N = S + E + I + R
+
+    ## Derivative Expressions
+    dS = - beta * S * I / N - mu * S + mu * N
+    dE = beta * S * I / N - gamma * E - mu * E
+    dI = gamma * E - tau * I - mu * I
+    dR = tau * I - mu * R
+
+    ## output
+    derivatives <- c(dS, dE, dI, dR)
+
+    list(derivatives)
+  })
+}
 ```
 
 ### Simulate and Summarise
 
+To simulate the model we specify the starting year (`begin_time`) and final year (`end_time`) and define a sequence over all intervening years. The model is then solved using `deSolve::lsoda` which is used within a simple wrapper function (see `?solve_ode` for details). The resulting table summarises the simulation results for the first 5 years.
+
 ```{r seir-simulate}
+begin_time <- 0
+end_time <- 200
+times <- seq(begin_time, end_time, 1)
 
+## see ?solve_ode for details
+SEIR_sim <- biddmodellingcourse::solve_ode(model = SEIR_demo_ode, 
+                                           inits = inits, 
+                                           params = parameters,
+                                           times = times, 
+                                           as.data.frame = TRUE)
+SEIR_sim %>% 
+  head %>% 
+  kable
 ```
-
+ Summarise the epidemic peak (`epi_peak`) and epidemic duration (`epi_dur`).
+ 
 ```{r seir-summary-stats}
+summarise_model <- function(sim) {
+  epi_peak <- sim %>% 
+    filter(I == max(I)) %>% 
+    pull(time)
+  
+  epi_dur <- sim %>% 
+    filter(I == 0) %>% 
+    arrange(I) %>% 
+    pull(time)
+  
+  if (length(epi_dur) == 0) {
+    epi_dur <- Inf
+  }
+  
+  sum_stat <- tibble(epi_peak = epi_peak, epi_dur = epi_dur)
 
+  return(sum_stat)
+}
+
+summarise_model(SEIR_sim) %>% 
+  kable
 ```
 
 ```{r seir-plot}
+order <- colnames(SEIR_sim)[-1]
 
-
+SEIR_sim %>% 
+  gather(key = "Compartment", value = "Population", -time) %>% 
+  mutate(Compartment = factor(Compartment, levels = order)) %>% 
+  ggplot(aes(x = time, y = Population, col = Compartment)) +
+  geom_line() +
+  theme_minimal() +
+  labs(x = "Year") +
+  scale_color_viridis_d(end = 0.9) +
+  theme(legend.position = "bottom") + 
+  facet_wrap(~Compartment)
 ```
 
 ### Explore

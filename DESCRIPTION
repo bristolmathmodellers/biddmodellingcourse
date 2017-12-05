@@ -10,13 +10,16 @@ Description: This package contains the practicals for the BIDD modelling short c
 Depends: R (>= 2.10)
 License: GPL-3 | file LICENSE
 Imports:
+    dplyr,
+    tibble,
+    deSolve,
+    purrr
 Suggests: knitr,
     rmarkdown,
     testthat,
     tidyverse,
     prettypublisher,
-    tbinenglanddataclean,
-    idmodelr
+    tbinenglanddataclean
 Remotes:
     seabbs/prettypublisher,
     seabbs/tbinenglanddataclean,
