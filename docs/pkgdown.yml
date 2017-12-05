@@ -1,0 +1,10 @@
+urls:
+  reference: https://bristolmathmodellers.github.io/biddmodellingcourse//reference
+  article: https://bristolmathmodellers.github.io/biddmodellingcourse//articles
+articles:
+  practical_1: practical_1.html
+  practical_2: practical_2.html
+  solutions_1: solutions_1.html
+  solutions_2: solutions_2.html
+  tb_fact_sheet: tb_fact_sheet.html
+
