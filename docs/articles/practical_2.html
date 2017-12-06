@@ -142,6 +142,10 @@
 <span class="kw">library</span>(tidyverse)
 <span class="kw">library</span>(knitr)
 <span class="kw">library</span>(prettypublisher)</code></pre></div>
+<p>For reference the SEIR model flow diagram (<span class="citation">[1]</span>) seen in the first practical. The equations below are a transalation of this into <code>R</code> code.</p>
+<div class="figure">
+<img src="resources/SEIR_flow_diag.png" alt="Figure 1: An SEIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 1: An SEIR model of TB transmission, including simple demographic processes</p>
+</div>
 <div id="populations-and-initialisation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#populations-and-initialisation" class="anchor"></a>Populations and Initialisation</h3>
@@ -309,11 +313,7 @@ SEIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <p>Finally we plot the population in each model compartment over time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## For an interactive graph change interactive to TRUE
 biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(SEIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<div class="figure">
-<img src="practical_2_files/figure-html/seir-plot-1.png" alt="Figure 1: Plot of population over time in each SEIR model compartment" width="672"><p class="caption">
-Figure 1: Plot of population over time in each SEIR model compartment
-</p>
-</div>
+<p><img src="practical_2_files/figure-html/seir-plot-1.png" title="Figure 2: Plot of population over time in each SEIR model compartment" alt="Figure 2: Plot of population over time in each SEIR model compartment" width="672"></p>
 </div>
 <div id="explore" class="section level3">
 <h3 class="hasAnchor">
@@ -329,7 +329,10 @@ Figure 1: Plot of population over time in each SEIR model compartment
 <div id="add-high-and-low-risk-compartments" class="section level2">
 <h2 class="hasAnchor">
 <a href="#add-high-and-low-risk-compartments" class="anchor"></a>Add High and Low Risk Compartments</h2>
-<p>We are now going to make the model slightly more realistic, and therefore better able to capture the observed dynamics of TB. We are going to do this by adding a second latent population. Go back to <a href="https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html">practical 1</a> if you need a refresher for the motivation behind this.</p>
+<p>We are now going to make the model slightly more realistic, and therefore better able to capture the observed dynamics of TB. We are going to do this by adding a second latent population, this change can be seen in the model flow diagram (Figure 3). Go back to <a href="https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html">practical 1</a> if you need a refresher for the motivation behind this.</p>
+<div class="figure">
+<img src="resources/SHLIR_flow_diag.png" alt="Figure 3: An SHLIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 3: An SHLIR model of TB transmission, including simple demographic processes</p>
+</div>
 <div id="populations-and-initialisation-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#populations-and-initialisation-1" class="anchor"></a>Populations and Initialisation</h3>
@@ -417,6 +420,7 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <h2 class="hasAnchor">
 <a href="#explore-1" class="anchor"></a>Explore</h2>
 <ol style="list-style-type: decimal">
+<li><p>Test your changes by setting <code>gamma_L</code> to a very large number and all other parameters to be the same as for the SEIR model. If everything is working correctly both models should give the same output.</p></li>
 <li><p>How do the model dynamics for this model differ for different parameter values?</p></li>
 <li><p>What has the impact of adding the second latent population been?</p></li>
 </ol>
@@ -424,10 +428,186 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <div id="extension-translate-your-model-flow-diagram-to-equations" class="section level2">
 <h2 class="hasAnchor">
 <a href="#extension-translate-your-model-flow-diagram-to-equations" class="anchor"></a>Extension: Translate your Model Flow Diagram to Equations</h2>
-<ul>
-<li>basic model outline</li>
-<li>suggestions for order in which to add complexity</li>
-</ul>
+<p>As an advanced extension excercise now translate a more complex SHLIR model flow diagram (Figure 4), with risk groups, treatment, and reactivation and reinfection for those who have recovered from active disease. Whilst many of realistic TB models use age structure in the interests of time do not include this (if you are interested in discussing how you would include this talk to your instructors or contact <a href="https://www.samabbott.co.uk/">me</a>).</p>
+<div class="figure">
+<img src="resources/SHLIR_flow_diag.png" alt="Figure 4: An SEIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 4: An SEIR model of TB transmission, including simple demographic processes</p>
+</div>
+<p>The code for an SEIR model has been supplied for you, along with all the required simulation and plotting functions. It is suggested that you add complexity sequentially and test the effects on the model dynamics as you go. The first step is to recreate the SHLIR model used above. If you are new to <code>R</code> or are struggling with this excercise feel free to move on to the next excercise.</p>
+<div id="populations-and-initialisation-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#populations-and-initialisation-2" class="anchor"></a>Populations and Initialisation</h3>
+<p>Add new compartments you want to define here, in most circumstances these should be initialised with <span class="math inline">\(0\)</span> population.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">inits =<span class="st"> </span><span class="kw">c</span>(
+  <span class="dt">S =</span> <span class="dv">999</span>,
+  <span class="dt">E =</span> <span class="dv">0</span>,
+  <span class="dt">I =</span> <span class="dv">1</span>,
+  <span class="dt">R =</span> <span class="dv">0</span>
+)</code></pre></div>
+</div>
+<div id="parameters-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#parameters-2" class="anchor"></a>Parameters</h3>
+<p>Specify new model parameters here (with the units being years). The names of the new parameters will need to match those used in the model equations.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">parameters &lt;-<span class="st"> </span><span class="kw">c</span>(
+  <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span>
+  <span class="dt">gamma =</span> <span class="dv">2</span>, <span class="co"># Rate of progression to active symptoms </span>
+  <span class="dt">tau =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co"># Rate of recovery</span>
+  <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span> <span class="co"># Rate of natural mortality</span>
+)</code></pre></div>
+</div>
+<div id="equations-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#equations-2" class="anchor"></a>Equations</h3>
+<p>Update the simple SEIR model equations using the model flow diagram above. The comments in the code given hints as to where changes need to be made.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">real_SHLIR_demo_ode &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, params) {
+
+  ## Specify model compartments - new model compartments need to be added here
+  ## Add compartments in the order they appear in your model flow diagram
+  ## Don't forget to update indexing for x. Compare the previous two models for a hint.
+  S &lt;-<span class="st"> </span>x[<span class="dv">1</span>]
+  E &lt;-<span class="st"> </span>x[<span class="dv">2</span>]
+  I &lt;-<span class="st"> </span>x[<span class="dv">3</span>]
+  R &lt;-<span class="st"> </span>x[<span class="dv">4</span>]
+
+  <span class="kw">with</span>(<span class="kw">as.list</span>(params),{
+
+    ## Specify total population - add new compartments here
+    ## If this isn't working you simulations will likely blow up over time!
+    N =<span class="st"> </span>S <span class="op">+</span><span class="st"> </span>E <span class="op">+</span><span class="st"> </span>I <span class="op">+</span><span class="st"> </span>R
+
+    ## Derivative Expressions
+    <span class="co"># Again new compartments here along with new model terms</span>
+    <span class="co"># Don't forget to add any new model terms for existing compartments</span>
+    dS =<span class="st"> </span><span class="op">-</span><span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>S <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>S <span class="op">+</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>N
+    dE =<span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>S <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>gamma <span class="op">*</span><span class="st"> </span>E <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>E
+    dI =<span class="st"> </span>gamma <span class="op">*</span><span class="st"> </span>E <span class="op">-</span><span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>I
+    dR =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R
+
+    ## output
+    <span class="co"># Finally  add your new derivative equations here</span>
+    <span class="co"># These need to be in the same order as you specified the model compartments!</span>
+    <span class="co"># If this is wrong it is likely your results will look nothing like the previous models!</span>
+    derivatives &lt;-<span class="st"> </span><span class="kw">c</span>(dS, dE, dI, dR)
+
+    <span class="kw">list</span>(derivatives)
+  })
+}</code></pre></div>
+</div>
+<div id="simulate-and-summarise-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#simulate-and-summarise-2" class="anchor"></a>Simulate and Summarise</h3>
+<p>To simulate the model we specify the starting year (<code>begin_time</code>) and final year (<code>end_time</code>) and define a sequence over all intervening years. The model is then solved using <code><a href="http://www.rdocumentation.org/packages/deSolve/topics/lsoda">deSolve::lsoda</a></code> which is used within a simple wrapper function (see <code><a href="../reference/solve_ode.html">?solve_ode</a></code> for details). The resulting table summarises the simulation results for the first 5 years.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">begin_time &lt;-<span class="st"> </span><span class="dv">0</span>
+end_time &lt;-<span class="st"> </span><span class="dv">200</span>
+times &lt;-<span class="st"> </span><span class="kw">seq</span>(begin_time, end_time, <span class="dv">1</span>)
+
+## see ?solve_ode for details
+real_SHLIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> real_SHLIR_demo_ode, 
+                                           <span class="dt">inits =</span> inits, 
+                                           <span class="dt">params =</span> parameters,
+                                           <span class="dt">times =</span> times, 
+                                           <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)
+real_SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of model simulation"</span>,
+               <span class="dt">label =</span> <span class="st">"tab-real_SHLIR"</span>)</code></pre></div>
+<table style="width:54%;" class="table">
+<caption>Table 3: First 5 years of model simulation</caption>
+<colgroup>
+<col width="9%">
+<col width="11%">
+<col width="11%">
+<col width="11%">
+<col width="11%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">time</th>
+<th align="center">S</th>
+<th align="center">E</th>
+<th align="center">I</th>
+<th align="center">R</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">999</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">994.8</td>
+<td align="center">2.123</td>
+<td align="center">2.372</td>
+<td align="center">0.7042</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">980.6</td>
+<td align="center">7.697</td>
+<td align="center">8.584</td>
+<td align="center">3.099</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">931.5</td>
+<td align="center">26.49</td>
+<td align="center">30.33</td>
+<td align="center">11.67</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">783.3</td>
+<td align="center">78.18</td>
+<td align="center">97.97</td>
+<td align="center">40.58</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">479.7</td>
+<td align="center">151.5</td>
+<td align="center">246.2</td>
+<td align="center">122.6</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(real_SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
+<table style="width:86%;" class="table">
+<caption>Table 4: Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic</caption>
+<colgroup>
+<col width="8%">
+<col width="5%">
+<col width="6%">
+<col width="8%">
+<col width="22%">
+<col width="22%">
+<col width="12%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">S</th>
+<th align="center">E</th>
+<th align="center">I</th>
+<th align="center">R</th>
+<th align="center">epi_peak_time</th>
+<th align="center">epi_peak_size</th>
+<th align="center">epi_dur</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="center">172</td>
+<td align="center">5</td>
+<td align="center">20</td>
+<td align="center">803</td>
+<td align="center">6</td>
+<td align="center">391</td>
+<td align="center">Inf</td>
+</tr></tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## For an interactive graph change interactive to TRUE
+biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(real_SHLIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="practical_2_files/figure-html/real-SHLIR-plot-1.png" title="Figure 5: Plot of population over time in each realistic SHLIR model compartment" alt="Figure 5: Plot of population over time in each realistic SHLIR model compartment" width="672"></p>
+</div>
 </div>
 <div id="extension-explore-the-parameter-space-of-multiple-models" class="section level2">
 <h2 class="hasAnchor">
@@ -439,9 +619,14 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 </ul>
 </div>
 </div>
-<div id="references" class="section level1">
+<div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h1>
+<div id="refs" class="references">
+<div id="ref-Brooks-Pollock2010">
+<p>1 Brooks-Pollock E, Cohen T, Murray M. The impact of realistic age structure in simple models of tuberculosis transmission. <em>PLoS One</em> 2010;<strong>5</strong>:3–8. doi:<a href="https://doi.org/10.1371/journal.pone.0008479">10.1371/journal.pone.0008479</a></p>
+</div>
+</div>
 </div>
 </div>
   </div>

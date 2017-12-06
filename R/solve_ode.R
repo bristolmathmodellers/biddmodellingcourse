@@ -41,7 +41,7 @@
 solve_ode <- function(model = NULL, inits = NULL, params = NULL, times = NULL, as.data.frame = TRUE, ...) {
   
   if ("matrix" %in% class(params)) {
-    solved_ode <- purrr:map(1:ncol(params), function(i) {
+    solved_ode <- purrr::map(1:ncol(params), function(i) {
       params_vect <- params[,i]
       if ("matrix" %in% class(inits)) {
         initial <- inits[, i]

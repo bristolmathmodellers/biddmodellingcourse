@@ -169,8 +169,12 @@ the epidemic.</p>
 <span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='fu'>c</span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>))
 <span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='fu'>c</span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>))
 
-<span class='no'>sim</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='solve_ode.html'>solve_ode</a></span>(<span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>SI_ode</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>, <span class='no'>times</span>, <span class='kw'>as.data.frame</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE): object 'purrr' not found</span></div><div class='input'>
-<span class='fu'>summarise_model</span>(<span class='no'>sim</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(lhs, parent, parent): object 'sim' not found</span></div></pre>
+<span class='no'>sim</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='solve_ode.html'>solve_ode</a></span>(<span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>SI_ode</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>, <span class='no'>times</span>, <span class='kw'>as.data.frame</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='fu'>summarise_model</span>(<span class='no'>sim</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 5
+#&gt;       S     I epi_peak_time epi_peak_size epi_dur
+#&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;
+#&gt; 1     0 1e+05            39         1e+05     Inf</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

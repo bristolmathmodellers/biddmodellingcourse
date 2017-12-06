@@ -41,6 +41,10 @@ library(knitr)
 library(prettypublisher)
 ```
 
+For reference the SEIR model flow diagram ([@Brooks-Pollock2010]) seen in the first practical. The equations below are a transalation of this into `R` code.
+
+![`r pretty_figref("model_diag", "An SEIR model of TB transmission, including simple demographic processes")`](./resources/SEIR_flow_diag.png)
+
 ### Populations and Initialisation
 
 We first set up the initial populations for the Susceptible ($S_0$), Latent ($E_0$),  Infected ($I$), and Recovered ($R$) compartments. We have initialised the model as an early stage epidemic with a single case of TB.
@@ -146,7 +150,9 @@ Model dynamics are parameter dependent. Even in a simplistic model like the one 
 
 ## Add High and Low Risk Compartments
 
-We are now going to make the model slightly more realistic, and therefore better able to capture the observed dynamics of TB. We are going to do this by adding a second latent population. Go back to [practical 1](https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html) if you need a refresher for the motivation behind this.
+We are now going to make the model slightly more realistic, and therefore better able to capture the observed dynamics of TB. We are going to do this by adding a second latent population, this change can be seen in the model flow diagram (`r pretty_figref("SHLIR-diag")`). Go back to [practical 1](https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html) if you need a refresher for the motivation behind this.
+
+![`r pretty_figref("SHLIR-diag", "An SHLIR model of TB transmission, including simple demographic processes")`](./resources/SHLIR_flow_diag.png)
 
 ### Populations and Initialisation 
 
@@ -247,14 +253,118 @@ biddmodellingcourse::plot_model(SEIR_sim, interactive = FALSE)
 
 ## Explore
 
+1. Test your changes by setting `gamma_L` to a very large number and all other parameters to be the same as for the SEIR model. If everything is working correctly both models should give the same output.
+
 1. How do the model dynamics for this model differ for different parameter values?
 
 1. What has the impact of adding the second latent population been?
 
 ## Extension: Translate your Model Flow Diagram to Equations
 
-- basic model outline
-- suggestions for order in which to add complexity
+As an advanced extension excercise now translate a more complex SHLIR model flow diagram (`r pretty_figref("complex_SHLIR_diag")`), with risk groups, treatment, and reactivation and reinfection for those who have recovered from active disease. Whilst many of realistic TB models use age structure in the interests of time do not include this (if you are interested in discussing how you would include this talk to your instructors or contact [me](https://www.samabbott.co.uk/)).
+
+![`r pretty_figref("complex_SHLIR_diag", "An SEIR model of TB transmission, including simple demographic processes")`](./resources/SHLIR_flow_diag.png)
+
+The code for an SEIR model has been supplied for you, along with all the required simulation and plotting functions. It is suggested that you add complexity sequentially and test the effects on the model dynamics as you go. The first step is to recreate the SHLIR model used above. If you are new to `R` or are struggling with this excercise feel free to move on to the next excercise.
+
+### Populations and Initialisation
+
+Add new compartments you want to define here, in most circumstances these should be initialised with $0$ population.
+
+```{r custom-initialisation}
+inits = c(
+  S = 999,
+  E = 0,
+  I = 1,
+  R = 0
+)
+```
+
+### Parameters
+
+Specify new model parameters here (with the units being years). The names of the new parameters will need to match those used in the model equations.
+
+```{r real-SHLIR-parameters}
+parameters <- c(
+  beta = 3, # Rate of transmission
+  gamma = 2, # Rate of progression to active symptoms 
+  tau = 1/2, # Rate of recovery
+  mu = 1/81 # Rate of natural mortality
+)
+```
+
+### Equations
+
+Update the simple SEIR model equations using the model flow diagram above. The comments in the code given hints as to where changes need to be made. 
+
+```{r real-SHLIR-equations}
+real_SHLIR_demo_ode <- function(t, x, params) {
+
+  ## Specify model compartments - new model compartments need to be added here
+  ## Add compartments in the order they appear in your model flow diagram
+  ## Don't forget to update indexing for x. Compare the previous two models for a hint.
+  S <- x[1]
+  E <- x[2]
+  I <- x[3]
+  R <- x[4]
+
+  with(as.list(params),{
+
+    ## Specify total population - add new compartments here
+    ## If this isn't working you simulations will likely blow up over time!
+    N = S + E + I + R
+
+    ## Derivative Expressions
+    # Again new compartments here along with new model terms
+    # Don't forget to add any new model terms for existing compartments
+    dS = - beta * S * I / N - mu * S + mu * N
+    dE = beta * S * I / N - gamma * E - mu * E
+    dI = gamma * E - tau * I - mu * I
+    dR = tau * I - mu * R
+
+    ## output
+    # Finally  add your new derivative equations here
+    # These need to be in the same order as you specified the model compartments!
+    # If this is wrong it is likely your results will look nothing like the previous models!
+    derivatives <- c(dS, dE, dI, dR)
+
+    list(derivatives)
+  })
+}
+```
+
+### Simulate and Summarise
+
+To simulate the model we specify the starting year (`begin_time`) and final year (`end_time`) and define a sequence over all intervening years. The model is then solved using `deSolve::lsoda` which is used within a simple wrapper function (see `?solve_ode` for details). The resulting table summarises the simulation results for the first 5 years.
+
+```{r real-SHLIR-simulate, message = FALSE}
+begin_time <- 0
+end_time <- 200
+times <- seq(begin_time, end_time, 1)
+
+## see ?solve_ode for details
+real_SHLIR_sim <- biddmodellingcourse::solve_ode(model = real_SHLIR_demo_ode, 
+                                           inits = inits, 
+                                           params = parameters,
+                                           times = times, 
+                                           as.data.frame = TRUE)
+real_SHLIR_sim %>% 
+  head %>% 
+  pretty_table(caption = "First 5 years of model simulation",
+               label = "tab-real_SHLIR")
+```
+ 
+ 
+```{r real-SHLIR-summary-stats}
+biddmodellingcourse::summarise_model(real_SHLIR_sim) %>% 
+  pretty_table(caption = "Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic")
+```
+
+
+```{r real-SHLIR-plot, fig.cap = pretty_figref("real-SHLIR", "Plot of population over time in each realistic SHLIR model compartment")}
+## For an interactive graph change interactive to TRUE
+biddmodellingcourse::plot_model(real_SHLIR_sim, interactive = FALSE)
+```
 
 ## Extension: Explore the Parameter Space of Multiple Models
 
