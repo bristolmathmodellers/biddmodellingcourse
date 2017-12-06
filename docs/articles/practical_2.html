@@ -54,10 +54,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/practical_1.html">Solutions 1 - Designing a Model</a>
+      <a href="../articles/solutions_1.html">Solutions 1 - Designing a Model</a>
     </li>
     <li>
-      <a href="../articles/practical_2.html">Solutions 2 - Compartmental Models to Equations</a>
+      <a href="../articles/solutions_2.html">Solutions 2 - Compartmental Models to Equations</a>
     </li>
   </ul>
 </li>
@@ -126,9 +126,9 @@
 <li>Explore the dynamics of a simple SEIR model (10 minutes)</li>
 <li>Add high and low risk latency to a SEIR model (10 minutes)</li>
 <li>Explore SHLIR model dynamics and compare to the SEIR model (10 minutes)</li>
-<li>Extension: Translate your Model Flow Diagram to Equations (20 minutes)</li>
-<li>Extension: Explore the parameter space of multiple models (20 minutes)(If having trouble with the previous excercises then skip to this point for an R free exercise)</li>
-<li>Session wrap up (10 minutes)</li>
+<li>Extension: Translate a more realistic SHLIR model flow diagram to equations (25 minutes)</li>
+<li>Extension: Explore the parameter space of multiple models (25 minutes)(If having trouble with the previous exercises then skip to this point for an R free exercise)</li>
+<li>Session wrap up (5 minutes)</li>
 </ol>
 </div>
 <div id="excercises" class="section level1">
@@ -137,12 +137,12 @@
 <div id="a-simple-seir-model-of-tuberculosis-tb" class="section level2">
 <h2 class="hasAnchor">
 <a href="#a-simple-seir-model-of-tuberculosis-tb" class="anchor"></a>A Simple SEIR Model of Tuberculosis (TB)</h2>
-<p>As a first excericse we are going to run the simple SEIR model, as seen in the design a model practical, in R. As a first step you will need to load the following packages.</p>
+<p>As a first exercise we are going to run the simple SEIR model, as seen in the design a model practical, in R. As a first step you will need to load the following packages.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(biddmodellingcourse)
 <span class="kw">library</span>(tidyverse)
 <span class="kw">library</span>(knitr)
 <span class="kw">library</span>(prettypublisher)</code></pre></div>
-<p>For reference the SEIR model flow diagram (<span class="citation">[1]</span>) seen in the first practical. The equations below are a transalation of this into <code>R</code> code.</p>
+<p>For reference the SEIR model flow diagram (<span class="citation">[1]</span>) seen in the first practical. The equations below are a translation of this into <code>R</code> code.</p>
 <div class="figure">
 <img src="resources/SEIR_flow_diag.png" alt="Figure 1: An SEIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 1: An SEIR model of TB transmission, including simple demographic processes</p>
 </div>
@@ -160,7 +160,7 @@
 <div id="parameters" class="section level3">
 <h3 class="hasAnchor">
 <a href="#parameters" class="anchor"></a>Parameters</h3>
-<p>We then specify the model parameters (with the units being years), varying these paremeters will impact the model dynamics.</p>
+<p>We then specify the model parameters (with the units being years<sup>-1</sup>), varying these parameters will impact the model dynamics.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">parameters &lt;-<span class="st"> </span><span class="kw">c</span>(
   <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span>
   <span class="dt">gamma =</span> <span class="dv">2</span>, <span class="co"># Rate of progression to active symptoms </span>
@@ -171,7 +171,7 @@
 <div id="equations" class="section level3">
 <h3 class="hasAnchor">
 <a href="#equations" class="anchor"></a>Equations</h3>
-<p>Finally we specify the model equations for each population compartment. This is model incorperates simple demographic processes with a constant natural death rate from all compartments which is equal to the birth rate into the susceptible compartment.</p>
+<p>Finally we specify the model equations for each population compartment. This is model incorporates simple demographic processes with a constant natural death rate from all compartments which is equal to the birth rate into the susceptible compartment.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SEIR_demo_ode &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, params) {
 
   ## Specify model compartments
@@ -336,7 +336,7 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <div id="populations-and-initialisation-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#populations-and-initialisation-1" class="anchor"></a>Populations and Initialisation</h3>
-<p>As in the previous model the first step is to define the model populations. There are now two new compartments, high risk latents (H), and low risk latents (L). These replace the orginal latent population (E) used in the previous model.</p>
+<p>As in the previous model the first step is to define the model populations. There are now two new compartments, high risk latents (H), and low risk latents (L). These replace the original latent population (E) used in the previous model.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SHILR_inits =<span class="st"> </span><span class="kw">c</span>(
   <span class="dt">S =</span> <span class="dv">999</span>,
   <span class="dt">H =</span> <span class="dv">0</span>,
@@ -348,7 +348,7 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <div id="parameters-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#parameters-1" class="anchor"></a>Parameters</h3>
-<p>We add two additional parameters for the rate of progression from high to low risk latents (nu) and the rate of progression from low risk latent to active disease.</p>
+<p>We add two additional parameters for the rate of progression from high to low risk latents (<code>nu</code>) and the rate of progression from low risk latent to active disease (<code>gamma_L</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SHILR_parameters &lt;-<span class="st"> </span><span class="kw">c</span>(
   <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span>
   <span class="dt">gamma_H =</span> <span class="dv">2</span>, <span class="co"># Rate of progression to active symptoms from high risk latent</span>
@@ -361,7 +361,7 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <div id="equations-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#equations-1" class="anchor"></a>Equations</h3>
-<p>The code below is a starting point, fill in the missing model terms using the following model flow diagram and the code for the previous SEIR model as reference points.</p>
+<p>The code below is a starting point, fill in the missing model terms using the model flow diagram (Figure 3) and the code for the previous SEIR model as reference points.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SHLIR_demo_ode &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, params) {
 
   ## Specify model compartments
@@ -401,7 +401,7 @@ end_time &lt;-<span class="st"> </span><span class="dv">200</span>
 SHILR_times &lt;-<span class="st"> </span><span class="kw">seq</span>(begin_time, end_time, <span class="dv">1</span>)
 
 ## see ?solve_ode for details
-SEIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SHLIR_demo_ode, 
+SHLIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SHLIR_demo_ode, 
                                            <span class="dt">inits =</span> SHLIR_inits, 
                                            <span class="dt">params =</span> SHLIR_parameters,
                                            <span class="dt">times =</span> SHILR_times, 
@@ -410,34 +410,38 @@ SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of SHLIR model simulation"</span>,
                <span class="dt">label =</span> <span class="st">"tab-1"</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(SEIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## For an interactive graph change interactive to TRUE
-biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(SEIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
+biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(SHLIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
 </div>
 </div>
 <div id="explore-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#explore-1" class="anchor"></a>Explore</h2>
 <ol style="list-style-type: decimal">
-<li><p>Test your changes by setting <code>gamma_L</code> to a very large number and all other parameters to be the same as for the SEIR model. If everything is working correctly both models should give the same output.</p></li>
+<li><p>Test your changes by setting <code>gamma_L</code> to be a very large number and all other parameters to be the same as for the SEIR model. If everything is working correctly both models should give the same output.</p></li>
 <li><p>How do the model dynamics for this model differ for different parameter values?</p></li>
 <li><p>What has the impact of adding the second latent population been?</p></li>
 </ol>
 </div>
-<div id="extension-translate-your-model-flow-diagram-to-equations" class="section level2">
+<div id="extension-translate-a-more-realistic-shlir-model-flow-diagram-to-equations" class="section level2">
 <h2 class="hasAnchor">
-<a href="#extension-translate-your-model-flow-diagram-to-equations" class="anchor"></a>Extension: Translate your Model Flow Diagram to Equations</h2>
-<p>As an advanced extension excercise now translate a more complex SHLIR model flow diagram (Figure 4), with risk groups, treatment, and reactivation and reinfection for those who have recovered from active disease. Whilst many of realistic TB models use age structure in the interests of time do not include this (if you are interested in discussing how you would include this talk to your instructors or contact <a href="https://www.samabbott.co.uk/">me</a>).</p>
+<a href="#extension-translate-a-more-realistic-shlir-model-flow-diagram-to-equations" class="anchor"></a>Extension: Translate a more realistic SHLIR model flow diagram to equations</h2>
+<p>As an advanced extension exercise now translate a more complex SHLIR model flow diagram (Figure 4), with risk groups, treatment, TB mortality, and reactivation and reinfection for those who have recovered from active disease. Whilst many of realistic TB models use age structure in the interests of time do not include this (if you are interested in discussing how you would include this talk to your instructors or contact <a href="https://www.samabbott.co.uk/">me</a>).</p>
 <div class="figure">
-<img src="resources/SHLIR_flow_diag.png" alt="Figure 4: An SEIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 4: An SEIR model of TB transmission, including simple demographic processes</p>
+<img src="resources/SHLIR_real_flow_diag.png" alt="Figure 4: A realistic SHLIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 4: A realistic SHLIR model of TB transmission, including simple demographic processes</p>
 </div>
-<p>The code for an SEIR model has been supplied for you, along with all the required simulation and plotting functions. It is suggested that you add complexity sequentially and test the effects on the model dynamics as you go. The first step is to recreate the SHLIR model used above. If you are new to <code>R</code> or are struggling with this excercise feel free to move on to the next excercise.</p>
+<p>Figure 4 does not include the interaction between the high and low risk subgroups as this is through the force of infection. The force of infection is defined as,</p>
+<p><span class="math display">\[ \lambda_i = \beta \sum_{j = L, H}M_{ij}I_j \]</span></p>
+<p>Where <span class="math inline">\(\lambda_i\)</span> is the force of infection in each risk group (<span class="math inline">\(i = L, H\)</span>) and <span class="math inline">\(M_{LH}\)</span> is the mixing rate between risk groups. It is assumed that within group contact rates are equivalent and defined such that,</p>
+<p><span class="math display">\[ M_{ii} = 1 \]</span></p>
+<p>The code for an SEIR model has been supplied, along with all the required simulation and plotting functions. It is suggested that you add complexity sequentially and test the effects on the model dynamics as you go. The first step is to recreate the SHLIR model used above. If you are new to <code>R</code> or are struggling with this exercise feel free to move on to the next exercise (which does not use <code>R</code>).</p>
 <div id="populations-and-initialisation-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#populations-and-initialisation-2" class="anchor"></a>Populations and Initialisation</h3>
-<p>Add new compartments you want to define here, in most circumstances these should be initialised with <span class="math inline">\(0\)</span> population.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">inits =<span class="st"> </span><span class="kw">c</span>(
+<p>Add new compartments you want to define here, in most circumstances these should be initialised with 0 population.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">real_SHLIR_real_inits =<span class="st"> </span><span class="kw">c</span>(
   <span class="dt">S =</span> <span class="dv">999</span>,
   <span class="dt">E =</span> <span class="dv">0</span>,
   <span class="dt">I =</span> <span class="dv">1</span>,
@@ -447,8 +451,8 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <div id="parameters-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#parameters-2" class="anchor"></a>Parameters</h3>
-<p>Specify new model parameters here (with the units being years). The names of the new parameters will need to match those used in the model equations.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">parameters &lt;-<span class="st"> </span><span class="kw">c</span>(
+<p>Specify new model parameters here (with the units being years<sup>-1</sup>). The names of the new parameters will need to match those used in the model equations.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">real_SHLIR_parameters &lt;-<span class="st"> </span><span class="kw">c</span>(
   <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span>
   <span class="dt">gamma =</span> <span class="dv">2</span>, <span class="co"># Rate of progression to active symptoms </span>
   <span class="dt">tau =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co"># Rate of recovery</span>
@@ -496,127 +500,59 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <div id="simulate-and-summarise-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#simulate-and-summarise-2" class="anchor"></a>Simulate and Summarise</h3>
-<p>To simulate the model we specify the starting year (<code>begin_time</code>) and final year (<code>end_time</code>) and define a sequence over all intervening years. The model is then solved using <code><a href="http://www.rdocumentation.org/packages/deSolve/topics/lsoda">deSolve::lsoda</a></code> which is used within a simple wrapper function (see <code><a href="../reference/solve_ode.html">?solve_ode</a></code> for details). The resulting table summarises the simulation results for the first 5 years.</p>
+<p>Simulate the new model as previously.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">begin_time &lt;-<span class="st"> </span><span class="dv">0</span>
 end_time &lt;-<span class="st"> </span><span class="dv">200</span>
-times &lt;-<span class="st"> </span><span class="kw">seq</span>(begin_time, end_time, <span class="dv">1</span>)
+real_SHLIR_times &lt;-<span class="st"> </span><span class="kw">seq</span>(begin_time, end_time, <span class="dv">1</span>)
 
 ## see ?solve_ode for details
 real_SHLIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> real_SHLIR_demo_ode, 
-                                           <span class="dt">inits =</span> inits, 
-                                           <span class="dt">params =</span> parameters,
-                                           <span class="dt">times =</span> times, 
+                                           <span class="dt">inits =</span> real_SHLIR_inits, 
+                                           <span class="dt">params =</span> real_SHLIR_parameters,
+                                           <span class="dt">times =</span> real_SHLIR_times, 
                                            <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)
 real_SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of model simulation"</span>,
                <span class="dt">label =</span> <span class="st">"tab-real_SHLIR"</span>)</code></pre></div>
-<table style="width:54%;" class="table">
-<caption>Table 3: First 5 years of model simulation</caption>
-<colgroup>
-<col width="9%">
-<col width="11%">
-<col width="11%">
-<col width="11%">
-<col width="11%">
-</colgroup>
-<thead><tr class="header">
-<th align="center">time</th>
-<th align="center">S</th>
-<th align="center">E</th>
-<th align="center">I</th>
-<th align="center">R</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="center">0</td>
-<td align="center">999</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">0</td>
-</tr>
-<tr class="even">
-<td align="center">1</td>
-<td align="center">994.8</td>
-<td align="center">2.123</td>
-<td align="center">2.372</td>
-<td align="center">0.7042</td>
-</tr>
-<tr class="odd">
-<td align="center">2</td>
-<td align="center">980.6</td>
-<td align="center">7.697</td>
-<td align="center">8.584</td>
-<td align="center">3.099</td>
-</tr>
-<tr class="even">
-<td align="center">3</td>
-<td align="center">931.5</td>
-<td align="center">26.49</td>
-<td align="center">30.33</td>
-<td align="center">11.67</td>
-</tr>
-<tr class="odd">
-<td align="center">4</td>
-<td align="center">783.3</td>
-<td align="center">78.18</td>
-<td align="center">97.97</td>
-<td align="center">40.58</td>
-</tr>
-<tr class="even">
-<td align="center">5</td>
-<td align="center">479.7</td>
-<td align="center">151.5</td>
-<td align="center">246.2</td>
-<td align="center">122.6</td>
-</tr>
-</tbody>
-</table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(real_SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
-<table style="width:86%;" class="table">
-<caption>Table 4: Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic</caption>
-<colgroup>
-<col width="8%">
-<col width="5%">
-<col width="6%">
-<col width="8%">
-<col width="22%">
-<col width="22%">
-<col width="12%">
-</colgroup>
-<thead><tr class="header">
-<th align="center">S</th>
-<th align="center">E</th>
-<th align="center">I</th>
-<th align="center">R</th>
-<th align="center">epi_peak_time</th>
-<th align="center">epi_peak_size</th>
-<th align="center">epi_dur</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td align="center">172</td>
-<td align="center">5</td>
-<td align="center">20</td>
-<td align="center">803</td>
-<td align="center">6</td>
-<td align="center">391</td>
-<td align="center">Inf</td>
-</tr></tbody>
-</table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## For an interactive graph change interactive to TRUE
 biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(real_SHLIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<p><img src="practical_2_files/figure-html/real-SHLIR-plot-1.png" title="Figure 5: Plot of population over time in each realistic SHLIR model compartment" alt="Figure 5: Plot of population over time in each realistic SHLIR model compartment" width="672"></p>
 </div>
 </div>
 <div id="extension-explore-the-parameter-space-of-multiple-models" class="section level2">
 <h2 class="hasAnchor">
 <a href="#extension-explore-the-parameter-space-of-multiple-models" class="anchor"></a>Extension: Explore the Parameter Space of Multiple Models</h2>
+<p>In order to more systematically explore the parameter space of multiple models we have provided a web app (<a href="http://seabbs.co.uk/shiny/exploreidmodels/" class="uri">http://seabbs.co.uk/shiny/exploreidmodels/</a>). Use this to explore the models discussed above and identify which parameters alter the model dynamics. What commonalities are there between different models and what generalisations can you draw from this.</p>
+</div>
+<div id="using-the-web-app" class="section level2">
+<h2 class="hasAnchor">
+<a href="#using-the-web-app" class="anchor"></a>Using the Web App</h2>
 <ul>
-<li>link to shiny app</li>
-<li>help with shiny app</li>
-<li>question ideas</li>
+<li>Go to <a href="http://seabbs.co.uk/shiny/exploreidmodels/" class="uri">http://seabbs.co.uk/shiny/exploreidmodels/</a>. You should see the following:</li>
 </ul>
+<div class="figure">
+<img src="resources/menu-explore-id.png" alt="Figure 5: Homepage for the Explore Infectious Disease web app."><p class="caption">Figure 5: Homepage for the Explore Infectious Disease web app.</p>
+</div>
+<ul>
+<li>Click on the Explore Model Dynamics tab in the menu on the left hand side. The app will now look like this:</li>
+</ul>
+<div class="figure">
+<img src="resources/mod-dyn-explore-id.png" alt="Figure 6: Explore Model Dynamics tab for the Explore Infectious Disease web app."><p class="caption">Figure 6: Explore Model Dynamics tab for the Explore Infectious Disease web app.</p>
+</div>
+<ul>
+<li>Select a model of interest from the menu, options include: SI, SEI, SEIR, and SHLIR, with or without demographic processes.</li>
+</ul>
+<div class="figure">
+<img src="resources/sel-model-explore-id.png" alt="Figure 7: Select a model in the Explore Infectious Disease web app."><p class="caption">Figure 7: Select a model in the Explore Infectious Disease web app.</p>
+</div>
+<ul>
+<li>Now vary parameter values using the provided sliders in the menu, you should observe the population in each compartment changing over time. Both summary tables used in the exercises above are also provided.</li>
+</ul>
+<div class="figure">
+<img src="resources/param-explore-id.png" alt="Figure 8: Vary parameters to explore dynamics in the Explore Infectious Disease web app."><p class="caption">Figure 8: Vary parameters to explore dynamics in the Explore Infectious Disease web app.</p>
+</div>
 </div>
 </div>
 <div id="references" class="section level1 unnumbered">
@@ -643,8 +579,9 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <li><a href="#a-simple-seir-model-of-tuberculosis-tb">A Simple SEIR Model of Tuberculosis (TB)</a></li>
       <li><a href="#add-high-and-low-risk-compartments">Add High and Low Risk Compartments</a></li>
       <li><a href="#explore-1">Explore</a></li>
-      <li><a href="#extension-translate-your-model-flow-diagram-to-equations">Extension: Translate your Model Flow Diagram to Equations</a></li>
+      <li><a href="#extension-translate-a-more-realistic-shlir-model-flow-diagram-to-equations">Extension: Translate a more realistic SHLIR model flow diagram to equations</a></li>
       <li><a href="#extension-explore-the-parameter-space-of-multiple-models">Extension: Explore the Parameter Space of Multiple Models</a></li>
+      <li><a href="#using-the-web-app">Using the Web App</a></li>
       </ul>
 </li>
       <li><a href="#references">References</a></li>

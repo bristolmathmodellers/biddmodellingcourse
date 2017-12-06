@@ -43,7 +43,7 @@ plot_model <- function(sim, interactive = FALSE) {
     theme_minimal() +
     labs(x = "Year") +
     scale_color_viridis_d(end = 0.9) +
-    theme(legend.position = "bottom") + 
+    theme(legend.position = "none") + 
     facet_wrap(~Compartment)
   
   if (interactive) {

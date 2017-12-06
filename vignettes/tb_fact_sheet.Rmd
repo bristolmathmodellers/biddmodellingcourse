@@ -2,8 +2,8 @@
 title: "Tuberculosis"
 author: "Sam Abbott"
 output: 
-      word_document:
       html_document:
+      word_document:
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
   %\VignetteEncoding{UTF-8}
@@ -28,11 +28,11 @@ TB has been associated with a large number of risk factors, with HIV being the m
 
 # Vaccines
 
-Bacillus Calmette–Guérin (BCG) is one of the mostly widely-used vaccines worldwide, with approximately 100m doses given annually[@The2004]. It was first given to humans in 1921 and remains the only licensed vaccine for TB [@Medicine2013]. BCG acts by directly preventing the development of active, symptomatic disease. The effectiveness of the vaccine is effected by the age at which it is given, the latitude of the individual, and the period of time that has lapsed since vaccination. It has consistently been shown to be highly protective in children [@Rodrigues1993, @Colditz1994]. Efficacy in adults ranges from 0% to 78% [@Mangtani2014a]. Multiple randomized control studies have been conducted on BCG efficacy. Meta-analysis of these studies indicates that increased protection is associated with distance from the equator [@Mangtani2014]. Meta-analysis has also been used to estimate the waning time of BCG protection. There is good evidence that protection can last up to 10 years and limited evidence of protection beyond 15 years [@Abubakar2013]. 
+Bacillus Calmette–Guérin (BCG) is one of the mostly widely-used vaccines worldwide, with approximately 100m doses given annually [@The2004]. It was first given to humans in 1921 and remains the only licensed vaccine for TB [@Medicine2013]. BCG acts by directly preventing the development of active, symptomatic disease. The effectiveness of the vaccine is effected by the age at which it is given, the latitude of the individual, and the period of time that has lapsed since vaccination. It has consistently been shown to be highly protective in children [@Rodrigues1993, @Colditz1994]. Efficacy in adults ranges from 0% to 78% [@Mangtani2014a]. Multiple randomized control studies have been conducted on BCG efficacy. Meta-analysis of these studies indicates that increased protection is associated with distance from the equator [@Mangtani2014]. Meta-analysis has also been used to estimate the waning time of BCG protection. There is good evidence that protection can last up to 10 years and limited evidence of protection beyond 15 years [@Abubakar2013]. 
 
 Due to the variable estimates of BCG efficacy, vaccination has been controversial since its development. Different strategies have been utilized worldwide, including universal vaccination of those at most risk of onwards transmission and high-risk group vaccination targeting either neonates or children [@Zwerling2011a]. In 2005, the UK shifted from a strategy of universal vaccination at age 13 years to targeted vaccination in neonates deemed at high risk [@PublicHealthEngland2011a].
 
-Since 2015, BCG vaccination has been included in the Cover Of Vaccination Evaluated Rapidly (COVER) programme, allowing coverage to be estimated in areas of England with universal vaccination (implemented due to high incidence rates). Coverage for areas in England implementing targeted vaccination remains unknown. In London current coverage estimates are made by Local Authority and range from 5.3% to 92.1% [@PHE2017]. These estimates may not be reliable as COVER has only recently begun to include returns for BCG, meaning that the data quality maybe poor. 
+Since 2015, BCG vaccination has been included in the Cover Of Vaccination Evaluated Rapidly (COVER) programme, allowing coverage to be estimated in areas of England with universal vaccination (implemented due to high incidence rates). Coverage for areas in England implementing targeted vaccination remains unknown. In London current coverage estimates are made by Local Authority and range from 5.3% to 92.1% [@PHE2017]. These estimates may not be reliable as COVER has only recently begun to include returns for BCG, meaning that data quality maybe poor. 
 
 # Treatments
 
@@ -70,9 +70,9 @@ TB is a global disease with an estimated 10.4 million new cases in 2015, of whic
 
 ## TB Notifications
 
-TB incidence in England and Wales has decreased dramatically from a century ago (`r pretty_figref("incidence_tb")`, or see [http://www.seabbs.co.uk\\shiny\\TB_England_Wales](http://www.seabbs.co.uk/shiny/TB_England_Wales) for an interactive dashboard). However, in the past several decades, incidence rates have stabilised and have in fact increased since their lowest point in the 1990's. In 2000 there were 6044 notified TB cases in England, increasing to a maximum of 8280 notified TB cases in 2011. Since then, notifications have declined year on year [@PHE2016a]. `r pretty_figref("incidence_tb")` includes the interventions discussed above (`r pretty_tabref("intevention_table")`) and indicates that the introduction of several antibiotics and BCG vaccination in the 1950's led to an extended decrease in incidence.
+TB incidence in England and Wales has decreased dramatically from a century ago (`r pretty_figref("incidence_tb")`, or see [http://www.seabbs.co.uk/shiny/TB_England_Wales](http://www.seabbs.co.uk/shiny/TB_England_Wales) for an interactive dashboard). However, in the past several decades, incidence rates have stabilised and have in fact increased since their lowest point in the 1990's. In 2000 there were 6044 notified TB cases in England, increasing to a maximum of 8280 notified TB cases in 2011. Since then, notifications have declined year on year [@PHE2016a]. `r pretty_figref("incidence_tb")` includes the interventions discussed above (`r pretty_tabref("intevention_table")`) and indicates that the introduction of several antibiotics and BCG vaccination in the 1950's may have led to an extended decrease in incidence.
 
-```{r plot-incidence, echo = FALSE, warning = FALSE, message = FALSE, dpi = 300, fig.height = 10, fig.width = 10, fig.cap = pretty_figref("incidence_tb", caption = "TB notifications in England and Wales from 2013 to 2016, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention, more information on each intervention is available in the corresponding table")}
+```{r plot-incidence, echo = FALSE, warning = FALSE, message = FALSE, dpi = 300, fig.height = 10, fig.width = 10, fig.cap = pretty_figref("incidence_tb", "TB notifications in England and Wales from 2013 to 2016, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention, more information on each intervention is available in the corresponding table")}
 tbinenglanddataclean::plot_historic_tb_ew()
 ```
 

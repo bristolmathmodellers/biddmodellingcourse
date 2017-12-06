@@ -54,10 +54,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/practical_1.html">Solutions 1 - Designing a Model</a>
+      <a href="articles/solutions_1.html">Solutions 1 - Designing a Model</a>
     </li>
     <li>
-      <a href="articles/practical_2.html">Solutions 2 - Compartmental Models to Equations</a>
+      <a href="articles/solutions_2.html">Solutions 2 - Compartmental Models to Equations</a>
     </li>
   </ul>
 </li>
@@ -110,13 +110,28 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#bristol-infectious-disease-dynamics-modelling-course" class="anchor"></a>Bristol Infectious Disease Dynamics Modelling Course</h1></div>
 
-<p>This package contains the practicals for the <a href="http://www.bristol.ac.uk/social-community-medicine/research/groups/bidd/">BIDD</a> modelling short course at the University of Bristol. It also contains functions and data which can be used to practise infectious disease dynamic modelling.</p>
-<div id="installation" class="section level2">
+<p>This package contains the practicals for the <a href="http://www.bristol.ac.uk/social-community-medicine/research/groups/bidd/">BIDD</a> modelling short course at the University of Bristol. It also contains the functions required to run the practicals and solutions.</p>
+<div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the BIDD modelling short course from github with:</p>
+<a href="#getting-started" class="anchor"></a>Getting Started</h2>
+<ul>
+<li>Download the package folder from <a href="https://github.com/bristolmathmodellers/biddmodellingcourse/archive/master.zip">github</a> or use <code>git clone</code>, as follows, in the command line.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> clone https://github.com/bristolmathmodellers/biddmodellingcourse.git</code></pre></div>
+<ul>
+<li><p>Verify that you have a working installation of both <a href="https://www.r-project.org/">R</a> and <a href="https://www.rstudio.com/products/rstudio/download/#download">Rstudio</a>, then navigate to the <code>biddmodellingcourse</code> folder and click on the <code>biddmodellingcourse.Rproj</code> project. This should open an instance of Rstudio.</p></li>
+<li><p>Install the packages required for the course using the R terminal:</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"packrat"</span>)
+packrat<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/packrat/topics/restore">restore</a></span>()</code></pre></div>
+<ul>
+<li>Install the BIDD modelling short course from github with (again in the R terminal):</li>
+</ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"bristolmathmodellers/biddmodellingcourse"</span>)</code></pre></div>
+<ul>
+<li>After installation is complete start the first <a href="https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html">practical</a>. For practicals that require coding, follow along interactively using the provided notebooks (available in the <code>vignettes</code> folder).</li>
+</ul>
 <div id="docker" class="section level3">
 <h3 class="hasAnchor">
 <a href="#docker" class="anchor"></a>Docker</h3>
@@ -154,7 +169,6 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 </ul>
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=biddmodellingcourse"><img src="http://www.r-pkg.org/badges/version/biddmodellingcourse" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://travis-ci.org/bristolmathmodellers/biddmodellingcourse"><img src="https://travis-ci.org/bristolmathmodellers/biddmodellingcourse.svg?branch=master" alt="Build Status"></a></li>
 </ul>
 </div>

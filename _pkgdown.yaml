@@ -18,9 +18,9 @@ navbar:
     - text: "Solutions"
       menu: 
       -  text: Solutions 1 - Designing a Model
-         href: articles/practical_1.html
+         href: articles/solutions_1.html
       -  text: Solutions 2 - Compartmental Models to Equations
-         href: articles/practical_2.html
+         href: articles/solutions_2.html
     - text: "Fact Sheets"
       menu:
       -  text: Tuberculosis

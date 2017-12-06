@@ -14,19 +14,35 @@ knitr::opts_chunk$set(
 
 # Bristol Infectious Disease Dynamics Modelling Course
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/biddmodellingcourse)](https://cran.r-project.org/package=biddmodellingcourse)
 [![Build Status](https://travis-ci.org/bristolmathmodellers/biddmodellingcourse.svg?branch=master)](https://travis-ci.org/bristolmathmodellers/biddmodellingcourse)
 
-This package contains the practicals for the [BIDD](http://www.bristol.ac.uk/social-community-medicine/research/groups/bidd/) modelling short course at the University of Bristol. It also contains functions and data which can be used to practise infectious disease dynamic modelling.  
+This package contains the practicals for the [BIDD](http://www.bristol.ac.uk/social-community-medicine/research/groups/bidd/) modelling short course at the University of Bristol. It also contains the functions required to run the practicals and solutions.
 
-## Installation
+## Getting Started
 
-You can install the BIDD modelling short course from github with:
+- Download the package folder from [github](https://github.com/bristolmathmodellers/biddmodellingcourse/archive/master.zip) or use `git clone`, as follows, in the command line.
+
+```{bash clone-package, eval = FALSE}
+git clone https://github.com/bristolmathmodellers/biddmodellingcourse.git
+```
+
+ - Verify that you have a working installation of both [R](https://www.r-project.org/) and [Rstudio](https://www.rstudio.com/products/rstudio/download/#download), then navigate to the `biddmodellingcourse` folder and click on the `biddmodellingcourse.Rproj` project. This should open an instance of Rstudio.
+
+- Install the packages required for the course using the R terminal:
+
+```{r package-install, eval = FALSE}
+install.packages("packrat")
+packrat::restore()
+```
+
+-  Install the BIDD modelling short course from github with (again in the R terminal):
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("bristolmathmodellers/biddmodellingcourse")
 ```
+
+- After installation is complete start the first [practical](https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html). For practicals that require coding, follow along interactively using the provided notebooks (available in the `vignettes` folder).
 
 ### Docker
 
