@@ -14,9 +14,9 @@ csl: resources/bmj.csl
 
 # Learning Objectives
 
-1. How to translate a simple model flow diagram into equations
-1. Understand how changing parameter values can change model dynamics
-1. Using a simple model scaffold to develop a more complex model
+1. Know how to translate a simple model flow diagram into equations.
+1. Understand how changing parameter values can change model dynamics.
+1. Know how to use a simple model scaffold to develop a more complex model.
 
 # Outline for Session
 
@@ -30,7 +30,7 @@ csl: resources/bmj.csl
 
 # Excercises
 
-## A Simple SEIR Model of Tuberculosis (TB)
+##1. A Simple SEIR Model of Tuberculosis (TB)
 
 As a first exercise we are going to run the simple SEIR model, as seen in the design a model practical, in R. As a first step you will need to load the following packages.
 
@@ -152,7 +152,7 @@ Model dynamics are parameter dependent. Even in a simplistic model like the one 
 
 
 
-## Add High and Low Risk Compartments
+##2. Add High and Low Risk Compartments
 
 We are now going to make the model slightly more realistic, and therefore better able to capture the observed dynamics of TB. We are going to do this by adding a second latent population, this change can be seen in the model flow diagram (`r pretty_figref("SHLIR-diag")`). Go back to [practical 1](https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html) if you need a refresher for the motivation behind this.
 

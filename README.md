@@ -25,7 +25,7 @@ install.packages("packrat")
 packrat::restore()
 ```
 
--   Install the BIDD modelling short course from github with (again in the R terminal):
+-   Install the BIDD modelling short course from github (again in the R terminal):
 
 ``` r
 # install.packages("devtools")
@@ -36,7 +36,7 @@ devtools::install_github("bristolmathmodellers/biddmodellingcourse")
 
 ### Docker
 
-This packge was developed in a docker container based on the [tidyverse](https://hub.docker.com/r/rocker/tidyverse/) docker image. To run the docker image run:
+This package was developed in a docker container based on the [tidyverse](https://hub.docker.com/r/rocker/tidyverse/) docker image. Docker containers are lightweight, stand-alone, executable packages of a piece of software that includes everything needed to run it (see [here](https://www.docker.com/what-container) for details). To run the docker image run (with an active docker daemon running):
 
 ``` bash
 docker run -d -p 8787:8787 --name biddmodellingcourse -e USER=biddmodellingcourse -e PASSWORD=biddmodellingcourse seabbs/biddmodellingcourse

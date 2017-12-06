@@ -125,7 +125,7 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"packrat"</span>)
 packrat<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/packrat/topics/restore">restore</a></span>()</code></pre></div>
 <ul>
-<li>Install the BIDD modelling short course from github with (again in the R terminal):</li>
+<li>Install the BIDD modelling short course from github (again in the R terminal):</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"bristolmathmodellers/biddmodellingcourse"</span>)</code></pre></div>
@@ -135,7 +135,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <div id="docker" class="section level3">
 <h3 class="hasAnchor">
 <a href="#docker" class="anchor"></a>Docker</h3>
-<p>This packge was developed in a docker container based on the <a href="https://hub.docker.com/r/rocker/tidyverse/">tidyverse</a> docker image. To run the docker image run:</p>
+<p>This package was developed in a docker container based on the <a href="https://hub.docker.com/r/rocker/tidyverse/">tidyverse</a> docker image. Docker containers are lightweight, stand-alone, executable packages of a piece of software that includes everything needed to run it (see <a href="https://www.docker.com/what-container">here</a> for details). To run the docker image run (with an active docker daemon running):</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run -d -p 8787:8787 --name biddmodellingcourse -e USER=biddmodellingcourse -e PASSWORD=biddmodellingcourse seabbs/biddmodellingcourse</code></pre></div>
 <p>The rstudio client can be found on port <code>:8787</code> at your local machines ip. The default username:password is biddmodellingcourse:biddmodellingcourse, set the user with <code>-e USER=username</code>, and the password with <code>- e PASSWORD=newpasswordhere</code>. The default is to save the analysis files into the user directory.</p>
 <p>To run a plain R terminal use:</p>
