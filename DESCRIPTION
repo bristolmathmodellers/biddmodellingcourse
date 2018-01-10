@@ -29,8 +29,7 @@ Remotes:
     seabbs/prettypublisher,
     seabbs/tbinenglanddataclean,
     seabbs/idmodelr,
-    tidyverse/dplyr,
-    ggplot2
+    tidyverse/dplyr
 VignetteBuilder: knitr
 URL: https://bristolmathmodellers.github.io/biddmodellingcourse, 
      https://github.com/bristolmathmodellers/biddmodellingcourse
