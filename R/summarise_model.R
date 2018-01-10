@@ -47,6 +47,7 @@ summarise_model <- function(sim) {
   epi_dur <- sim %>% 
     filter(I < 1) %>% 
     arrange(I) %>% 
+    slice(1) %>% 
     pull(time)
   
   if (length(epi_dur) == 0) {

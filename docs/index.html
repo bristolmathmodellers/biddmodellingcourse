@@ -120,15 +120,15 @@
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> clone https://github.com/bristolmathmodellers/biddmodellingcourse.git</code></pre></div>
 <ul>
 <li><p>Verify that you have a working installation of both <a href="https://www.r-project.org/">R</a> and <a href="https://www.rstudio.com/products/rstudio/download/#download">Rstudio</a>, then navigate to the <code>biddmodellingcourse</code> folder and click on the <code>biddmodellingcourse.Rproj</code> project. This should open an instance of Rstudio.</p></li>
-<li><p>Install the packages required for the course using the R terminal:</p></li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"packrat"</span>)
-packrat<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/packrat/topics/restore">restore</a></span>()</code></pre></div>
-<ul>
-<li>Install the BIDD modelling short course from github (again in the R terminal):</li>
+<li><p>Install the BIDD modelling short course from github using the R terminal:</p></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"bristolmathmodellers/biddmodellingcourse"</span>)</code></pre></div>
+<ul>
+<li>Install the packages required for the course (again in the R terminal):</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_deps">install_deps</a></span>(<span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <ul>
 <li>After installation is complete start the first <a href="https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html">practical</a>. For practicals that require coding, follow along interactively using the provided notebooks (available in the <code>vignettes</code> folder).</li>
 </ul>

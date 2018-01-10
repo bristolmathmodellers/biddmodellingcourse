@@ -65,7 +65,7 @@ We then specify the model parameters (with the units being years^-1^), varying t
 ```{r seir-parameters}
 parameters <- c(
   beta = 3, # Rate of transmission
-  gamma = 2, # Rate of progression to active symptoms 
+  gamma = 1/5, # Rate of progression to active symptoms 
   tau = 1/2, # Rate of recovery
   mu = 1/81 # Rate of natural mortality
 )
@@ -128,7 +128,7 @@ We then summarise the epidemic peak (`epi_peak`) and epidemic duration (`epi_dur
  
 ```{r seir-summary-stats}
 biddmodellingcourse::summarise_model(SEIR_sim) %>% 
-  pretty_table(caption = "SEIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic")
+  pretty_table(caption = "SEIR model summary statistics; The final size of each population at the end of the simulatio, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic")
 ```
 
 Finally we plot the population in each model compartment over time.
@@ -145,7 +145,7 @@ Model dynamics are parameter dependent. Even in a simplistic model like the one 
 1. What is the impact of adding demographic processes (births and deaths)?
 
 
-1. What happens when the transmission rate (beta) is reduced below 1?
+1. What happens when the transmission rate (beta) is reduced to 0.5?
 
 
 1. What happens as the rate of recovery is increased?
@@ -163,7 +163,7 @@ We are now going to make the model slightly more realistic, and therefore better
 As in the previous model the first step is to define the model populations. There are now two new compartments, high risk latents (H), and low risk latents (L). These replace the original latent population (E) used in the previous model.
 
 ```{r shlir-initialisation}
-SHILR_inits = c(
+SHLIR_inits = c(
   S = 999,
   H = 0,
   L = 0,
@@ -177,11 +177,11 @@ SHILR_inits = c(
 We add two additional parameters for the rate of progression from high to low risk latents (`nu`) and the rate of progression from low risk latent to active disease (`gamma_L`).
 
 ```{r shlir-parameters}
-SHILR_parameters <- c(
+SHLIR_parameters <- c(
   beta = 3, # Rate of transmission
-  gamma_H = 2, # Rate of progression to active symptoms from high risk latent
+  gamma_H = 1/5, # Rate of progression to active symptoms from high risk latent
   nu = 1/2, #Rate of progression from high to low risk latent
-  gamme_L = 1/100, # Rate of progression to active symptoms for low risk latent
+  gamma_L = 1/100, # Rate of progression to active symptoms for low risk latent
   tau = 1/2, # Rate of recovery
   mu = 1/81 # Rate of natural mortality
 )
@@ -257,17 +257,14 @@ biddmodellingcourse::plot_model(SHLIR_sim, interactive = FALSE)
 
 ## Explore
 
-1. Test your changes by setting `gamma_L` to be a very large number and all other parameters to be the same as for the SEIR model. If everything is working correctly both models should give the same output.
-
-1. How do the model dynamics for this model differ for different parameter values?
-
+1. Test your changes by setting `nu = 0` and all other parameters to be the same as for the SEIR model. If everything is working correctly both models should give the same output.
 
 1. What has the impact of adding the second latent population been?
 
 
 ## Extension: Translate a more realistic SHLIR model flow diagram to equations
 
-As an advanced extension exercise now translate a more complex SHLIR model flow diagram (`r pretty_figref("complex_SHLIR_diag")`), with risk groups, treatment, TB mortality, and reactivation and reinfection for those who have recovered from active disease. Whilst many of realistic TB models use age structure in the interests of time do not include this (if you are interested in discussing how you would include this talk to your instructors or contact [me](https://www.samabbott.co.uk/)).
+As an advanced extension exercise now translate a more complex SHLIR model flow diagram (`r pretty_figref("complex_SHLIR_diag")`), with risk groups, treatment, and reinfection for those who have recovered from active disease (Hint: First implement the model without risk groups and then add this in once everything else is working as expected). Whilst many realistic TB models use age structure in the interests of time do not include this (if you are interested in discussing how you would include this talk to your instructors or contact [me](https://www.samabbott.co.uk/)).
 
 ![`r pretty_figref("complex_SHLIR_diag", "A realistic SHLIR model of TB transmission, including simple demographic processes")`](./resources/SHLIR_real_flow_diag.png)
 
@@ -279,11 +276,15 @@ Where $\lambda_i$ is the force of infection in each risk group ($i = L, H$) and 
 
 \[ M_{ii} = 1 \]
 
+It is also assumed that the between group contact rates are defined as (where $i \neq j$), 
+
+\[ M_{ij} = 0.1 \]
+
 The code for an SEIR model has been supplied, along with all the required simulation and plotting functions. It is suggested that you add complexity sequentially and test the effects on the model dynamics as you go. The first step is to recreate the SHLIR model used above. If you are new to `R` or are struggling with this exercise feel free to move on to the next exercise (which does not use `R`).
 
 ### Populations and Initialisation
 
-Add new compartments you want to define here, in most circumstances these should be initialised with 0 population.
+Add new compartments you want to define here, in most circumstances these should be initialised with 0 population. The population should be split between low and high risk populations, with the only infectious case being in the high risk population.
 
 ```{r custom-initialisation}
 real_SHLIR_real_inits = c(
@@ -296,14 +297,16 @@ real_SHLIR_real_inits = c(
 
 ### Parameters
 
-Specify new model parameters here (with the units being years^-1^). The names of the new parameters will need to match those used in the model equations.
+Specify new model parameters here (with the units being years^-1^). The names of the new parameters will need to match those used in the model equations. The only new parameter for the high risk group should be a high risk beta (`beta_H` for example). The between group mixing (`M`) has been defined for you, as has the proportion that are born high risk (`p`).
 
 ```{r real-SHLIR-parameters}
 real_SHLIR_parameters <- c(
   beta = 3, # Rate of transmission
   gamma = 2, # Rate of progression to active symptoms 
   tau = 1/2, # Rate of recovery
-  mu = 1/81 # Rate of natural mortality
+  mu = 1/81, # Rate of natural mortality
+  p = 0.2, # proportion of new births that are high risk
+  M = 0.2 # Between group mixing
 )
 ```
 
@@ -338,7 +341,7 @@ real_SHLIR_demo_ode <- function(t, x, params) {
 
     ## output
     # Finally  add your new derivative equations here
-    # These need to be in the same order as you specified the model compartments!
+    # These need to be in the same order as you specified for the model compartments!
     # If this is wrong it is likely your results will look nothing like the previous models!
     derivatives <- c(dS, dE, dI, dR)
 

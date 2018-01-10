@@ -163,7 +163,7 @@
 <p>We then specify the model parameters (with the units being years<sup>-1</sup>), varying these parameters will impact the model dynamics.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">parameters &lt;-<span class="st"> </span><span class="kw">c</span>(
   <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span>
-  <span class="dt">gamma =</span> <span class="dv">2</span>, <span class="co"># Rate of progression to active symptoms </span>
+  <span class="dt">gamma =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="co"># Rate of progression to active symptoms </span>
   <span class="dt">tau =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co"># Rate of recovery</span>
   <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span> <span class="co"># Rate of natural mortality</span>
 )</code></pre></div>
@@ -216,14 +216,14 @@ SEIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of model simulation"</span>,
                <span class="dt">label =</span> <span class="st">"tab-1"</span>)</code></pre></div>
-<table style="width:54%;" class="table">
+<table style="width:57%;" class="table">
 <caption>Table 1: First 5 years of model simulation</caption>
 <colgroup>
 <col width="9%">
 <col width="11%">
 <col width="11%">
-<col width="11%">
-<col width="11%">
+<col width="12%">
+<col width="12%">
 </colgroup>
 <thead><tr class="header">
 <th align="center">time</th>
@@ -242,49 +242,49 @@ SEIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 </tr>
 <tr class="even">
 <td align="center">1</td>
-<td align="center">994.8</td>
-<td align="center">2.123</td>
-<td align="center">2.372</td>
-<td align="center">0.7042</td>
+<td align="center">996.5</td>
+<td align="center">2.306</td>
+<td align="center">0.8082</td>
+<td align="center">0.4264</td>
 </tr>
 <tr class="odd">
 <td align="center">2</td>
-<td align="center">980.6</td>
-<td align="center">7.697</td>
-<td align="center">8.584</td>
-<td align="center">3.099</td>
+<td align="center">993.9</td>
+<td align="center">4.253</td>
+<td align="center">1.008</td>
+<td align="center">0.8608</td>
 </tr>
 <tr class="even">
 <td align="center">3</td>
-<td align="center">931.5</td>
-<td align="center">26.49</td>
-<td align="center">30.33</td>
-<td align="center">11.67</td>
+<td align="center">990.4</td>
+<td align="center">6.724</td>
+<td align="center">1.468</td>
+<td align="center">1.455</td>
 </tr>
 <tr class="odd">
 <td align="center">4</td>
-<td align="center">783.3</td>
-<td align="center">78.18</td>
-<td align="center">97.97</td>
-<td align="center">40.58</td>
+<td align="center">985.1</td>
+<td align="center">10.32</td>
+<td align="center">2.219</td>
+<td align="center">2.34</td>
 </tr>
 <tr class="even">
 <td align="center">5</td>
-<td align="center">479.7</td>
-<td align="center">151.5</td>
-<td align="center">246.2</td>
-<td align="center">122.6</td>
+<td align="center">977.2</td>
+<td align="center">15.71</td>
+<td align="center">3.373</td>
+<td align="center">3.681</td>
 </tr>
 </tbody>
 </table>
 <p>We then summarise the epidemic peak (<code>epi_peak</code>) and epidemic duration (<code>epi_dur</code>), along with population sizes at the end of the time period simulated.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(SEIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"SEIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
-<table style="width:86%;" class="table">
-<caption>Table 2: SEIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic</caption>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"SEIR model summary statistics; The final size of each population at the end of the simulatio, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
+<table style="width:88%;" class="table">
+<caption>Table 2: SEIR model summary statistics; The final size of each population at the end of the simulatio, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic</caption>
 <colgroup>
 <col width="8%">
-<col width="5%">
+<col width="6%">
 <col width="6%">
 <col width="8%">
 <col width="22%">
@@ -301,19 +301,23 @@ SEIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <th align="center">epi_dur</th>
 </tr></thead>
 <tbody><tr class="odd">
-<td align="center">172</td>
-<td align="center">5</td>
-<td align="center">20</td>
-<td align="center">803</td>
-<td align="center">6</td>
-<td align="center">391</td>
-<td align="center">Inf</td>
+<td align="center">181</td>
+<td align="center">47</td>
+<td align="center">18</td>
+<td align="center">753</td>
+<td align="center">18</td>
+<td align="center">141</td>
+<td align="center">1</td>
 </tr></tbody>
 </table>
 <p>Finally we plot the population in each model compartment over time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## For an interactive graph change interactive to TRUE
 biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(SEIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<p><img src="practical_2_files/figure-html/seir-plot-1.png" title="Figure 2: Plot of population over time in each SEIR model compartment" alt="Figure 2: Plot of population over time in each SEIR model compartment" width="672"></p>
+<div class="figure">
+<img src="practical_2_files/figure-html/seir-plot-1.png" alt="Figure 2: Plot of population over time in each SEIR model compartment" width="672"><p class="caption">
+Figure 2: Plot of population over time in each SEIR model compartment
+</p>
+</div>
 </div>
 <div id="explore" class="section level3">
 <h3 class="hasAnchor">
@@ -321,7 +325,7 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <p>Model dynamics are parameter dependent. Even in a simplistic model like the one outlined above parameter values can greatly alter the dynamics. Answer the following questions by varying the parameters above and rerunning the model.</p>
 <ol style="list-style-type: decimal">
 <li><p>What is the impact of adding demographic processes (births and deaths)?</p></li>
-<li><p>What happens when the transmission rate (beta) is reduced below 1?</p></li>
+<li><p>What happens when the transmission rate (beta) is reduced to 0.5?</p></li>
 <li><p>What happens as the rate of recovery is increased?</p></li>
 </ol>
 </div>
@@ -337,7 +341,7 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <h3 class="hasAnchor">
 <a href="#populations-and-initialisation-1" class="anchor"></a>Populations and Initialisation</h3>
 <p>As in the previous model the first step is to define the model populations. There are now two new compartments, high risk latents (H), and low risk latents (L). These replace the original latent population (E) used in the previous model.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SHILR_inits =<span class="st"> </span><span class="kw">c</span>(
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SHLIR_inits =<span class="st"> </span><span class="kw">c</span>(
   <span class="dt">S =</span> <span class="dv">999</span>,
   <span class="dt">H =</span> <span class="dv">0</span>,
   <span class="dt">L =</span> <span class="dv">0</span>,
@@ -349,11 +353,11 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <h3 class="hasAnchor">
 <a href="#parameters-1" class="anchor"></a>Parameters</h3>
 <p>We add two additional parameters for the rate of progression from high to low risk latents (<code>nu</code>) and the rate of progression from low risk latent to active disease (<code>gamma_L</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SHILR_parameters &lt;-<span class="st"> </span><span class="kw">c</span>(
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SHLIR_parameters &lt;-<span class="st"> </span><span class="kw">c</span>(
   <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span>
-  <span class="dt">gamma_H =</span> <span class="dv">2</span>, <span class="co"># Rate of progression to active symptoms from high risk latent</span>
+  <span class="dt">gamma_H =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="co"># Rate of progression to active symptoms from high risk latent</span>
   <span class="dt">nu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co">#Rate of progression from high to low risk latent</span>
-  <span class="dt">gamme_L =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">100</span>, <span class="co"># Rate of progression to active symptoms for low risk latent</span>
+  <span class="dt">gamma_L =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">100</span>, <span class="co"># Rate of progression to active symptoms for low risk latent</span>
   <span class="dt">tau =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co"># Rate of recovery</span>
   <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span> <span class="co"># Rate of natural mortality</span>
 )</code></pre></div>
@@ -420,15 +424,14 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <h2 class="hasAnchor">
 <a href="#explore-1" class="anchor"></a>Explore</h2>
 <ol style="list-style-type: decimal">
-<li><p>Test your changes by setting <code>gamma_L</code> to be a very large number and all other parameters to be the same as for the SEIR model. If everything is working correctly both models should give the same output.</p></li>
-<li><p>How do the model dynamics for this model differ for different parameter values?</p></li>
+<li><p>Test your changes by setting <code>nu = 0</code> and all other parameters to be the same as for the SEIR model. If everything is working correctly both models should give the same output.</p></li>
 <li><p>What has the impact of adding the second latent population been?</p></li>
 </ol>
 </div>
 <div id="extension-translate-a-more-realistic-shlir-model-flow-diagram-to-equations" class="section level2">
 <h2 class="hasAnchor">
 <a href="#extension-translate-a-more-realistic-shlir-model-flow-diagram-to-equations" class="anchor"></a>Extension: Translate a more realistic SHLIR model flow diagram to equations</h2>
-<p>As an advanced extension exercise now translate a more complex SHLIR model flow diagram (Figure 4), with risk groups, treatment, TB mortality, and reactivation and reinfection for those who have recovered from active disease. Whilst many of realistic TB models use age structure in the interests of time do not include this (if you are interested in discussing how you would include this talk to your instructors or contact <a href="https://www.samabbott.co.uk/">me</a>).</p>
+<p>As an advanced extension exercise now translate a more complex SHLIR model flow diagram (Figure 4), with risk groups, treatment, and reinfection for those who have recovered from active disease (Hint: First implement the model without risk groups and then add this in once everything else is working as expected). Whilst many realistic TB models use age structure in the interests of time do not include this (if you are interested in discussing how you would include this talk to your instructors or contact <a href="https://www.samabbott.co.uk/">me</a>).</p>
 <div class="figure">
 <img src="resources/SHLIR_real_flow_diag.png" alt="Figure 4: A realistic SHLIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 4: A realistic SHLIR model of TB transmission, including simple demographic processes</p>
 </div>
@@ -436,11 +439,13 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <p><span class="math display">\[ \lambda_i = \beta \sum_{j = L, H}M_{ij}I_j \]</span></p>
 <p>Where <span class="math inline">\(\lambda_i\)</span> is the force of infection in each risk group (<span class="math inline">\(i = L, H\)</span>) and <span class="math inline">\(M_{LH}\)</span> is the mixing rate between risk groups. It is assumed that within group contact rates are equivalent and defined such that,</p>
 <p><span class="math display">\[ M_{ii} = 1 \]</span></p>
+<p>It is also assumed that the between group contact rates are defined as (where <span class="math inline">\(i \neq j\)</span>),</p>
+<p><span class="math display">\[ M_{ij} = 0.1 \]</span></p>
 <p>The code for an SEIR model has been supplied, along with all the required simulation and plotting functions. It is suggested that you add complexity sequentially and test the effects on the model dynamics as you go. The first step is to recreate the SHLIR model used above. If you are new to <code>R</code> or are struggling with this exercise feel free to move on to the next exercise (which does not use <code>R</code>).</p>
 <div id="populations-and-initialisation-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#populations-and-initialisation-2" class="anchor"></a>Populations and Initialisation</h3>
-<p>Add new compartments you want to define here, in most circumstances these should be initialised with 0 population.</p>
+<p>Add new compartments you want to define here, in most circumstances these should be initialised with 0 population. The population should be split between low and high risk populations, with the only infectious case being in the high risk population.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">real_SHLIR_real_inits =<span class="st"> </span><span class="kw">c</span>(
   <span class="dt">S =</span> <span class="dv">999</span>,
   <span class="dt">E =</span> <span class="dv">0</span>,
@@ -451,12 +456,14 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <div id="parameters-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#parameters-2" class="anchor"></a>Parameters</h3>
-<p>Specify new model parameters here (with the units being years<sup>-1</sup>). The names of the new parameters will need to match those used in the model equations.</p>
+<p>Specify new model parameters here (with the units being years<sup>-1</sup>). The names of the new parameters will need to match those used in the model equations. The only new parameter for the high risk group should be a high risk beta (<code>beta_H</code> for example). The between group mixing (<code>M</code>) has been defined for you, as has the proportion that are born high risk (<code>p</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">real_SHLIR_parameters &lt;-<span class="st"> </span><span class="kw">c</span>(
   <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span>
   <span class="dt">gamma =</span> <span class="dv">2</span>, <span class="co"># Rate of progression to active symptoms </span>
   <span class="dt">tau =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co"># Rate of recovery</span>
-  <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span> <span class="co"># Rate of natural mortality</span>
+  <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span>, <span class="co"># Rate of natural mortality</span>
+  <span class="dt">p =</span> <span class="fl">0.2</span>, <span class="co"># proportion of new births that are high risk</span>
+  <span class="dt">M =</span> <span class="fl">0.2</span> <span class="co"># Between group mixing</span>
 )</code></pre></div>
 </div>
 <div id="equations-2" class="section level3">
@@ -489,7 +496,7 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 
     ## output
     <span class="co"># Finally  add your new derivative equations here</span>
-    <span class="co"># These need to be in the same order as you specified the model compartments!</span>
+    <span class="co"># These need to be in the same order as you specified for the model compartments!</span>
     <span class="co"># If this is wrong it is likely your results will look nothing like the previous models!</span>
     derivatives &lt;-<span class="st"> </span><span class="kw">c</span>(dS, dE, dI, dR)
 
