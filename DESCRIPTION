@@ -15,8 +15,10 @@ Imports:
     deSolve,
     purrr,
     ggplot2,
+    viridis,
     plotly,
-    magrittr
+    magrittr,
+    viridis
 Suggests: knitr,
     rmarkdown,
     testthat,
@@ -28,7 +30,7 @@ Remotes:
     seabbs/tbinenglanddataclean,
     seabbs/idmodelr,
     tidyverse/dplyr,
-    tidyverse/ggplot2
+    ggplot2
 VignetteBuilder: knitr
 URL: https://bristolmathmodellers.github.io/biddmodellingcourse, 
      https://github.com/bristolmathmodellers/biddmodellingcourse

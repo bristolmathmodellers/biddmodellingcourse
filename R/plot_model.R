@@ -7,6 +7,7 @@
 #' @return A Plot of each model compartments population over time.
 #' @importFrom plotly ggplotly
 #' @import ggplot2
+#' @import viridis
 #' @export
 #'
 #' @examples
@@ -42,7 +43,7 @@ plot_model <- function(sim, interactive = FALSE) {
     geom_line() +
     theme_minimal() +
     labs(x = "Year") +
-    scale_color_viridis_d(end = 0.9) +
+    scale_color_viridis(discrete = TRUE, end = 0.9) +
     theme(legend.position = "none") + 
     facet_wrap(~Compartment)
   
