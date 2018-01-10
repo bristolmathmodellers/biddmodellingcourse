@@ -1,8 +1,9 @@
 packrat/lib*/
-.Rproj.user
+.Rproj\.user
 .Rhistory
 .RData
 .DS_Store
 inst/doc
 .rstudio
 vignettes/drafts
+.Rproj.user

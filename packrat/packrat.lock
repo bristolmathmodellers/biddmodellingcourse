@@ -1,10 +1,10 @@
 PackratFormat: 1.4
 PackratVersion: 0.4.8.1
-RVersion: 3.4.2
-Repos: BioCsoft=https://bioconductor.org/packages/3.5/bioc,
-    BioCann=https://bioconductor.org/packages/3.5/data/annotation,
-    BioCexp=https://bioconductor.org/packages/3.5/data/experiment,
-    BioCextra=https://bioconductor.org/packages/3.5/extra,
+RVersion: 3.4.3
+Repos: BioCextra=https://bioconductor.org/packages/3.5/extra,
+    BioCsoft=https://bioconductor.org/packages/3.6/bioc,
+    BioCann=https://bioconductor.org/packages/3.6/data/annotation,
+    BioCexp=https://bioconductor.org/packages/3.6/data/experiment,
     CRAN=https://cran.rstudio.com/
 
 Package: BH
@@ -16,6 +16,11 @@ Package: BiasedUrn
 Source: CRAN
 Version: 1.07
 Hash: eb6c93fe7359e661dee83e28020d75cf
+
+Package: DBI
+Source: CRAN
+Version: 0.7
+Hash: 1ab72df487f06ad5f0de05446cdd4bd6
 
 Package: MASS
 Source: CRAN
@@ -73,7 +78,17 @@ Package: broom
 Source: CRAN
 Version: 0.4.2
 Hash: 7ebcffa46afb467e3f3c5687946f6e1a
-Requires: dplyr, nlme, plyr, psych, reshape2, stringr, tidyr
+Requires: plyr, nlme, stringr, psych, reshape2, dplyr, tidyr
+
+Package: callr
+Source: github
+Version: 1.0.0.9000
+Hash: b7367d1e0da7915b1df60f4ed7109034
+Requires: R6, processx
+GithubRepo: callr
+GithubUsername: r-lib
+GithubRef: HEAD
+GithubSha1: 550fa6bc7736ae33d374115121b9c009dccd445d
 
 Package: captioner
 Source: CRAN
@@ -85,6 +100,17 @@ Source: CRAN
 Version: 1.1.0
 Hash: 4e1ef4d099b0c5fd531a3938cf4624bd
 Requires: rematch, tibble
+
+Package: cli
+Source: CRAN
+Version: 1.0.0
+Hash: f4239f89feb7ddc65821e4514e9734ae
+Requires: assertthat, crayon
+
+Package: clipr
+Source: CRAN
+Version: 0.4.0
+Hash: 0d4860516c7e3120f8116a639b1ff553
 
 Package: colorspace
 Source: CRAN
@@ -100,7 +126,7 @@ Package: crosstalk
 Source: CRAN
 Version: 1.0.0
 Hash: c13adea5906fbe2becfcb5f843b26749
-Requires: R6, ggplot2, htmltools, jsonlite, lazyeval, shiny
+Requires: R6, jsonlite, lazyeval, htmltools, shiny, ggplot2
 
 Package: curl
 Source: CRAN
@@ -112,10 +138,29 @@ Source: CRAN
 Version: 1.10.4-3
 Hash: 3c270a59ca3298aba8df3c1ae3bbea19
 
+Package: dbplyr
+Source: CRAN
+Version: 1.1.0
+Hash: 3375b0f6df680aa0708ec0dfe0334c4d
+Requires: R6, assertthat, glue, rlang, tibble, purrr, dplyr, DBI
+
 Package: deSolve
 Source: CRAN
 Version: 1.20
 Hash: 908d6c22cc8cb42f1b0de8665a55b853
+
+Package: debugme
+Source: CRAN
+Version: 1.1.0
+Hash: c233690edd9fa17a63f7c8d83c1ca153
+Requires: crayon
+
+Package: devtools
+Source: CRAN
+Version: 1.13.4
+Hash: 80a77b22f641002c7ce0343baeaee300
+Requires: digest, git2r, httr, jsonlite, memoise, rstudioapi, whisker,
+    withr
 
 Package: dichromat
 Source: CRAN
@@ -131,8 +176,8 @@ Package: dplyr
 Source: github
 Version: 0.7.4.9000
 Hash: d599e71649c37a34f0c6ca84823477b4
-Requires: BH, R6, Rcpp, assertthat, bindrcpp, glue, magrittr,
-    pkgconfig, plogr, rlang, tibble, tidyselect
+Requires: BH, R6, Rcpp, assertthat, glue, magrittr, pkgconfig, plogr,
+    rlang, bindrcpp, tibble
 GithubRepo: dplyr
 GithubUsername: tidyverse
 GithubRef: master
@@ -171,8 +216,8 @@ Package: ggplot2
 Source: github
 Version: 2.2.1.9000
 Hash: 5dae151c55b849abf805d6a0e5274920
-Requires: MASS, digest, gtable, lazyeval, plyr, reshape2, scales,
-    tibble, viridisLite, withr
+Requires: MASS, digest, gtable, lazyeval, viridisLite, withr, plyr,
+    tibble, scales, reshape2
 GithubRepo: ggplot2
 GithubUsername: tidyverse
 GithubRef: master
@@ -182,7 +227,12 @@ Package: ggridges
 Source: CRAN
 Version: 0.4.1
 Hash: 9005bf3e4cc16e9c201d77905372a411
-Requires: ggplot2, plyr, scales
+Requires: plyr, scales, ggplot2
+
+Package: git2r
+Source: CRAN
+Version: 0.21.0
+Hash: 64747922e287be74e8e8b46c107fd3ef
 
 Package: glue
 Source: CRAN
@@ -204,7 +254,7 @@ Package: haven
 Source: CRAN
 Version: 1.1.0
 Hash: ea154261d6f3de8875074abfef0877eb
-Requires: Rcpp, forcats, hms, readr, tibble
+Requires: Rcpp, hms, tibble, forcats, readr
 
 Package: hexbin
 Source: CRAN
@@ -221,6 +271,7 @@ Package: hms
 Source: CRAN
 Version: 0.3
 Hash: 3fca8a1c97e6cfb297fe3f4690f82c58
+Requires: pkgconfig, rlang
 
 Package: htmltools
 Source: CRAN
@@ -232,7 +283,7 @@ Package: htmlwidgets
 Source: CRAN
 Version: 0.9
 Hash: 7514f6ea9f3bef6d9b6c945095275302
-Requires: htmltools, jsonlite, yaml
+Requires: jsonlite, yaml, htmltools
 
 Package: httpuv
 Source: CRAN
@@ -250,8 +301,8 @@ Package: idmodelr
 Source: github
 Version: 0.1.1.9000
 Hash: 297b8e3545e3586df2b7eb10376b5d01
-Requires: deSolve, dplyr, ggplot2, gridExtra, magrittr, multidplyr,
-    plotly, purrr, readr, reshape2, stringr, tibble, tidyr
+Requires: deSolve, magrittr, gridExtra, tibble, stringr, purrr, readr,
+    reshape2, ggplot2, dplyr, multidplyr, tidyr, plotly
 GithubRepo: idmodelr
 GithubUsername: seabbs
 GithubRef: master
@@ -266,7 +317,7 @@ Package: knitr
 Source: CRAN
 Version: 1.17
 Hash: f6b2bf543ee3e25f5b92bb46f9958c5f
-Requires: digest, evaluate, highr, markdown, stringr, yaml
+Requires: digest, highr, yaml, markdown, stringr, evaluate
 
 Package: labeling
 Source: CRAN
@@ -300,6 +351,12 @@ Version: 0.8
 Hash: 045d7c594d503b41f1c28946d076c8aa
 Requires: mime
 
+Package: memoise
+Source: CRAN
+Version: 1.1.0
+Hash: 410fcd334bc626db100237cc1370f2e9
+Requires: digest
+
 Package: mime
 Source: CRAN
 Version: 0.5
@@ -314,13 +371,13 @@ Package: modelr
 Source: CRAN
 Version: 0.1.1
 Hash: dc3b2de1720a22560510dccbdffe2c17
-Requires: broom, dplyr, lazyeval, magrittr, purrr, tibble, tidyr
+Requires: lazyeval, magrittr, tibble, purrr, dplyr, tidyr, broom
 
 Package: multidplyr
 Source: github
 Version: 0.0.0.9000
 Hash: 03c338cdf81fbf997392dda87bd9efa9
-Requires: dplyr, lazyeval, magrittr
+Requires: lazyeval, magrittr, dplyr
 GithubRepo: multidplyr
 GithubUsername: hadley
 GithubRef: master
@@ -368,9 +425,9 @@ Package: plotly
 Source: CRAN
 Version: 4.7.1
 Hash: 18d2de809bf346363cd4ee7a587d58bf
-Requires: RColorBrewer, base64enc, crosstalk, data.table, digest,
-    dplyr, ggplot2, hexbin, htmltools, htmlwidgets, httr, jsonlite,
-    lazyeval, magrittr, purrr, scales, tibble, tidyr, viridisLite
+Requires: RColorBrewer, base64enc, data.table, digest, jsonlite,
+    lazyeval, magrittr, viridisLite, htmltools, hexbin, httr, tibble,
+    scales, htmlwidgets, purrr, ggplot2, dplyr, crosstalk, tidyr
 
 Package: plyr
 Source: CRAN
@@ -387,11 +444,17 @@ Package: prettypublisher
 Source: github
 Version: 0.2.1.9000
 Hash: fb8cf6e7f247b3c31cf6098bda6508a5
-Requires: captioner, dplyr, knitr, magrittr, pander, purrr, stringr
+Requires: captioner, magrittr, pander, stringr, purrr, knitr, dplyr
 GithubRepo: prettypublisher
 GithubUsername: seabbs
 GithubRef: master
 GithubSha1: a394dcc9f8a19240d1f47fce87687850caf7f2b6
+
+Package: processx
+Source: CRAN
+Version: 2.0.0.1
+Hash: cfb7e4911fb7451f16f812580571652f
+Requires: R6, assertthat, crayon, debugme
 
 Package: psych
 Source: CRAN
@@ -415,12 +478,18 @@ Package: readxl
 Source: CRAN
 Version: 1.0.0
 Hash: 370b1eeb20980364513af445b0705cfe
-Requires: Rcpp, cellranger, tibble
+Requires: Rcpp, tibble, cellranger
 
 Package: rematch
 Source: CRAN
 Version: 1.0.1
 Hash: ad4faf59e7611117ff165817074c50c7
+
+Package: reprex
+Source: CRAN
+Version: 0.1.1
+Hash: b37e230f08fe96c0685265c1bd61da8f
+Requires: knitr, rmarkdown, callr, clipr, whisker
 
 Package: reshape2
 Source: CRAN
@@ -437,8 +506,8 @@ Package: rmarkdown
 Source: github
 Version: 1.8.3
 Hash: 91124416c603fb95fb14c63d14cc7b0a
-Requires: base64enc, evaluate, htmltools, jsonlite, knitr, mime,
-    rprojroot, stringr, yaml
+Requires: base64enc, jsonlite, mime, yaml, rprojroot, htmltools,
+    stringr, evaluate, knitr
 GithubRepo: rmarkdown
 GithubUsername: rstudio
 GithubRef: master
@@ -450,18 +519,23 @@ Version: 1.2
 Hash: fdcac51a7f47decd60556ceefc3c26b1
 Requires: backports
 
+Package: rstudioapi
+Source: CRAN
+Version: 0.7
+Hash: e2ebaff8160aff3e6b32e6e78a693c2d
+
 Package: rvest
 Source: CRAN
 Version: 0.3.2
 Hash: c69f7526520bad66fd2111ebe8b1364b
-Requires: httr, magrittr, selectr, xml2
+Requires: magrittr, xml2, httr, selectr
 
 Package: scales
 Source: github
 Version: 0.5.0.9000
 Hash: e0ef3a965fbf2354624ffe48ce12616d
-Requires: R6, RColorBrewer, Rcpp, dichromat, labeling, munsell, plyr,
-    viridisLite
+Requires: R6, RColorBrewer, Rcpp, dichromat, labeling, viridisLite,
+    plyr, munsell
 GithubRepo: scales
 GithubUsername: hadley
 GithubRef: master
@@ -477,8 +551,8 @@ Package: shiny
 Source: CRAN
 Version: 1.0.5
 Hash: 4d47532a807122bfd6bc3818310f9d2e
-Requires: R6, digest, htmltools, httpuv, jsonlite, mime, sourcetools,
-    xtable
+Requires: R6, digest, jsonlite, mime, sourcetools, xtable, httpuv,
+    htmltools
 
 Package: sourcetools
 Source: CRAN
@@ -506,8 +580,8 @@ Package: tbinenglanddataclean
 Source: github
 Version: 0.0.1.1000
 Hash: 11a421455a0a62a4aab86ed9274bbf36
-Requires: dplyr, epiR, ggjoy, ggplot2, haven, idmodelr, magrittr,
-    purrr, readr, readxl, scales, stringr, tibble, tidyr
+Requires: magrittr, tibble, stringr, scales, purrr, readr, epiR,
+    readxl, haven, ggplot2, dplyr, tidyr, ggjoy, idmodelr
 GithubRepo: tbinenglanddataclean
 GithubUsername: seabbs
 GithubRef: master
@@ -529,27 +603,32 @@ Package: tidyr
 Source: CRAN
 Version: 0.7.2
 Hash: fcc26b5be4f8c300b3a02300de6131bf
-Requires: Rcpp, dplyr, glue, magrittr, purrr, rlang, stringi, tibble,
-    tidyselect
+Requires: Rcpp, glue, magrittr, rlang, stringi, tibble, purrr,
+    tidyselect, dplyr
 
 Package: tidyselect
 Source: CRAN
 Version: 0.2.3
 Hash: f734832478bdc63b43457f9a0bc5a056
-Requires: Rcpp, glue, purrr, rlang
+Requires: Rcpp, glue, rlang, purrr
 
 Package: tidyverse
 Source: CRAN
 Version: 1.1.1
 Hash: 72d5fada870c90b835bbdfc281283c99
-Requires: broom, dplyr, forcats, ggplot2, haven, hms, httr, jsonlite,
-    lubridate, magrittr, modelr, purrr, readr, readxl, rvest, stringr,
-    tibble, tidyr, xml2
+Requires: crayon, hms, jsonlite, magrittr, rlang, xml2, httr, tibble,
+    stringr, forcats, purrr, readr, lubridate, readxl, haven, ggplot2,
+    rvest, dplyr, tidyr, broom, modelr, cli, dbplyr, reprex, rstudioapi
 
 Package: viridisLite
 Source: CRAN
 Version: 0.2.0
 Hash: 10f0c25af3dc84eaae10f5854f47efdb
+
+Package: whisker
+Source: CRAN
+Version: 0.3-2
+Hash: 803d662762e532705c2c066a82d066e7
 
 Package: withr
 Source: github

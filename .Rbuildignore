@@ -8,4 +8,4 @@
 ^docs$
 Dockerfile$
 ^vignettes/resources/$
-^_pkgdown.yaml$
+^_pkgdown\.yaml$
