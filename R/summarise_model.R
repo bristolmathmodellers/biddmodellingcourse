@@ -9,7 +9,7 @@
 #'
 #' @return A tibble of summary information for a model simulation.
 #' @export
-#' @importFrom dplyr filter pull arrange select bind_cols
+#' @importFrom dplyr filter pull arrange select bind_cols slice
 #' @importFrom tibble tibble
 #' @import magrittr 
 #' @examples
@@ -35,8 +35,11 @@
 #'summarise_model(sim)
 
 summarise_model <- function(sim) {
+  browser()
   epi_peak <- sim %>% 
-    filter(I == max(I))
+    filter(I == max(I)) %>% 
+    arrange(time) %>% 
+    slice(1)
   
   epi_peak_size <- epi_peak %>% 
     pull(I)
