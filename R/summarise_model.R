@@ -35,7 +35,7 @@
 #'summarise_model(sim)
 
 summarise_model <- function(sim) {
-  browser()
+ 
   epi_peak <- sim %>% 
     filter(I == max(I)) %>% 
     arrange(time) %>% 
