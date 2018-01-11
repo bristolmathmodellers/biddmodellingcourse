@@ -233,7 +233,7 @@ SHLIR_demo_ode <- function(t, x, params) {
 
 Simulation is the same as for the previous model. Does the simulation of your improved model make sense? Evaluate the summary tables and plot of model populations over time.
 
-```{r shlir-simulate, eval = FALSE}
+```{r shlir-simulate}
 begin_time <- 0
 end_time <- 200
 SHILR_times <- seq(begin_time, end_time, 1)
@@ -251,12 +251,12 @@ SHLIR_sim %>%
 ```
  
 
-```{r shlir-summary-stats, eval = FALSE}
+```{r shlir-summary-stats}
 biddmodellingcourse::summarise_model(SHLIR_sim) %>% 
   pretty_table(caption = "SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic")
 ```
 
-```{r shlir-plot, fig.cap = pretty_figref(label = "SHLIR", caption = "Plot of the population in each SHLIR model compartment over time"), eval = FALSE}
+```{r shlir-plot, fig.cap = pretty_figref(label = "SHLIR", caption = "Plot of the population in each SHLIR model compartment over time")}
 ## For an interactive graph change interactive to TRUE
 biddmodellingcourse::plot_model(SHLIR_sim, interactive = FALSE)
 ```
@@ -403,7 +403,7 @@ real_SHLIR_demo_ode <- function(t, x, params) {
 
 Simulate the new model as previously.
 
-```{r real-SHLIR-simulate, message = FALSE, eval = FALSE}
+```{r real-SHLIR-simulate, message = FALSE}
 begin_time <- 0
 end_time <- 200
 real_SHLIR_times <- seq(begin_time, end_time, 1)
@@ -421,13 +421,13 @@ real_SHLIR_sim %>%
 ```
  
  
-```{r real-SHLIR-summary-stats, eval = FALSE}
+```{r real-SHLIR-summary-stats}
 biddmodellingcourse::summarise_model(real_SHLIR_sim) %>% 
   pretty_table(caption = "Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic")
 ```
 
 
-```{r real-SHLIR-plot, fig.cap = pretty_figref("real-SHLIR", "Plot of population over time in each realistic SHLIR model compartment"), eval = FALSE}
+```{r real-SHLIR-plot, fig.cap = pretty_figref("real-SHLIR", "Plot of population over time in each realistic SHLIR model compartment")}
 ## For an interactive graph change interactive to TRUE
 biddmodellingcourse::plot_model(real_SHLIR_sim, interactive = FALSE)
 ```

@@ -429,10 +429,117 @@ SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of SHLIR model simulation"</span>,
                <span class="dt">label =</span> <span class="st">"tab-1"</span>)</code></pre></div>
+<table style="width:69%;" class="table">
+<caption>Table 1: First 5 years of model simulation</caption>
+<colgroup>
+<col width="9%">
+<col width="11%">
+<col width="11%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">time</th>
+<th align="center">S</th>
+<th align="center">H</th>
+<th align="center">L</th>
+<th align="center">I</th>
+<th align="center">R</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">999</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">996.5</td>
+<td align="center">1.794</td>
+<td align="center">0.5224</td>
+<td align="center">0.7773</td>
+<td align="center">0.4223</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">994.2</td>
+<td align="center">2.576</td>
+<td align="center">1.606</td>
+<td align="center">0.8263</td>
+<td align="center">0.8098</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">991.6</td>
+<td align="center">3.186</td>
+<td align="center">2.99</td>
+<td align="center">0.9684</td>
+<td align="center">1.243</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">988.6</td>
+<td align="center">3.853</td>
+<td align="center">4.648</td>
+<td align="center">1.164</td>
+<td align="center">1.756</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">984.9</td>
+<td align="center">4.653</td>
+<td align="center">6.621</td>
+<td align="center">1.411</td>
+<td align="center">2.372</td>
+</tr>
+</tbody>
+</table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
+<table style="width:96%;" class="table">
+<caption>Table 3: SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic</caption>
+<colgroup>
+<col width="8%">
+<col width="6%">
+<col width="8%">
+<col width="6%">
+<col width="8%">
+<col width="22%">
+<col width="22%">
+<col width="12%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">S</th>
+<th align="center">H</th>
+<th align="center">L</th>
+<th align="center">I</th>
+<th align="center">R</th>
+<th align="center">epi_peak_time</th>
+<th align="center">epi_peak_size</th>
+<th align="center">epi_dur</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="center">238</td>
+<td align="center">24</td>
+<td align="center">194</td>
+<td align="center">13</td>
+<td align="center">531</td>
+<td align="center">32</td>
+<td align="center">57</td>
+<td align="center">1</td>
+</tr></tbody>
+</table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## For an interactive graph change interactive to TRUE
 biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(SHLIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="figure">
+<img src="solutions_2_files/figure-html/shlir-plot-1.png" alt="Figure 4: Plot of the population in each SHLIR model compartment over time" width="672"><p class="caption">
+Figure 4: Plot of the population in each SHLIR model compartment over time
+</p>
+</div>
 </div>
 </div>
 <div id="explore-1" class="section level2">
@@ -456,11 +563,11 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <div id="extension-translate-a-more-realistic-shlir-model-flow-diagram-to-equations" class="section level2">
 <h2 class="hasAnchor">
 <a href="#extension-translate-a-more-realistic-shlir-model-flow-diagram-to-equations" class="anchor"></a>Extension: Translate a more realistic SHLIR model flow diagram to equations</h2>
-<p>As an advanced extension exercise now translate a more complex SHLIR model flow diagram (Figure 4), with risk groups, treatment, and reinfection for those who have recovered from active disease (Hint: First implement the model without risk groups and then add this in once everything else is working as expected). Whilst many realistic TB models use age structure in the interests of time do not include this (if you are interested in discussing how you would include this talk to your instructors or contact <a href="https://www.samabbott.co.uk/">me</a>).</p>
+<p>As an advanced extension exercise now translate a more complex SHLIR model flow diagram (Figure 5), with risk groups, treatment, and reinfection for those who have recovered from active disease (Hint: First implement the model without risk groups and then add this in once everything else is working as expected). Whilst many realistic TB models use age structure in the interests of time do not include this (if you are interested in discussing how you would include this talk to your instructors or contact <a href="https://www.samabbott.co.uk/">me</a>).</p>
 <div class="figure">
-<img src="resources/SHLIR_real_flow_diag.png" alt="Figure 4: A realistic SHLIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 4: A realistic SHLIR model of TB transmission, including simple demographic processes</p>
+<img src="resources/SHLIR_real_flow_diag.png" alt="Figure 5: A realistic SHLIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 5: A realistic SHLIR model of TB transmission, including simple demographic processes</p>
 </div>
-<p>Figure 4 does not include the interaction between the high and low risk subgroups as this is through the force of infection. The force of infection is defined as,</p>
+<p>Figure 5 does not include the interaction between the high and low risk subgroups as this is through the force of infection. The force of infection is defined as,</p>
 <p><span class="math display">\[ \lambda_i = \beta \sum_{j = L, H}M_{ij}I_j \]</span></p>
 <p>Where <span class="math inline">\(\lambda_i\)</span> is the force of infection in each risk group (<span class="math inline">\(i = L, H\)</span>) and <span class="math inline">\(M_{LH}\)</span> is the mixing rate between risk groups. It is assumed that within group contact rates are equivalent and defined such that,</p>
 <p><span class="math display">\[ M_{ii} = 1 \]</span></p>
@@ -585,10 +692,222 @@ real_SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of model simulation"</span>,
                <span class="dt">label =</span> <span class="st">"tab-real_SHLIR"</span>)</code></pre></div>
+<table style="width:100%;" class="table">
+<caption>Table 4: First 5 years of model simulation (continued below)</caption>
+<colgroup>
+<col width="9%">
+<col width="10%">
+<col width="12%">
+<col width="12%">
+<col width="13%">
+<col width="15%">
+<col width="16%">
+<col width="9%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">time</th>
+<th align="center">S</th>
+<th align="center">H</th>
+<th align="center">L</th>
+<th align="center">I</th>
+<th align="center">Tr</th>
+<th align="center">R</th>
+<th align="center">S_H</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">800</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">199</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">799.1</td>
+<td align="center">0.6388</td>
+<td align="center">0.1786</td>
+<td align="center">0.06452</td>
+<td align="center">0.006904</td>
+<td align="center">0.0009364</td>
+<td align="center">198</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">798.1</td>
+<td align="center">1.048</td>
+<td align="center">0.5935</td>
+<td align="center">0.1941</td>
+<td align="center">0.03844</td>
+<td align="center">0.01108</td>
+<td align="center">197.1</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">796.8</td>
+<td align="center">1.477</td>
+<td align="center">1.201</td>
+<td align="center">0.3596</td>
+<td align="center">0.09632</td>
+<td align="center">0.04336</td>
+<td align="center">196.3</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">795.1</td>
+<td align="center">2.002</td>
+<td align="center">2.027</td>
+<td align="center">0.5632</td>
+<td align="center">0.1794</td>
+<td align="center">0.1102</td>
+<td align="center">195.5</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">792.9</td>
+<td align="center">2.658</td>
+<td align="center">3.121</td>
+<td align="center">0.8155</td>
+<td align="center">0.2889</td>
+<td align="center">0.2236</td>
+<td align="center">194.6</td>
+</tr>
+</tbody>
+</table>
+<table style="width:62%;" class="table">
+<colgroup>
+<col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">H_H</th>
+<th align="center">L_H</th>
+<th align="center">I_H</th>
+<th align="center">Tr_H</th>
+<th align="center">R_H</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">0.7367</td>
+<td align="center">0.2138</td>
+<td align="center">0.785</td>
+<td align="center">0.2257</td>
+<td align="center">0.06372</td>
+</tr>
+<tr class="odd">
+<td align="center">0.9991</td>
+<td align="center">0.6472</td>
+<td align="center">0.7108</td>
+<td align="center">0.3277</td>
+<td align="center">0.2031</td>
+</tr>
+<tr class="even">
+<td align="center">1.106</td>
+<td align="center">1.153</td>
+<td align="center">0.6904</td>
+<td align="center">0.3781</td>
+<td align="center">0.3761</td>
+</tr>
+<tr class="odd">
+<td align="center">1.169</td>
+<td align="center">1.684</td>
+<td align="center">0.6935</td>
+<td align="center">0.4067</td>
+<td align="center">0.565</td>
+</tr>
+<tr class="even">
+<td align="center">1.228</td>
+<td align="center">2.23</td>
+<td align="center">0.7103</td>
+<td align="center">0.4267</td>
+<td align="center">0.7623</td>
+</tr>
+</tbody>
+</table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(real_SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
+<table style="width:99%;" class="table">
+<caption>Table 5: Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic (continued below)</caption>
+<colgroup>
+<col width="6%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+<col width="6%">
+<col width="6%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+<col width="9%">
+<col width="9%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">S</th>
+<th align="center">H</th>
+<th align="center">L</th>
+<th align="center">I</th>
+<th align="center">Tr</th>
+<th align="center">R</th>
+<th align="center">S_H</th>
+<th align="center">H_H</th>
+<th align="center">L_H</th>
+<th align="center">I_H</th>
+<th align="center">Tr_H</th>
+<th align="center">R_H</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="center">22</td>
+<td align="center">218</td>
+<td align="center">242</td>
+<td align="center">133</td>
+<td align="center">87</td>
+<td align="center">98</td>
+<td align="center">10</td>
+<td align="center">39</td>
+<td align="center">77</td>
+<td align="center">25</td>
+<td align="center">16</td>
+<td align="center">33</td>
+</tr></tbody>
+</table>
+<table style="width:57%;" class="table">
+<colgroup>
+<col width="22%">
+<col width="22%">
+<col width="12%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">epi_peak_time</th>
+<th align="center">epi_peak_size</th>
+<th align="center">epi_dur</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="center">74</td>
+<td align="center">133</td>
+<td align="center">0</td>
+</tr></tbody>
+</table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## For an interactive graph change interactive to TRUE
 biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(real_SHLIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="figure">
+<img src="solutions_2_files/figure-html/real-SHLIR-plot-1.png" alt="Figure 6: Plot of population over time in each realistic SHLIR model compartment" width="672"><p class="caption">
+Figure 6: Plot of population over time in each realistic SHLIR model compartment
+</p>
+</div>
 </div>
 </div>
 <div id="extension-explore-the-parameter-space-of-multiple-models" class="section level2">
@@ -603,25 +922,25 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 <li>Go to <a href="http://seabbs.co.uk/shiny/exploreidmodels/" class="uri">http://seabbs.co.uk/shiny/exploreidmodels/</a>. You should see the following:</li>
 </ul>
 <div class="figure">
-<img src="resources/menu-explore-id.png" alt="Figure 5: Homepage for the Explore Infectious Disease web app."><p class="caption">Figure 5: Homepage for the Explore Infectious Disease web app.</p>
+<img src="resources/menu-explore-id.png" alt="Figure 7: Homepage for the Explore Infectious Disease web app."><p class="caption">Figure 7: Homepage for the Explore Infectious Disease web app.</p>
 </div>
 <ul>
 <li>Click on the Explore Model Dynamics tab in the menu on the left hand side. The app will now look like this:</li>
 </ul>
 <div class="figure">
-<img src="resources/mod-dyn-explore-id.png" alt="Figure 6: Explore Model Dynamics tab for the Explore Infectious Disease web app."><p class="caption">Figure 6: Explore Model Dynamics tab for the Explore Infectious Disease web app.</p>
+<img src="resources/mod-dyn-explore-id.png" alt="Figure 8: Explore Model Dynamics tab for the Explore Infectious Disease web app."><p class="caption">Figure 8: Explore Model Dynamics tab for the Explore Infectious Disease web app.</p>
 </div>
 <ul>
 <li>Select a model of interest from the menu, options include: SI, SEI, SEIR, and SHLIR, with or without demographic processes.</li>
 </ul>
 <div class="figure">
-<img src="resources/sel-model-explore-id.png" alt="Figure 7: Select a model in the Explore Infectious Disease web app."><p class="caption">Figure 7: Select a model in the Explore Infectious Disease web app.</p>
+<img src="resources/sel-model-explore-id.png" alt="Figure 9: Select a model in the Explore Infectious Disease web app."><p class="caption">Figure 9: Select a model in the Explore Infectious Disease web app.</p>
 </div>
 <ul>
 <li>Now vary parameter values using the provided sliders in the menu, you should observe the population in each compartment changing over time. Both summary tables used in the exercises above are also provided.</li>
 </ul>
 <div class="figure">
-<img src="resources/param-explore-id.png" alt="Figure 8: Vary parameters to explore dynamics in the Explore Infectious Disease web app."><p class="caption">Figure 8: Vary parameters to explore dynamics in the Explore Infectious Disease web app.</p>
+<img src="resources/param-explore-id.png" alt="Figure 10: Vary parameters to explore dynamics in the Explore Infectious Disease web app."><p class="caption">Figure 10: Vary parameters to explore dynamics in the Explore Infectious Disease web app.</p>
 </div>
 </div>
 </div>
@@ -667,7 +986,7 @@ biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://b
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
