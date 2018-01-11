@@ -18,7 +18,8 @@ Imports:
     viridis,
     plotly,
     magrittr,
-    viridis
+    viridis,
+    tidyr
 Suggests: knitr,
     rmarkdown,
     testthat,

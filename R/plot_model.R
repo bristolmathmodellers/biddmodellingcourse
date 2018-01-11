@@ -3,11 +3,14 @@
 #' @description Make seperate plots for each model compartment. Assumes model output is structured
 #' as that produced from \code{\link[biddmodellingcourse]{solve_ode}}.
 #' @param sim A tibble of model output as formated by \code{\link[biddmodellingcourse]{solve_ode}}
+#' @param facet Logical, defaults to \code{TRUE}. If \code{FALSE} then the plot will not be facetted
+#' otherwise it will be.
 #' @param interactive Logical, defaults to \code{FALSE}. If \code{TRUE} produces an interative plot.
 #' @return A Plot of each model compartments population over time.
 #' @importFrom plotly ggplotly
 #' @import ggplot2
 #' @import viridis
+#' @importFrom tidyr gather
 #' @export
 #'
 #' @examples
@@ -30,9 +33,11 @@
 #'
 #'sim <- solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
 #'
-#'plot_model(sim, interactive = FALSE)
+#'plot_model(sim, facet = FALSE, interactive = FALSE)
+#'
+#'plot_model(sim, facet = TRUE, interactive = FALSE)
 
-plot_model <- function(sim, interactive = FALSE) {
+plot_model <- function(sim, facet = TRUE, interactive = FALSE) {
   
   order <- colnames(sim)[-1] 
   
@@ -43,9 +48,14 @@ plot_model <- function(sim, interactive = FALSE) {
     geom_line() +
     theme_minimal() +
     labs(x = "Year") +
-    scale_color_viridis(discrete = TRUE, end = 0.9) +
-    theme(legend.position = "none") + 
-    facet_wrap(~Compartment)
+    scale_color_viridis(discrete = TRUE, end = 0.9)
+  
+  if (facet) {
+    plot <- plot +
+      theme(legend.position = "none") + 
+      facet_wrap(~Compartment)
+  }
+
   
   if (interactive) {
     ggplotly(plot)

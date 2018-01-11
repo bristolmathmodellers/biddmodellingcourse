@@ -4,10 +4,13 @@
 \alias{plot_model}
 \title{Plot Compartment Populations over Time for a Model Simulation}
 \usage{
-plot_model(sim, interactive = FALSE)
+plot_model(sim, facet = TRUE, interactive = FALSE)
 }
 \arguments{
 \item{sim}{A tibble of model output as formated by \code{\link[biddmodellingcourse]{solve_ode}}}
+
+\item{facet}{Logical, defaults to \code{TRUE}. If \code{FALSE} then the plot will not be facetted
+otherwise it will be.}
 
 \item{interactive}{Logical, defaults to \code{FALSE}. If \code{TRUE} produces an interative plot.}
 }
@@ -38,5 +41,7 @@ inits <- as.matrix(c(S = S_0, I = I_0))
 
 sim <- solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
 
-plot_model(sim, interactive = FALSE)
+plot_model(sim, facet = FALSE, interactive = FALSE)
+
+plot_model(sim, facet = TRUE, interactive = FALSE)
 }
