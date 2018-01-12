@@ -7,7 +7,7 @@
 #' otherwise it will be.
 #' @param interactive Logical, defaults to \code{FALSE}. If \code{TRUE} produces an interative plot.
 #' @return A Plot of each model compartments population over time.
-#' @importFrom plotly ggplotly
+#' @importFrom plotly plotly_build
 #' @import ggplot2
 #' @import viridis
 #' @importFrom tidyr gather
@@ -58,7 +58,8 @@ plot_model <- function(sim, facet = TRUE, interactive = FALSE) {
 
   
   if (interactive) {
-    ggplotly(plot)
+    plot <- plotly_build(plot)
+    plot$elementId <- NULL
   }else{
     plot
   }

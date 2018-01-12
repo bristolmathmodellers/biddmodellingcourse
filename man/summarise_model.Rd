@@ -21,7 +21,7 @@ the epidemic.
 }
 \examples{
 
-#'## Intialise
+## Intialise
 N = 100000
 I_0 = 1
 S_0 = N - I_0
