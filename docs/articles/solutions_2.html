@@ -280,31 +280,39 @@ SEIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <p>We then summarise the epidemic peak (<code>epi_peak</code>) and epidemic duration (<code>epi_dur</code>), along with population sizes at the end of the time period simulated.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(SEIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"SEIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
-<table style="width:88%;" class="table">
-<caption>Table 2: SEIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic</caption>
+<table style="width:89%;" class="table">
+<caption>Table 2: SEIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic (continued below)</caption>
 <colgroup>
-<col width="8%">
-<col width="6%">
-<col width="6%">
-<col width="8%">
 <col width="22%">
 <col width="22%">
-<col width="12%">
+<col width="22%">
+<col width="22%">
 </colgroup>
 <thead><tr class="header">
-<th align="center">S</th>
-<th align="center">E</th>
-<th align="center">I</th>
-<th align="center">R</th>
-<th align="center">epi_peak_time</th>
-<th align="center">epi_peak_size</th>
-<th align="center">epi_dur</th>
+<th align="center">Final size: S</th>
+<th align="center">Final size: E</th>
+<th align="center">Final size: I</th>
+<th align="center">Final size: R</th>
 </tr></thead>
 <tbody><tr class="odd">
 <td align="center">181</td>
 <td align="center">47</td>
 <td align="center">18</td>
 <td align="center">753</td>
+</tr></tbody>
+</table>
+<table style="width:78%;" class="table">
+<colgroup>
+<col width="29%">
+<col width="22%">
+<col width="26%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">Epidemic peak time</th>
+<th align="center">Epidemic peak</th>
+<th align="center">Epidemic duration</th>
+</tr></thead>
+<tbody><tr class="odd">
 <td align="center">18</td>
 <td align="center">141</td>
 <td align="center">1</td>
@@ -500,27 +508,21 @@ SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
-<table style="width:96%;" class="table">
-<caption>Table 3: SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic</caption>
+<table class="table">
+<caption>Table 3: SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic (continued below)</caption>
 <colgroup>
-<col width="8%">
-<col width="6%">
-<col width="8%">
-<col width="6%">
-<col width="8%">
-<col width="22%">
-<col width="22%">
-<col width="12%">
+<col width="20%">
+<col width="20%">
+<col width="20%">
+<col width="20%">
+<col width="20%">
 </colgroup>
 <thead><tr class="header">
-<th align="center">S</th>
-<th align="center">H</th>
-<th align="center">L</th>
-<th align="center">I</th>
-<th align="center">R</th>
-<th align="center">epi_peak_time</th>
-<th align="center">epi_peak_size</th>
-<th align="center">epi_dur</th>
+<th align="center">Final size: S</th>
+<th align="center">Final size: H</th>
+<th align="center">Final size: L</th>
+<th align="center">Final size: I</th>
+<th align="center">Final size: R</th>
 </tr></thead>
 <tbody><tr class="odd">
 <td align="center">238</td>
@@ -528,6 +530,20 @@ SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <td align="center">194</td>
 <td align="center">13</td>
 <td align="center">531</td>
+</tr></tbody>
+</table>
+<table style="width:78%;" class="table">
+<colgroup>
+<col width="29%">
+<col width="22%">
+<col width="26%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">Epidemic peak time</th>
+<th align="center">Epidemic peak</th>
+<th align="center">Epidemic duration</th>
+</tr></thead>
+<tbody><tr class="odd">
 <td align="center">32</td>
 <td align="center">57</td>
 <td align="center">1</td>
@@ -839,35 +855,21 @@ real_SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(real_SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/prettypublisher/topics/pretty_table">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
-<table style="width:99%;" class="table">
+<table class="table">
 <caption>Table 5: Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic (continued below)</caption>
 <colgroup>
-<col width="6%">
-<col width="8%">
-<col width="8%">
-<col width="8%">
-<col width="6%">
-<col width="6%">
-<col width="8%">
-<col width="8%">
-<col width="8%">
-<col width="8%">
-<col width="9%">
-<col width="9%">
+<col width="20%">
+<col width="20%">
+<col width="20%">
+<col width="20%">
+<col width="20%">
 </colgroup>
 <thead><tr class="header">
-<th align="center">S</th>
-<th align="center">H</th>
-<th align="center">L</th>
-<th align="center">I</th>
-<th align="center">Tr</th>
-<th align="center">R</th>
-<th align="center">S_H</th>
-<th align="center">H_H</th>
-<th align="center">L_H</th>
-<th align="center">I_H</th>
-<th align="center">Tr_H</th>
-<th align="center">R_H</th>
+<th align="center">Final size: S</th>
+<th align="center">Final size: H</th>
+<th align="center">Final size: L</th>
+<th align="center">Final size: I</th>
+<th align="center">Final size: Tr</th>
 </tr></thead>
 <tbody><tr class="odd">
 <td align="center">22</td>
@@ -875,28 +877,60 @@ real_SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <td align="center">242</td>
 <td align="center">133</td>
 <td align="center">87</td>
+</tr></tbody>
+</table>
+<table style="width:97%;" class="table">
+<caption>Table continues below</caption>
+<colgroup>
+<col width="22%">
+<col width="25%">
+<col width="25%">
+<col width="25%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">Final size: R</th>
+<th align="center">Final size: S_H</th>
+<th align="center">Final size: H_H</th>
+<th align="center">Final size: L_H</th>
+</tr></thead>
+<tbody><tr class="odd">
 <td align="center">98</td>
 <td align="center">10</td>
 <td align="center">39</td>
 <td align="center">77</td>
+</tr></tbody>
+</table>
+<table class="table">
+<caption>Table continues below</caption>
+<colgroup>
+<col width="24%">
+<col width="25%">
+<col width="24%">
+<col width="26%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">Final size: I_H</th>
+<th align="center">Final size: Tr_H</th>
+<th align="center">Final size: R_H</th>
+<th align="center">Epidemic peak time</th>
+</tr></thead>
+<tbody><tr class="odd">
 <td align="center">25</td>
 <td align="center">16</td>
 <td align="center">33</td>
+<td align="center">74</td>
 </tr></tbody>
 </table>
-<table style="width:57%;" class="table">
+<table style="width:49%;" class="table">
 <colgroup>
 <col width="22%">
-<col width="22%">
-<col width="12%">
+<col width="26%">
 </colgroup>
 <thead><tr class="header">
-<th align="center">epi_peak_time</th>
-<th align="center">epi_peak_size</th>
-<th align="center">epi_dur</th>
+<th align="center">Epidemic peak</th>
+<th align="center">Epidemic duration</th>
 </tr></thead>
 <tbody><tr class="odd">
-<td align="center">74</td>
 <td align="center">133</td>
 <td align="center">0</td>
 </tr></tbody>

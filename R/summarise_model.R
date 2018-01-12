@@ -9,12 +9,12 @@
 #'
 #' @return A tibble of summary information for a model simulation.
 #' @export
-#' @importFrom dplyr filter pull arrange select bind_cols slice
+#' @importFrom dplyr filter pull arrange select bind_cols slice rename rename_at
 #' @importFrom tibble tibble
 #' @import magrittr 
 #' @examples
 #' 
-#' #'## Intialise
+#' ## Intialise
 #'N = 100000
 #'I_0 = 1
 #'S_0 = N - I_0
@@ -66,6 +66,13 @@ summarise_model <- function(sim) {
     round(digits = 0) %>% 
     select(-time) %>% 
     bind_cols(sum_stat)
+  
+  ## Format output
+  sum_stat <- sum_stat %>%
+    rename_at(.vars = colnames(.)[!grepl("epi_", colnames(.))], .funs = funs(paste0("Final size: ", .))) %>% 
+    rename(`Epidemic peak time` = epi_peak_time,
+           `Epidemic peak` = epi_peak_size,
+           `Epidemic duration` = epi_dur)
   
   return(sum_stat)
 }
