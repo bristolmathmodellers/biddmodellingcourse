@@ -60,6 +60,8 @@ plot_model <- function(sim, facet = TRUE, interactive = FALSE) {
   if (interactive) {
     plot <- plotly_build(plot)
     plot$elementId <- NULL
+    
+    plot
   }else{
     plot
   }
