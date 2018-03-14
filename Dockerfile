@@ -9,4 +9,4 @@ RUN Rscript -e 'install.packages(c("packrat", "caTools"))'
 
 RUN Rscript -e 'devtools::install_deps("/home/rstudio/biddmodellingcourse", dependencies = TRUE, upgrade = TRUE)'
 
-RUN Rscript -e 'devtools::install_github("hadley/pkgdown")'
+RUN Rscript -e 'devtools::install_github("r-lib/pkgdown")'
