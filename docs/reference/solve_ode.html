@@ -18,13 +18,18 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="A Simple Wrapper for lsoda — solve_ode" />
+
+<meta property="og:description" content="This function acts as a simple wrapper for lsoda, allowing for multiple parameter sets and
+initial conditions. It also allows lsoda to be used within the biddmodellingcourse framework." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -95,6 +100,9 @@
       <a href="../articles/tb_fact_sheet.html">Tuberculosis</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="http://www.seabbs.co.uk/shiny/exploreidmodels/">Explore ID Models Interactively</a>
 </li>
       </ul>
       
@@ -194,18 +202,18 @@ the timestep used by the solver</p></td>
 <span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='fu'>c</span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>))
 
 <span class='fu'>solve_ode</span>(<span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>SI_ode</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>, <span class='no'>times</span>, <span class='kw'>as.data.frame</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 51 x 3
-#&gt;     time     S        I
-#&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
-#&gt;  1  0    99999     1.00
-#&gt;  2  1.00 99997     3.00
-#&gt;  3  2.00 99991     9.02
-#&gt;  4  3.00 99973    27.1 
-#&gt;  5  4.00 99919    81.4 
-#&gt;  6  5.00 99756   244   
-#&gt;  7  6.00 99270   730   
-#&gt;  8  7.00 97839  2161   
-#&gt;  9  8.00 93778  6222   
-#&gt; 10  9.00 83382 16618   
+#&gt;     time      S        I
+#&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+#&gt;  1    0. 99999.     1.00
+#&gt;  2    1. 99997.     3.00
+#&gt;  3    2. 99991.     9.02
+#&gt;  4    3. 99973.    27.1 
+#&gt;  5    4. 99919.    81.4 
+#&gt;  6    5. 99756.   244.  
+#&gt;  7    6. 99270.   730.  
+#&gt;  8    7. 97839.  2161.  
+#&gt;  9    8. 93778.  6222.  
+#&gt; 10    9. 83382. 16618.  
 #&gt; # ... with 41 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -225,7 +233,7 @@ the timestep used by the solver</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Sam Abbott, Josephine Walker, Ellen Brooks-Pollock.</p>
+  <p>Developed by Sam Abbott, Josephine Walker.</p>
 </div>
 
 <div class="pkgdown">
@@ -237,3 +245,4 @@ the timestep used by the solver</p></td>
 
   </body>
 </html>
+

@@ -10,3 +10,8 @@ RUN Rscript -e 'install.packages(c("packrat", "caTools"))'
 RUN Rscript -e 'devtools::install_deps("/home/rstudio/biddmodellingcourse", dependencies = TRUE, upgrade = TRUE)'
 
 RUN Rscript -e 'devtools::install_github("r-lib/pkgdown")'
+
+RUN Rscript -e 'devtools::install_github("bristolmathmodellers/biddmodellingcourse")'
+
+RUN Rscript -e 'setwd("/home/rstudio/offerratetracker"); install.packages("packrat"); packrat::snapshot()'
+

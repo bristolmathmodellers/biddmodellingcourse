@@ -25,6 +25,8 @@ navbar:
       menu:
       -  text: Tuberculosis
          href: articles/tb_fact_sheet.html     
+    - text: "Explore ID Models Interactively"
+      href: http://www.seabbs.co.uk/shiny/exploreidmodels/     
   right:
     - icon: fa-file-code-o 
       text: "Functions"

@@ -21,15 +21,15 @@ git clone https://github.com/bristolmathmodellers/biddmodellingcourse.git
 -   Install the BIDD modelling short course from github using the R terminal:
 
 ``` r
-# install.packages("devtools")
+install.packages("devtools")
 devtools::install_github("bristolmathmodellers/biddmodellingcourse")
 ```
 
 -   Install the packages required for the course (again in the R terminal):
 
 ``` r
-# install.packages("devtools")
-devtools::install_deps(dependencies = TRUE)
+install.packages("packrat")
+packrat::restore() 
 ```
 
 -   After installation is complete start the first [practical](https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html). For practicals that require coding, follow along interactively using the provided notebooks (available in the `vignettes` folder).

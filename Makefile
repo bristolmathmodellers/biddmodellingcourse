@@ -5,11 +5,11 @@ MAN = $(man)
 VIGNETTES = $(wildcard vignettes/*)
 R = $(wildcard R/*)
 
-all: $(R) build_vignettes README.md $(VIGNETTES)
+all: build_package build_vignettes README.md build_site
 
 
 #build update documents and build package
-$(R): $(MAN)
+build_package:
      Rscript -e 'devtools::document()'
 		 Rscript -e 'devtools::install()'
 
@@ -23,8 +23,5 @@ README.md: README.Rmd
 build_vignettes:
 		cd vignettes && make
 
-#build pkgdown site
-.PHONY: build_site
-
-$(VIGNETTES): build_site
+build_site:
      Rscript -e 'pkgdown::build_site()'
