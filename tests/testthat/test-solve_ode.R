@@ -1,16 +1,20 @@
 context("solve_ode.R")
 
 ## Intialise
-N = 100000
+N = 1000
 I_0 = 1
 S_0 = N - I_0
-R_0 = 1.1
+R_0 = 3
 beta = R_0
 
 ##Time for model to run over
 tbegin = 0
 tend = 50
 times <- seq(tbegin, tend, 1)
+
+##Vectorise input
+parameters <- as.matrix(c(beta = beta))
+inits <- as.matrix(c(S = S_0, I = I_0))
 
 test <- solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
 test <- head(test)

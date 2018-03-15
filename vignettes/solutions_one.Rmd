@@ -1,0 +1,55 @@
+---
+title: "Solutions 1: Modelling Tuberculosis in England and Wales"
+author: "Sam Abbott, Katy Turner"
+output: 
+      html_document:
+      word_document:
+vignette: >
+  %\VignetteIndexEntry{Solutions 1: Modelling Tuberculosis in England and Wales}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+bibliography: resources/library.bib  
+csl: resources/bmj.csl
+---
+
+```{r packages, include = FALSE}
+library(biddmodellingcourse)
+```
+
+
+The models outlined below are possible solutions to practical 1. However, the construction of dynamic models needs to consider the study question which they will be used to answer and because of this there is no single correct model for any given disease. Possible modelling questions are, 
+
+1. A new point of care test for TB has been developed. This test can detect resistance to all first line TB treatments with 100% sensitivitiy (true positive rate) and 50% specificity (true negative rate). What impact will this have on TB incidence?
+1. There has been a prolonged shortage of the BCG vaccine, now that there is plentiful supply should a catch up program be implemented for those that missed vaccination? A prolonged shortage of BCG vaccine.
+1. Tuberculosis screening for all new migrants has been proposed as a new method of TB control. Evaluate the impact of this intervention.
+
+# Parsimonous Model of Tuberculosis (TB)
+
+
+The susceptible, exposed (latently infected), infectious and recovered (SEIR) model of TB is the simplest model that can be constructed which still reflects the known dynamics of TB[@Brooks-Pollock2010]. As TB has a long latent period, with cases potentially remaining infected but not actively symptomatic for many years, it is generally neccessary to include demographic processes in any model of TB. 
+
+![`r pretty_figref("model_diag", "An SEIR model of TB transmission, including simple demographic processes")`](./resources/SEIR_flow_diag.png)
+
+# Towards a More Complex Model of TB
+
+Whilst latency can be simplistically modelled as a single population compartment this does not reflect the varying risk of activation observed in those latently infected. A more realistic modelling approach is to allow for two latent stages, one at high risk of progression to infectious disease, and one at significantly lower risk of progression to active disease. This is commonly modelled as a period of high risk (H) directly after infection (lasting 1-2 years), followed by a longer period of low risk (L). This is represented in the following flow diagram. Reinfection of low risk latent cases is also modelled with the assumption that they reenter the high risk population.
+
+![`r pretty_figref("SHLIR-diag", "An SHLIR model of TB transmission, including simple demographic processes")`](./resources/SHLIR_flow_diag.png)
+
+# A Complex Model of TB
+
+In England and Wales the distribution of TB cases is highly hetergeneous with the majority of cases occuring in the non-UK born, because of this a model which assumes homogenous mixing may fail to capture the observed dynamics of TB. An approach to resolve this is to include risk structure by stratifying the model into two seperate population groups (here UK born and non-UK born). The flow diagram for this model is show below. This model also includes treatment, and reinfection for recovered individuals.
+
+![`r pretty_figref("complex_SHLIR_diag", "A realistic SHLIR model of TB transmission, including simple demographic processes")`](./resources/SHLIR_real_flow_diag.png)
+
+`r pretty_figref("complex_SHLIR_diag")` does not include the interaction between the high and low risk subgroups as this is through the force of infection. The force of infection is defined as,
+
+\[ \lambda_i = \beta \sum_{j = L, H}M_{ij}I_j \]
+
+Where $\lambda_i$ is the force of infection in each risk group ($i = L, H$) and $M_{LH}$ is the mixing rate between risk groups. It may be assumed that within group contact rates are equivalent and defined such that,
+
+\[ M_{ii} = 1 \]
+
+Data or expert knowledge is then required to parameterise the between group mixing ($M_{ij}$, where $i \neq j$).
+
+# References

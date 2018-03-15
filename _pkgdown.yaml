@@ -12,15 +12,15 @@ navbar:
     - text: "Practicals"
       menu: 
       -  text: Practical 1 - Designing a Model
-         href: articles/practical_1.html
+         href: articles/practical_one.html
       -  text: Practical 2 - Compartmental Models to Equations
-         href: articles/practical_2.html
+         href: articles/practical_two.html
     - text: "Solutions"
       menu: 
       -  text: Solutions 1 - Designing a Model
-         href: articles/solutions_1.html
+         href: articles/solutions_one.html
       -  text: Solutions 2 - Compartmental Models to Equations
-         href: articles/solutions_2.html
+         href: articles/solutions_two.html
     - text: "Fact Sheets"
       menu:
       -  text: Tuberculosis

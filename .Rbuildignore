@@ -1,4 +1,4 @@
-^packrat/
+^packrat/$
 ^\.Rprofile$
 ^.*\.Rproj$
 ^\.Rproj\.user$
@@ -9,3 +9,4 @@
 Dockerfile$
 ^vignettes/resources/$
 ^_pkgdown\.yaml$
+^packrat/

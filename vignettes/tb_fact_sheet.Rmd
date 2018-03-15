@@ -5,7 +5,7 @@ output:
       html_document:
       word_document:
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Tuberculosis}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 bibliography: resources/library.bib  
@@ -13,9 +13,8 @@ csl: resources/bmj.csl
 ---
 
 ```{r packages, include = FALSE}
-library(tidyverse)
-library(tbinenglanddataclean)
-library(prettypublisher)
+library(biddmodellingcourse)
+library(dplyr)
 ```
 
 # Natural history of Tuberculosis
@@ -73,7 +72,7 @@ TB is a global disease with an estimated 10.4 million new cases in 2015, of whic
 TB incidence in England and Wales has decreased dramatically from a century ago (`r pretty_figref("incidence_tb")`, or see [http://www.seabbs.co.uk/shiny/TB_England_Wales](http://www.seabbs.co.uk/shiny/TB_England_Wales) for an interactive dashboard). However, in the past several decades, incidence rates have stabilised and have in fact increased since their lowest point in the 1990's. In 2000 there were 6044 notified TB cases in England, increasing to a maximum of 8280 notified TB cases in 2011. Since then, notifications have declined year on year [@PHE2016a]. `r pretty_figref("incidence_tb")` includes the interventions discussed above (`r pretty_tabref("intevention_table")`) and indicates that the introduction of several antibiotics and BCG vaccination in the 1950's may have led to an extended decrease in incidence.
 
 ```{r plot-incidence, echo = FALSE, warning = FALSE, message = FALSE, dpi = 300, fig.height = 10, fig.width = 10, fig.cap = pretty_figref("incidence_tb", "TB notifications in England and Wales from 1913 to 2016, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention, more information on each intervention is available in the corresponding table")}
-tbinenglanddataclean::plot_historic_tb_ew()
+biddmodellingcourse::plot_historic_tb_ew()
 ```
 
 ## Heterogeneity of TB 
@@ -110,7 +109,7 @@ prop_extra_pil_2016 <- prop_extra_pul %>%
 `r pretty_figref("prop_pul")` shows that since the 1980's the proportion of extra-pulmonary TB compared to pulmonary TB has increased from `r prop_extra_pil_1982` in 1982 to `r prop_extra_pil_2016` in 2016. This may be attributed to the age distribution of TB cases changing, as different age groups are more likely to progress to pulmonary vs extra-pulmonary TB. It may also be related to the increase of non-UK born cases, as a higher proportion of non-UK born cases have extra-pulmonary disease only (51.4%, 2,103/4,089, in 2016), compared to UK born cases (31.9%, 467/1,465, in 2016) [@PHE2017]. For more details on TB in England see the Public Health England 2017 TB report, from which the summary data discussed above was extracted [@PHE2017]. 
 
 ```{r plot-prop-pul, echo = FALSE, message = FALSE, warning = FALSE, dpi = 300, fig.height = 10, fig.width = 10, fig.cap = pretty_figref("prop_pul", caption = "From 1913 until 1981 the figure shows the proportion respiratory vs. non-respiratory cases and from 1982 it shows the proportion of pulmonary vs. non-pulmonary TB.")}
-tbinenglanddataclean::plot_historic_prop_pul_tb()
+biddmodellingcourse::plot_historic_prop_pul_tb()
 ```
 
 # References

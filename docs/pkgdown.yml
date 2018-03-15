@@ -2,10 +2,10 @@ pandoc: 1.19.2.1
 pkgdown: 0.1.0.9000
 pkgdown_sha: b2313f0ad7bcc2deb563a850c1f0cb3f6a9df79e
 articles:
-  practical_1: practical_1.html
-  practical_2: practical_2.html
-  solutions_1: solutions_1.html
-  solutions_2: solutions_2.html
+  practical_one: practical_one.html
+  practical_two: practical_two.html
+  solutions_one: solutions_one.html
+  solutions_two: solutions_two.html
   tb_fact_sheet: tb_fact_sheet.html
 urls:
   reference: https://bristolmathmodellers.github.io/biddmodellingcourse//reference

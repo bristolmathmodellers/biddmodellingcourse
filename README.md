@@ -25,13 +25,6 @@ install.packages("devtools")
 devtools::install_github("bristolmathmodellers/biddmodellingcourse")
 ```
 
--   Install the packages required for the course (again in the R terminal):
-
-``` r
-install.packages("packrat")
-packrat::restore() 
-```
-
 -   After installation is complete start the first [practical](https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html). For practicals that require coding, follow along interactively using the provided notebooks (available in the `vignettes` folder).
 
 ### Docker

@@ -9,7 +9,7 @@
 #'
 #' @return A tibble of summary information for a model simulation.
 #' @export
-#' @importFrom dplyr filter pull arrange select bind_cols slice rename rename_at
+#' @importFrom dplyr filter pull arrange select bind_cols slice rename rename_at funs
 #' @importFrom tibble tibble
 #' @import magrittr 
 #' @examples

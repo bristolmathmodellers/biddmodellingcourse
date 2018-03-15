@@ -1,7 +1,7 @@
 Package: biddmodellingcourse
 Type: Package
 Title: Practicals and Code for the BIDD Modelling Short Course
-Version: 0.1.9000
+Version: 0.5.0
 Authors@R: c(person("Sam Abbott", role = c("aut", "cre"),
                      email = "contact@samabbott.co.uk"),
              person("Josephine Walker", role = "aut"))
@@ -11,24 +11,22 @@ License: GPL-3 | file LICENSE
 Imports:
     dplyr,
     tibble,
-    deSolve,
     purrr,
+    deSolve,
     ggplot2,
     viridis,
     plotly,
     magrittr,
     viridis,
-    tidyr
+    tidyr,
+    scales,
+    prettypublisher
 Suggests: knitr,
     rmarkdown,
     testthat,
-    tidyverse,
-    prettypublisher,
-    tbinenglanddataclean
+    readr
 Remotes:
-    seabbs/prettypublisher,
-    seabbs/tbinenglanddataclean
-    tidyverse/dplyr
+    seabbs/prettypublisher
 VignetteBuilder: knitr
 URL: https://bristolmathmodellers.github.io/biddmodellingcourse, 
      https://github.com/bristolmathmodellers/biddmodellingcourse
