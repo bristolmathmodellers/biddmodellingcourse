@@ -26,7 +26,8 @@ Suggests: knitr,
     testthat,
     readr
 Remotes:
-    seabbs/prettypublisher
+    seabbs/prettypublisher,
+    tidyverse/ggplot2
 VignetteBuilder: knitr
 URL: https://bristolmathmodellers.github.io/biddmodellingcourse, 
      https://github.com/bristolmathmodellers/biddmodellingcourse
