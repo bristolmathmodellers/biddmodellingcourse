@@ -7,8 +7,8 @@ ADD . /home/rstudio/biddmodellingcourse
 
 RUN Rscript -e 'devtools::install_deps("/home/rstudio/biddmodellingcourse", dependencies = TRUE, upgrade = TRUE)'
 
-RUN Rscript -e 'setwd("/home/rstudio/offerratetracker"); devtools::install_github("r-lib/pkgdown")'
+RUN Rscript -e 'devtools::install_github("r-lib/pkgdown")'
 
-RUN Rscript -e 'setwd("/home/rstudio/offerratetracker"); devtools::install_github("bristolmathmodellers/biddmodellingcourse")'
+RUN Rscript -e 'devtools::install_github("bristolmathmodellers/biddmodellingcourse")'
 
 
