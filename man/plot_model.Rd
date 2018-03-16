@@ -4,10 +4,15 @@
 \alias{plot_model}
 \title{Plot Compartment Populations over Time for a Model Simulation}
 \usage{
-plot_model(sim, facet = TRUE, interactive = FALSE)
+plot_model(sim, prev_sim = NULL, model_labels = NULL, facet = TRUE,
+  interactive = FALSE)
 }
 \arguments{
 \item{sim}{A tibble of model output as formated by \code{\link[biddmodellingcourse]{solve_ode}}}
+
+\item{prev_sim}{A second tibble of model output formated as for \code{sim}. Used to compare to model runs.}
+
+\item{model_labels}{A character vector of model names, defaults to \code{c("Current", "Previous")}.}
 
 \item{facet}{Logical, defaults to \code{TRUE}. If \code{FALSE} then the plot will not be facetted
 otherwise it will be.}
@@ -44,4 +49,18 @@ sim <- solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
 plot_model(sim, facet = FALSE, interactive = FALSE)
 
 plot_model(sim, facet = TRUE, interactive = FALSE)
+
+## Compare with an updated model run
+
+#'## Intialise
+R_0 = 1.3
+beta = R_0
+parameters <- as.matrix(c(beta = beta))
+
+new_sim <- solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
+
+
+plot_model(new_sim,sim, facet = FALSE, interactive = FALSE)
+
+plot_model(new_sim, sim, facet = TRUE, interactive = FALSE)
 }
