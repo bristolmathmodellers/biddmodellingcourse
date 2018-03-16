@@ -24,7 +24,8 @@ Imports:
 Suggests: knitr,
     rmarkdown,
     testthat,
-    readr
+    readr,
+    covr
 Remotes:
     seabbs/prettypublisher,
     tidyverse/ggplot2

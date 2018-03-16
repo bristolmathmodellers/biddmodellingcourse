@@ -1,9 +1,10 @@
 library(readr)
+library(tibble)
 
 ## TB notification data from england and wales
 ## sourced from https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/464852/TB_case_notifications_1913_to_2014.pdf
 
-tb_not_ew <-  data_frame(year = c(1913:2016),
+tb_not_ew <-  tibble(year = c(1913:2016),
                          respiratory = c(80788,
                                          76109,
                                          68309,
@@ -228,6 +229,6 @@ tb_not_ew <-  data_frame(year = c(1913:2016),
 devtools::use_data(tb_not_ew, overwrite = TRUE)
 
 #' Add as raw csv
-write_csv(tb_not_ew, "./data-raw/tb_not_ew.csv")
+write_csv(tb_not_ew, "tb_not_ew.csv")
 
 

@@ -10,3 +10,9 @@ Dockerfile$
 ^vignettes/resources/$
 ^_pkgdown\.yaml$
 ^packrat/
+^appveyor\.yml$
+^data-raw$
+^Makefile$
+^vignettes/Makefile$
+^vignettes/\.Rprofile$
+^codecov\.yml$

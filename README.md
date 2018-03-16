@@ -3,29 +3,38 @@
 Bristol Infectious Disease Dynamics Modelling Course
 ====================================================
 
-[![Build Status](https://travis-ci.org/bristolmathmodellers/biddmodellingcourse.svg?branch=master)](https://travis-ci.org/bristolmathmodellers/biddmodellingcourse)
+[![Build Status](https://travis-ci.org/bristolmathmodellers/biddmodellingcourse.svg?branch=master)](https://travis-ci.org/bristolmathmodellers/biddmodellingcourse) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/bristolmathmodellers/biddmodellingcourse?branch=master&svg=true)](https://ci.appveyor.com/project/bristolmathmodellers/biddmodellingcourse) [![Coverage Status](https://img.shields.io/codecov/c/github/bristolmathmodellers/biddmodellingcourse/master.svg)](https://codecov.io/github/bristolmathmodellers/biddmodellingcourse?branch=master)
 
-This package contains the practicals for the [BIDD](http://www.bristol.ac.uk/social-community-medicine/research/groups/bidd/) modelling short course at the University of Bristol. It also contains the functions required to run the practicals and solutions.
+The `biddmodellingcourse` package contains the practicals for the [BIDD](http://www.bristol.ac.uk/social-community-medicine/research/groups/bidd/) modelling short course at the University of Bristol. It also contains the functions required to run the practicals and solutions.
 
-Getting Started
----------------
+Getting Started - On The Day
+----------------------------
 
--   Download the package folder from [github](https://github.com/bristolmathmodellers/biddmodellingcourse/archive/master.zip) or use `git clone`, as follows, in the command line.
+-   The practicals and code should be on the memory stick given to you at the start of the the course. Open the course folder and then open the `biddmodellingcourse` folder.
 
-``` bash
-git clone https://github.com/bristolmathmodellers/biddmodellingcourse.git
-```
+-   Verify that you have a working installation of both [R](https://www.r-project.org/) and [Rstudio](https://www.rstudio.com/products/rstudio/download/#download), then click on the `biddmodellingcourse.Rproj` project. This should open an instance of Rstudio.
 
--   Verify that you have a working installation of both [R](https://www.r-project.org/) and [Rstudio](https://www.rstudio.com/products/rstudio/download/#download), then navigate to the `biddmodellingcourse` folder and click on the `biddmodellingcourse.Rproj` project. This should open an instance of Rstudio.
-
--   Install the BIDD modelling short course from github using the R terminal:
+-   Install the BIDD modelling short course from GitHub using the R terminal (this may take several minutes, if you are having problems talk to a course instructor):
 
 ``` r
 install.packages("devtools")
 devtools::install_github("bristolmathmodellers/biddmodellingcourse")
 ```
 
--   After installation is complete start the first [practical](https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html). For practicals that require coding, follow along interactively using the provided notebooks (available in the `vignettes` folder).
+-   You are now ready to start the practicals (see the handouts or the course website (<https://bristolmathmodellers.github.io/biddmodellingcourse/>)). For practicals that require coding, follow along interactively using the provided notebooks (available in the `vignettes` folder).
+
+-   The course practicals make use of [R notebooks](https://rmarkdown.rstudio.com/r_notebooks.html), these allow text and code to be intermingled in a single document. Code is highlighted and separated from the text using \`\`\`. To run the code in these chunks click on the green arrow in the right hand side of the chunk, or select the chunk and press enter. To run all code chunks above a given chunk press the grey arrow pointing downwards. The output from each code chunk will be displayed below the code chunk.
+
+Getting Started - Remote Set-up
+-------------------------------
+
+-   Download the package folder from <https://github.com/bristolmathmodellers/biddmodellingcourse/archive/master.zip> or use `git clone`, as follows, in the command line (not the R terminal).
+
+``` bash
+git clone https://github.com/bristolmathmodellers/biddmodellingcourse.git
+```
+
+-   Now follow the getting started on the day instructions above.
 
 ### Docker
 
@@ -36,21 +45,3 @@ docker run -d -p 8787:8787 --name biddmodellingcourse -e USER=biddmodellingcours
 ```
 
 The rstudio client can be found on port `:8787` at your local machines ip. The default username:password is biddmodellingcourse:biddmodellingcourse, set the user with `-e USER=username`, and the password with `- e PASSWORD=newpasswordhere`. The default is to save the analysis files into the user directory.
-
-To run a plain R terminal use:
-
-``` bash
-docker run --rm -it --user biddmodellingcourse biddmodellingcourse /usr/bin/R
-```
-
-To run a plain bash session:
-
-``` bash
-docker run --rm -it --user biddmodellingcourse biddmodellingcourse /bin/bash
-```
-
-To connect as root:
-
-``` bash
-docker exec -ti -u root biddmodellingcourse bash
-```

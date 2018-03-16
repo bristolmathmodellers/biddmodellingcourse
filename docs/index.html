@@ -42,10 +42,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/practical_one.html">Practical 1 - Designing a Model</a>
+      <a href="articles/practical-one.html">Practical 1 - Designing a Model</a>
     </li>
     <li>
-      <a href="articles/practical_two.html">Practical 2 - Compartmental Models to Equations</a>
+      <a href="articles/practical-two.html">Practical 2 - Compartmental Models to Equations</a>
     </li>
   </ul>
 </li>
@@ -57,10 +57,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/solutions_one.html">Solutions 1 - Designing a Model</a>
+      <a href="articles/solutions-one.html">Solutions 1 - Designing a Model</a>
     </li>
     <li>
-      <a href="articles/solutions_two.html">Solutions 2 - Compartmental Models to Equations</a>
+      <a href="articles/solutions-two.html">Solutions 2 - Compartmental Models to Equations</a>
     </li>
   </ul>
 </li>
@@ -72,7 +72,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/tb_fact_sheet.html">Tuberculosis</a>
+      <a href="articles/tb-fact-sheet.html">Tuberculosis</a>
     </li>
   </ul>
 </li>
@@ -116,22 +116,31 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#bristol-infectious-disease-dynamics-modelling-course" class="anchor"></a>Bristol Infectious Disease Dynamics Modelling Course</h1></div>
 
-<p>This package contains the practicals for the <a href="http://www.bristol.ac.uk/social-community-medicine/research/groups/bidd/">BIDD</a> modelling short course at the University of Bristol. It also contains the functions required to run the practicals and solutions.</p>
-<div id="getting-started" class="section level2">
+<p>The <code>biddmodellingcourse</code> package contains the practicals for the <a href="http://www.bristol.ac.uk/social-community-medicine/research/groups/bidd/">BIDD</a> modelling short course at the University of Bristol. It also contains the functions required to run the practicals and solutions.</p>
+<div id="getting-started---on-the-day" class="section level2">
 <h2 class="hasAnchor">
-<a href="#getting-started" class="anchor"></a>Getting Started</h2>
+<a href="#getting-started---on-the-day" class="anchor"></a>Getting Started - On The Day</h2>
 <ul>
-<li>Download the package folder from <a href="https://github.com/bristolmathmodellers/biddmodellingcourse/archive/master.zip">github</a> or use <code>git clone</code>, as follows, in the command line.</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> clone https://github.com/bristolmathmodellers/biddmodellingcourse.git</code></pre></div>
-<ul>
-<li><p>Verify that you have a working installation of both <a href="https://www.r-project.org/">R</a> and <a href="https://www.rstudio.com/products/rstudio/download/#download">Rstudio</a>, then navigate to the <code>biddmodellingcourse</code> folder and click on the <code>biddmodellingcourse.Rproj</code> project. This should open an instance of Rstudio.</p></li>
-<li><p>Install the BIDD modelling short course from github using the R terminal:</p></li>
+<li><p>The practicals and code should be on the memory stick given to you at the start of the the course. Open the course folder and then open the <code>biddmodellingcourse</code> folder.</p></li>
+<li><p>Verify that you have a working installation of both <a href="https://www.r-project.org/">R</a> and <a href="https://www.rstudio.com/products/rstudio/download/#download">Rstudio</a>, then click on the <code>biddmodellingcourse.Rproj</code> project. This should open an instance of Rstudio.</p></li>
+<li><p>Install the BIDD modelling short course from GitHub using the R terminal (this may take several minutes, if you are having problems talk to a course instructor):</p></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"devtools"</span>)
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"bristolmathmodellers/biddmodellingcourse"</span>)</code></pre></div>
 <ul>
-<li>After installation is complete start the first <a href="https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html">practical</a>. For practicals that require coding, follow along interactively using the provided notebooks (available in the <code>vignettes</code> folder).</li>
+<li><p>You are now ready to start the practicals (see the handouts or the course website (<a href="https://bristolmathmodellers.github.io/biddmodellingcourse/" class="uri">https://bristolmathmodellers.github.io/biddmodellingcourse/</a>)). For practicals that require coding, follow along interactively using the provided notebooks (available in the <code>vignettes</code> folder).</p></li>
+<li><p>The course practicals make use of <a href="https://rmarkdown.rstudio.com/r_notebooks.html">R notebooks</a>, these allow text and code to be intermingled in a single document. Code is highlighted and separated from the text using ```. To run the code in these chunks click on the green arrow in the right hand side of the chunk, or select the chunk and press enter. To run all code chunks above a given chunk press the grey arrow pointing downwards. The output from each code chunk will be displayed below the code chunk.</p></li>
+</ul>
+</div>
+<div id="getting-started---remote-set-up" class="section level2">
+<h2 class="hasAnchor">
+<a href="#getting-started---remote-set-up" class="anchor"></a>Getting Started - Remote Set-up</h2>
+<ul>
+<li>Download the package folder from <a href="https://github.com/bristolmathmodellers/biddmodellingcourse/archive/master.zip" class="uri">https://github.com/bristolmathmodellers/biddmodellingcourse/archive/master.zip</a> or use <code>git clone</code>, as follows, in the command line (not the R terminal).</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> clone https://github.com/bristolmathmodellers/biddmodellingcourse.git</code></pre></div>
+<ul>
+<li>Now follow the getting started on the day instructions above.</li>
 </ul>
 <div id="docker" class="section level3">
 <h3 class="hasAnchor">
@@ -139,12 +148,6 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <p>This package was developed in a docker container based on the <a href="https://hub.docker.com/r/rocker/tidyverse/">tidyverse</a> docker image. Docker containers are lightweight, stand-alone, executable packages of a piece of software that includes everything needed to run it (see <a href="https://www.docker.com/what-container">here</a> for details). To run the docker image run (with an active docker daemon running):</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run -d -p 8787:8787 --name biddmodellingcourse -e USER=biddmodellingcourse -e PASSWORD=biddmodellingcourse seabbs/biddmodellingcourse</code></pre></div>
 <p>The rstudio client can be found on port <code>:8787</code> at your local machines ip. The default username:password is biddmodellingcourse:biddmodellingcourse, set the user with <code>-e USER=username</code>, and the password with <code>- e PASSWORD=newpasswordhere</code>. The default is to save the analysis files into the user directory.</p>
-<p>To run a plain R terminal use:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run --rm -it --user biddmodellingcourse biddmodellingcourse /usr/bin/R</code></pre></div>
-<p>To run a plain bash session:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run --rm -it --user biddmodellingcourse biddmodellingcourse /bin/bash</code></pre></div>
-<p>To connect as root:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> exec -ti -u root biddmodellingcourse bash</code></pre></div>
 </div>
 </div>
 </div>
@@ -170,6 +173,8 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/bristolmathmodellers/biddmodellingcourse"><img src="https://travis-ci.org/bristolmathmodellers/biddmodellingcourse.svg?branch=master" alt="Build Status"></a></li>
+<li><a href="https://ci.appveyor.com/project/bristolmathmodellers/biddmodellingcourse"><img src="https://ci.appveyor.com/api/projects/status/github/bristolmathmodellers/biddmodellingcourse?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
+<li><a href="https://codecov.io/github/bristolmathmodellers/biddmodellingcourse?branch=master"><img src="https://img.shields.io/codecov/c/github/bristolmathmodellers/biddmodellingcourse/master.svg" alt="Coverage Status"></a></li>
 </ul>
 </div>
 

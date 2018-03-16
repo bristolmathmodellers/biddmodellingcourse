@@ -12,19 +12,19 @@ navbar:
     - text: "Practicals"
       menu: 
       -  text: Practical 1 - Designing a Model
-         href: articles/practical_one.html
+         href: articles/practical-one.html
       -  text: Practical 2 - Compartmental Models to Equations
-         href: articles/practical_two.html
+         href: articles/practical-two.html
     - text: "Solutions"
       menu: 
       -  text: Solutions 1 - Designing a Model
-         href: articles/solutions_one.html
+         href: articles/solutions-one.html
       -  text: Solutions 2 - Compartmental Models to Equations
-         href: articles/solutions_two.html
+         href: articles/solutions-two.html
     - text: "Fact Sheets"
       menu:
       -  text: Tuberculosis
-         href: articles/tb_fact_sheet.html     
+         href: articles/tb-fact-sheet.html     
     - text: "Explore ID Models Interactively"
       href: http://www.seabbs.co.uk/shiny/exploreidmodels/     
   right:
