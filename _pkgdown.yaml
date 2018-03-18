@@ -34,3 +34,21 @@ navbar:
     - icon: fa-github fa-lg
       text: "Github"
       href: https://github.com/bristolmathmodellers/biddmodellingcourse/
+      
+      
+  reference:    
+    - title: Data
+      desc:  Data provided for the course
+      contents:
+      - tb_not_ew
+      - tb_interventions_timeline
+    - title: Modelling Functions
+      desc: Models and modelling functions
+      contents:
+      - SI_ode
+      - solve_ode
+      - summarise_model
+    - title: Plotting Functions
+      desc: Functions for plotting models and course data
+      contents:
+      - starts_with("plot_")
