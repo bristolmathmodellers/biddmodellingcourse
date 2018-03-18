@@ -8,6 +8,7 @@
 ^docs$
 Dockerfile$
 ^vignettes/resources/$
+^vignettes/drafts/$
 ^_pkgdown\.yaml$
 ^packrat/
 ^appveyor\.yml$
@@ -16,3 +17,4 @@ Dockerfile$
 ^vignettes/Makefile$
 ^vignettes/\.Rprofile$
 ^codecov\.yml$
+

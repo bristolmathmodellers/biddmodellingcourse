@@ -17,7 +17,6 @@ Imports:
     viridis,
     plotly,
     magrittr,
-    viridis,
     tidyr,
     scales,
     prettypublisher
