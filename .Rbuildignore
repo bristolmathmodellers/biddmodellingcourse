@@ -17,4 +17,4 @@ Dockerfile$
 ^vignettes/Makefile$
 ^vignettes/\.Rprofile$
 ^codecov\.yml$
-
+^binder$
