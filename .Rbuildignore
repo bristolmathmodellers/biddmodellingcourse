@@ -9,6 +9,7 @@
 Dockerfile$
 ^vignettes/resources/$
 ^vignettes/drafts/$
+^vignettes/Makefile$
 ^_pkgdown\.yaml$
 ^packrat/
 ^appveyor\.yml$
