@@ -222,7 +222,7 @@
 <a class="sourceLine" id="cb6-3" data-line-number="3">times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb6-5" data-line-number="5">## see ?solve_ode for details</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">SEIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/biddmodellingcourse/topics/solve_ode">solve_ode</a></span>(<span class="dt">model =</span> SEIR_demo_ode, </a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">SEIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SEIR_demo_ode, </a>
 <a class="sourceLine" id="cb6-7" data-line-number="7">                                           <span class="dt">inits =</span> inits, </a>
 <a class="sourceLine" id="cb6-8" data-line-number="8">                                           <span class="dt">params =</span> parameters,</a>
 <a class="sourceLine" id="cb6-9" data-line-number="9">                                           <span class="dt">times =</span> times, </a>
@@ -232,12 +232,12 @@
 <a class="sourceLine" id="cb6-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of model simulation"</span>,</a>
 <a class="sourceLine" id="cb6-14" data-line-number="14">               <span class="dt">label =</span> <span class="st">"tab-1"</span>)</a></code></pre></div>
 <p>We then summarise the epidemic peak (<code>epi_peak</code>) and epidemic duration (<code>epi_dur</code>), along with population sizes at the end of the time period simulated.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/biddmodellingcourse/topics/summarise_model">summarise_model</a></span>(SEIR_sim) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(SEIR_sim) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"SEIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</a></code></pre></div>
 <p>Finally we plot the population in each model compartment over time.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">## For an interactive graph change interactive to TRUE</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">## Interactivity allows plot zooming and gives a tool tip providing the population sizr at any point.</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/biddmodellingcourse/topics/plot_model">plot_model</a></span>(SEIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb8-3" data-line-number="3">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(SEIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 </div>
 <div id="explore" class="section level3">
 <h3 class="hasAnchor">
@@ -314,7 +314,7 @@
 <a class="sourceLine" id="cb12-3" data-line-number="3">SHILR_times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb12-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb12-5" data-line-number="5">## see ?solve_ode for details</a>
-<a class="sourceLine" id="cb12-6" data-line-number="6">SHLIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/biddmodellingcourse/topics/solve_ode">solve_ode</a></span>(<span class="dt">model =</span> SHLIR_demo_ode, </a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">SHLIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SHLIR_demo_ode, </a>
 <a class="sourceLine" id="cb12-7" data-line-number="7">                                           <span class="dt">inits =</span> SHLIR_inits, </a>
 <a class="sourceLine" id="cb12-8" data-line-number="8">                                           <span class="dt">params =</span> SHLIR_parameters,</a>
 <a class="sourceLine" id="cb12-9" data-line-number="9">                                           <span class="dt">times =</span> SHILR_times, </a>
@@ -323,10 +323,10 @@
 <a class="sourceLine" id="cb12-12" data-line-number="12"><span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb12-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of SHLIR model simulation"</span>,</a>
 <a class="sourceLine" id="cb12-14" data-line-number="14">               <span class="dt">label =</span> <span class="st">"tab-1"</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/biddmodellingcourse/topics/summarise_model">summarise_model</a></span>(SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">## For an interactive graph change interactive to TRUE</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/biddmodellingcourse/topics/plot_model">plot_model</a></span>(SHLIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb14-2" data-line-number="2">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(SHLIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 </div>
 <div id="explore-1" class="section level3">
 <h3 class="hasAnchor">
@@ -447,7 +447,7 @@
 <a class="sourceLine" id="cb18-3" data-line-number="3">real_SHLIR_times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb18-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb18-5" data-line-number="5">## see ?solve_ode for details</a>
-<a class="sourceLine" id="cb18-6" data-line-number="6">real_SHLIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/biddmodellingcourse/topics/solve_ode">solve_ode</a></span>(<span class="dt">model =</span> real_SHLIR_demo_ode, </a>
+<a class="sourceLine" id="cb18-6" data-line-number="6">real_SHLIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> real_SHLIR_demo_ode, </a>
 <a class="sourceLine" id="cb18-7" data-line-number="7">                                           <span class="dt">inits =</span> real_SHLIR_inits, </a>
 <a class="sourceLine" id="cb18-8" data-line-number="8">                                           <span class="dt">params =</span> real_SHLIR_parameters,</a>
 <a class="sourceLine" id="cb18-9" data-line-number="9">                                           <span class="dt">times =</span> real_SHLIR_times, </a>
@@ -456,10 +456,10 @@
 <a class="sourceLine" id="cb18-12" data-line-number="12"><span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb18-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of model simulation"</span>,</a>
 <a class="sourceLine" id="cb18-14" data-line-number="14">               <span class="dt">label =</span> <span class="st">"tab-real_SHLIR"</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/biddmodellingcourse/topics/summarise_model">summarise_model</a></span>(real_SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(real_SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">## For an interactive graph change interactive to TRUE</a>
-<a class="sourceLine" id="cb20-2" data-line-number="2">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/biddmodellingcourse/topics/plot_model">plot_model</a></span>(real_SHLIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb20-2" data-line-number="2">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(real_SHLIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 </div>
 <div id="explore-2" class="section level3">
 <h3 class="hasAnchor">
