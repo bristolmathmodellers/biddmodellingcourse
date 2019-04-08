@@ -2,7 +2,7 @@ title: BIDD Modelling Course
 url: https://bristolmathmodellers.github.io/biddmodellingcourse/
 template:
   params:
-    bootswatch: flatly
+    bootswatch: lumen
 
 navbar:
   type: inverse

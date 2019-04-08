@@ -1,6 +1,6 @@
 pandoc: 1.19.2.1
-pkgdown: 0.1.0.9000
-pkgdown_sha: b2313f0ad7bcc2deb563a850c1f0cb3f6a9df79e
+pkgdown: 1.3.0.9000
+pkgdown_sha: a267beee11ac619011b359471c66178dc13685ab
 articles:
   practical-one: practical-one.html
   practical-two: practical-two.html

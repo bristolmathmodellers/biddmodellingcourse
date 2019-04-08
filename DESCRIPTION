@@ -1,7 +1,7 @@
 Package: biddmodellingcourse
 Type: Package
 Title: Practicals and Code for the BIDD Modelling Short Course
-Version: 0.5.0
+Version: 1.0.0
 Authors@R: c(person("Sam Abbott", role = c("aut", "cre"),
                      email = "contact@samabbott.co.uk"),
              person("Josephine Walker", role = "aut"))
@@ -26,13 +26,12 @@ Suggests: knitr,
     readr,
     covr
 Remotes:
-    seabbs/prettypublisher,
-    tidyverse/ggplot2
+    seabbs/prettypublisher
 VignetteBuilder: knitr
 URL: https://bristolmathmodellers.github.io/biddmodellingcourse, 
      https://github.com/bristolmathmodellers/biddmodellingcourse
 BugReports: https://github.com/bristolmathmodellers/biddmodellingcourse/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
