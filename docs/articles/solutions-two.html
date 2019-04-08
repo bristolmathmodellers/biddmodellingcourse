@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solutions 2: Compartmental Models to Equations • BIDD Modelling Course</title>
+<title>Solutions 2: Exploring Compartmental Model Dynamics • BIDD Modelling Course</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Solutions 2: Compartmental Models to Equations">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Solutions 2: Exploring Compartmental Model Dynamics">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -51,7 +51,10 @@
       <a href="../articles/practical-one.html">Practical 1 - Designing a Model</a>
     </li>
     <li>
-      <a href="../articles/practical-two.html">Practical 2 - Compartmental Models to Equations</a>
+      <a href="../articles/practical-two.html">Practical 2 - Exloring Compartmental Model Dynamics</a>
+    </li>
+    <li>
+      <a href="../articles/practical-three.html">Practical 3 - Compartmental Models to Equations</a>
     </li>
   </ul>
 </li>
@@ -66,7 +69,10 @@
       <a href="../articles/solutions-one.html">Solutions 1 - Designing a Model</a>
     </li>
     <li>
-      <a href="../articles/solutions-two.html">Solutions 2 - Compartmental Models to Equations</a>
+      <a href="../articles/solutions-two.html">Solutions 2 - Exloring Compartmental Model Dynamics</a>
+    </li>
+    <li>
+      <a href="../articles/solutions-three.html">Solutions 3 - Compartmental Models to Equations</a>
     </li>
   </ul>
 </li>
@@ -113,7 +119,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Solutions 2: Compartmental Models to Equations</h1>
+      <h1>Solutions 2: Exploring Compartmental Model Dynamics</h1>
                         <h4 class="author">Sam Abbott</h4>
             
       
@@ -128,9 +134,10 @@
 <h1 class="hasAnchor">
 <a href="#learning-objectives" class="anchor"></a>Learning Objectives</h1>
 <ol style="list-style-type: decimal">
-<li>Know how to translate a simple model flow diagram into equations.</li>
-<li>Understand how changing parameter values can change model dynamics.</li>
-<li>Extension: Know how to use a simple model scaffold to develop a more complex model.</li>
+<li>Understand how changing parameter values, and model structure, can influence model dynamics.</li>
+<li>Understand the dynamics of the SEIR model in detail.</li>
+<li>Understand the impact of risk group stratification on model dynamics.</li>
+<li>Understand some of the complex dynamics produced by a more realistic model.</li>
 </ol>
 </div>
 <div id="outline-for-session" class="section level1">
@@ -138,14 +145,10 @@
 <a href="#outline-for-session" class="anchor"></a>Outline for Session</h1>
 <ol style="list-style-type: decimal">
 <li>Set up (5 minutes)</li>
-<li>Explore the dynamics of a simple SEIR model (20 minutes)</li>
-<li>Extension exercises, to be completed in any order/combination;
-<ol style="list-style-type: decimal">
-<li>Explore the parameter space of multiple models using a web interface (25 minutes) (<em>not R based</em>).</li>
-<li>Add high and low risk latency to a SEIR model, and explore this models dynamics in comparison to the SEIR model (25 minutes) (<em>R based</em>).</li>
-<li>Translate a more realistic SHLIR model flow diagram to equations (25 minutes)(<em>this exercise involves implementing a complex model in R</em>).</li>
-</ol>
-</li>
+<li>Investigate the dynamics of a simple SEIR model (10 minutes)</li>
+<li>Explore the impact of adding high and low risk latency to a SEIR model, in comparison to the SEIR model (10 minutes).</li>
+<li>Investigate the complex dynamics of a more realistic SHLIR model (10 minutes) .</li>
+<li>Explore the parameter space of multiple models and try to understand some of the general implications of model structures on dynamics (20 minutes).</li>
 <li>Session wrap up (5 minutes)</li>
 </ol>
 </div>
@@ -154,210 +157,35 @@
 <a href="#solutions" class="anchor"></a>Solutions</h1>
 <p>The practical solutions are in <strong>bold</strong>, all code has been completed and the exercise models have been simmulated and summarised.</p>
 </div>
-<div id="exercise" class="section level1">
+<div id="set-up" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercise" class="anchor"></a>Exercise</h1>
+<a href="#set-up" class="anchor"></a>Set up</h1>
+<p>In order to more systematically explore the parameter space of multiple models we have provided an interactive interface. Start the interactive interface by running the following in <code>R</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny, <span class="dt">logical.return =</span> <span class="ot">TRUE</span>)) {
+  <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"shiny"</span>)
+  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)
+}
+shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/runUrl">runGitHub</a></span>(<span class="st">"exploreidmodels"</span>, <span class="st">"seabbs"</span>)</code></pre></div>
+<p>If having problems running the application then talk to an instructor and/or try the hosted web version (<a href="http://seabbs.co.uk/shiny/exploreidmodels/" class="uri">http://seabbs.co.uk/shiny/exploreidmodels/</a>).</p>
+<p>Use this interface to explore the some of the model that have already been discussed and to answer the following ec. Instructions for using the interactive interface can be found in the about section of the application.</p>
+</div>
+<div id="exercises" class="section level1">
+<h1 class="hasAnchor">
+<a href="#exercises" class="anchor"></a>Exercises</h1>
 <div id="a-simple-seir-model-of-tuberculosis-tb" class="section level2">
 <h2 class="hasAnchor">
 <a href="#a-simple-seir-model-of-tuberculosis-tb" class="anchor"></a>1. A Simple SEIR Model of Tuberculosis (TB)</h2>
-<p>As a first exercise we are going to run the simple SEIR model, as seen in the design a model practical, in R. If you have not installed the course package do this now with the following code (speak to an instructor if you are having issues with this step).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)
-devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"bristolmathmodellers/biddmodellingcourse"</span>)</code></pre></div>
-<p>Now load the course package,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(biddmodellingcourse)</code></pre></div>
-<p>For reference the SEIR model flow diagram seen in the first practical’s solutions.<span class="citation">[1]</span> The equations below are a translation of this into <code>R</code> code.</p>
+<p>As a first exercise, we are going to explore the simple SEIR model, as seen in the design a model practical, in R. For reference the SEIR model flow diagram seen in the first practical’s solutions.<span class="citation">[1]</span> The equations below are a translation of this into <code>R</code> code.</p>
 <div class="figure">
 <img src="resources/SEIR_flow_diag.png" alt="Figure 1: An SEIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 1: An SEIR model of TB transmission, including simple demographic processes</p>
-</div>
-<div id="populations-and-initialisation" class="section level3">
-<h3 class="hasAnchor">
-<a href="#populations-and-initialisation" class="anchor"></a>Populations and Initialisation</h3>
-<p>We first set up the initial populations for the Susceptible (<span class="math inline">\(S_0\)</span>), Latent (<span class="math inline">\(E_0\)</span>), Infected (<span class="math inline">\(I\)</span>), and Recovered (<span class="math inline">\(R\)</span>) compartments. We have initialised the model as an early stage epidemic with a single case of TB.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">inits =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(
-  <span class="dt">S =</span> <span class="dv">999</span>,
-  <span class="dt">E =</span> <span class="dv">0</span>,
-  <span class="dt">I =</span> <span class="dv">1</span>,
-  <span class="dt">R =</span> <span class="dv">0</span>
-)</code></pre></div>
-</div>
-<div id="parameters" class="section level3">
-<h3 class="hasAnchor">
-<a href="#parameters" class="anchor"></a>Parameters</h3>
-<p>We then specify the model parameters (with the units being years<sup>-1</sup>), varying these parameters will impact the model dynamics.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(
-  <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span>
-  <span class="dt">gamma =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="co"># Rate of progression to active symptoms </span>
-  <span class="dt">tau =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co"># Rate of recovery</span>
-  <span class="dt">mu =</span> <span class="dv">0</span> <span class="co"># Rate of natural mortality</span>
-)</code></pre></div>
-</div>
-<div id="equations" class="section level3">
-<h3 class="hasAnchor">
-<a href="#equations" class="anchor"></a>Equations</h3>
-<p>Finally we specify the model equations for each population compartment. This model incorporates simple demographic processes with a constant natural death rate from all compartments which is equal to the birth rate into the susceptible compartment.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SEIR_demo_ode &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, params) {
-
-  ## Specify model compartments
-  S &lt;-<span class="st"> </span>x[<span class="dv">1</span>]
-  E &lt;-<span class="st"> </span>x[<span class="dv">2</span>]
-  I &lt;-<span class="st"> </span>x[<span class="dv">3</span>]
-  R &lt;-<span class="st"> </span>x[<span class="dv">4</span>]
-
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/with">with</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">as.list</a></span>(params),{
-
-    ## Specify total population
-    N =<span class="st"> </span>S <span class="op">+</span><span class="st"> </span>E <span class="op">+</span><span class="st"> </span>I <span class="op">+</span><span class="st"> </span>R
-
-    ## Derivative Expressions
-    dS =<span class="st"> </span><span class="op">-</span>beta <span class="op">*</span><span class="st"> </span>S <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>S <span class="op">+</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>N
-    dE =<span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>S <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>gamma <span class="op">*</span><span class="st"> </span>E <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>E
-    dI =<span class="st"> </span>gamma <span class="op">*</span><span class="st"> </span>E <span class="op">-</span><span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>I
-    dR =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R
-
-    ## output
-    derivatives &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(dS, dE, dI, dR)
-
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(derivatives)
-  })
-}</code></pre></div>
-</div>
-<div id="simulate-and-summarise" class="section level3">
-<h3 class="hasAnchor">
-<a href="#simulate-and-summarise" class="anchor"></a>Simulate and Summarise</h3>
-<p>To simulate the model we specify the starting year (<code>begin_time</code>) and final year (<code>end_time</code>) and define a sequence over all intervening years. The model is then solved using <code><a href="https://www.rdocumentation.org/packages/deSolve/topics/lsoda">deSolve::lsoda</a></code> which is used within a simple wrapper function (see <code><a href="../reference/solve_ode.html">?solve_ode</a></code> for details). The resulting table summarises the simulation results for the first 5 years.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">begin_time &lt;-<span class="st"> </span><span class="dv">0</span>
-end_time &lt;-<span class="st"> </span><span class="dv">200</span>
-times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)
-
-## see ?solve_ode for details
-SEIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SEIR_demo_ode, 
-                                           <span class="dt">inits =</span> inits, 
-                                           <span class="dt">params =</span> parameters,
-                                           <span class="dt">times =</span> times, 
-                                           <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)
-SEIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of model simulation"</span>,
-               <span class="dt">label =</span> <span class="st">"tab-1"</span>)</code></pre></div>
-<table class="table">
-<caption>Table 1: First 5 years of model simulation</caption>
-<colgroup>
-<col width="9%">
-<col width="11%">
-<col width="11%">
-<col width="12%">
-<col width="12%">
-</colgroup>
-<thead><tr class="header">
-<th align="center">time</th>
-<th align="center">S</th>
-<th align="center">E</th>
-<th align="center">I</th>
-<th align="center">R</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="center">0</td>
-<td align="center">999</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">0</td>
-</tr>
-<tr class="even">
-<td align="center">1</td>
-<td align="center">996.4</td>
-<td align="center">2.334</td>
-<td align="center">0.8182</td>
-<td align="center">0.4317</td>
-</tr>
-<tr class="odd">
-<td align="center">2</td>
-<td align="center">993.7</td>
-<td align="center">4.359</td>
-<td align="center">1.033</td>
-<td align="center">0.8823</td>
-</tr>
-<tr class="even">
-<td align="center">3</td>
-<td align="center">990</td>
-<td align="center">6.976</td>
-<td align="center">1.524</td>
-<td align="center">1.51</td>
-</tr>
-<tr class="odd">
-<td align="center">4</td>
-<td align="center">984.4</td>
-<td align="center">10.84</td>
-<td align="center">2.33</td>
-<td align="center">2.458</td>
-</tr>
-<tr class="even">
-<td align="center">5</td>
-<td align="center">975.8</td>
-<td align="center">16.69</td>
-<td align="center">3.586</td>
-<td align="center">3.915</td>
-</tr>
-</tbody>
-</table>
-<p>We then summarise the epidemic peak (<code>epi_peak</code>) and epidemic duration (<code>epi_dur</code>), along with population sizes at the end of the time period simulated.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(SEIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"SEIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
-<table class="table">
-<caption>Table 2: SEIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic (continued below)</caption>
-<colgroup>
-<col width="22%">
-<col width="22%">
-<col width="22%">
-<col width="22%">
-</colgroup>
-<thead><tr class="header">
-<th align="center">Final size: S</th>
-<th align="center">Final size: E</th>
-<th align="center">Final size: I</th>
-<th align="center">Final size: R</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td align="center">3</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">997</td>
-</tr></tbody>
-</table>
-<table class="table">
-<colgroup>
-<col width="29%">
-<col width="22%">
-<col width="26%">
-</colgroup>
-<thead><tr class="header">
-<th align="center">Epidemic peak time</th>
-<th align="center">Epidemic peak</th>
-<th align="center">Epidemic duration</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td align="center">18</td>
-<td align="center">145</td>
-<td align="center">200</td>
-</tr></tbody>
-</table>
-<p>Finally we plot the population in each model compartment over time.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## For an interactive graph change interactive to TRUE
-## Interactivity allows plot zooming and gives a tool tip providing the population sizr at any point.
-biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(SEIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<div class="figure" style="text-align: center">
-<img src="solutions-two_files/figure-html/seir-plot-1.png" alt="Figure 2: Plot of population over time in each SEIR model compartment" width="2310"><p class="caption">
-Figure 2: Plot of population over time in each SEIR model compartment
-</p>
-</div>
 </div>
 <div id="explore" class="section level3">
 <h3 class="hasAnchor">
 <a href="#explore" class="anchor"></a>Explore</h3>
-<p>Model dynamics are parameter dependent. Even in a simplistic model like the one outlined above parameter values can greatly alter the dynamics. Answer the following questions by varying the parameters above and rerunning the model.</p>
+<p>Model dynamics are parameter dependent. Even in a simplistic model like the one outlined above parameter values can greatly alter the dynamics. Answer the following questions by varying the parameters and rerunning the model.</p>
 <ol style="list-style-type: decimal">
 <li>
-<p>What is the impact of adding demographic processes (births and deaths)? Explore this by first setting <code>mu=0</code> (this removes demographic processes),</p>
+<p>What is the impact of adding demographic processes (births and deaths)?</p>
 <ul>
 <li><strong>Without demograpic processes Tuberculosis eventually dies out. The addition of demographic processes results in a continous supply of susceptibles that makes this less likely to happen. However if the disease is sufficiently infectious and has a short serial interval then even with demographic processes the supply of new susceptibles may run out, resulting in the disease dieing out.</strong></li>
 </ul>
@@ -377,247 +205,17 @@ Figure 2: Plot of population over time in each SEIR model compartment
 </ol>
 </div>
 </div>
-</div>
-<div id="extensions" class="section level1">
-<h1 class="hasAnchor">
-<a href="#extensions" class="anchor"></a>Extensions</h1>
-<div id="explore-the-parameter-space-of-multiple-models" class="section level2">
-<h2 class="hasAnchor">
-<a href="#explore-the-parameter-space-of-multiple-models" class="anchor"></a>1. Explore the Parameter Space of Multiple Models</h2>
-<p>In order to more systematically explore the parameter space of multiple models we have provided a web app (<a href="http://seabbs.co.uk/shiny/exploreidmodels/" class="uri">http://seabbs.co.uk/shiny/exploreidmodels/</a>). Use this to explore the models discussed in the previous practical and identify which parameters alter the model dynamics. Instructions for using the Web app can be found in the about section of the app. You may want to run the app on your own machine, to do this enter the following into the R terminal,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"shiny"</span>)
-shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/runUrl">runGitHub</a></span>(<span class="st">"exploreidmodels"</span>, <span class="st">"seabbs"</span>)</code></pre></div>
-<div id="explore-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#explore-1" class="anchor"></a>Explore</h3>
-<ul>
-<li>
-<p>The web app allows for rapid exploration of multiple models, using it can you identify some commonalities between different models? What generalisations can you draw from these commonalities.</p>
-<ul>
-<li><strong>Adding birth and death process can lead to oscillating behaviour around some steady state.</strong></li>
-<li><strong>Add additional latent compartments reduces the speed of progression of the epidemic through the population.</strong></li>
-<li><strong>Highly infectious disease may die out in a short space of time if there is not a sufficient number of susceptibles.</strong></li>
-</ul>
-</li>
-<li><p>Try and answer the questions for the other extensions using the models provided in the web app.</p></li>
-</ul>
-</div>
-</div>
 <div id="add-high-and-low-risk-compartments" class="section level2">
 <h2 class="hasAnchor">
 <a href="#add-high-and-low-risk-compartments" class="anchor"></a>2. Add High and Low Risk Compartments</h2>
-<p>To make the SEIR model slightly more realistic, and therefore better able to capture the observed dynamics of TB, we are going to add a second latent population (as discussed in the solutions for practical 1). This change can be seen in the model flow diagram (Figure 3). Go back to <a href="https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html">practical 1</a> if you need a refresher for the motivation behind this. We have also added reinfection for the low risk latent population.</p>
+<p>To make the SEIR model slightly more realistic, and therefore better able to capture the observed dynamics of TB, we add a second latent population (as discussed in the solutions for practical 1). This change can be seen in the model flow diagram (Figure 2). Go back to <a href="https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html">practical 1</a> if you need a refresher for the motivation behind this. We have also added reinfection for the low risk latent population.</p>
 <div class="figure">
-<img src="resources/SHLIR_flow_diag.png" alt="Figure 3: An SHLIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 3: An SHLIR model of TB transmission, including simple demographic processes</p>
+<img src="resources/SHLIR_flow_diag.png" alt="Figure 2: An SHLIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 2: An SHLIR model of TB transmission, including simple demographic processes</p>
 </div>
-<div id="populations-and-initialisation-1" class="section level3">
+<div id="explore-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#populations-and-initialisation-1" class="anchor"></a>Populations and Initialisation</h3>
-<p>As in the previous model the first step is to define the model populations. There are now two new compartments, high risk latents (H), and low risk latents (L). These replace the original latent population (E) used in the SEIR model.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SHLIR_inits =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(
-  <span class="dt">S =</span> <span class="dv">999</span>,
-  <span class="dt">H =</span> <span class="dv">0</span>,
-  <span class="dt">L =</span> <span class="dv">0</span>,
-  <span class="dt">I =</span> <span class="dv">1</span>,
-  <span class="dt">R =</span> <span class="dv">0</span>
-)</code></pre></div>
-</div>
-<div id="parameters-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#parameters-1" class="anchor"></a>Parameters</h3>
-<p>We add two additional parameters for the rate of progression from high to low risk latents (<code>nu</code>) and the rate of progression from low risk latent to active disease (<code>gamma_L</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SHLIR_parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(
-  <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span>
-  <span class="dt">gamma_H =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="co"># Rate of progression to active symptoms from high risk latent</span>
-  <span class="dt">nu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co">#Rate of progression from high to low risk latent</span>
-  <span class="dt">gamma_L =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">100</span>, <span class="co"># Rate of progression to active symptoms for low risk latent</span>
-  <span class="dt">tau =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co"># Rate of recovery</span>
-  <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span> <span class="co"># Rate of natural mortality</span>
-)</code></pre></div>
-</div>
-<div id="equations-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#equations-1" class="anchor"></a>Equations</h3>
-<p>The code below is a starting point, fill in the missing model terms using the model flow diagram (Figure 3) and the code for the previous SEIR model as reference points.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SHLIR_demo_ode &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, params) {
-
-  ## Specify model compartments
-  S &lt;-<span class="st"> </span>x[<span class="dv">1</span>]
-  H &lt;-<span class="st"> </span>x[<span class="dv">2</span>]
-  L &lt;-<span class="st"> </span>x[<span class="dv">3</span>]
-  I &lt;-<span class="st"> </span>x[<span class="dv">4</span>]
-  R &lt;-<span class="st"> </span>x[<span class="dv">5</span>]
-
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/with">with</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">as.list</a></span>(params),{
-
-    ## Specify total population
-    N =<span class="st"> </span>S <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>L <span class="op">+</span><span class="st"> </span>I <span class="op">+</span><span class="st"> </span>R
-
-    ## Derivative Expressions
-    dS =<span class="st"> </span><span class="op">-</span><span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>S <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>S <span class="op">+</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>N
-    ## These are the new equations - fill in the remaining terms
-    dH =<span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>(S <span class="op">+</span><span class="st"> </span>L) <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>H
-    dL =<span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>L <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>L
-    ## Hint terms are missing from this equation as well
-    dI =<span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L <span class="op">-</span><span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>I
-    dR =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R
-
-    ## output
-    derivatives &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(dS, dH, dL, dI, dR)
-
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(derivatives)
-  })
-}</code></pre></div>
-</div>
-<div id="simulate-and-summarise-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#simulate-and-summarise-1" class="anchor"></a>Simulate and Summarise</h3>
-<p>Simulation is the same as for the previous model. Does the simulation of your improved model make sense? Evaluate the summary tables and plot of model populations over time.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">begin_time &lt;-<span class="st"> </span><span class="dv">0</span>
-end_time &lt;-<span class="st"> </span><span class="dv">200</span>
-SHILR_times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)
-
-## see ?solve_ode for details
-SHLIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SHLIR_demo_ode, 
-                                           <span class="dt">inits =</span> SHLIR_inits, 
-                                           <span class="dt">params =</span> SHLIR_parameters,
-                                           <span class="dt">times =</span> SHILR_times, 
-                                           <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)
-SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of SHLIR model simulation"</span>,
-               <span class="dt">label =</span> <span class="st">"tab-1"</span>)</code></pre></div>
-<table class="table">
-<caption>Table 1: First 5 years of model simulation</caption>
-<colgroup>
-<col width="9%">
-<col width="11%">
-<col width="11%">
-<col width="12%">
-<col width="12%">
-<col width="12%">
-</colgroup>
-<thead><tr class="header">
-<th align="center">time</th>
-<th align="center">S</th>
-<th align="center">H</th>
-<th align="center">L</th>
-<th align="center">I</th>
-<th align="center">R</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="center">0</td>
-<td align="center">999</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">0</td>
-</tr>
-<tr class="even">
-<td align="center">1</td>
-<td align="center">996.5</td>
-<td align="center">1.794</td>
-<td align="center">0.5224</td>
-<td align="center">0.7773</td>
-<td align="center">0.4223</td>
-</tr>
-<tr class="odd">
-<td align="center">2</td>
-<td align="center">994.2</td>
-<td align="center">2.576</td>
-<td align="center">1.606</td>
-<td align="center">0.8263</td>
-<td align="center">0.8098</td>
-</tr>
-<tr class="even">
-<td align="center">3</td>
-<td align="center">991.6</td>
-<td align="center">3.186</td>
-<td align="center">2.99</td>
-<td align="center">0.9684</td>
-<td align="center">1.243</td>
-</tr>
-<tr class="odd">
-<td align="center">4</td>
-<td align="center">988.6</td>
-<td align="center">3.853</td>
-<td align="center">4.648</td>
-<td align="center">1.164</td>
-<td align="center">1.756</td>
-</tr>
-<tr class="even">
-<td align="center">5</td>
-<td align="center">984.9</td>
-<td align="center">4.653</td>
-<td align="center">6.621</td>
-<td align="center">1.411</td>
-<td align="center">2.372</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
-<table class="table">
-<caption>Table 3: SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic (continued below)</caption>
-<colgroup>
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-</colgroup>
-<thead><tr class="header">
-<th align="center">Final size: S</th>
-<th align="center">Final size: H</th>
-<th align="center">Final size: L</th>
-<th align="center">Final size: I</th>
-<th align="center">Final size: R</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td align="center">238</td>
-<td align="center">24</td>
-<td align="center">194</td>
-<td align="center">13</td>
-<td align="center">531</td>
-</tr></tbody>
-</table>
-<table class="table">
-<colgroup>
-<col width="29%">
-<col width="22%">
-<col width="26%">
-</colgroup>
-<thead><tr class="header">
-<th align="center">Epidemic peak time</th>
-<th align="center">Epidemic peak</th>
-<th align="center">Epidemic duration</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td align="center">32</td>
-<td align="center">57</td>
-<td align="center">1</td>
-</tr></tbody>
-</table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## For an interactive graph change interactive to TRUE
-biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(SHLIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<div class="figure" style="text-align: center">
-<img src="solutions-two_files/figure-html/shlir-plot-1.png" alt="Figure 4: Plot of the population in each SHLIR model compartment over time" width="2310"><p class="caption">
-Figure 4: Plot of the population in each SHLIR model compartment over time
-</p>
-</div>
-</div>
-<div id="explore-2" class="section level3">
-<h3 class="hasAnchor">
-<a href="#explore-2" class="anchor"></a>Explore</h3>
+<a href="#explore-1" class="anchor"></a>Explore</h3>
 <ol style="list-style-type: decimal">
-<li>
-<p>Test your changes by setting <code>nu = 0</code> and all other parameters to be the same as for the SEIR model. If everything is working correctly both models should give the same output.</p>
-<ul>
-<li><strong>The SEIR and SHLIR models should give the same result.</strong></li>
-<li><strong>This works because when <code>nu = 0</code> no one enters the low risk latent population compartment and therefore it has no effect.</strong></li>
-</ul>
-</li>
 <li>
 <p>What has the impact of adding the second latent population been?</p>
 <ul>
@@ -627,383 +225,23 @@ Figure 4: Plot of the population in each SHLIR model compartment over time
 </ol>
 </div>
 </div>
-<div id="translate-a-more-realistic-shlir-model-flow-diagram-to-equations" class="section level2">
+<div id="a-more-realistic-shlir-model-flow-diagram" class="section level2">
 <h2 class="hasAnchor">
-<a href="#translate-a-more-realistic-shlir-model-flow-diagram-to-equations" class="anchor"></a>3. Translate a more realistic SHLIR model flow diagram to equations</h2>
-<p>As an advanced extension exercise now translate a more complex SHLIR model flow diagram (Figure 5), with risk groups, treatment, and reinfection for those who have recovered from active disease (Hint: First implement the model without risk groups and then add this in once everything else is working as expected). Whilst many realistic TB models use age structure in the interests of time do not include this (if you are interested in discussing how you would include this talk to your instructors or contact <a href="https://www.samabbott.co.uk/">me</a>). For simplicity we have assumed that it is possible to be born into both populations. For the motivation behind this model see <a href="https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical-one.html">practical 1</a>.</p>
+<a href="#a-more-realistic-shlir-model-flow-diagram" class="anchor"></a>3. A more realistic SHLIR model flow diagram</h2>
+<p>The most complex model supported by the interactive interface, this is a more realistic model that might be used in research. The SHLIR model flow diagram (Figure 3) includes: risk groups, treatment, and reinfection for those who have recovered from active disease. Whilst many realistic TB models use age structure this is not included here (if you are interested in discussing how you would include this talk to your instructors or contact <a href="https://www.samabbott.co.uk/">me</a>). For simplicity we have assumed that it is possible to be born into both populations. For the motivation behind this model see <a href="https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical-one.html">practical 1</a>.</p>
 <div class="figure">
-<img src="resources/SHLIR_real_flow_diag.png" alt="Figure 5: A realistic SHLIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 5: A realistic SHLIR model of TB transmission, including simple demographic processes</p>
+<img src="resources/SHLIR_real_flow_diag.png" alt="Figure 3: A realistic SHLIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 3: A realistic SHLIR model of TB transmission, including simple demographic processes</p>
 </div>
-<p>Figure 5 does not include the interaction between the high and low risk subgroups as this is through the force of infection. The force of infection is defined as,</p>
+<p>Figure 3 does not include the interaction between the high and low risk subgroups as this is through the force of infection. The force of infection is defined as,</p>
 <p><span class="math display">\[ \lambda_i = \beta \sum_{j = L, H}M_{ij}I_j \]</span></p>
 <p>Where <span class="math inline">\(\lambda_i\)</span> is the force of infection in each risk group (<span class="math inline">\(i = L, H\)</span>) and <span class="math inline">\(M_{LH}\)</span> is the mixing rate between risk groups. It is assumed that within group contact rates are equivalent and defined such that,</p>
 <p><span class="math display">\[ M_{ii} = 1 \]</span></p>
 <p>It is also assumed that the between group contact rates are defined as (where <span class="math inline">\(i \neq j\)</span>),</p>
 <p><span class="math display">\[ M_{ij} = 0.1 \]</span></p>
-<p>The code for an SEIR model has been supplied, along with all the required simulation and plotting functions. It is suggested that you add complexity sequentially and test the effects on the model dynamics as you go. The first step is to recreate the SHLIR model used above. If you are new to <code>R</code> or are struggling with this exercise feel free to move on to the next exercise (which does not use <code>R</code>).</p>
-<div id="populations-and-initialisation-2" class="section level3">
+<div id="explore-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#populations-and-initialisation-2" class="anchor"></a>Populations and Initialisation</h3>
-<p>The new populations have been added for you. The population has now been split between low and high risk populations, with the only infectious case being in the high risk population.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">real_SHLIR_inits =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(
-  <span class="co"># General population</span>
-  <span class="dt">S =</span> <span class="dv">800</span>,
-  <span class="dt">H =</span> <span class="dv">0</span>,
-  <span class="dt">L =</span> <span class="dv">0</span>,
-  <span class="dt">I =</span> <span class="dv">0</span>,
-  <span class="dt">Tr =</span> <span class="dv">0</span>,
-  <span class="dt">R =</span> <span class="dv">0</span>,
-  ## High risk population
-  <span class="dt">S_H =</span> <span class="dv">199</span>,
-  <span class="dt">H_H =</span> <span class="dv">0</span>,
-  <span class="dt">L_H =</span> <span class="dv">0</span>,
-  <span class="dt">I_H =</span> <span class="dv">1</span>,
-  <span class="dt">Tr_H =</span> <span class="dv">0</span>,
-  <span class="dt">R_H =</span> <span class="dv">0</span>
-)</code></pre></div>
-</div>
-<div id="parameters-2" class="section level3">
-<h3 class="hasAnchor">
-<a href="#parameters-2" class="anchor"></a>Parameters</h3>
-<p>The required model parameters have been defined for you (with the units being years<sup>-1</sup>). The only new parameters are the between group mixing (<code>M</code>), the proportion that are born high risk (<code>p</code>), and the transmission probability in those considered to be high risk (<code>beta_H</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">real_SHLIR_parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(
-  <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span>
-  <span class="dt">beta_H =</span> <span class="dv">6</span>, <span class="co"># High risk rate of transmission</span>
-  <span class="dt">gamma_H =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="co"># Rate of progression to active symptoms from high risk latent</span>
-  <span class="dt">nu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co">#Rate of progression from high to low risk latent</span>
-  <span class="dt">gamma_L =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">100</span>, <span class="co"># Rate of progression to active symptoms for low risk latent</span>
-  <span class="dt">epsilon =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="co"># Rate of treatment</span>
-  <span class="dt">tau =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co"># Rate of recovery</span>
-  <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span>, <span class="co"># Rate of natural mortality</span>
-  <span class="dt">p =</span> <span class="fl">0.2</span>, <span class="co"># proportion of new births that are high risk</span>
-  <span class="dt">M =</span> <span class="fl">0.2</span> <span class="co"># Between group mixing</span>
-)</code></pre></div>
-</div>
-<div id="equations-2" class="section level3">
-<h3 class="hasAnchor">
-<a href="#equations-2" class="anchor"></a>Equations</h3>
-<p>Update the model equations using the model flow diagram above. The comments in the code given hints as to where changes need to be made. The equations for the low risk population have been provided for you.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">real_SHLIR_demo_ode &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, params) {
-
-  ## Specify model compartments 
-  ## The compartments for the low risk population have been provided 
-  ## Add the high risk population
-  ## Don't forget to update indexing for x. Compare the previous two models for a hint.
-  S &lt;-<span class="st"> </span>x[<span class="dv">1</span>]
-  H &lt;-<span class="st"> </span>x[<span class="dv">2</span>]
-  L &lt;-<span class="st"> </span>x[<span class="dv">3</span>]
-  I &lt;-<span class="st"> </span>x[<span class="dv">4</span>]
-  Tr &lt;-<span class="st"> </span>x[<span class="dv">5</span>]
-  R &lt;-<span class="st"> </span>x[<span class="dv">6</span>]
-  
-  S_H &lt;-<span class="st"> </span>x[<span class="dv">7</span>]
-  H_H &lt;-<span class="st"> </span>x[<span class="dv">8</span>]
-  L_H &lt;-<span class="st"> </span>x[<span class="dv">9</span>]
-  I_H &lt;-<span class="st"> </span>x[<span class="dv">10</span>]
-  Tr_H &lt;-<span class="st"> </span>x[<span class="dv">11</span>]
-  R_H &lt;-<span class="st"> </span>x[<span class="dv">12</span>]
-
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/with">with</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">as.list</a></span>(params),{
-
-    ## Specify total population
-    N =<span class="st"> </span>S <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>L <span class="op">+</span><span class="st"> </span>I <span class="op">+</span><span class="st"> </span>Tr <span class="op">+</span><span class="st"> </span>R <span class="op">+</span><span class="st"> </span>S_H <span class="op">+</span><span class="st"> </span>H_H <span class="op">+</span><span class="st"> </span>L_H <span class="op">+</span><span class="st"> </span>I_H <span class="op">+</span><span class="st"> </span>Tr_H <span class="op">+</span><span class="st"> </span>R_H
-
-    ## Force of infection
-    ## The force of infetion in the low risk population has been provided for you
-    foi &lt;-<span class="st"> </span>beta  <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">+</span><span class="st"> </span>M <span class="op">*</span><span class="st"> </span>beta_H <span class="op">*</span><span class="st"> </span>I_H <span class="op">/</span><span class="st"> </span>N 
-    ## Add the high risk force of infection here
-    foi_H &lt;-<span class="st">  </span>M <span class="op">*</span><span class="st"> </span>beta  <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">+</span><span class="st">  </span>beta_H <span class="op">*</span><span class="st"> </span>I_H <span class="op">/</span><span class="st"> </span>N 
-    
-    ## Derivative Expressions
-    ## General population - provided for you
-    ## Compare these equations from those used for the previous models
-    dS =<span class="st"> </span><span class="op">-</span>S <span class="op">*</span><span class="st"> </span>foi <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>S <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>p) <span class="op">*</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>N
-    dH =<span class="st"> </span>(S <span class="op">+</span><span class="st"> </span>L <span class="op">+</span><span class="st"> </span>R) <span class="op">*</span><span class="st"> </span>foi <span class="op">-</span><span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>H
-    dL =<span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>L <span class="op">*</span><span class="st"> </span>foi <span class="op">-</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>L
-    dI =<span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L <span class="op">-</span><span class="st"> </span>epsilon <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>I
-    dTr =<span class="st"> </span>epsilon <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>Tr <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>Tr
-    dR =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>Tr <span class="op">-</span><span class="st"> </span>R <span class="op">*</span><span class="st"> </span>foi <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R
-    
-    ## High risk population
-    ## Copy the equations used above for the low risk population
-    ## Convert them to be in the high risk population
-    dS_H =<span class="st"> </span><span class="op">-</span>S_H <span class="op">*</span><span class="st"> </span>foi_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>S_H <span class="op">+</span><span class="st"> </span>p <span class="op">*</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>N
-    dH_H =<span class="st"> </span>(S_H <span class="op">+</span><span class="st"> </span>L_H <span class="op">+</span><span class="st"> </span>R_H) <span class="op">*</span><span class="st"> </span>foi_H <span class="op">-</span><span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H_H <span class="op">-</span><span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>H_H
-    dL_H =<span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H_H <span class="op">-</span><span class="st"> </span>L_H <span class="op">*</span><span class="st"> </span>foi_H <span class="op">-</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>L_H
-    dI_H =<span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H_H <span class="op">+</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L_H <span class="op">-</span><span class="st"> </span>epsilon <span class="op">*</span><span class="st"> </span>I_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>I_H
-    dTr_H =<span class="st"> </span>epsilon <span class="op">*</span><span class="st"> </span>I_H <span class="op">-</span><span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>Tr_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>Tr_H
-    dR_H =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>Tr_H <span class="op">-</span><span class="st"> </span>R_H <span class="op">*</span><span class="st"> </span>foi_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R_H
-
-    ## output
-    derivatives &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(dS, dH, dL, dI, dTr, dR, dS_H, dH_H, dL_H, dI_H, dTr_H, dR_H)
-
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(derivatives)
-  })
-}</code></pre></div>
-</div>
-<div id="simulate-and-summarise-2" class="section level3">
-<h3 class="hasAnchor">
-<a href="#simulate-and-summarise-2" class="anchor"></a>Simulate and Summarise</h3>
-<p>Simulate the new model as previously.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">begin_time &lt;-<span class="st"> </span><span class="dv">0</span>
-end_time &lt;-<span class="st"> </span><span class="dv">200</span>
-real_SHLIR_times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)
-
-## see ?solve_ode for details
-real_SHLIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> real_SHLIR_demo_ode, 
-                                           <span class="dt">inits =</span> real_SHLIR_inits, 
-                                           <span class="dt">params =</span> real_SHLIR_parameters,
-                                           <span class="dt">times =</span> real_SHLIR_times, 
-                                           <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)
-real_SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of model simulation"</span>,
-               <span class="dt">label =</span> <span class="st">"tab-real_SHLIR"</span>)</code></pre></div>
-<table class="table">
-<caption>Table 4: First 5 years of model simulation (continued below)</caption>
-<colgroup>
-<col width="9%">
-<col width="10%">
-<col width="12%">
-<col width="12%">
-<col width="13%">
-<col width="15%">
-<col width="16%">
-<col width="9%">
-</colgroup>
-<thead><tr class="header">
-<th align="center">time</th>
-<th align="center">S</th>
-<th align="center">H</th>
-<th align="center">L</th>
-<th align="center">I</th>
-<th align="center">Tr</th>
-<th align="center">R</th>
-<th align="center">S_H</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="center">0</td>
-<td align="center">800</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">199</td>
-</tr>
-<tr class="even">
-<td align="center">1</td>
-<td align="center">799.1</td>
-<td align="center">0.6388</td>
-<td align="center">0.1786</td>
-<td align="center">0.06452</td>
-<td align="center">0.006904</td>
-<td align="center">0.0009364</td>
-<td align="center">198</td>
-</tr>
-<tr class="odd">
-<td align="center">2</td>
-<td align="center">798.1</td>
-<td align="center">1.048</td>
-<td align="center">0.5935</td>
-<td align="center">0.1941</td>
-<td align="center">0.03844</td>
-<td align="center">0.01108</td>
-<td align="center">197.1</td>
-</tr>
-<tr class="even">
-<td align="center">3</td>
-<td align="center">796.8</td>
-<td align="center">1.477</td>
-<td align="center">1.201</td>
-<td align="center">0.3596</td>
-<td align="center">0.09632</td>
-<td align="center">0.04336</td>
-<td align="center">196.3</td>
-</tr>
-<tr class="odd">
-<td align="center">4</td>
-<td align="center">795.1</td>
-<td align="center">2.002</td>
-<td align="center">2.027</td>
-<td align="center">0.5632</td>
-<td align="center">0.1794</td>
-<td align="center">0.1102</td>
-<td align="center">195.5</td>
-</tr>
-<tr class="even">
-<td align="center">5</td>
-<td align="center">792.9</td>
-<td align="center">2.658</td>
-<td align="center">3.121</td>
-<td align="center">0.8155</td>
-<td align="center">0.2889</td>
-<td align="center">0.2236</td>
-<td align="center">194.6</td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<colgroup>
-<col width="12%">
-<col width="12%">
-<col width="12%">
-<col width="12%">
-<col width="12%">
-</colgroup>
-<thead><tr class="header">
-<th align="center">H_H</th>
-<th align="center">L_H</th>
-<th align="center">I_H</th>
-<th align="center">Tr_H</th>
-<th align="center">R_H</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">0</td>
-<td align="center">0</td>
-</tr>
-<tr class="even">
-<td align="center">0.7367</td>
-<td align="center">0.2138</td>
-<td align="center">0.785</td>
-<td align="center">0.2257</td>
-<td align="center">0.06372</td>
-</tr>
-<tr class="odd">
-<td align="center">0.9991</td>
-<td align="center">0.6472</td>
-<td align="center">0.7108</td>
-<td align="center">0.3277</td>
-<td align="center">0.2031</td>
-</tr>
-<tr class="even">
-<td align="center">1.106</td>
-<td align="center">1.153</td>
-<td align="center">0.6904</td>
-<td align="center">0.3781</td>
-<td align="center">0.3761</td>
-</tr>
-<tr class="odd">
-<td align="center">1.169</td>
-<td align="center">1.684</td>
-<td align="center">0.6935</td>
-<td align="center">0.4067</td>
-<td align="center">0.565</td>
-</tr>
-<tr class="even">
-<td align="center">1.228</td>
-<td align="center">2.23</td>
-<td align="center">0.7103</td>
-<td align="center">0.4267</td>
-<td align="center">0.7623</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(real_SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
-<table class="table">
-<caption>Table 5: Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic (continued below)</caption>
-<colgroup>
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-</colgroup>
-<thead><tr class="header">
-<th align="center">Final size: S</th>
-<th align="center">Final size: H</th>
-<th align="center">Final size: L</th>
-<th align="center">Final size: I</th>
-<th align="center">Final size: Tr</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td align="center">22</td>
-<td align="center">218</td>
-<td align="center">242</td>
-<td align="center">133</td>
-<td align="center">87</td>
-</tr></tbody>
-</table>
-<table class="table">
-<caption>Table continues below</caption>
-<colgroup>
-<col width="22%">
-<col width="25%">
-<col width="25%">
-<col width="25%">
-</colgroup>
-<thead><tr class="header">
-<th align="center">Final size: R</th>
-<th align="center">Final size: S_H</th>
-<th align="center">Final size: H_H</th>
-<th align="center">Final size: L_H</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td align="center">98</td>
-<td align="center">10</td>
-<td align="center">39</td>
-<td align="center">77</td>
-</tr></tbody>
-</table>
-<table class="table">
-<caption>Table continues below</caption>
-<colgroup>
-<col width="24%">
-<col width="25%">
-<col width="24%">
-<col width="26%">
-</colgroup>
-<thead><tr class="header">
-<th align="center">Final size: I_H</th>
-<th align="center">Final size: Tr_H</th>
-<th align="center">Final size: R_H</th>
-<th align="center">Epidemic peak time</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td align="center">25</td>
-<td align="center">16</td>
-<td align="center">33</td>
-<td align="center">74</td>
-</tr></tbody>
-</table>
-<table class="table">
-<colgroup>
-<col width="22%">
-<col width="26%">
-</colgroup>
-<thead><tr class="header">
-<th align="center">Epidemic peak</th>
-<th align="center">Epidemic duration</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td align="center">133</td>
-<td align="center">0</td>
-</tr></tbody>
-</table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## For an interactive graph change interactive to TRUE
-biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(real_SHLIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<div class="figure" style="text-align: center">
-<img src="solutions-two_files/figure-html/real-SHLIR-plot-1.png" alt="Figure 6: Plot of population over time in each realistic SHLIR model compartment" width="2310"><p class="caption">
-Figure 6: Plot of population over time in each realistic SHLIR model compartment
-</p>
-</div>
-</div>
-<div id="explore-3" class="section level3">
-<h3 class="hasAnchor">
-<a href="#explore-3" class="anchor"></a>Explore</h3>
+<a href="#explore-2" class="anchor"></a>Explore</h3>
 <ol style="list-style-type: decimal">
-<li>
-<p>Test your changes by setting all the parameters to be the same as in the SHLIR model.</p>
-<ul>
-<li><strong>The models should give the same results.</strong></li>
-</ul>
-</li>
 <li>
 <p>What happens when one group has a much higher transmission probability (use the default settings for all other parameters), compared to when the transmission probability is the same for both groups?</p>
 <ul>
@@ -1019,6 +257,20 @@ Figure 6: Plot of population over time in each realistic SHLIR model compartment
 </li>
 </ol>
 </div>
+</div>
+<div id="explore-model-dynamics" class="section level2">
+<h2 class="hasAnchor">
+<a href="#explore-model-dynamics" class="anchor"></a>3. Explore model dynamics</h2>
+<ul>
+<li>
+<p>The interactive interface allows for exploration of multiple other models, using it can you identify some commonalities between different models? What generalisations can you draw from these commonalities.</p>
+<ul>
+<li><strong>Adding birth and death process can lead to oscillating behaviour around some steady state.</strong></li>
+<li><strong>Add additional latent compartments reduces the speed of progression of the epidemic through the population.</strong></li>
+<li><strong>Highly infectious disease may die out in a short space of time if there is not a sufficient number of susceptibles.</strong></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 <div id="references" class="section level1 unnumbered">
@@ -1040,16 +292,13 @@ Figure 6: Plot of population over time in each realistic SHLIR model compartment
 <li><a href="#learning-objectives">Learning Objectives</a></li>
       <li><a href="#outline-for-session">Outline for Session</a></li>
       <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#set-up">Set up</a></li>
       <li>
-<a href="#exercise">Exercise</a><ul class="nav nav-pills nav-stacked">
+<a href="#exercises">Exercises</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#a-simple-seir-model-of-tuberculosis-tb">1. A Simple SEIR Model of Tuberculosis (TB)</a></li>
-      </ul>
-</li>
-      <li>
-<a href="#extensions">Extensions</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#explore-the-parameter-space-of-multiple-models">1. Explore the Parameter Space of Multiple Models</a></li>
       <li><a href="#add-high-and-low-risk-compartments">2. Add High and Low Risk Compartments</a></li>
-      <li><a href="#translate-a-more-realistic-shlir-model-flow-diagram-to-equations">3. Translate a more realistic SHLIR model flow diagram to equations</a></li>
+      <li><a href="#a-more-realistic-shlir-model-flow-diagram">3. A more realistic SHLIR model flow diagram</a></li>
+      <li><a href="#explore-model-dynamics">3. Explore model dynamics</a></li>
       </ul>
 </li>
       <li><a href="#references">References</a></li>

@@ -29,5 +29,6 @@ README.md: README.Rmd
 build_vignettes:
 		cd vignettes && make
 
+.PHONY: build_site
 build_site:
      Rscript -e 'pkgdown::build_site()'
