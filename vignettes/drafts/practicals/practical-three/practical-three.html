@@ -214,16 +214,20 @@ $(document).ready(function () {
 <li>Session wrap up (5 minutes)</li>
 </ol>
 </div>
-<div id="exercise" class="section level1">
-<h1>Exercise</h1>
-<div id="a-simple-seir-model-of-tuberculosis-tb" class="section level2">
-<h2>1. A Simple SEIR Model of Tuberculosis (TB)</h2>
-<p>As a first exercise we are going to run the simple SEIR model, as seen in practical 2, in R. If you have not installed the course package do this now with the following <code>R</code> code (speak to an instructor if you are having issues with this step).</p>
+<div id="set-up" class="section level1">
+<h1>Set up</h1>
+<p>If you have not installed the course package do this now with the following <code>R</code> code (speak to an instructor if you are having issues with this step).</p>
 <pre class="r"><code>install.packages(&quot;devtools&quot;)
 devtools::install_github(&quot;bristolmathmodellers/biddmodellingcourse&quot;)</code></pre>
 <p>Now load the course package,</p>
 <pre class="r"><code>library(biddmodellingcourse)</code></pre>
 <p>For more help getting started see the course README (<a href="https://bristolmathmodellers.github.io/biddmodellingcourse/" class="uri">https://bristolmathmodellers.github.io/biddmodellingcourse/</a>) or ask an instructor.</p>
+</div>
+<div id="exercises" class="section level1">
+<h1>Exercises</h1>
+<div id="a-simple-seir-model-of-tuberculosis-tb" class="section level2">
+<h2>1. A Simple SEIR Model of Tuberculosis (TB)</h2>
+<p>As a first exercise we are going to run the simple SEIR model, as seen in practical 2, in R.</p>
 <div id="populations-and-initialisation" class="section level3">
 <h3>Populations and Initialisation</h3>
 <p>We first set up the initial populations for the Susceptible (<span class="math inline">\(S_0\)</span>), Latent (<span class="math inline">\(E_0\)</span>), Infected (<span class="math inline">\(I\)</span>), and Recovered (<span class="math inline">\(R\)</span>) compartments. We have initialised the model as an early stage epidemic with a single case of TB.</p>
@@ -303,9 +307,8 @@ biddmodellingcourse::plot_model(SEIR_sim, interactive = FALSE)</code></pre>
 <p>As we saw in practical 2, model dynamics are parameter dependent. Look back at the questions from practical 2 and check that you can implement the changes in the code above to answer them.</p>
 </div>
 </div>
-</div>
-<div id="add-high-and-low-risk-compartments" class="section level1">
-<h1>2. Add High and Low Risk Compartments</h1>
+<div id="add-high-and-low-risk-compartments" class="section level2">
+<h2>2. Add High and Low Risk Compartments</h2>
 <p>Now we are going to implement the SHLIR model from practical 2 and try to reproduce some of the behaviour observed using the interactive interface. See practical for details on this model.</p>
 <div id="populations-and-initialisation-1" class="section level3">
 <h3>Populations and Initialisation</h3>
@@ -391,6 +394,7 @@ biddmodellingcourse::plot_model(SHLIR_sim, interactive = FALSE)</code></pre>
 <li><p>Test your changes by setting <code>nu = 0</code> and all other parameters to be the same as for the SEIR model. If everything is working correctly both models should give the same output.</p></li>
 <li><p>Can you alter the parameters defined above to answer the questions for this model from practical 2?</p></li>
 </ol>
+</div>
 </div>
 <div id="translate-a-more-realistic-shlir-model-flow-diagram-to-equations" class="section level2">
 <h2>3. Translate a more realistic SHLIR model flow diagram to equations</h2>

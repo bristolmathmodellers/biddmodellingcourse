@@ -156,18 +156,23 @@
 <a href="#solutions" class="anchor"></a>Solutions</h1>
 <p>The practical solutions are in <strong>bold</strong>, all code has been completed and the exercise models have been simmulated and summarised.</p>
 </div>
-<div id="exercise" class="section level1">
+<div id="set-up" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercise" class="anchor"></a>Exercise</h1>
-<div id="a-simple-seir-model-of-tuberculosis-tb" class="section level2">
-<h2 class="hasAnchor">
-<a href="#a-simple-seir-model-of-tuberculosis-tb" class="anchor"></a>1. A Simple SEIR Model of Tuberculosis (TB)</h2>
-<p>As a first exercise we are going to run the simple SEIR model, as seen in practical 2, in R. If you have not installed the course package do this now with the following <code>R</code> code (speak to an instructor if you are having issues with this step).</p>
+<a href="#set-up" class="anchor"></a>Set up</h1>
+<p>If you have not installed the course package do this now with the following <code>R</code> code (speak to an instructor if you are having issues with this step).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)
 devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"bristolmathmodellers/biddmodellingcourse"</span>)</code></pre></div>
 <p>Now load the course package,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(biddmodellingcourse)</code></pre></div>
 <p>For more help getting started see the course README (<a href="https://bristolmathmodellers.github.io/biddmodellingcourse/" class="uri">https://bristolmathmodellers.github.io/biddmodellingcourse/</a>) or ask an instructor.</p>
+</div>
+<div id="exercises" class="section level1">
+<h1 class="hasAnchor">
+<a href="#exercises" class="anchor"></a>Exercises</h1>
+<div id="a-simple-seir-model-of-tuberculosis-tb" class="section level2">
+<h2 class="hasAnchor">
+<a href="#a-simple-seir-model-of-tuberculosis-tb" class="anchor"></a>1. A Simple SEIR Model of Tuberculosis (TB)</h2>
+<p>As a first exercise we are going to run the simple SEIR model, as seen in practical 2, in R.</p>
 <div id="populations-and-initialisation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#populations-and-initialisation" class="anchor"></a>Populations and Initialisation</h3>
@@ -356,10 +361,9 @@ Figure 1: Plot of population over time in each SEIR model compartment
 <p>As we saw in practical 2, model dynamics are parameter dependent. Look back at the questions from practical 2 and check that you can implement the changes in the code above to answer them.</p>
 </div>
 </div>
-</div>
-<div id="add-high-and-low-risk-compartments" class="section level1">
-<h1 class="hasAnchor">
-<a href="#add-high-and-low-risk-compartments" class="anchor"></a>2. Add High and Low Risk Compartments</h1>
+<div id="add-high-and-low-risk-compartments" class="section level2">
+<h2 class="hasAnchor">
+<a href="#add-high-and-low-risk-compartments" class="anchor"></a>2. Add High and Low Risk Compartments</h2>
 <p>Now we are going to implement the SHLIR model from practical 2 and try to reproduce some of the behaviour observed using the interactive interface. See practical for details on this model.</p>
 <div id="populations-and-initialisation-1" class="section level3">
 <h3 class="hasAnchor">
@@ -571,6 +575,7 @@ Figure 3: Plot of the population in each SHLIR model compartment over time
 </li>
 <li><p>Can you alter the parameters defined above to answer the questions for this model from practical 2?</p></li>
 </ol>
+</div>
 </div>
 <div id="translate-a-more-realistic-shlir-model-flow-diagram-to-equations" class="section level2">
 <h2 class="hasAnchor">
@@ -959,14 +964,12 @@ Figure 4: Plot of population over time in each realistic SHLIR model compartment
 <li><a href="#learning-objectives">Learning Objectives</a></li>
       <li><a href="#outline-for-session">Outline for Session</a></li>
       <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#set-up">Set up</a></li>
       <li>
-<a href="#exercise">Exercise</a><ul class="nav nav-pills nav-stacked">
+<a href="#exercises">Exercises</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#a-simple-seir-model-of-tuberculosis-tb">1. A Simple SEIR Model of Tuberculosis (TB)</a></li>
-      </ul>
-</li>
-      <li>
-<a href="#add-high-and-low-risk-compartments">2. Add High and Low Risk Compartments</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#translate-a-more-realistic-shlir-model-flow-diagram-to-equations">3. Translate a more realistic SHLIR model flow diagram to equations</a></li>
+      <li><a href="#add-high-and-low-risk-compartments">2. Add High and Low Risk Compartments</a></li>
+      <li><a href="#translate-a-more-realistic-shlir-model-flow-diagram-to-equations">3. Translate a more realistic SHLIR model flow diagram to equations</a></li>
       <li><a href="#implement-your-own-model">4. Implement Your Own Model</a></li>
       </ul>
 </li>

@@ -61,7 +61,7 @@ Use this interface to explore the some of the model that have already been discu
 
 # Exercises
 
-##1. A Simple SEIR Model of Tuberculosis (TB)
+## 1. A Simple SEIR Model of Tuberculosis (TB)
 
 As a first exercise, we are going to explore the simple SEIR model, as seen in the design a model practical, in R. For reference the SEIR model flow diagram seen in the first practical's solutions.[@Brooks-Pollock2010] The equations below are a translation of this into `R` code.
 
@@ -86,7 +86,7 @@ Model dynamics are parameter dependent. Even in a simplistic model like the one 
 
 
 
-##2. Add High and Low Risk Compartments
+## 2. Add High and Low Risk Compartments
 
 To make the SEIR model slightly more realistic, and therefore better able to capture the observed dynamics of TB, we add a second latent population (as discussed in the solutions for practical 1). This change can be seen in the model flow diagram (`r pretty_figref("SHLIR-diag")`). Go back to [practical 1](https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html) if you need a refresher for the motivation behind this. We have also added reinfection for the low risk latent population.
 
@@ -99,7 +99,7 @@ To make the SEIR model slightly more realistic, and therefore better able to cap
 
 
 
-##3. A more realistic SHLIR model flow diagram 
+## 3. A more realistic SHLIR model flow diagram 
 
 The most complex model supported by the interactive interface, this is a more realistic model that might be used in research.
 The SHLIR model flow diagram (`r pretty_figref("complex_SHLIR_diag")`) includes: risk groups, treatment, and reinfection for those who have recovered from active disease. Whilst many realistic TB models use age structure this is not included here (if you are interested in discussing how you would include this talk to your instructors or contact [me](https://www.samabbott.co.uk/)). For simplicity we have assumed that it is possible to be born into both populations. For the motivation behind this model see 
@@ -130,9 +130,9 @@ It is also assumed that the between group contact rates are defined as (where $i
 
 
 
-##3. Explore model dynamics
+## 4. Explore model dynamics
 
-- The interactive interface allows for exploration of multiple other models, using it can you identify some commonalities between different models? What generalisations can you draw from these commonalities. 
+The interactive interface allows for exploration of multiple other models, using it can you identify some commonalities between different models? What generalisations can you draw from these commonalities. 
 
 
 
