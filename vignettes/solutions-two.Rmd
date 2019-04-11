@@ -32,10 +32,10 @@ library(biddmodellingcourse)
 # Outline for Session
 
 1. Set up (5 minutes)
-1. Investigate the dynamics of a simple SEIR model (10 minutes)
+1. Investigate the dynamics of a simple SEIR model (20 minutes)
 1. Explore the impact of adding high and low risk latency to a SEIR model, in comparison to the SEIR model (10 minutes).
 1. Investigate the complex dynamics of a more realistic SHLIR model (10 minutes) .
-1. Explore the parameter space of multiple models and try to understand some of the general implications of model structures on dynamics (20 minutes).
+1. Explore the parameter space of multiple models and try to understand some of the general implications of model structures on dynamics (10 minutes).
 1. Session wrap up (5 minutes)
 
 # Solutions
@@ -63,7 +63,7 @@ Use this interface to explore the some of the model that have already been discu
 
 ## 1. A Simple SEIR Model of Tuberculosis (TB)
 
-As a first exercise, we are going to explore the simple SEIR model, as seen in the design a model practical, in R. For reference the SEIR model flow diagram seen in the first practical's solutions.[@Brooks-Pollock2010] The equations below are a translation of this into `R` code.
+As a first exercise, we are going to explore the simple SEIR model (select it in the interface), as seen in the design a model practical. For reference the SEIR model flow diagram seen in the first practical's solutions.[@Brooks-Pollock2010] The equations below are a translation of this into `R` code.
 
 ![`r pretty_figref("model_diag", "An SEIR model of TB transmission, including simple demographic processes")`](./resources/SEIR_flow_diag.png)
 
@@ -72,20 +72,31 @@ As a first exercise, we are going to explore the simple SEIR model, as seen in t
 
 Model dynamics are parameter dependent. Even in a simplistic model like the one outlined above parameter values can greatly alter the dynamics. Answer the following questions by varying the parameters and rerunning the model. 
 
-1. What is the impact of adding demographic processes (births and deaths)?
+1. Set a transmission rate (beta) of 7, an infectios period of 3 months, and a latent period of 0. What role does the latent period have with these settings? What happens to the number of susceptibles over time?
+
+    - **It plays no role. In effect this is an SIR model.**
+    - **The number of susceptibles decreases over time. Initially this happens at a slow rate, which then increases dramatically before slowing.**
     
-    - **Without demograpic processes Tuberculosis eventually dies out. The addition of 
-    demographic processes results in a continous supply of susceptibles that makes this less likely to happen. However if the disease is sufficiently infectious and has a short serial interval then even with demographic processes the supply of new susceptibles may run out, resulting in the disease dieing out.**
+1. Increase the transmission rate and rerun the model. How does this impact the number of infected individuals?
 
-1. What happens when the transmission rate (beta) is reduced to 0.5?
-
-    - **When the transmission rate is reduced to 0.5 Tuberculosis will die out without spreading any further than the index case. This is because the basic reproduction number is below 1 for this set of parameters.** 
+    - **Increasing the transmission rate increases the total number of cases, increases the maximum size of the epidemic peak, and speeds up the outbreak.**
 
 
-1. What happens as the rate of recovery is increased?
+1. Increase the infectious period. How does a longer infectious period impact the shape of the epidemic curve?
 
-    - **As the rate of recovery is increased the size of the epidemic peak is decreased and the duration of the epidemic increases. The cumulative number of cases is reduced.**
+    - **Increasing the infectious period increases the size of the epidemic peak and extends the duration of the epidemic. There is little impact on the initial spread of the disease outbreak.**
+    
+1. Increase the latent period to 6 months. What impacts does this have on the disease outbreak? 
 
+    - **The cumulative number of the cases is comparable but the epidemic duration is longer, with a lower epidemic peak. The initial outbreak is also slower.**
+    
+1. Set beta to 3, the infectious period 12 months, the latent period to 0, and set the timespan to 100. Run the model, turn on demographic processes, and then re-run the model. What is the impact of adding demographic processes (births and deaths)?
+    
+    - **Introducing demographic processes leads to oscillations in all compartments. In particular this leads to mulitple secondary disease outbreaks after the primary outbreak.**
+    
+1. Reduce the life expectancy to 20 years. What impact does this have on the infected population?
+
+    - **The initial epidemic is unchanged. However, the secondary outbreaks occur more frequently and there is a higher average number of cases at any given time.**
 
 ## 2. Add High and Low Risk Compartments
 
@@ -95,9 +106,14 @@ To make the SEIR model slightly more realistic, and therefore better able to cap
 
 ### Explore
 
-1. What has the impact of adding the second latent population been?
+1. Switch to the SHLIR model and turn off demographic processes. Set beta to 9, the high risk latent period to 0, the low risk period to 20 years, the infectious period to 12 months, and the timespan to 100 years. Run this model (this is effectively the SEIR model, see the flow diagram to understand why). Now set the high risk latent period to 2 years, and the rate of developing active disease when high risk to 0.6 - re-run the model. What is the impact of the second high risk latent compartment? 
 
-    - **It has reduced the peak epidemic size and slowed the initial spread of the disease. In addition there are fewer cumulative active cases but a larger pool of latently infected cases.**
+    - **Without the high risk latent compartment the outbreak is very slow, with a flat curve shape. Adding the high risk latent compartment speeds up the epidemic and increases the outbreak size.**
+    
+1. Re-run the model with demographic processes (with a life expectancy of 20 years). What impact do they have on the dynamics?
+
+    - **As for the SEIR model demographic processes lead to  oscillations in all population compartments and an increase in the average number of cases after the intial outbreak. Demographic processes in this model prevent cases from becoming permentantly protected by their latent disease.**
+
 
 ## 3. A more realistic SHLIR model flow diagram 
 
@@ -122,10 +138,17 @@ It is also assumed that the between group contact rates are defined as (where $i
 ### Explore
 
 
-1. What happens when one group has a much higher transmission probability (use the default settings for all other parameters), compared to when the transmission probability is the same for both groups?
+1. Select the SHLITR model with risk groups. Run it with a beta of 3, a high risk beta of 3, a life expectancy of 1000, and all other parameters as set. Re-run the model with a high risk beta of 30. What is the impact of the high risk group on the number of cases?
 
-    - **The proportion of cases that are in the high risk latent and infectious populations has increased.**
-      
+
+    - **Increasing the transmission rate in the high risk group increased the number of cases in both the low risk and high risk populations.**
+
+
+1. Set beta to be 0.5, the between group mixing to be 0 and run the model. Now set the between group mixing to be 0.2 and re-run the model. With these parameter settings what differences do you see between these model runs? Can you explain these findings (see the model outline above for hints)?
+
+    - **For both models runs there is a large outbreak in the high risk group. In the low risk group there is no outbreak without mixing but a large outbreak when between group mixing is accounted for.**
+    - **The large outbreak in the low risk population, observed when risk groups mix, is driven by the introduction of high risk cases to the force of infection. In this situation, even if the disease completely dies out in the low risk population, transmission can still occur.**
+    
 1. What is the impact of varying the mixing between high and low risk groups for the above scenario?
 
     - **As mixing is reduced the proportion of the low risk population that are infected is reduced.**
@@ -136,8 +159,9 @@ It is also assumed that the between group contact rates are defined as (where $i
 The interactive interface allows for exploration of multiple other models, using it can you identify some commonalities between different models? What generalisations can you draw from these commonalities. 
 
 - **Adding birth and death process can lead to oscillating behaviour around some steady state.**
-- **Add additional latent compartments reduces the speed of progression of the epidemic through the population.**
+- **Adding additional latent compartments reduces the speed of progression of the epidemic through the population.**
 - **Highly infectious disease may die out in a short space of time if there is not a sufficient number of susceptibles.**
+- **Identified any others? Talk through them with your instructors.**
 
 
 # References

@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solutions 2: Exploring Compartmental Model Dynamics • BIDD Modelling Course</title>
+<title>Practical 2: Exploring Compartmental Model Dynamics • BIDD Modelling Course</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Solutions 2: Exploring Compartmental Model Dynamics">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Practical 2: Exploring Compartmental Model Dynamics">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -119,7 +119,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Solutions 2: Exploring Compartmental Model Dynamics</h1>
+      <h1>Practical 2: Exploring Compartmental Model Dynamics</h1>
                         <h4 class="author">Sam Abbott</h4>
             
       
@@ -145,17 +145,12 @@
 <a href="#outline-for-session" class="anchor"></a>Outline for Session</h1>
 <ol style="list-style-type: decimal">
 <li>Set up (5 minutes)</li>
-<li>Investigate the dynamics of a simple SEIR model (10 minutes)</li>
+<li>Investigate the dynamics of a simple SEIR model (20 minutes)</li>
 <li>Explore the impact of adding high and low risk latency to a SEIR model, in comparison to the SEIR model (10 minutes).</li>
 <li>Investigate the complex dynamics of a more realistic SHLIR model (10 minutes) .</li>
-<li>Explore the parameter space of multiple models and try to understand some of the general implications of model structures on dynamics (20 minutes).</li>
+<li>Explore the parameter space of multiple models and try to understand some of the general implications of model structures on dynamics (10 minutes).</li>
 <li>Session wrap up (5 minutes)</li>
 </ol>
-</div>
-<div id="solutions" class="section level1">
-<h1 class="hasAnchor">
-<a href="#solutions" class="anchor"></a>Solutions</h1>
-<p>The practical solutions are in <strong>bold</strong>, all code has been completed and the exercise models have been simmulated and summarised.</p>
 </div>
 <div id="set-up" class="section level1">
 <h1 class="hasAnchor">
@@ -175,7 +170,7 @@ shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentat
 <div id="a-simple-seir-model-of-tuberculosis-tb" class="section level2">
 <h2 class="hasAnchor">
 <a href="#a-simple-seir-model-of-tuberculosis-tb" class="anchor"></a>1. A Simple SEIR Model of Tuberculosis (TB)</h2>
-<p>As a first exercise, we are going to explore the simple SEIR model, as seen in the design a model practical, in R. For reference the SEIR model flow diagram seen in the first practical’s solutions.<span class="citation">[1]</span> The equations below are a translation of this into <code>R</code> code.</p>
+<p>As a first exercise, we are going to explore the simple SEIR model (select it in the interface), as seen in the design a model practical. For reference the SEIR model flow diagram seen in the first practical’s solutions.<span class="citation">[1]</span> The equations below are a translation of this into <code>R</code> code.</p>
 <div class="figure">
 <img src="resources/SEIR_flow_diag.png" alt="Figure 1: An SEIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 1: An SEIR model of TB transmission, including simple demographic processes</p>
 </div>
@@ -184,9 +179,12 @@ shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentat
 <a href="#explore" class="anchor"></a>Explore</h3>
 <p>Model dynamics are parameter dependent. Even in a simplistic model like the one outlined above parameter values can greatly alter the dynamics. Answer the following questions by varying the parameters and rerunning the model.</p>
 <ol style="list-style-type: decimal">
-<li><p>What is the impact of adding demographic processes (births and deaths)?</p></li>
-<li><p>What happens when the transmission rate (beta) is reduced to 0.5?</p></li>
-<li><p>What happens as the rate of recovery is increased?</p></li>
+<li><p>Set a transmission rate (beta) of 7, an infectios period of 3 months, and a latent period of 0. What role does the latent period have with these settings? What happens to the number of susceptibles over time?</p></li>
+<li><p>Increase the transmission rate and rerun the model. How does this impact the number of infected individuals?</p></li>
+<li><p>Increase the infectious period. How does a longer infectious period impact the shape of the epidemic curve?</p></li>
+<li><p>Increase the latent period to 6 months. What impacts does this have on the disease outbreak?</p></li>
+<li><p>Set beta to 3, the infectious period 12 months, the latent period to 0, and set the timespan to 100. Run the model, turn on demographic processes, and then re-run the model. What is the impact of adding demographic processes (births and deaths)?</p></li>
+<li><p>Reduce the life expectancy to 20 years. What impact does this have on the infected population?</p></li>
 </ol>
 </div>
 </div>
@@ -201,7 +199,8 @@ shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentat
 <h3 class="hasAnchor">
 <a href="#explore-1" class="anchor"></a>Explore</h3>
 <ol style="list-style-type: decimal">
-<li>What has the impact of adding the second latent population been?</li>
+<li><p>Switch to the SHLIR model and turn off demographic processes. Set beta to 9, the high risk latent period to 0, the low risk period to 20 years, the infectious period to 12 months, and the timespan to 100 years. Run this model (this is effectively the SEIR model, see the flow diagram to understand why). Now set the high risk latent period to 2 years, and the rate of developing active disease when high risk to 0.6 - re-run the model. What is the impact of the second high risk latent compartment?</p></li>
+<li><p>Re-run the model with demographic processes (with a life expectancy of 20 years). What impact do they have on the dynamics?</p></li>
 </ol>
 </div>
 </div>
@@ -222,7 +221,8 @@ shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentat
 <h3 class="hasAnchor">
 <a href="#explore-2" class="anchor"></a>Explore</h3>
 <ol style="list-style-type: decimal">
-<li><p>What happens when one group has a much higher transmission probability (use the default settings for all other parameters), compared to when the transmission probability is the same for both groups?</p></li>
+<li><p>Select the SHLITR model with risk groups. Run it with a beta of 3, a high risk beta of 3, a life expectancy of 1000, and all other parameters as set. Re-run the model with a high risk beta of 30. What is the impact of the high risk group on the number of cases?</p></li>
+<li><p>Set beta to be 0.5, the between group mixing to be 0 and run the model. Now set the between group mixing to be 0.2 and re-run the model. With these parameter settings what differences do you see between these model runs? Can you explain these findings (see the model outline above for hints)?</p></li>
 <li><p>What is the impact of varying the mixing between high and low risk groups for the above scenario?</p></li>
 </ol>
 </div>
@@ -251,7 +251,6 @@ shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentat
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#learning-objectives">Learning Objectives</a></li>
       <li><a href="#outline-for-session">Outline for Session</a></li>
-      <li><a href="#solutions">Solutions</a></li>
       <li><a href="#set-up">Set up</a></li>
       <li>
 <a href="#exercises">Exercises</a><ul class="nav nav-pills nav-stacked">
