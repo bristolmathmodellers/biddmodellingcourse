@@ -145,10 +145,10 @@
 <a href="#outline-for-session" class="anchor"></a>Outline for Session</h1>
 <ol style="list-style-type: decimal">
 <li>Set up (5 minutes)</li>
-<li>Investigate the dynamics of a simple SEIR model (10 minutes)</li>
+<li>Investigate the dynamics of a simple SEIR model (20 minutes)</li>
 <li>Explore the impact of adding high and low risk latency to a SEIR model, in comparison to the SEIR model (10 minutes).</li>
 <li>Investigate the complex dynamics of a more realistic SHLIR model (10 minutes) .</li>
-<li>Explore the parameter space of multiple models and try to understand some of the general implications of model structures on dynamics (20 minutes).</li>
+<li>Explore the parameter space of multiple models and try to understand some of the general implications of model structures on dynamics (10 minutes).</li>
 <li>Session wrap up (5 minutes)</li>
 </ol>
 </div>
@@ -172,8 +172,10 @@
 <div id="exercises" class="section level1">
 <h1 class="hasAnchor">
 <a href="#exercises" class="anchor"></a>Exercises</h1>
-<p>##1. A Simple SEIR Model of Tuberculosis (TB)</p>
-<p>As a first exercise, we are going to explore the simple SEIR model, as seen in the design a model practical, in R. For reference the SEIR model flow diagram seen in the first practical’s solutions.<span class="citation">[1]</span> The equations below are a translation of this into <code>R</code> code.</p>
+<div id="a-simple-seir-model-of-tuberculosis-tb" class="section level2">
+<h2 class="hasAnchor">
+<a href="#a-simple-seir-model-of-tuberculosis-tb" class="anchor"></a>1. A Simple SEIR Model of Tuberculosis (TB)</h2>
+<p>As a first exercise, we are going to explore the simple SEIR model (select it in the interface), as seen in the design a model practical. For reference the SEIR model flow diagram seen in the first practical’s solutions.<span class="citation">[1]</span> The equations below are a translation of this into <code>R</code> code.</p>
 <div class="figure">
 <img src="resources/SEIR_flow_diag.png" alt="Figure 1: An SEIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 1: An SEIR model of TB transmission, including simple demographic processes</p>
 </div>
@@ -183,42 +185,74 @@
 <p>Model dynamics are parameter dependent. Even in a simplistic model like the one outlined above parameter values can greatly alter the dynamics. Answer the following questions by varying the parameters and rerunning the model.</p>
 <ol style="list-style-type: decimal">
 <li>
-<p>What is the impact of adding demographic processes (births and deaths)?</p>
+<p>Set a transmission rate (beta) of 7, an infectios period of 3 months, and a latent period of 0. What role does the latent period have with these settings? What happens to the number of susceptibles over time?</p>
 <ul>
-<li><strong>Without demograpic processes Tuberculosis eventually dies out. The addition of demographic processes results in a continous supply of susceptibles that makes this less likely to happen. However if the disease is sufficiently infectious and has a short serial interval then even with demographic processes the supply of new susceptibles may run out, resulting in the disease dieing out.</strong></li>
+<li><strong>It plays no role. In effect this is an SIR model.</strong></li>
+<li><strong>The number of susceptibles decreases over time. Initially this happens at a slow rate, which then increases dramatically before slowing.</strong></li>
 </ul>
 </li>
 <li>
-<p>What happens when the transmission rate (beta) is reduced to 0.5?</p>
+<p>Increase the transmission rate and rerun the model. How does this impact the number of infected individuals?</p>
 <ul>
-<li><strong>When the transmission rate is reduced to 0.5 Tuberculosis will die out without spreading any further than the index case. This is because the basic reproduction number is below 1 for this set of parameters.</strong></li>
+<li><strong>Increasing the transmission rate increases the total number of cases, increases the maximum size of the epidemic peak, and speeds up the outbreak.</strong></li>
 </ul>
 </li>
 <li>
-<p>What happens as the rate of recovery is increased?</p>
+<p>Increase the infectious period. How does a longer infectious period impact the shape of the epidemic curve?</p>
 <ul>
-<li><strong>As the rate of recovery is increased the size of the epidemic peak is decreased and the duration of the epidemic increases. The cumulative number of cases is reduced.</strong></li>
+<li><strong>Increasing the infectious period increases the size of the epidemic peak and extends the duration of the epidemic. There is little impact on the initial spread of the disease outbreak.</strong></li>
+</ul>
+</li>
+<li>
+<p>Increase the latent period to 6 months. What impacts does this have on the disease outbreak?</p>
+<ul>
+<li><strong>The cumulative number of the cases is comparable but the epidemic duration is longer, with a lower epidemic peak. The initial outbreak is also slower.</strong></li>
+</ul>
+</li>
+<li>
+<p>Set beta to 3, the infectious period 12 months, the latent period to 0, and set the timespan to 100. Run the model, turn on demographic processes, and then re-run the model. What is the impact of adding demographic processes (births and deaths)?</p>
+<ul>
+<li><strong>Introducing demographic processes leads to oscillations in all compartments. In particular this leads to mulitple secondary disease outbreaks after the primary outbreak.</strong></li>
+</ul>
+</li>
+<li>
+<p>Reduce the life expectancy to 20 years. What impact does this have on the infected population?</p>
+<ul>
+<li><strong>The initial epidemic is unchanged. However, the secondary outbreaks occur more frequently and there is a higher average number of cases at any given time.</strong></li>
 </ul>
 </li>
 </ol>
-<p>##2. Add High and Low Risk Compartments</p>
+</div>
+</div>
+<div id="add-high-and-low-risk-compartments" class="section level2">
+<h2 class="hasAnchor">
+<a href="#add-high-and-low-risk-compartments" class="anchor"></a>2. Add High and Low Risk Compartments</h2>
 <p>To make the SEIR model slightly more realistic, and therefore better able to capture the observed dynamics of TB, we add a second latent population (as discussed in the solutions for practical 1). This change can be seen in the model flow diagram (Figure 2). Go back to <a href="https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical_1.html">practical 1</a> if you need a refresher for the motivation behind this. We have also added reinfection for the low risk latent population.</p>
 <div class="figure">
 <img src="resources/SHLIR_flow_diag.png" alt="Figure 2: An SHLIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 2: An SHLIR model of TB transmission, including simple demographic processes</p>
-</div>
 </div>
 <div id="explore-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#explore-1" class="anchor"></a>Explore</h3>
 <ol style="list-style-type: decimal">
 <li>
-<p>What has the impact of adding the second latent population been?</p>
+<p>Switch to the SHLIR model and turn off demographic processes. Set beta to 9, the high risk latent period to 0, the low risk period to 20 years, the infectious period to 12 months, and the timespan to 100 years. Run this model (this is effectively the SEIR model, see the flow diagram to understand why). Now set the high risk latent period to 2 years, and the rate of developing active disease when high risk to 0.6 - re-run the model. What is the impact of the second high risk latent compartment?</p>
 <ul>
-<li><strong>It has reduced the peak epidemic size and slowed the initial spread of the disease. In addition there are fewer cumulative active cases but a larger pool of latently infected cases.</strong></li>
+<li><strong>Without the high risk latent compartment the outbreak is very slow, with a flat curve shape. Adding the high risk latent compartment speeds up the epidemic and increases the outbreak size.</strong></li>
+</ul>
+</li>
+<li>
+<p>Re-run the model with demographic processes (with a life expectancy of 20 years). What impact do they have on the dynamics?</p>
+<ul>
+<li><strong>As for the SEIR model demographic processes lead to oscillations in all population compartments and an increase in the average number of cases after the intial outbreak. Demographic processes in this model prevent cases from becoming permentantly protected by their latent disease.</strong></li>
 </ul>
 </li>
 </ol>
-<p>##3. A more realistic SHLIR model flow diagram</p>
+</div>
+</div>
+<div id="a-more-realistic-shlir-model-flow-diagram" class="section level2">
+<h2 class="hasAnchor">
+<a href="#a-more-realistic-shlir-model-flow-diagram" class="anchor"></a>3. A more realistic SHLIR model flow diagram</h2>
 <p>The most complex model supported by the interactive interface, this is a more realistic model that might be used in research. The SHLIR model flow diagram (Figure 3) includes: risk groups, treatment, and reinfection for those who have recovered from active disease. Whilst many realistic TB models use age structure this is not included here (if you are interested in discussing how you would include this talk to your instructors or contact <a href="https://www.samabbott.co.uk/">me</a>). For simplicity we have assumed that it is possible to be born into both populations. For the motivation behind this model see <a href="https://bristolmathmodellers.github.io/biddmodellingcourse/articles/practical-one.html">practical 1</a>.</p>
 <div class="figure">
 <img src="resources/SHLIR_real_flow_diag.png" alt="Figure 3: A realistic SHLIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 3: A realistic SHLIR model of TB transmission, including simple demographic processes</p>
@@ -229,15 +263,21 @@
 <p><span class="math display">\[ M_{ii} = 1 \]</span></p>
 <p>It is also assumed that the between group contact rates are defined as (where <span class="math inline">\(i \neq j\)</span>),</p>
 <p><span class="math display">\[ M_{ij} = 0.1 \]</span></p>
-</div>
 <div id="explore-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#explore-2" class="anchor"></a>Explore</h3>
 <ol style="list-style-type: decimal">
 <li>
-<p>What happens when one group has a much higher transmission probability (use the default settings for all other parameters), compared to when the transmission probability is the same for both groups?</p>
+<p>Select the SHLITR model with risk groups. Run it with a beta of 3, a high risk beta of 3, a life expectancy of 1000, and all other parameters as set. Re-run the model with a high risk beta of 30. What is the impact of the high risk group on the number of cases?</p>
 <ul>
-<li><strong>The proportion of cases that are in the high risk latent and infectious populations has increased.</strong></li>
+<li><strong>Increasing the transmission rate in the high risk group increased the number of cases in both the low risk and high risk populations.</strong></li>
+</ul>
+</li>
+<li>
+<p>Set beta to be 0.5, the between group mixing to be 0 and run the model. Now set the between group mixing to be 0.2 and re-run the model. With these parameter settings what differences do you see between these model runs? Can you explain these findings (see the model outline above for hints)?</p>
+<ul>
+<li><strong>For both models runs there is a large outbreak in the high risk group. In the low risk group there is no outbreak without mixing but a large outbreak when between group mixing is accounted for.</strong></li>
+<li><strong>The large outbreak in the low risk population, observed when risk groups mix, is driven by the introduction of high risk cases to the force of infection. In this situation, even if the disease completely dies out in the low risk population, transmission can still occur.</strong></li>
 </ul>
 </li>
 <li>
@@ -248,16 +288,17 @@
 </ul>
 </li>
 </ol>
-<p>##3. Explore model dynamics</p>
-<ul>
-<li>
+</div>
+</div>
+<div id="explore-model-dynamics" class="section level2">
+<h2 class="hasAnchor">
+<a href="#explore-model-dynamics" class="anchor"></a>4. Explore model dynamics</h2>
 <p>The interactive interface allows for exploration of multiple other models, using it can you identify some commonalities between different models? What generalisations can you draw from these commonalities.</p>
 <ul>
 <li><strong>Adding birth and death process can lead to oscillating behaviour around some steady state.</strong></li>
-<li><strong>Add additional latent compartments reduces the speed of progression of the epidemic through the population.</strong></li>
+<li><strong>Adding additional latent compartments reduces the speed of progression of the epidemic through the population.</strong></li>
 <li><strong>Highly infectious disease may die out in a short space of time if there is not a sufficient number of susceptibles.</strong></li>
-</ul>
-</li>
+<li><strong>Identified any others? Talk through them with your instructors.</strong></li>
 </ul>
 </div>
 </div>
@@ -281,7 +322,14 @@
       <li><a href="#outline-for-session">Outline for Session</a></li>
       <li><a href="#solutions">Solutions</a></li>
       <li><a href="#set-up">Set up</a></li>
-      <li><a href="#exercises">Exercises</a></li>
+      <li>
+<a href="#exercises">Exercises</a><ul class="nav nav-pills nav-stacked">
+<li><a href="#a-simple-seir-model-of-tuberculosis-tb">1. A Simple SEIR Model of Tuberculosis (TB)</a></li>
+      <li><a href="#add-high-and-low-risk-compartments">2. Add High and Low Risk Compartments</a></li>
+      <li><a href="#a-more-realistic-shlir-model-flow-diagram">3. A more realistic SHLIR model flow diagram</a></li>
+      <li><a href="#explore-model-dynamics">4. Explore model dynamics</a></li>
+      </ul>
+</li>
       <li><a href="#references">References</a></li>
       </ul>
 </div>
