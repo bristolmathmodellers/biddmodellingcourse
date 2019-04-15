@@ -172,7 +172,7 @@
 <div id="a-simple-seir-model-of-tuberculosis-tb" class="section level2">
 <h2 class="hasAnchor">
 <a href="#a-simple-seir-model-of-tuberculosis-tb" class="anchor"></a>1. A Simple SEIR Model of Tuberculosis (TB)</h2>
-<p>As a first exercise we are going to run the simple SEIR model, as seen in practical 2, in R.</p>
+<p>As a first exercise we are going to run the simple SEIR model, as seen in practical 2, in R. See practical 2. for the flow diagram.</p>
 <div id="populations-and-initialisation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#populations-and-initialisation" class="anchor"></a>Populations and Initialisation</h3>
@@ -347,7 +347,7 @@
 </table>
 <p>Finally we plot the population in each model compartment over time.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">## For an interactive graph change interactive to TRUE</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">## Interactivity allows plot zooming and gives a tool tip providing the population sizr at any point.</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">## Interactivity allows plot zooming and gives a tool tip providing the population size at any point.</a>
 <a class="sourceLine" id="cb8-3" data-line-number="3">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(SEIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="solutions-three_files/figure-html/seir-plot-1.png" alt="Figure 1: Plot of population over time in each SEIR model compartment" width="2310"><p class="caption">
@@ -364,7 +364,7 @@ Figure 1: Plot of population over time in each SEIR model compartment
 <div id="add-high-and-low-risk-compartments" class="section level2">
 <h2 class="hasAnchor">
 <a href="#add-high-and-low-risk-compartments" class="anchor"></a>2. Add High and Low Risk Compartments</h2>
-<p>Now we are going to implement the SHLIR model from practical 2 and try to reproduce some of the behaviour observed using the interactive interface. See practical for details on this model.</p>
+<p>Now we are going to implement the SHLIR model from practical 2 and try to reproduce some of the behaviour observed using the interactive interface. See practical 2 for details on this model.</p>
 <div id="populations-and-initialisation-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#populations-and-initialisation-1" class="anchor"></a>Populations and Initialisation</h3>
@@ -573,7 +573,7 @@ Figure 3: Plot of the population in each SHLIR model compartment over time
 <li><strong>This works because when <code>nu = 0</code> no one enters the low risk latent population compartment and therefore it has no effect.</strong></li>
 </ul>
 </li>
-<li><p>Can you alter the parameters defined above to answer the questions for this model from practical 2?</p></li>
+<li><p>Can you alter the parameters defined above to answer the questions for the SHLIR model from practical 2?</p></li>
 </ol>
 </div>
 </div>
