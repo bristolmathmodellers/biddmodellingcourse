@@ -227,7 +227,7 @@ devtools::install_github(&quot;bristolmathmodellers/biddmodellingcourse&quot;)</
 <h1>Exercises</h1>
 <div id="a-simple-seir-model-of-tuberculosis-tb" class="section level2">
 <h2>1. A Simple SEIR Model of Tuberculosis (TB)</h2>
-<p>As a first exercise we are going to run the simple SEIR model, as seen in practical 2, in R.</p>
+<p>As a first exercise we are going to run the simple SEIR model, as seen in practical 2, in R. See practical 2. for the flow diagram.</p>
 <div id="populations-and-initialisation" class="section level3">
 <h3>Populations and Initialisation</h3>
 <p>We first set up the initial populations for the Susceptible (<span class="math inline">\(S_0\)</span>), Latent (<span class="math inline">\(E_0\)</span>), Infected (<span class="math inline">\(I\)</span>), and Recovered (<span class="math inline">\(R\)</span>) compartments. We have initialised the model as an early stage epidemic with a single case of TB.</p>
@@ -299,7 +299,7 @@ SEIR_sim %&gt;%
   pretty_table(caption = &quot;SEIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic&quot;)</code></pre>
 <p>Finally we plot the population in each model compartment over time.</p>
 <pre class="r"><code>## For an interactive graph change interactive to TRUE
-## Interactivity allows plot zooming and gives a tool tip providing the population sizr at any point.
+## Interactivity allows plot zooming and gives a tool tip providing the population size at any point.
 biddmodellingcourse::plot_model(SEIR_sim, interactive = FALSE)</code></pre>
 </div>
 <div id="explore" class="section level3">
@@ -309,7 +309,7 @@ biddmodellingcourse::plot_model(SEIR_sim, interactive = FALSE)</code></pre>
 </div>
 <div id="add-high-and-low-risk-compartments" class="section level2">
 <h2>2. Add High and Low Risk Compartments</h2>
-<p>Now we are going to implement the SHLIR model from practical 2 and try to reproduce some of the behaviour observed using the interactive interface. See practical for details on this model.</p>
+<p>Now we are going to implement the SHLIR model from practical 2 and try to reproduce some of the behaviour observed using the interactive interface. See practical 2 for details on this model.</p>
 <div id="populations-and-initialisation-1" class="section level3">
 <h3>Populations and Initialisation</h3>
 <p>As in the previous model the first step is to define the model populations. There are now two new compartments, high risk latents (H), and low risk latents (L). These replace the original latent population (E) used in the SEIR model.</p>
@@ -392,7 +392,7 @@ biddmodellingcourse::plot_model(SHLIR_sim, interactive = FALSE)</code></pre>
 <h3>Explore</h3>
 <ol style="list-style-type: decimal">
 <li><p>Test your changes by setting <code>nu = 0</code> and all other parameters to be the same as for the SEIR model. If everything is working correctly both models should give the same output.</p></li>
-<li><p>Can you alter the parameters defined above to answer the questions for this model from practical 2?</p></li>
+<li><p>Can you alter the parameters defined above to answer the questions for the SHLIR model from practical 2?</p></li>
 </ol>
 </div>
 </div>

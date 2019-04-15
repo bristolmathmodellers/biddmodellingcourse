@@ -61,7 +61,7 @@ For more help getting started see the course README ([https://bristolmathmodelle
 
 ## 1. A Simple SEIR Model of Tuberculosis (TB)
 
-As a first exercise we are going to run the simple SEIR model, as seen in practical 2, in R. 
+As a first exercise we are going to run the simple SEIR model, as seen in practical 2, in R. See practical 2. for the flow diagram.
 
 ### Populations and Initialisation
 
@@ -153,7 +153,7 @@ Finally we plot the population in each model compartment over time.
 
 ```{r seir-plot, fig.cap = pretty_figref("SEIR", "Plot of population over time in each SEIR model compartment")}
 ## For an interactive graph change interactive to TRUE
-## Interactivity allows plot zooming and gives a tool tip providing the population sizr at any point.
+## Interactivity allows plot zooming and gives a tool tip providing the population size at any point.
 biddmodellingcourse::plot_model(SEIR_sim, interactive = FALSE)
 ```
 
@@ -164,7 +164,7 @@ As we saw in practical 2, model dynamics are parameter dependent. Look back at t
 
 ## 2. Add High and Low Risk Compartments
 
-Now we are going to implement the SHLIR model from practical 2 and try to reproduce some of the behaviour observed using the interactive interface. See practical for details on this model.
+Now we are going to implement the SHLIR model from practical 2 and try to reproduce some of the behaviour observed using the interactive interface. See practical 2 for details on this model.
 
 ### Populations and Initialisation 
 
@@ -270,7 +270,7 @@ biddmodellingcourse::plot_model(SHLIR_sim, interactive = FALSE)
       - **The SEIR and SHLIR models should give the same result.**
       - **This works because when `nu = 0` no one enters the low risk latent population compartment and therefore it has no effect.**
 
-1. Can you alter the parameters defined above to answer the questions for this model from practical 2?
+1. Can you alter the parameters defined above to answer the questions for the SHLIR model from practical 2?
 
 ## 3. Translate a more realistic SHLIR model flow diagram to equations
 
