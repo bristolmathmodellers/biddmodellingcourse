@@ -24,21 +24,29 @@ The `biddmodellingcourse` package contains the practicals for the [BIDD](http://
 
 ## Getting Started - On The Day
 
-- The practicals and code should be on the memory stick given to you at the start of the the course. Open the course folder and then open the `biddmodellingcourse` folder.
 
-- Verify that you have a working installation of both [R](https://www.r-project.org/) and [Rstudio](https://www.rstudio.com/products/rstudio/download/#download), then click on the `biddmodellingcourse.Rproj` project. This should open an instance of Rstudio.
+### Getting up and running
 
-- Install the BIDD modelling short course from GitHub using the R terminal (this may take several minutes, if you are having problems talk to a course instructor):
+- The practicals and code should be on the memory stick given to you at the start of the the course as a zip. Copy the zip to your home directory, unzip it, and then open the `biddmodellingcourse` folder.
 
-```{r gh-installation, eval = FALSE}
-install.packages("devtools")
-devtools::install_github("bristolmathmodellers/biddmodellingcourse")
-```
+- Verify that you have a working installation of both [R](https://www.r-project.org/) and [Rstudio](https://www.rstudio.com/products/rstudio/download/#download) (if on the course computers you do), then click on the `biddmodellingcourse.Rproj` project. This should open an instance of Rstudio.
 
 - You are now ready to start the practicals (see the handouts or the course website ([https://bristolmathmodellers.github.io/biddmodellingcourse/](https://bristolmathmodellers.github.io/biddmodellingcourse/))). For practicals that require coding, follow along interactively using the provided notebooks (available in the `vignettes` folder).
 
+### Using the course code
+
+- To run the shiny application in practical 2 run the following code,
+
+```{r, eval = FALSE}
+shiny::runGitHub("exploreidmodels", "seabbs")
+```
+
 - The course practicals make use of [R notebooks](https://rmarkdown.rstudio.com/r_notebooks.html), these allow text and code to be intermingled in a single document. Code is highlighted and separated from the text using ```. To run the code in these chunks click on the green arrow in the right hand side of the chunk, or select the chunk and press enter. To run all code chunks above a given chunk press the grey arrow pointing downwards. The output from each code chunk will be displayed below the code chunk.
 
+- **Are you having a problem running something locally?**
+    - For Practical 2 use the following link to start the shiny app remotely: http://bit.ly/bidd-practical-2
+    - For practical 3 use the following link to start a remote Rstudio session: http://bit.ly/bidd-practical-3
+    
 ## Getting Started - Remote Set-up
 
 - Download the package folder from [https://github.com/bristolmathmodellers/biddmodellingcourse/archive/master.zip](https://github.com/bristolmathmodellers/biddmodellingcourse/archive/master.zip) or use `git clone`, as follows, in the command line (not the R terminal).

@@ -7,8 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Solutions 2: Exploring Compartmental Model Dynamics • BIDD Modelling Course</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Solutions 2: Exploring Compartmental Model Dynamics">
 <meta property="og:description" content="">
@@ -161,13 +160,13 @@
 <h1 class="hasAnchor">
 <a href="#set-up" class="anchor"></a>Set up</h1>
 <p>In order to more systematically explore the parameter space of multiple models we have provided an interactive interface. Start the interactive interface by running the following in <code>R</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny, <span class="dt">logical.return =</span> <span class="ot">TRUE</span>)) {
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"shiny"</span>)
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)
-}
-shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/runUrl">runGitHub</a></span>(<span class="st">"exploreidmodels"</span>, <span class="st">"seabbs"</span>)</code></pre></div>
-<p>If having problems running the application then talk to an instructor and/or try the hosted web version (<a href="http://seabbs.co.uk/shiny/exploreidmodels/" class="uri">http://seabbs.co.uk/shiny/exploreidmodels/</a>).</p>
-<p>Use this interface to explore the some of the model that have already been discussed and to answer the following ec. Instructions for using the interactive interface can be found in the about section of the application.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="cf">if</span> (<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny, <span class="dt">logical.return =</span> <span class="ot">TRUE</span>)) {</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"shiny"</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">}</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/runUrl">runGitHub</a></span>(<span class="st">"exploreidmodels"</span>, <span class="st">"seabbs"</span>)</a></code></pre></div>
+<p>If having problems running the application then talk to an instructor and/or try the hosted web version (<a href="http://seabbs.co.uk/shiny/exploreidmodels/">http://seabbs.co.uk/shiny/exploreidmodels/</a>).</p>
+<p>Use this interface to answer the following excercises. Instructions for using the interactive interface can be found in the about section of the application.</p>
 </div>
 <div id="exercises" class="section level1">
 <h1 class="hasAnchor">
@@ -175,17 +174,17 @@ shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentat
 <div id="a-simple-seir-model-of-tuberculosis-tb" class="section level2">
 <h2 class="hasAnchor">
 <a href="#a-simple-seir-model-of-tuberculosis-tb" class="anchor"></a>1. A Simple SEIR Model of Tuberculosis (TB)</h2>
-<p>As a first exercise, we are going to explore the simple SEIR model (select it in the interface), as seen in the design a model practical. For reference the SEIR model flow diagram seen in the first practical’s solutions.<span class="citation">[1]</span> The equations below are a translation of this into <code>R</code> code.</p>
+<p>As a first exercise, we are going to explore the simple SEIR model (select it in the interface), as seen in the design a model practical. For reference the SEIR model flow diagram seen in the first practical’s solutions has been provided.<span class="citation">[1]</span> The code for this model can be found in the code section of the interactive interface.</p>
 <div class="figure">
 <img src="resources/SEIR_flow_diag.png" alt="Figure 1: An SEIR model of TB transmission, including simple demographic processes"><p class="caption">Figure 1: An SEIR model of TB transmission, including simple demographic processes</p>
 </div>
 <div id="explore" class="section level3">
 <h3 class="hasAnchor">
 <a href="#explore" class="anchor"></a>Explore</h3>
-<p>Model dynamics are parameter dependent. Even in a simplistic model like the one outlined above parameter values can greatly alter the dynamics. Answer the following questions by varying the parameters and rerunning the model.</p>
+<p>Model dynamics are parameter dependent. Even in a simplistic model like the one outlined above parameter values can greatly alter the dynamics. Answer the following questions by varying the parameters and rerunning the model (<em>Note: Don’t worry if you can’t use the interface to the exact values given below</em>) .</p>
 <ol style="list-style-type: decimal">
 <li>
-<p>Set a transmission rate (beta) of 7, an infectios period of 3 months, and a latent period of 0. What role does the latent period have with these settings? What happens to the number of susceptibles over time?</p>
+<p>Set a transmission rate (beta) of 7, an infectious period of 3 months, and a latent period of 0. What role does the exposed (latent) compartment have with these settings? What happens to the number of susceptibles over time?</p>
 <ul>
 <li><strong>It plays no role. In effect this is an SIR model.</strong></li>
 <li><strong>The number of susceptibles decreases over time. Initially this happens at a slow rate, which then increases dramatically before slowing.</strong></li>
@@ -210,7 +209,7 @@ shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentat
 </ul>
 </li>
 <li>
-<p>Set beta to 3, the infectious period 12 months, the latent period to 0, and set the timespan to 100. Run the model, turn on demographic processes, and then re-run the model. What is the impact of adding demographic processes (births and deaths)?</p>
+<p>Set beta to 3, the infectious period to 12 months, the latent period to 0, and set the timespan to 100. Run the model, turn on demographic processes, and then re-run the model. What is the impact of adding demographic processes (births and deaths)?</p>
 <ul>
 <li><strong>Introducing demographic processes leads to oscillations in all compartments. In particular this leads to mulitple secondary disease outbreaks after the primary outbreak.</strong></li>
 </ul>
@@ -236,7 +235,7 @@ shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentat
 <a href="#explore-1" class="anchor"></a>Explore</h3>
 <ol style="list-style-type: decimal">
 <li>
-<p>Switch to the SHLIR model and turn off demographic processes. Set beta to 9, the high risk latent period to 0, the low risk period to 20 years, the infectious period to 12 months, and the timespan to 100 years. Run this model (this is effectively the SEIR model, see the flow diagram to understand why). Now set the high risk latent period to 2 years, and the rate of developing active disease when high risk to 0.6 - re-run the model. What is the impact of the second high risk latent compartment?</p>
+<p>Switch to the SHLIR model and turn off demographic processes. Set beta to 9, the high risk latent period to 0, the low risk latent period to 20 years, the infectious period to 12 months, and the timespan to 100 years. Run this model (this is effectively the SEIR model, see the flow diagram to understand why). Now set the high risk latent period to 2 years, and the rate of developing active disease when high risk to 0.6 - re-run the model. What is the impact of the second high risk latent compartment?</p>
 <ul>
 <li><strong>Without the high risk latent compartment the outbreak is very slow, with a flat curve shape. Adding the high risk latent compartment speeds up the epidemic and increases the outbreak size.</strong></li>
 </ul>
@@ -244,7 +243,7 @@ shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentat
 <li>
 <p>Re-run the model with demographic processes (with a life expectancy of 20 years). What impact do they have on the dynamics?</p>
 <ul>
-<li><strong>As for the SEIR model demographic processes lead to oscillations in all population compartments and an increase in the average number of cases after the intial outbreak. Demographic processes in this model prevent cases from becoming permentantly protected by their latent disease.</strong></li>
+<li><strong>As for the SEIR model demographic processes lead to oscillations in all population compartments and an increase in the average number of cases after the intial outbreak. Demographic processes in this model prevent cases from becoming permanently protected by their latent disease.</strong></li>
 </ul>
 </li>
 </ol>
@@ -281,7 +280,7 @@ shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentat
 </ul>
 </li>
 <li>
-<p>What is the impact of varying the mixing between high and low risk groups for the above scenario?</p>
+<p>What is the impact of increasing or decreasing the between group mixing parameter in the above scenario?</p>
 <ul>
 <li><strong>As mixing is reduced the proportion of the low risk population that are infected is reduced.</strong></li>
 <li><strong>As mixing is increased the disease dynamics become more homogeneous between groups.</strong></li>
@@ -293,7 +292,7 @@ shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentat
 <div id="explore-model-dynamics" class="section level2">
 <h2 class="hasAnchor">
 <a href="#explore-model-dynamics" class="anchor"></a>4. Explore model dynamics</h2>
-<p>The interactive interface allows for exploration of multiple other models, using it can you identify some commonalities between different models? What generalisations can you draw from these commonalities.</p>
+<p>The interactive interface allows for exploration of multiple other models, using it can you identify some commonalities between different models? What generalisations can you draw from these commonalities?</p>
 <ul>
 <li><strong>Adding birth and death process can lead to oscillating behaviour around some steady state.</strong></li>
 <li><strong>Adding additional latent compartments reduces the speed of progression of the epidemic through the population.</strong></li>
@@ -343,7 +342,7 @@ shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentat
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
 </div>

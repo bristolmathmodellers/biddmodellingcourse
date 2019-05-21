@@ -7,8 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Solutions 3: Compartmental Models to Equations • BIDD Modelling Course</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Solutions 3: Compartmental Models to Equations">
 <meta property="og:description" content="">
@@ -160,11 +159,11 @@
 <h1 class="hasAnchor">
 <a href="#set-up" class="anchor"></a>Set up</h1>
 <p>If you have not installed the course package do this now with the following <code>R</code> code (speak to an instructor if you are having issues with this step).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)
-devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"bristolmathmodellers/biddmodellingcourse"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"bristolmathmodellers/biddmodellingcourse"</span>)</a></code></pre></div>
 <p>Now load the course package,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(biddmodellingcourse)</code></pre></div>
-<p>For more help getting started see the course README (<a href="https://bristolmathmodellers.github.io/biddmodellingcourse/" class="uri">https://bristolmathmodellers.github.io/biddmodellingcourse/</a>) or ask an instructor.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(biddmodellingcourse)</a></code></pre></div>
+<p>For more help getting started see the course README (<a href="https://bristolmathmodellers.github.io/biddmodellingcourse/">https://bristolmathmodellers.github.io/biddmodellingcourse/</a>) or ask an instructor.</p>
 </div>
 <div id="exercises" class="section level1">
 <h1 class="hasAnchor">
@@ -172,77 +171,77 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 <div id="a-simple-seir-model-of-tuberculosis-tb" class="section level2">
 <h2 class="hasAnchor">
 <a href="#a-simple-seir-model-of-tuberculosis-tb" class="anchor"></a>1. A Simple SEIR Model of Tuberculosis (TB)</h2>
-<p>As a first exercise we are going to run the simple SEIR model, as seen in practical 2, in R.</p>
+<p>As a first exercise we are going to run the simple SEIR model, as seen in practical 2, in R. See practical 2. for the flow diagram.</p>
 <div id="populations-and-initialisation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#populations-and-initialisation" class="anchor"></a>Populations and Initialisation</h3>
 <p>We first set up the initial populations for the Susceptible (<span class="math inline">\(S_0\)</span>), Latent (<span class="math inline">\(E_0\)</span>), Infected (<span class="math inline">\(I\)</span>), and Recovered (<span class="math inline">\(R\)</span>) compartments. We have initialised the model as an early stage epidemic with a single case of TB.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">inits =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(
-  <span class="dt">S =</span> <span class="dv">999</span>,
-  <span class="dt">E =</span> <span class="dv">0</span>,
-  <span class="dt">I =</span> <span class="dv">1</span>,
-  <span class="dt">R =</span> <span class="dv">0</span>
-)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">inits =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="dt">S =</span> <span class="dv">999</span>,</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">  <span class="dt">E =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">  <span class="dt">I =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">  <span class="dt">R =</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">)</a></code></pre></div>
 </div>
 <div id="parameters" class="section level3">
 <h3 class="hasAnchor">
 <a href="#parameters" class="anchor"></a>Parameters</h3>
 <p>We then specify the model parameters (with the units being years<sup>-1</sup>), varying these parameters will impact the model dynamics.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(
-  <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span>
-  <span class="dt">gamma =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="co"># Rate of progression to active symptoms </span>
-  <span class="dt">tau =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co"># Rate of recovery</span>
-  <span class="dt">mu =</span> <span class="dv">0</span> <span class="co"># Rate of natural mortality</span>
-)</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">  <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">  <span class="dt">gamma =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="co"># Rate of progression to active symptoms </span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="dt">tau =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co"># Rate of recovery</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">  <span class="dt">mu =</span> <span class="dv">0</span> <span class="co"># Rate of natural mortality</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">)</a></code></pre></div>
 </div>
 <div id="equations" class="section level3">
 <h3 class="hasAnchor">
 <a href="#equations" class="anchor"></a>Equations</h3>
 <p>Finally we specify the model equations for each population compartment. This model incorporates simple demographic processes with a constant natural death rate from all compartments which is equal to the birth rate into the susceptible compartment.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SEIR_demo_ode &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, params) {
-
-  ## Specify model compartments
-  S &lt;-<span class="st"> </span>x[<span class="dv">1</span>]
-  E &lt;-<span class="st"> </span>x[<span class="dv">2</span>]
-  I &lt;-<span class="st"> </span>x[<span class="dv">3</span>]
-  R &lt;-<span class="st"> </span>x[<span class="dv">4</span>]
-
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/with">with</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">as.list</a></span>(params),{
-
-    ## Specify total population
-    N =<span class="st"> </span>S <span class="op">+</span><span class="st"> </span>E <span class="op">+</span><span class="st"> </span>I <span class="op">+</span><span class="st"> </span>R
-
-    ## Derivative Expressions
-    dS =<span class="st"> </span><span class="op">-</span>beta <span class="op">*</span><span class="st"> </span>S <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>S <span class="op">+</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>N
-    dE =<span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>S <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>gamma <span class="op">*</span><span class="st"> </span>E <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>E
-    dI =<span class="st"> </span>gamma <span class="op">*</span><span class="st"> </span>E <span class="op">-</span><span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>I
-    dR =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R
-
-    ## output
-    derivatives &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(dS, dE, dI, dR)
-
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(derivatives)
-  })
-}</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">SEIR_demo_ode &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, params) {</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">  <span class="co">## Specify model compartments</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">  S &lt;-<span class="st"> </span>x[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">  E &lt;-<span class="st"> </span>x[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">  I &lt;-<span class="st"> </span>x[<span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">  R &lt;-<span class="st"> </span>x[<span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/with">with</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">as.list</a></span>(params),{</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">    <span class="co">## Specify total population</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">    N =<span class="st"> </span>S <span class="op">+</span><span class="st"> </span>E <span class="op">+</span><span class="st"> </span>I <span class="op">+</span><span class="st"> </span>R</a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">    <span class="co">## Derivative Expressions</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">    dS =<span class="st"> </span><span class="op">-</span>beta <span class="op">*</span><span class="st"> </span>S <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>S <span class="op">+</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>N</a>
+<a class="sourceLine" id="cb5-16" data-line-number="16">    dE =<span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>S <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>gamma <span class="op">*</span><span class="st"> </span>E <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>E</a>
+<a class="sourceLine" id="cb5-17" data-line-number="17">    dI =<span class="st"> </span>gamma <span class="op">*</span><span class="st"> </span>E <span class="op">-</span><span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>I</a>
+<a class="sourceLine" id="cb5-18" data-line-number="18">    dR =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R</a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20">    <span class="co">## output</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21">    derivatives &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(dS, dE, dI, dR)</a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(derivatives)</a>
+<a class="sourceLine" id="cb5-24" data-line-number="24">  })</a>
+<a class="sourceLine" id="cb5-25" data-line-number="25">}</a></code></pre></div>
 </div>
 <div id="simulate-and-summarise" class="section level3">
 <h3 class="hasAnchor">
 <a href="#simulate-and-summarise" class="anchor"></a>Simulate and Summarise</h3>
 <p>To simulate the model we specify the starting year (<code>begin_time</code>) and final year (<code>end_time</code>) and define a sequence over all intervening years. The model is then solved using <code><a href="https://www.rdocumentation.org/packages/deSolve/topics/lsoda">deSolve::lsoda</a></code> which is used within a simple wrapper function (see <code><a href="../reference/solve_ode.html">?solve_ode</a></code> for details). The resulting table summarises the simulation results for the first 5 years.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">begin_time &lt;-<span class="st"> </span><span class="dv">0</span>
-end_time &lt;-<span class="st"> </span><span class="dv">200</span>
-times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)
-
-## see ?solve_ode for details
-SEIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SEIR_demo_ode, 
-                                           <span class="dt">inits =</span> inits, 
-                                           <span class="dt">params =</span> parameters,
-                                           <span class="dt">times =</span> times, 
-                                           <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)
-SEIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of model simulation"</span>,
-               <span class="dt">label =</span> <span class="st">"tab-1"</span>)</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">begin_time &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">end_time &lt;-<span class="st"> </span><span class="dv">200</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">## see ?solve_ode for details</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">SEIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SEIR_demo_ode, </a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">                                           <span class="dt">inits =</span> inits, </a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">                                           <span class="dt">params =</span> parameters,</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">                                           <span class="dt">times =</span> times, </a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">                                           <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">SEIR_sim <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of model simulation"</span>,</a>
+<a class="sourceLine" id="cb6-14" data-line-number="14">               <span class="dt">label =</span> <span class="st">"tab-1"</span>)</a></code></pre></div>
 <table class="table">
 <caption>Table 1: First 5 years of model simulation</caption>
 <colgroup>
@@ -305,8 +304,8 @@ SEIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 </tbody>
 </table>
 <p>We then summarise the epidemic peak (<code>epi_peak</code>) and epidemic duration (<code>epi_dur</code>), along with population sizes at the end of the time period simulated.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(SEIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"SEIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(SEIR_sim) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"SEIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</a></code></pre></div>
 <table class="table">
 <caption>Table 2: SEIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic (continued below)</caption>
 <colgroup>
@@ -332,7 +331,7 @@ SEIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <colgroup>
 <col width="29%">
 <col width="22%">
-<col width="26%">
+<col width="27%">
 </colgroup>
 <thead><tr class="header">
 <th align="center">Epidemic peak time</th>
@@ -346,9 +345,9 @@ SEIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 </tr></tbody>
 </table>
 <p>Finally we plot the population in each model compartment over time.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## For an interactive graph change interactive to TRUE
-## Interactivity allows plot zooming and gives a tool tip providing the population sizr at any point.
-biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(SEIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co">## For an interactive graph change interactive to TRUE</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">## Interactivity allows plot zooming and gives a tool tip providing the population size at any point.</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(SEIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="solutions-three_files/figure-html/seir-plot-1.png" alt="Figure 1: Plot of population over time in each SEIR model compartment" width="2310"><p class="caption">
 Figure 1: Plot of population over time in each SEIR model compartment
@@ -364,84 +363,84 @@ Figure 1: Plot of population over time in each SEIR model compartment
 <div id="add-high-and-low-risk-compartments" class="section level2">
 <h2 class="hasAnchor">
 <a href="#add-high-and-low-risk-compartments" class="anchor"></a>2. Add High and Low Risk Compartments</h2>
-<p>Now we are going to implement the SHLIR model from practical 2 and try to reproduce some of the behaviour observed using the interactive interface. See practical for details on this model.</p>
+<p>Now we are going to implement the SHLIR model from practical 2 and try to reproduce some of the behaviour observed using the interactive interface. See practical 2 for details on this model.</p>
 <div id="populations-and-initialisation-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#populations-and-initialisation-1" class="anchor"></a>Populations and Initialisation</h3>
 <p>As in the previous model the first step is to define the model populations. There are now two new compartments, high risk latents (H), and low risk latents (L). These replace the original latent population (E) used in the SEIR model.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SHLIR_inits =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(
-  <span class="dt">S =</span> <span class="dv">999</span>,
-  <span class="dt">H =</span> <span class="dv">0</span>,
-  <span class="dt">L =</span> <span class="dv">0</span>,
-  <span class="dt">I =</span> <span class="dv">1</span>,
-  <span class="dt">R =</span> <span class="dv">0</span>
-)</code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">SHLIR_inits =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">  <span class="dt">S =</span> <span class="dv">999</span>,</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">  <span class="dt">H =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">  <span class="dt">L =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">  <span class="dt">I =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">  <span class="dt">R =</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7">)</a></code></pre></div>
 </div>
 <div id="parameters-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#parameters-1" class="anchor"></a>Parameters</h3>
 <p>We add two additional parameters for the rate of progression from high to low risk latents (<code>nu</code>) and the rate of progression from low risk latent to active disease (<code>gamma_L</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SHLIR_parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(
-  <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span>
-  <span class="dt">gamma_H =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="co"># Rate of progression to active symptoms from high risk latent</span>
-  <span class="dt">nu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co">#Rate of progression from high to low risk latent</span>
-  <span class="dt">gamma_L =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">100</span>, <span class="co"># Rate of progression to active symptoms for low risk latent</span>
-  <span class="dt">tau =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co"># Rate of recovery</span>
-  <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span> <span class="co"># Rate of natural mortality</span>
-)</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">SHLIR_parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">  <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">  <span class="dt">gamma_H =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="co"># Rate of progression to active symptoms from high risk latent</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">  <span class="dt">nu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co">#Rate of progression from high to low risk latent</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">  <span class="dt">gamma_L =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">100</span>, <span class="co"># Rate of progression to active symptoms for low risk latent</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">  <span class="dt">tau =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co"># Rate of recovery</span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">  <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span> <span class="co"># Rate of natural mortality</span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">)</a></code></pre></div>
 </div>
 <div id="equations-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#equations-1" class="anchor"></a>Equations</h3>
 <p>The code below is a starting point, fill in the missing model terms using the model flow diagram (Figure 2) and the code for the previous SEIR model as reference points.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SHLIR_demo_ode &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, params) {
-
-  ## Specify model compartments
-  S &lt;-<span class="st"> </span>x[<span class="dv">1</span>]
-  H &lt;-<span class="st"> </span>x[<span class="dv">2</span>]
-  L &lt;-<span class="st"> </span>x[<span class="dv">3</span>]
-  I &lt;-<span class="st"> </span>x[<span class="dv">4</span>]
-  R &lt;-<span class="st"> </span>x[<span class="dv">5</span>]
-
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/with">with</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">as.list</a></span>(params),{
-
-    ## Specify total population
-    N =<span class="st"> </span>S <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>L <span class="op">+</span><span class="st"> </span>I <span class="op">+</span><span class="st"> </span>R
-
-    ## Derivative Expressions
-    dS =<span class="st"> </span><span class="op">-</span><span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>S <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>S <span class="op">+</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>N
-    ## These are the new equations - fill in the remaining terms
-    dH =<span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>(S <span class="op">+</span><span class="st"> </span>L) <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>H
-    dL =<span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>L <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>L
-    ## Hint terms are missing from this equation as well
-    dI =<span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L <span class="op">-</span><span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>I
-    dR =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R
-
-    ## output
-    derivatives &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(dS, dH, dL, dI, dR)
-
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(derivatives)
-  })
-}</code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">SHLIR_demo_ode &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, params) {</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">  <span class="co">## Specify model compartments</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">  S &lt;-<span class="st"> </span>x[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">  H &lt;-<span class="st"> </span>x[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">  L &lt;-<span class="st"> </span>x[<span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">  I &lt;-<span class="st"> </span>x[<span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">  R &lt;-<span class="st"> </span>x[<span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/with">with</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">as.list</a></span>(params),{</a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12">    <span class="co">## Specify total population</span></a>
+<a class="sourceLine" id="cb11-13" data-line-number="13">    N =<span class="st"> </span>S <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>L <span class="op">+</span><span class="st"> </span>I <span class="op">+</span><span class="st"> </span>R</a>
+<a class="sourceLine" id="cb11-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb11-15" data-line-number="15">    <span class="co">## Derivative Expressions</span></a>
+<a class="sourceLine" id="cb11-16" data-line-number="16">    dS =<span class="st"> </span><span class="op">-</span><span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>S <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>S <span class="op">+</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>N</a>
+<a class="sourceLine" id="cb11-17" data-line-number="17">    <span class="co">## These are the new equations - fill in the remaining terms</span></a>
+<a class="sourceLine" id="cb11-18" data-line-number="18">    dH =<span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>(S <span class="op">+</span><span class="st"> </span>L) <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>H</a>
+<a class="sourceLine" id="cb11-19" data-line-number="19">    dL =<span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>L <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">-</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>L</a>
+<a class="sourceLine" id="cb11-20" data-line-number="20">    <span class="co">## Hint terms are missing from this equation as well</span></a>
+<a class="sourceLine" id="cb11-21" data-line-number="21">    dI =<span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L <span class="op">-</span><span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>I</a>
+<a class="sourceLine" id="cb11-22" data-line-number="22">    dR =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R</a>
+<a class="sourceLine" id="cb11-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb11-24" data-line-number="24">    <span class="co">## output</span></a>
+<a class="sourceLine" id="cb11-25" data-line-number="25">    derivatives &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(dS, dH, dL, dI, dR)</a>
+<a class="sourceLine" id="cb11-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb11-27" data-line-number="27">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(derivatives)</a>
+<a class="sourceLine" id="cb11-28" data-line-number="28">  })</a>
+<a class="sourceLine" id="cb11-29" data-line-number="29">}</a></code></pre></div>
 </div>
 <div id="simulate-and-summarise-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#simulate-and-summarise-1" class="anchor"></a>Simulate and Summarise</h3>
 <p>Simulation is the same as for the previous model. Does the simulation of your improved model make sense? Evaluate the summary tables and plot of model populations over time.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">begin_time &lt;-<span class="st"> </span><span class="dv">0</span>
-end_time &lt;-<span class="st"> </span><span class="dv">200</span>
-SHILR_times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)
-
-## see ?solve_ode for details
-SHLIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SHLIR_demo_ode, 
-                                           <span class="dt">inits =</span> SHLIR_inits, 
-                                           <span class="dt">params =</span> SHLIR_parameters,
-                                           <span class="dt">times =</span> SHILR_times, 
-                                           <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)
-SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of SHLIR model simulation"</span>,
-               <span class="dt">label =</span> <span class="st">"tab-1"</span>)</code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">begin_time &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">end_time &lt;-<span class="st"> </span><span class="dv">200</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">SHILR_times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">## see ?solve_ode for details</span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">SHLIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SHLIR_demo_ode, </a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">                                           <span class="dt">inits =</span> SHLIR_inits, </a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">                                           <span class="dt">params =</span> SHLIR_parameters,</a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">                                           <span class="dt">times =</span> SHILR_times, </a>
+<a class="sourceLine" id="cb12-10" data-line-number="10">                                           <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb12-11" data-line-number="11">SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of SHLIR model simulation"</span>,</a>
+<a class="sourceLine" id="cb12-14" data-line-number="14">               <span class="dt">label =</span> <span class="st">"tab-1"</span>)</a></code></pre></div>
 <table class="table">
 <caption>Table 1: First 5 years of model simulation</caption>
 <colgroup>
@@ -511,8 +510,8 @@ SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</a></code></pre></div>
 <table class="table">
 <caption>Table 3: SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic (continued below)</caption>
 <colgroup>
@@ -541,7 +540,7 @@ SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <colgroup>
 <col width="29%">
 <col width="22%">
-<col width="26%">
+<col width="27%">
 </colgroup>
 <thead><tr class="header">
 <th align="center">Epidemic peak time</th>
@@ -554,8 +553,8 @@ SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <td align="center">1</td>
 </tr></tbody>
 </table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## For an interactive graph change interactive to TRUE
-biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(SHLIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co">## For an interactive graph change interactive to TRUE</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(SHLIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="solutions-three_files/figure-html/shlir-plot-1.png" alt="Figure 3: Plot of the population in each SHLIR model compartment over time" width="2310"><p class="caption">
 Figure 3: Plot of the population in each SHLIR model compartment over time
@@ -573,7 +572,7 @@ Figure 3: Plot of the population in each SHLIR model compartment over time
 <li><strong>This works because when <code>nu = 0</code> no one enters the low risk latent population compartment and therefore it has no effect.</strong></li>
 </ul>
 </li>
-<li><p>Can you alter the parameters defined above to answer the questions for this model from practical 2?</p></li>
+<li><p>Can you alter the parameters defined above to answer the questions for the SHLIR model from practical 2?</p></li>
 </ol>
 </div>
 </div>
@@ -585,120 +584,120 @@ Figure 3: Plot of the population in each SHLIR model compartment over time
 <h3 class="hasAnchor">
 <a href="#populations-and-initialisation-2" class="anchor"></a>Populations and Initialisation</h3>
 <p>The new populations have been added for you. The population has now been split between low and high risk populations, with the only infectious case being in the high risk population.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">real_SHLIR_inits =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(
-  <span class="co"># General population</span>
-  <span class="dt">S =</span> <span class="dv">800</span>,
-  <span class="dt">H =</span> <span class="dv">0</span>,
-  <span class="dt">L =</span> <span class="dv">0</span>,
-  <span class="dt">I =</span> <span class="dv">0</span>,
-  <span class="dt">Tr =</span> <span class="dv">0</span>,
-  <span class="dt">R =</span> <span class="dv">0</span>,
-  ## High risk population
-  <span class="dt">S_H =</span> <span class="dv">199</span>,
-  <span class="dt">H_H =</span> <span class="dv">0</span>,
-  <span class="dt">L_H =</span> <span class="dv">0</span>,
-  <span class="dt">I_H =</span> <span class="dv">1</span>,
-  <span class="dt">Tr_H =</span> <span class="dv">0</span>,
-  <span class="dt">R_H =</span> <span class="dv">0</span>
-)</code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">real_SHLIR_inits =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">  <span class="co"># General population</span></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">  <span class="dt">S =</span> <span class="dv">800</span>,</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">  <span class="dt">H =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">  <span class="dt">L =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">  <span class="dt">I =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb15-7" data-line-number="7">  <span class="dt">Tr =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb15-8" data-line-number="8">  <span class="dt">R =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb15-9" data-line-number="9">  <span class="co">## High risk population</span></a>
+<a class="sourceLine" id="cb15-10" data-line-number="10">  <span class="dt">S_H =</span> <span class="dv">199</span>,</a>
+<a class="sourceLine" id="cb15-11" data-line-number="11">  <span class="dt">H_H =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb15-12" data-line-number="12">  <span class="dt">L_H =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb15-13" data-line-number="13">  <span class="dt">I_H =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb15-14" data-line-number="14">  <span class="dt">Tr_H =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb15-15" data-line-number="15">  <span class="dt">R_H =</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb15-16" data-line-number="16">)</a></code></pre></div>
 </div>
 <div id="parameters-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#parameters-2" class="anchor"></a>Parameters</h3>
 <p>The required model parameters have been defined for you (with the units being years<sup>-1</sup>). The only new parameters are the between group mixing (<code>M</code>), the proportion that are born high risk (<code>p</code>), and the transmission probability in those considered to be high risk (<code>beta_H</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">real_SHLIR_parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(
-  <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span>
-  <span class="dt">beta_H =</span> <span class="dv">6</span>, <span class="co"># High risk rate of transmission</span>
-  <span class="dt">gamma_H =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="co"># Rate of progression to active symptoms from high risk latent</span>
-  <span class="dt">nu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co">#Rate of progression from high to low risk latent</span>
-  <span class="dt">gamma_L =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">100</span>, <span class="co"># Rate of progression to active symptoms for low risk latent</span>
-  <span class="dt">epsilon =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="co"># Rate of treatment</span>
-  <span class="dt">tau =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co"># Rate of recovery</span>
-  <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span>, <span class="co"># Rate of natural mortality</span>
-  <span class="dt">p =</span> <span class="fl">0.2</span>, <span class="co"># proportion of new births that are high risk</span>
-  <span class="dt">M =</span> <span class="fl">0.2</span> <span class="co"># Between group mixing</span>
-)</code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">real_SHLIR_parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">  <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">  <span class="dt">beta_H =</span> <span class="dv">6</span>, <span class="co"># High risk rate of transmission</span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4">  <span class="dt">gamma_H =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="co"># Rate of progression to active symptoms from high risk latent</span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5">  <span class="dt">nu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co">#Rate of progression from high to low risk latent</span></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6">  <span class="dt">gamma_L =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">100</span>, <span class="co"># Rate of progression to active symptoms for low risk latent</span></a>
+<a class="sourceLine" id="cb16-7" data-line-number="7">  <span class="dt">epsilon =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="co"># Rate of treatment</span></a>
+<a class="sourceLine" id="cb16-8" data-line-number="8">  <span class="dt">tau =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co"># Rate of recovery</span></a>
+<a class="sourceLine" id="cb16-9" data-line-number="9">  <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span>, <span class="co"># Rate of natural mortality</span></a>
+<a class="sourceLine" id="cb16-10" data-line-number="10">  <span class="dt">p =</span> <span class="fl">0.2</span>, <span class="co"># proportion of new births that are high risk</span></a>
+<a class="sourceLine" id="cb16-11" data-line-number="11">  <span class="dt">M =</span> <span class="fl">0.2</span> <span class="co"># Between group mixing</span></a>
+<a class="sourceLine" id="cb16-12" data-line-number="12">)</a></code></pre></div>
 </div>
 <div id="equations-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#equations-2" class="anchor"></a>Equations</h3>
 <p>Update the model equations using the model flow diagram above. The comments in the code given hints as to where changes need to be made. The equations for the low risk population have been provided for you.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">real_SHLIR_demo_ode &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, params) {
-
-  ## Specify model compartments 
-  ## The compartments for the low risk population have been provided 
-  ## Add the high risk population
-  ## Don't forget to update indexing for x. Compare the previous two models for a hint.
-  S &lt;-<span class="st"> </span>x[<span class="dv">1</span>]
-  H &lt;-<span class="st"> </span>x[<span class="dv">2</span>]
-  L &lt;-<span class="st"> </span>x[<span class="dv">3</span>]
-  I &lt;-<span class="st"> </span>x[<span class="dv">4</span>]
-  Tr &lt;-<span class="st"> </span>x[<span class="dv">5</span>]
-  R &lt;-<span class="st"> </span>x[<span class="dv">6</span>]
-  
-  S_H &lt;-<span class="st"> </span>x[<span class="dv">7</span>]
-  H_H &lt;-<span class="st"> </span>x[<span class="dv">8</span>]
-  L_H &lt;-<span class="st"> </span>x[<span class="dv">9</span>]
-  I_H &lt;-<span class="st"> </span>x[<span class="dv">10</span>]
-  Tr_H &lt;-<span class="st"> </span>x[<span class="dv">11</span>]
-  R_H &lt;-<span class="st"> </span>x[<span class="dv">12</span>]
-
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/with">with</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">as.list</a></span>(params),{
-
-    ## Specify total population
-    N =<span class="st"> </span>S <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>L <span class="op">+</span><span class="st"> </span>I <span class="op">+</span><span class="st"> </span>Tr <span class="op">+</span><span class="st"> </span>R <span class="op">+</span><span class="st"> </span>S_H <span class="op">+</span><span class="st"> </span>H_H <span class="op">+</span><span class="st"> </span>L_H <span class="op">+</span><span class="st"> </span>I_H <span class="op">+</span><span class="st"> </span>Tr_H <span class="op">+</span><span class="st"> </span>R_H
-
-    ## Force of infection
-    ## The force of infetion in the low risk population has been provided for you
-    foi &lt;-<span class="st"> </span>beta  <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">+</span><span class="st"> </span>M <span class="op">*</span><span class="st"> </span>beta_H <span class="op">*</span><span class="st"> </span>I_H <span class="op">/</span><span class="st"> </span>N 
-    ## Add the high risk force of infection here
-    foi_H &lt;-<span class="st">  </span>M <span class="op">*</span><span class="st"> </span>beta  <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">+</span><span class="st">  </span>beta_H <span class="op">*</span><span class="st"> </span>I_H <span class="op">/</span><span class="st"> </span>N 
-    
-    ## Derivative Expressions
-    ## General population - provided for you
-    ## Compare these equations from those used for the previous models
-    dS =<span class="st"> </span><span class="op">-</span>S <span class="op">*</span><span class="st"> </span>foi <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>S <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>p) <span class="op">*</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>N
-    dH =<span class="st"> </span>(S <span class="op">+</span><span class="st"> </span>L <span class="op">+</span><span class="st"> </span>R) <span class="op">*</span><span class="st"> </span>foi <span class="op">-</span><span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>H
-    dL =<span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>L <span class="op">*</span><span class="st"> </span>foi <span class="op">-</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>L
-    dI =<span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L <span class="op">-</span><span class="st"> </span>epsilon <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>I
-    dTr =<span class="st"> </span>epsilon <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>Tr <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>Tr
-    dR =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>Tr <span class="op">-</span><span class="st"> </span>R <span class="op">*</span><span class="st"> </span>foi <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R
-    
-    ## High risk population
-    ## Copy the equations used above for the low risk population
-    ## Convert them to be in the high risk population
-    dS_H =<span class="st"> </span><span class="op">-</span>S_H <span class="op">*</span><span class="st"> </span>foi_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>S_H <span class="op">+</span><span class="st"> </span>p <span class="op">*</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>N
-    dH_H =<span class="st"> </span>(S_H <span class="op">+</span><span class="st"> </span>L_H <span class="op">+</span><span class="st"> </span>R_H) <span class="op">*</span><span class="st"> </span>foi_H <span class="op">-</span><span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H_H <span class="op">-</span><span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>H_H
-    dL_H =<span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H_H <span class="op">-</span><span class="st"> </span>L_H <span class="op">*</span><span class="st"> </span>foi_H <span class="op">-</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>L_H
-    dI_H =<span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H_H <span class="op">+</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L_H <span class="op">-</span><span class="st"> </span>epsilon <span class="op">*</span><span class="st"> </span>I_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>I_H
-    dTr_H =<span class="st"> </span>epsilon <span class="op">*</span><span class="st"> </span>I_H <span class="op">-</span><span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>Tr_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>Tr_H
-    dR_H =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>Tr_H <span class="op">-</span><span class="st"> </span>R_H <span class="op">*</span><span class="st"> </span>foi_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R_H
-
-    ## output
-    derivatives &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(dS, dH, dL, dI, dTr, dR, dS_H, dH_H, dL_H, dI_H, dTr_H, dR_H)
-
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(derivatives)
-  })
-}</code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">real_SHLIR_demo_ode &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, params) {</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3">  <span class="co">## Specify model compartments </span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4">  <span class="co">## The compartments for the low risk population have been provided </span></a>
+<a class="sourceLine" id="cb17-5" data-line-number="5">  <span class="co">## Add the high risk population</span></a>
+<a class="sourceLine" id="cb17-6" data-line-number="6">  <span class="co">## Don't forget to update indexing for x. Compare the previous two models for a hint.</span></a>
+<a class="sourceLine" id="cb17-7" data-line-number="7">  S &lt;-<span class="st"> </span>x[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb17-8" data-line-number="8">  H &lt;-<span class="st"> </span>x[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb17-9" data-line-number="9">  L &lt;-<span class="st"> </span>x[<span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb17-10" data-line-number="10">  I &lt;-<span class="st"> </span>x[<span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb17-11" data-line-number="11">  Tr &lt;-<span class="st"> </span>x[<span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb17-12" data-line-number="12">  R &lt;-<span class="st"> </span>x[<span class="dv">6</span>]</a>
+<a class="sourceLine" id="cb17-13" data-line-number="13">  </a>
+<a class="sourceLine" id="cb17-14" data-line-number="14">  S_H &lt;-<span class="st"> </span>x[<span class="dv">7</span>]</a>
+<a class="sourceLine" id="cb17-15" data-line-number="15">  H_H &lt;-<span class="st"> </span>x[<span class="dv">8</span>]</a>
+<a class="sourceLine" id="cb17-16" data-line-number="16">  L_H &lt;-<span class="st"> </span>x[<span class="dv">9</span>]</a>
+<a class="sourceLine" id="cb17-17" data-line-number="17">  I_H &lt;-<span class="st"> </span>x[<span class="dv">10</span>]</a>
+<a class="sourceLine" id="cb17-18" data-line-number="18">  Tr_H &lt;-<span class="st"> </span>x[<span class="dv">11</span>]</a>
+<a class="sourceLine" id="cb17-19" data-line-number="19">  R_H &lt;-<span class="st"> </span>x[<span class="dv">12</span>]</a>
+<a class="sourceLine" id="cb17-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb17-21" data-line-number="21">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/with">with</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">as.list</a></span>(params),{</a>
+<a class="sourceLine" id="cb17-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb17-23" data-line-number="23">    <span class="co">## Specify total population</span></a>
+<a class="sourceLine" id="cb17-24" data-line-number="24">    N =<span class="st"> </span>S <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>L <span class="op">+</span><span class="st"> </span>I <span class="op">+</span><span class="st"> </span>Tr <span class="op">+</span><span class="st"> </span>R <span class="op">+</span><span class="st"> </span>S_H <span class="op">+</span><span class="st"> </span>H_H <span class="op">+</span><span class="st"> </span>L_H <span class="op">+</span><span class="st"> </span>I_H <span class="op">+</span><span class="st"> </span>Tr_H <span class="op">+</span><span class="st"> </span>R_H</a>
+<a class="sourceLine" id="cb17-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb17-26" data-line-number="26">    <span class="co">## Force of infection</span></a>
+<a class="sourceLine" id="cb17-27" data-line-number="27">    <span class="co">## The force of infetion in the low risk population has been provided for you</span></a>
+<a class="sourceLine" id="cb17-28" data-line-number="28">    foi &lt;-<span class="st"> </span>beta  <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">+</span><span class="st"> </span>M <span class="op">*</span><span class="st"> </span>beta_H <span class="op">*</span><span class="st"> </span>I_H <span class="op">/</span><span class="st"> </span>N </a>
+<a class="sourceLine" id="cb17-29" data-line-number="29">    <span class="co">## Add the high risk force of infection here</span></a>
+<a class="sourceLine" id="cb17-30" data-line-number="30">    foi_H &lt;-<span class="st">  </span>M <span class="op">*</span><span class="st"> </span>beta  <span class="op">*</span><span class="st"> </span>I <span class="op">/</span><span class="st"> </span>N <span class="op">+</span><span class="st">  </span>beta_H <span class="op">*</span><span class="st"> </span>I_H <span class="op">/</span><span class="st"> </span>N </a>
+<a class="sourceLine" id="cb17-31" data-line-number="31">    </a>
+<a class="sourceLine" id="cb17-32" data-line-number="32">    <span class="co">## Derivative Expressions</span></a>
+<a class="sourceLine" id="cb17-33" data-line-number="33">    <span class="co">## General population - provided for you</span></a>
+<a class="sourceLine" id="cb17-34" data-line-number="34">    <span class="co">## Compare these equations from those used for the previous models</span></a>
+<a class="sourceLine" id="cb17-35" data-line-number="35">    dS =<span class="st"> </span><span class="op">-</span>S <span class="op">*</span><span class="st"> </span>foi <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>S <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>p) <span class="op">*</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>N</a>
+<a class="sourceLine" id="cb17-36" data-line-number="36">    dH =<span class="st"> </span>(S <span class="op">+</span><span class="st"> </span>L <span class="op">+</span><span class="st"> </span>R) <span class="op">*</span><span class="st"> </span>foi <span class="op">-</span><span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>H</a>
+<a class="sourceLine" id="cb17-37" data-line-number="37">    dL =<span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H <span class="op">-</span><span class="st"> </span>L <span class="op">*</span><span class="st"> </span>foi <span class="op">-</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>L</a>
+<a class="sourceLine" id="cb17-38" data-line-number="38">    dI =<span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L <span class="op">-</span><span class="st"> </span>epsilon <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>I</a>
+<a class="sourceLine" id="cb17-39" data-line-number="39">    dTr =<span class="st"> </span>epsilon <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>Tr <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>Tr</a>
+<a class="sourceLine" id="cb17-40" data-line-number="40">    dR =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>Tr <span class="op">-</span><span class="st"> </span>R <span class="op">*</span><span class="st"> </span>foi <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R</a>
+<a class="sourceLine" id="cb17-41" data-line-number="41">    </a>
+<a class="sourceLine" id="cb17-42" data-line-number="42">    <span class="co">## High risk population</span></a>
+<a class="sourceLine" id="cb17-43" data-line-number="43">    <span class="co">## Copy the equations used above for the low risk population</span></a>
+<a class="sourceLine" id="cb17-44" data-line-number="44">    <span class="co">## Convert them to be in the high risk population</span></a>
+<a class="sourceLine" id="cb17-45" data-line-number="45">    dS_H =<span class="st"> </span><span class="op">-</span>S_H <span class="op">*</span><span class="st"> </span>foi_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>S_H <span class="op">+</span><span class="st"> </span>p <span class="op">*</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>N</a>
+<a class="sourceLine" id="cb17-46" data-line-number="46">    dH_H =<span class="st"> </span>(S_H <span class="op">+</span><span class="st"> </span>L_H <span class="op">+</span><span class="st"> </span>R_H) <span class="op">*</span><span class="st"> </span>foi_H <span class="op">-</span><span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H_H <span class="op">-</span><span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>H_H</a>
+<a class="sourceLine" id="cb17-47" data-line-number="47">    dL_H =<span class="st"> </span>nu <span class="op">*</span><span class="st"> </span>H_H <span class="op">-</span><span class="st"> </span>L_H <span class="op">*</span><span class="st"> </span>foi_H <span class="op">-</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>L_H</a>
+<a class="sourceLine" id="cb17-48" data-line-number="48">    dI_H =<span class="st"> </span>gamma_H <span class="op">*</span><span class="st"> </span>H_H <span class="op">+</span><span class="st"> </span>gamma_L <span class="op">*</span><span class="st"> </span>L_H <span class="op">-</span><span class="st"> </span>epsilon <span class="op">*</span><span class="st"> </span>I_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>I_H</a>
+<a class="sourceLine" id="cb17-49" data-line-number="49">    dTr_H =<span class="st"> </span>epsilon <span class="op">*</span><span class="st"> </span>I_H <span class="op">-</span><span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>Tr_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>Tr_H</a>
+<a class="sourceLine" id="cb17-50" data-line-number="50">    dR_H =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>Tr_H <span class="op">-</span><span class="st"> </span>R_H <span class="op">*</span><span class="st"> </span>foi_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R_H</a>
+<a class="sourceLine" id="cb17-51" data-line-number="51"></a>
+<a class="sourceLine" id="cb17-52" data-line-number="52">    <span class="co">## output</span></a>
+<a class="sourceLine" id="cb17-53" data-line-number="53">    derivatives &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(dS, dH, dL, dI, dTr, dR, dS_H, dH_H, dL_H, dI_H, dTr_H, dR_H)</a>
+<a class="sourceLine" id="cb17-54" data-line-number="54"></a>
+<a class="sourceLine" id="cb17-55" data-line-number="55">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(derivatives)</a>
+<a class="sourceLine" id="cb17-56" data-line-number="56">  })</a>
+<a class="sourceLine" id="cb17-57" data-line-number="57">}</a></code></pre></div>
 </div>
 <div id="simulate-and-summarise-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#simulate-and-summarise-2" class="anchor"></a>Simulate and Summarise</h3>
 <p>Simulate the new model as previously.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">begin_time &lt;-<span class="st"> </span><span class="dv">0</span>
-end_time &lt;-<span class="st"> </span><span class="dv">200</span>
-real_SHLIR_times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)
-
-## see ?solve_ode for details
-real_SHLIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> real_SHLIR_demo_ode, 
-                                           <span class="dt">inits =</span> real_SHLIR_inits, 
-                                           <span class="dt">params =</span> real_SHLIR_parameters,
-                                           <span class="dt">times =</span> real_SHLIR_times, 
-                                           <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)
-real_SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of model simulation"</span>,
-               <span class="dt">label =</span> <span class="st">"tab-real_SHLIR"</span>)</code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">begin_time &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">end_time &lt;-<span class="st"> </span><span class="dv">200</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">real_SHLIR_times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="co">## see ?solve_ode for details</span></a>
+<a class="sourceLine" id="cb18-6" data-line-number="6">real_SHLIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> real_SHLIR_demo_ode, </a>
+<a class="sourceLine" id="cb18-7" data-line-number="7">                                           <span class="dt">inits =</span> real_SHLIR_inits, </a>
+<a class="sourceLine" id="cb18-8" data-line-number="8">                                           <span class="dt">params =</span> real_SHLIR_parameters,</a>
+<a class="sourceLine" id="cb18-9" data-line-number="9">                                           <span class="dt">times =</span> real_SHLIR_times, </a>
+<a class="sourceLine" id="cb18-10" data-line-number="10">                                           <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb18-11" data-line-number="11">real_SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-12" data-line-number="12"><span class="st">  </span>head <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"First 5 years of model simulation"</span>,</a>
+<a class="sourceLine" id="cb18-14" data-line-number="14">               <span class="dt">label =</span> <span class="st">"tab-real_SHLIR"</span>)</a></code></pre></div>
 <table class="table">
 <caption>Table 4: First 5 years of model simulation (continued below)</caption>
 <colgroup>
@@ -707,9 +706,9 @@ real_SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <col width="12%">
 <col width="12%">
 <col width="13%">
-<col width="15%">
+<col width="14%">
 <col width="16%">
-<col width="9%">
+<col width="10%">
 </colgroup>
 <thead><tr class="header">
 <th align="center">time</th>
@@ -790,7 +789,7 @@ real_SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <col width="12%">
 <col width="12%">
 <col width="12%">
-<col width="12%">
+<col width="13%">
 </colgroup>
 <thead><tr class="header">
 <th align="center">H_H</th>
@@ -844,15 +843,15 @@ real_SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(real_SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/summarise_model.html">summarise_model</a></span>(real_SHLIR_sim) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/pretty_table.html">pretty_table</a></span>(<span class="dt">caption =</span> <span class="st">"Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic"</span>)</a></code></pre></div>
 <table class="table">
 <caption>Table 5: Realistic SHLIR model summary statistics; The final size of each population at the end of the simulation, along with the time the epidemic peak was reached, the number of infected at the epidemic peak and the duration of the epidemic (continued below)</caption>
 <colgroup>
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
+<col width="19%">
+<col width="19%">
+<col width="19%">
+<col width="19%">
 <col width="20%">
 </colgroup>
 <thead><tr class="header">
@@ -894,10 +893,10 @@ real_SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <table class="table">
 <caption>Table continues below</caption>
 <colgroup>
-<col width="24%">
+<col width="23%">
 <col width="25%">
-<col width="24%">
-<col width="26%">
+<col width="23%">
+<col width="27%">
 </colgroup>
 <thead><tr class="header">
 <th align="center">Final size: I_H</th>
@@ -915,7 +914,7 @@ real_SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <table class="table">
 <colgroup>
 <col width="22%">
-<col width="26%">
+<col width="27%">
 </colgroup>
 <thead><tr class="header">
 <th align="center">Epidemic peak</th>
@@ -926,8 +925,8 @@ real_SHLIR_sim <span class="op">%&gt;%</span><span class="st"> </span>
 <td align="center">0</td>
 </tr></tbody>
 </table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## For an interactive graph change interactive to TRUE
-biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(real_SHLIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="co">## For an interactive graph change interactive to TRUE</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/plot_model.html">plot_model</a></span>(real_SHLIR_sim, <span class="dt">interactive =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="solutions-three_files/figure-html/real-SHLIR-plot-1.png" alt="Figure 4: Plot of population over time in each realistic SHLIR model compartment" width="2310"><p class="caption">
 Figure 4: Plot of population over time in each realistic SHLIR model compartment
@@ -951,7 +950,7 @@ Figure 4: Plot of population over time in each realistic SHLIR model compartment
 <div id="implement-your-own-model" class="section level2">
 <h2 class="hasAnchor">
 <a href="#implement-your-own-model" class="anchor"></a>4. Implement Your Own Model</h2>
-<p>Using the same structure as used in models above implement your own model into R. Talk to the instructors for tips, tricks, and potential ideas. See the <code>idmodelr</code> package for other example model structures (<a href="https://www.samabbott.co.uk/idmodelr/" class="uri">https://www.samabbott.co.uk/idmodelr/</a>). It may help to first draw out the flow diagram for your model (potentially writing out the equations may also help).</p>
+<p>Using the same structure as used in models above implement your own model into R. Talk to the instructors for tips, tricks, and potential ideas. See the <code>idmodelr</code> package for other example model structures (<a href="https://www.samabbott.co.uk/idmodelr/">https://www.samabbott.co.uk/idmodelr/</a>). It may help to first draw out the flow diagram for your model (potentially writing out the equations may also help).</p>
 </div>
 </div>
   </div>
@@ -985,7 +984,7 @@ Figure 4: Plot of population over time in each realistic SHLIR model compartment
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
 </div>
