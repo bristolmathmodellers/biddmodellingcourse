@@ -9,7 +9,7 @@
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Solutions 3: Compartmental Models to Equations">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -160,10 +160,10 @@
 <h1 class="hasAnchor">
 <a href="#set-up" class="anchor"></a>Set up</h1>
 <p>If you have not installed the course package do this now with the following <code>R</code> code (speak to an instructor if you are having issues with this step).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"bristolmathmodellers/biddmodellingcourse"</span>)</a></code></pre></div>
 <p>Now load the course package,</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(biddmodellingcourse)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(biddmodellingcourse)</a></code></pre></div>
 <p>For more help getting started see the course README (<a href="https://bristolmathmodellers.github.io/biddmodellingcourse/" class="uri">https://bristolmathmodellers.github.io/biddmodellingcourse/</a>) or ask an instructor.</p>
 </div>
 <div id="exercises" class="section level1">
@@ -177,7 +177,7 @@
 <h3 class="hasAnchor">
 <a href="#populations-and-initialisation" class="anchor"></a>Populations and Initialisation</h3>
 <p>We first set up the initial populations for the Susceptible (<span class="math inline">\(S_0\)</span>), Latent (<span class="math inline">\(E_0\)</span>), Infected (<span class="math inline">\(I\)</span>), and Recovered (<span class="math inline">\(R\)</span>) compartments. We have initialised the model as an early stage epidemic with a single case of TB.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">inits =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">inits =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="dt">S =</span> <span class="dv">999</span>,</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3">  <span class="dt">E =</span> <span class="dv">0</span>,</a>
 <a class="sourceLine" id="cb3-4" data-line-number="4">  <span class="dt">I =</span> <span class="dv">1</span>,</a>
@@ -188,7 +188,7 @@
 <h3 class="hasAnchor">
 <a href="#parameters" class="anchor"></a>Parameters</h3>
 <p>We then specify the model parameters (with the units being years<sup>-1</sup>), varying these parameters will impact the model dynamics.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">  <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">  <span class="dt">gamma =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="co"># Rate of progression to active symptoms </span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="dt">tau =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co"># Rate of recovery</span></a>
@@ -207,7 +207,7 @@
 <a class="sourceLine" id="cb5-6" data-line-number="6">  I &lt;-<span class="st"> </span>x[<span class="dv">3</span>]</a>
 <a class="sourceLine" id="cb5-7" data-line-number="7">  R &lt;-<span class="st"> </span>x[<span class="dv">4</span>]</a>
 <a class="sourceLine" id="cb5-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/with">with</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">as.list</a></span>(params),{</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">  <span class="kw"><a href="https://rdrr.io/r/base/with.html">with</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/list.html">as.list</a></span>(params),{</a>
 <a class="sourceLine" id="cb5-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb5-11" data-line-number="11">    ## Specify total population</a>
 <a class="sourceLine" id="cb5-12" data-line-number="12">    N =<span class="st"> </span>S <span class="op">+</span><span class="st"> </span>E <span class="op">+</span><span class="st"> </span>I <span class="op">+</span><span class="st"> </span>R</a>
@@ -219,19 +219,19 @@
 <a class="sourceLine" id="cb5-18" data-line-number="18">    dR =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R</a>
 <a class="sourceLine" id="cb5-19" data-line-number="19"></a>
 <a class="sourceLine" id="cb5-20" data-line-number="20">    ## output</a>
-<a class="sourceLine" id="cb5-21" data-line-number="21">    derivatives &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(dS, dE, dI, dR)</a>
+<a class="sourceLine" id="cb5-21" data-line-number="21">    derivatives &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(dS, dE, dI, dR)</a>
 <a class="sourceLine" id="cb5-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb5-23" data-line-number="23">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(derivatives)</a>
+<a class="sourceLine" id="cb5-23" data-line-number="23">    <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(derivatives)</a>
 <a class="sourceLine" id="cb5-24" data-line-number="24">  })</a>
 <a class="sourceLine" id="cb5-25" data-line-number="25">}</a></code></pre></div>
 </div>
 <div id="simulate-and-summarise" class="section level3">
 <h3 class="hasAnchor">
 <a href="#simulate-and-summarise" class="anchor"></a>Simulate and Summarise</h3>
-<p>To simulate the model we specify the starting year (<code>begin_time</code>) and final year (<code>end_time</code>) and define a sequence over all intervening years. The model is then solved using <code><a href="https://www.rdocumentation.org/packages/deSolve/topics/lsoda">deSolve::lsoda</a></code> which is used within a simple wrapper function (see <code><a href="../reference/solve_ode.html">?solve_ode</a></code> for details). The resulting table summarises the simulation results for the first 5 years.</p>
+<p>To simulate the model we specify the starting year (<code>begin_time</code>) and final year (<code>end_time</code>) and define a sequence over all intervening years. The model is then solved using <code><a href="https://rdrr.io/pkg/deSolve/man/lsoda.html">deSolve::lsoda</a></code> which is used within a simple wrapper function (see <code><a href="../reference/solve_ode.html">?solve_ode</a></code> for details). The resulting table summarises the simulation results for the first 5 years.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">begin_time &lt;-<span class="st"> </span><span class="dv">0</span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">end_time &lt;-<span class="st"> </span><span class="dv">200</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">times &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb6-5" data-line-number="5">## see ?solve_ode for details</a>
 <a class="sourceLine" id="cb6-6" data-line-number="6">SEIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SEIR_demo_ode, </a>
@@ -369,7 +369,7 @@ Figure 1: Plot of population over time in each SEIR model compartment
 <h3 class="hasAnchor">
 <a href="#populations-and-initialisation-1" class="anchor"></a>Populations and Initialisation</h3>
 <p>As in the previous model the first step is to define the model populations. There are now two new compartments, high risk latents (H), and low risk latents (L). These replace the original latent population (E) used in the SEIR model.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">SHLIR_inits =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">SHLIR_inits =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">  <span class="dt">S =</span> <span class="dv">999</span>,</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3">  <span class="dt">H =</span> <span class="dv">0</span>,</a>
 <a class="sourceLine" id="cb9-4" data-line-number="4">  <span class="dt">L =</span> <span class="dv">0</span>,</a>
@@ -381,7 +381,7 @@ Figure 1: Plot of population over time in each SEIR model compartment
 <h3 class="hasAnchor">
 <a href="#parameters-1" class="anchor"></a>Parameters</h3>
 <p>We add two additional parameters for the rate of progression from high to low risk latents (<code>nu</code>) and the rate of progression from low risk latent to active disease (<code>gamma_L</code>).</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">SHLIR_parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">SHLIR_parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">  <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span></a>
 <a class="sourceLine" id="cb10-3" data-line-number="3">  <span class="dt">gamma_H =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="co"># Rate of progression to active symptoms from high risk latent</span></a>
 <a class="sourceLine" id="cb10-4" data-line-number="4">  <span class="dt">nu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="co">#Rate of progression from high to low risk latent</span></a>
@@ -403,7 +403,7 @@ Figure 1: Plot of population over time in each SEIR model compartment
 <a class="sourceLine" id="cb11-7" data-line-number="7">  I &lt;-<span class="st"> </span>x[<span class="dv">4</span>]</a>
 <a class="sourceLine" id="cb11-8" data-line-number="8">  R &lt;-<span class="st"> </span>x[<span class="dv">5</span>]</a>
 <a class="sourceLine" id="cb11-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/with">with</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">as.list</a></span>(params),{</a>
+<a class="sourceLine" id="cb11-10" data-line-number="10">  <span class="kw"><a href="https://rdrr.io/r/base/with.html">with</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/list.html">as.list</a></span>(params),{</a>
 <a class="sourceLine" id="cb11-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb11-12" data-line-number="12">    ## Specify total population</a>
 <a class="sourceLine" id="cb11-13" data-line-number="13">    N =<span class="st"> </span>S <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>L <span class="op">+</span><span class="st"> </span>I <span class="op">+</span><span class="st"> </span>R</a>
@@ -418,9 +418,9 @@ Figure 1: Plot of population over time in each SEIR model compartment
 <a class="sourceLine" id="cb11-22" data-line-number="22">    dR =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>I <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R</a>
 <a class="sourceLine" id="cb11-23" data-line-number="23"></a>
 <a class="sourceLine" id="cb11-24" data-line-number="24">    ## output</a>
-<a class="sourceLine" id="cb11-25" data-line-number="25">    derivatives &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(dS, dH, dL, dI, dR)</a>
+<a class="sourceLine" id="cb11-25" data-line-number="25">    derivatives &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(dS, dH, dL, dI, dR)</a>
 <a class="sourceLine" id="cb11-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb11-27" data-line-number="27">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(derivatives)</a>
+<a class="sourceLine" id="cb11-27" data-line-number="27">    <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(derivatives)</a>
 <a class="sourceLine" id="cb11-28" data-line-number="28">  })</a>
 <a class="sourceLine" id="cb11-29" data-line-number="29">}</a></code></pre></div>
 </div>
@@ -430,7 +430,7 @@ Figure 1: Plot of population over time in each SEIR model compartment
 <p>Simulation is the same as for the previous model. Does the simulation of your improved model make sense? Evaluate the summary tables and plot of model populations over time.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">begin_time &lt;-<span class="st"> </span><span class="dv">0</span></a>
 <a class="sourceLine" id="cb12-2" data-line-number="2">end_time &lt;-<span class="st"> </span><span class="dv">200</span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3">SHILR_times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">SHILR_times &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb12-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb12-5" data-line-number="5">## see ?solve_ode for details</a>
 <a class="sourceLine" id="cb12-6" data-line-number="6">SHLIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SHLIR_demo_ode, </a>
@@ -585,7 +585,7 @@ Figure 3: Plot of the population in each SHLIR model compartment over time
 <h3 class="hasAnchor">
 <a href="#populations-and-initialisation-2" class="anchor"></a>Populations and Initialisation</h3>
 <p>The new populations have been added for you. The population has now been split between low and high risk populations, with the only infectious case being in the high risk population.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">real_SHLIR_inits =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">real_SHLIR_inits =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
 <a class="sourceLine" id="cb15-2" data-line-number="2">  <span class="co"># General population</span></a>
 <a class="sourceLine" id="cb15-3" data-line-number="3">  <span class="dt">S =</span> <span class="dv">800</span>,</a>
 <a class="sourceLine" id="cb15-4" data-line-number="4">  <span class="dt">H =</span> <span class="dv">0</span>,</a>
@@ -606,7 +606,7 @@ Figure 3: Plot of the population in each SHLIR model compartment over time
 <h3 class="hasAnchor">
 <a href="#parameters-2" class="anchor"></a>Parameters</h3>
 <p>The required model parameters have been defined for you (with the units being years<sup>-1</sup>). The only new parameters are the between group mixing (<code>M</code>), the proportion that are born high risk (<code>p</code>), and the transmission probability in those considered to be high risk (<code>beta_H</code>).</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">real_SHLIR_parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">real_SHLIR_parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
 <a class="sourceLine" id="cb16-2" data-line-number="2">  <span class="dt">beta =</span> <span class="dv">3</span>, <span class="co"># Rate of transmission</span></a>
 <a class="sourceLine" id="cb16-3" data-line-number="3">  <span class="dt">beta_H =</span> <span class="dv">6</span>, <span class="co"># High risk rate of transmission</span></a>
 <a class="sourceLine" id="cb16-4" data-line-number="4">  <span class="dt">gamma_H =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="co"># Rate of progression to active symptoms from high risk latent</span></a>
@@ -643,7 +643,7 @@ Figure 3: Plot of the population in each SHLIR model compartment over time
 <a class="sourceLine" id="cb17-18" data-line-number="18">  Tr_H &lt;-<span class="st"> </span>x[<span class="dv">11</span>]</a>
 <a class="sourceLine" id="cb17-19" data-line-number="19">  R_H &lt;-<span class="st"> </span>x[<span class="dv">12</span>]</a>
 <a class="sourceLine" id="cb17-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb17-21" data-line-number="21">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/with">with</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">as.list</a></span>(params),{</a>
+<a class="sourceLine" id="cb17-21" data-line-number="21">  <span class="kw"><a href="https://rdrr.io/r/base/with.html">with</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/list.html">as.list</a></span>(params),{</a>
 <a class="sourceLine" id="cb17-22" data-line-number="22"></a>
 <a class="sourceLine" id="cb17-23" data-line-number="23">    ## Specify total population</a>
 <a class="sourceLine" id="cb17-24" data-line-number="24">    N =<span class="st"> </span>S <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>L <span class="op">+</span><span class="st"> </span>I <span class="op">+</span><span class="st"> </span>Tr <span class="op">+</span><span class="st"> </span>R <span class="op">+</span><span class="st"> </span>S_H <span class="op">+</span><span class="st"> </span>H_H <span class="op">+</span><span class="st"> </span>L_H <span class="op">+</span><span class="st"> </span>I_H <span class="op">+</span><span class="st"> </span>Tr_H <span class="op">+</span><span class="st"> </span>R_H</a>
@@ -675,9 +675,9 @@ Figure 3: Plot of the population in each SHLIR model compartment over time
 <a class="sourceLine" id="cb17-50" data-line-number="50">    dR_H =<span class="st"> </span>tau <span class="op">*</span><span class="st"> </span>Tr_H <span class="op">-</span><span class="st"> </span>R_H <span class="op">*</span><span class="st"> </span>foi_H <span class="op">-</span><span class="st"> </span>mu <span class="op">*</span><span class="st"> </span>R_H</a>
 <a class="sourceLine" id="cb17-51" data-line-number="51"></a>
 <a class="sourceLine" id="cb17-52" data-line-number="52">    ## output</a>
-<a class="sourceLine" id="cb17-53" data-line-number="53">    derivatives &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(dS, dH, dL, dI, dTr, dR, dS_H, dH_H, dL_H, dI_H, dTr_H, dR_H)</a>
+<a class="sourceLine" id="cb17-53" data-line-number="53">    derivatives &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(dS, dH, dL, dI, dTr, dR, dS_H, dH_H, dL_H, dI_H, dTr_H, dR_H)</a>
 <a class="sourceLine" id="cb17-54" data-line-number="54"></a>
-<a class="sourceLine" id="cb17-55" data-line-number="55">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(derivatives)</a>
+<a class="sourceLine" id="cb17-55" data-line-number="55">    <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(derivatives)</a>
 <a class="sourceLine" id="cb17-56" data-line-number="56">  })</a>
 <a class="sourceLine" id="cb17-57" data-line-number="57">}</a></code></pre></div>
 </div>
@@ -687,7 +687,7 @@ Figure 3: Plot of the population in each SHLIR model compartment over time
 <p>Simulate the new model as previously.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">begin_time &lt;-<span class="st"> </span><span class="dv">0</span></a>
 <a class="sourceLine" id="cb18-2" data-line-number="2">end_time &lt;-<span class="st"> </span><span class="dv">200</span></a>
-<a class="sourceLine" id="cb18-3" data-line-number="3">real_SHLIR_times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">real_SHLIR_times &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(begin_time, end_time, <span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb18-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb18-5" data-line-number="5">## see ?solve_ode for details</a>
 <a class="sourceLine" id="cb18-6" data-line-number="6">real_SHLIR_sim &lt;-<span class="st"> </span>biddmodellingcourse<span class="op">::</span><span class="kw"><a href="https://bristolmathmodellers.github.io/biddmodellingcourse//reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> real_SHLIR_demo_ode, </a>

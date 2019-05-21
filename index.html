@@ -9,7 +9,7 @@
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Practicals and Code for the BIDD Modelling Short Course">
 <meta property="og:description" content="This package contains the practicals for the BIDD modelling short course at the University of Bristol. It also contains functions and data which can be used to practise infectious disease dynamic modelling.  ">
 <meta name="twitter:card" content="summary">
@@ -131,17 +131,35 @@
 <div id="getting-started---on-the-day" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-started---on-the-day" class="anchor"></a>Getting Started - On The Day</h2>
+<div id="getting-up-and-running" class="section level3">
+<h3 class="hasAnchor">
+<a href="#getting-up-and-running" class="anchor"></a>Getting up and running</h3>
 <ul>
-<li><p>The practicals and code should be on the memory stick given to you at the start of the the course. Open the course folder and then open the <code>biddmodellingcourse</code> folder.</p></li>
-<li><p>Verify that you have a working installation of both <a href="https://www.r-project.org/">R</a> and <a href="https://www.rstudio.com/products/rstudio/download/#download">Rstudio</a>, then click on the <code>biddmodellingcourse.Rproj</code> project. This should open an instance of Rstudio.</p></li>
-<li><p>Install the BIDD modelling short course from GitHub using the R terminal (this may take several minutes, if you are having problems talk to a course instructor):</p></li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"bristolmathmodellers/biddmodellingcourse"</span>)</a></code></pre></div>
-<ul>
+<li><p>The practicals and code should be on the memory stick given to you at the start of the the course as a zip. Copy the zip to your home directory, unzip it, and then open the <code>biddmodellingcourse</code> folder.</p></li>
+<li><p>Verify that you have a working installation of both <a href="https://www.r-project.org/">R</a> and <a href="https://www.rstudio.com/products/rstudio/download/#download">Rstudio</a> (if on the course computers you do), then click on the <code>biddmodellingcourse.Rproj</code> project. This should open an instance of Rstudio.</p></li>
 <li><p>You are now ready to start the practicals (see the handouts or the course website (<a href="https://bristolmathmodellers.github.io/biddmodellingcourse/" class="uri">https://bristolmathmodellers.github.io/biddmodellingcourse/</a>)). For practicals that require coding, follow along interactively using the provided notebooks (available in the <code>vignettes</code> folder).</p></li>
-<li><p>The course practicals make use of <a href="https://rmarkdown.rstudio.com/r_notebooks.html">R notebooks</a>, these allow text and code to be intermingled in a single document. Code is highlighted and separated from the text using ```. To run the code in these chunks click on the green arrow in the right hand side of the chunk, or select the chunk and press enter. To run all code chunks above a given chunk press the grey arrow pointing downwards. The output from each code chunk will be displayed below the code chunk.</p></li>
 </ul>
+</div>
+<div id="using-the-course-code" class="section level3">
+<h3 class="hasAnchor">
+<a href="#using-the-course-code" class="anchor"></a>Using the course code</h3>
+<ul>
+<li>To run the shiny application in practical 2 run the following code,</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">shiny<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shiny/man/runUrl.html">runGitHub</a></span>(<span class="st">"exploreidmodels"</span>, <span class="st">"seabbs"</span>)</a></code></pre></div>
+<ul>
+<li><p>The course practicals make use of <a href="https://rmarkdown.rstudio.com/r_notebooks.html">R notebooks</a>, these allow text and code to be intermingled in a single document. Code is highlighted and separated from the text using ```. To run the code in these chunks click on the green arrow in the right hand side of the chunk, or select the chunk and press enter. To run all code chunks above a given chunk press the grey arrow pointing downwards. The output from each code chunk will be displayed below the code chunk.</p></li>
+<li>
+<strong>Are you having a problem running something locally?</strong>
+<ul>
+<li>For Practical 2 use the following link to start the shiny app remotely: <a href="http://bit.ly/bidd-practical-2" class="uri">http://bit.ly/bidd-practical-2</a>
+</li>
+<li>For practical 3 use the following link to start a remote Rstudio session: <a href="http://bit.ly/bidd-practical-3" class="uri">http://bit.ly/bidd-practical-3</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="getting-started---remote-set-up" class="section level2">
 <h2 class="hasAnchor">
